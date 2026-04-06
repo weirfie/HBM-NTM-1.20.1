@@ -1,0 +1,16 @@
+{
+  "type": "hbm_ntm:assembly_machine",
+  "template": {
+    "item": "hbm_ntm:assembly_template_electric_arc_furnace"
+  },
+  "ingredients": [
+    { "item": "hbm_ntm:ducrete", "count": 12 },
+    { "item": "hbm_ntm:polymer_bar", "count": 8 },
+    { "item": "hbm_ntm:firebrick", "count": 16 },
+    { "item": "hbm_ntm:cast_steel_plate", "count": 8 },
+    { "item": "hbm_ntm:analog_circuit_board", "count": 1 }
+  ],
+  "output": {
+    "item": "hbm_ntm:electric_arc_furnace"
+  }
+}

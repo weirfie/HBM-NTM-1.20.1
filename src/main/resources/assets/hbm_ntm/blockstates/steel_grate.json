@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=bottom": {
+      "model": "hbm_ntm:block/steel_grate"
+    },
+    "half=top": {
+      "model": "hbm_ntm:block/steel_grate_top"
+    }
+  }
+}

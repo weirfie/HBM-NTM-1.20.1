@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "hbm_ntm:steel"
+    },
+    "O": {
+      "item": "minecraft:redstone"
+    },
+    "R": {
+      "item": "hbm_ntm:enhanced_radiation_absorber"
+    }
+  },
+  "pattern": [
+    "COC",
+    "ORO",
+    "COC"
+  ],
+  "result": {
+    "item": "hbm_ntm:advanced_radiation_absorber"
+  },
+  "show_notification": true
+}

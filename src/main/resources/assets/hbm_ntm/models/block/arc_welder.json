@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/arc_welder.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/arc_welder",
+    "m_288e0e97-477c-0895-cee9-f98f92d586fb": "hbm_ntm:block/arc_welder",
+    "Material": "hbm_ntm:block/arc_welder",
+    "none": "hbm_ntm:block/arc_welder"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/compressor.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/compressor",
+    "m_38f7f4cd-378b-b2d3-b6e3-19eea31030c9": "hbm_ntm:block/compressor",
+    "Material": "hbm_ntm:block/compressor",
+    "none": "hbm_ntm:block/compressor"
+  }
+}

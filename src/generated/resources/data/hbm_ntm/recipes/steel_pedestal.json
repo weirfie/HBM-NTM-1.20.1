@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "item": "hbm_ntm:steel"
+    },
+    "S": {
+      "item": "hbm_ntm:steel_plate"
+    }
+  },
+  "pattern": [
+    "S S",
+    "S S",
+    "PPP"
+  ],
+  "result": {
+    "item": "hbm_ntm:steel_pedestal"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "hbm_ntm:tungsten_ore"
+    },
+    "C": {
+      "item": "minecraft:clay"
+    }
+  },
+  "pattern": [
+    "CC ",
+    "CA ",
+    "   "
+  ],
+  "result": {
+    "item": "hbm_ntm:firebricks"
+  },
+  "show_notification": true
+}

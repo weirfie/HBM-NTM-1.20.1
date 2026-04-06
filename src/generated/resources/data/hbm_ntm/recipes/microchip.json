@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "hbm_ntm:copper_wire"
+    },
+    "I": {
+      "item": "hbm_ntm:insulator"
+    },
+    "W": {
+      "item": "hbm_ntm:printed_silicon_wafer"
+    }
+  },
+  "pattern": [
+    "I  ",
+    "W  ",
+    "C  "
+  ],
+  "result": {
+    "item": "hbm_ntm:microchip"
+  },
+  "show_notification": true
+}

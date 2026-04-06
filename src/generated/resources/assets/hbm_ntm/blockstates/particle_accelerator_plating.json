@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "hbm_ntm:block/particle_accelerator_plating"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "item": "minecraft:paper"
+    },
+    "S": {
+      "tag": "forge:dyes"
+    }
+  },
+  "pattern": [
+    "SPS",
+    "SPS",
+    "SPS"
+  ],
+  "result": {
+    "item": "hbm_ntm:machine_template_folder"
+  },
+  "show_notification": true
+}

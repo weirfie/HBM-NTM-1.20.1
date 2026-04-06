@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 150,
+  "experience": 0.25,
+  "group": "cryolite_chunk",
+  "ingredient": {
+    "item": "hbm_ntm:aluminum_ore"
+  },
+  "result": "hbm_ntm:cryolite_chunk"
+}

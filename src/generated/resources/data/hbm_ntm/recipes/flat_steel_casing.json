@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "item": "hbm_ntm:steel"
+    },
+    "S": {
+      "item": "hbm_ntm:steel_plate"
+    }
+  },
+  "pattern": [
+    "PS ",
+    "SS ",
+    "PS "
+  ],
+  "result": {
+    "item": "hbm_ntm:flat_steel_casing"
+  },
+  "show_notification": true
+}

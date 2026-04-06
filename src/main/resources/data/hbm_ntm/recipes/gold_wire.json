@@ -1,0 +1,15 @@
+{
+  "type": "hbm_ntm:burner_press",
+  "stamp": {
+    "item": "hbm_ntm:wire_stamp"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:gold_ingot"
+    }
+  ],
+  "output": {
+    "item": "hbm_ntm:gold_wire",
+    "count": 8
+  }
+}

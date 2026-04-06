@@ -1,0 +1,13 @@
+{
+  "type": "hbm_ntm:soldering",
+  "ingredients": [
+    { "item": { "item": "hbm_ntm:capacitor" }, "count": 2 },
+    { "item": { "item": "hbm_ntm:vacuum_tube" }, "count": 3 },
+    { "item": { "item": "hbm_ntm:lead_wire" }, "count": 4 },
+    { "item": { "item": "hbm_ntm:printed_circuit_board" }, "count": 4 }
+  ],
+  "result": {
+    "item": "hbm_ntm:analog_circuit_board",
+    "count": 1
+  }
+}

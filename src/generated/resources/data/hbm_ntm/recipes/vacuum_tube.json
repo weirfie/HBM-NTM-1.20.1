@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "hbm_ntm:insulator"
+    },
+    "R": {
+      "item": "hbm_ntm:tungsten_wire"
+    },
+    "S": {
+      "item": "minecraft:glass_pane"
+    }
+  },
+  "pattern": [
+    "S  ",
+    "R  ",
+    "B  "
+  ],
+  "result": {
+    "item": "hbm_ntm:vacuum_tube"
+  },
+  "show_notification": true
+}

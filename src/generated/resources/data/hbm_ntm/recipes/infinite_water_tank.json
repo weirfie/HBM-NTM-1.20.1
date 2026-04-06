@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "hbm_ntm:aluminum_plate"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    },
+    "W": {
+      "item": "minecraft:water_bucket"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "WDW",
+    "AAA"
+  ],
+  "result": {
+    "item": "hbm_ntm:infinite_water_tank"
+  },
+  "show_notification": true
+}

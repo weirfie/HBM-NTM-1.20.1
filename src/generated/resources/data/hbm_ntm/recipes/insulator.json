@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "S": {
+      "item": "minecraft:string"
+    },
+    "W": {
+      "tag": "minecraft:wool"
+    }
+  },
+  "pattern": [
+    "SWS",
+    "   ",
+    "   "
+  ],
+  "result": {
+    "count": 4,
+    "item": "hbm_ntm:insulator"
+  },
+  "show_notification": true
+}

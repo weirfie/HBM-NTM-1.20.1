@@ -1,0 +1,12 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/industrial_cooling_tower.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/industrial_cooling_tower",
+    "m_3a2e483f-172e-7a8c-ca9a-5645746c7f54": "hbm_ntm:block/industrial_cooling_tower",
+    "Material": "hbm_ntm:block/industrial_cooling_tower",
+    "none": "hbm_ntm:block/industrial_cooling_tower"
+  },
+  "render_type": "cutout"
+}

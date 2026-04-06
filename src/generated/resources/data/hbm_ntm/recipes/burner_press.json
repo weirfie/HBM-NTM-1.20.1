@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "F": {
+      "item": "minecraft:furnace"
+    },
+    "I": {
+      "item": "minecraft:iron_block"
+    },
+    "P": {
+      "item": "minecraft:piston"
+    },
+    "S": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "pattern": [
+    "SFS",
+    "SPS",
+    "SIS"
+  ],
+  "result": {
+    "item": "hbm_ntm:burner_press"
+  },
+  "show_notification": true
+}

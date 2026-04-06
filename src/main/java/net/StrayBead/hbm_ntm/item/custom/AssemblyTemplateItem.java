@@ -1,0 +1,31 @@
+package net.StrayBead.hbm_ntm.item.custom;
+
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
+
+import javax.annotation.Nullable;
+import java.util.List;
+
+public class AssemblyTemplateItem extends Item {
+    private final String type;
+
+    public AssemblyTemplateItem(Properties p_41383_, String type) {
+        super(p_41383_);
+        this.type = type;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
+        tooltip.add(Component.literal("Deprecated").withStyle(ChatFormatting.RED));
+
+        super.appendHoverText(stack, level, tooltip, flag);
+    }
+
+    public String getFluidName() {
+        return this.type;
+    }
+}

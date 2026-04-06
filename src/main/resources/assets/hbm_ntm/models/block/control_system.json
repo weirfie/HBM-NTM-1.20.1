@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/control_system.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/control_system",
+    "m_fd51b420-6797-ed1e-e5e5-8eb4c85d1470": "hbm_ntm:block/control_system",
+    "Material": "hbm_ntm:block/control_system",
+    "none": "hbm_ntm:block/control_system"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "hbm_ntm:block/sim_card_signal_broadcasting_device"
+    }
+  }
+}

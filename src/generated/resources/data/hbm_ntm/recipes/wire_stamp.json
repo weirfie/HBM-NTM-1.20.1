@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "hbm_ntm:flat_stamp"
+    },
+    "R": {
+      "item": "minecraft:brick"
+    },
+    "S": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "pattern": [
+    "SBS",
+    "RRR",
+    "   "
+  ],
+  "result": {
+    "item": "hbm_ntm:wire_stamp"
+  },
+  "show_notification": true
+}

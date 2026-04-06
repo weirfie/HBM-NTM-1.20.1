@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/industrial_boiler.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/industrial_boiler",
+    "m_19e8450c-fd41-43e8-2dff-564336b2a95d": "hbm_ntm:block/industrial_boiler",
+    "Material": "hbm_ntm:block/industrial_boiler",
+    "none": "hbm_ntm:block/industrial_boiler"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/industrial_steam_turbine.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/industrial_steam_turbine",
+    "m_50e957c3-db1d-1326-c314-0b58b4df57d6": "hbm_ntm:block/industrial_steam_turbine",
+    "Material": "hbm_ntm:block/industrial_steam_turbine",
+    "none": "hbm_ntm:block/industrial_steam_turbine"
+  }
+}

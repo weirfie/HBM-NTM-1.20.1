@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "hbm_ntm:item/short_range_target_designator"
+  }
+}

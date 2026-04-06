@@ -1,0 +1,12 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/short_range_sim_card_data_sender.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/short_range_sim_card_data_sender",
+    "m_3a609712-df42-b446-ae57-92a0bd143a9e": "hbm_ntm:block/short_range_sim_card_data_sender",
+    "Material": "hbm_ntm:block/short_range_sim_card_data_sender",
+    "none": "hbm_ntm:block/short_range_sim_card_data_sender"
+  },
+  "render_type": "translucent"
+}

@@ -1,0 +1,14 @@
+{
+  "type": "hbm_ntm:assembly_machine",
+  "template": {
+    "item": "hbm_ntm:assembly_template_radioactive_barrel"
+  },
+  "ingredients": [
+    { "item": "hbm_ntm:steel_tank", "count": 1 },
+    { "item": "hbm_ntm:steel_plate", "count": 2 },
+    { "item": "hbm_ntm:uranium_233_ingot", "count": 5 }
+  ],
+  "output": {
+    "item": "hbm_ntm:radioactive_barrel"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/centrifuge.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/centrifuge",
+    "m_0dceaa16-5707-4e40-41c4-6a27053fb32a": "hbm_ntm:block/centrifuge",
+    "Material": "hbm_ntm:block/centrifuge",
+    "none": "hbm_ntm:block/centrifuge"
+  }
+}

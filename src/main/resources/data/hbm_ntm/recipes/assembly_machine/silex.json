@@ -1,0 +1,16 @@
+{
+  "type": "hbm_ntm:assembly_machine",
+  "template": {
+    "item": "hbm_ntm:assembly_template_silex"
+  },
+  "ingredients": [
+    { "item": "hbm_ntm:quartz_glass", "count": 16 },
+    { "item": "hbm_ntm:cast_steel_plate", "count": 8 },
+    { "item": "hbm_ntm:desh_ingot", "count": 4 },
+    { "item": "hbm_ntm:rubber_bar", "count": 8 },
+    { "item": "hbm_ntm:steel_pipe", "count": 8 }
+  ],
+  "output": {
+    "item": "hbm_ntm:silex"
+  }
+}

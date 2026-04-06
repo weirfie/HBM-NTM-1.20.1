@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.25,
+  "group": "copper",
+  "ingredient": {
+    "item": "hbm_ntm:redcopper"
+  },
+  "result": "hbm_ntm:industrial_grade_copper"
+}

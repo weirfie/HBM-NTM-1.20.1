@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/antenna_top.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/antenna_top",
+    "m_60615bbe-ad38-2330-ed0a-4a96c8478d6f": "hbm_ntm:block/antenna_top",
+    "Material": "hbm_ntm:block/antenna_top",
+    "none": "hbm_ntm:block/antenna_top"
+  }
+}

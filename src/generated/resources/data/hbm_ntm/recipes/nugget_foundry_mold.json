@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "hbm_ntm:blank_foundry_mold"
+    },
+    "I": {
+      "item": "minecraft:gold_nugget"
+    }
+  },
+  "pattern": [
+    "IB ",
+    "   ",
+    "   "
+  ],
+  "result": {
+    "item": "hbm_ntm:nugget_foundry_mold"
+  },
+  "show_notification": true
+}

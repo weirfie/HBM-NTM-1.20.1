@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/catalytic_reformer.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/catalytic_reformer",
+    "m_01865713-b6c6-6869-16f5-2a2b4a3c4776": "hbm_ntm:block/catalytic_reformer",
+    "Material": "hbm_ntm:block/catalytic_reformer",
+    "none": "hbm_ntm:block/catalytic_reformer"
+  }
+}

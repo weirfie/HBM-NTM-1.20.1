@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_industrial_grade_copper": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hbm_ntm:industrial_grade_copper"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "hbm_ntm:oil_reservoir_detector"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_industrial_grade_copper",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "hbm_ntm:oil_reservoir_detector"
+    ]
+  },
+  "sends_telemetry_event": false
+}

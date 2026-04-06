@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "hbm_ntm:item/hazardous_material_tank_base",
+    "layer1": "hbm_ntm:item/hazardous_material_tank_center"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/leviathan_turbine.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/leviathan_steam_turbine",
+    "m_d8aa138f-cfed-45e6-ad5f-9511e15067b0": "hbm_ntm:block/leviathan_steam_turbine",
+    "m_b1c0140a-d249-4b48-4f61-88b18e96ea69": "hbm_ntm:block/leviathan_steam_turbine",
+    "Material": "hbm_ntm:block/leviathan_steam_turbine",
+    "none": "hbm_ntm:block/leviathan_steam_turbine"
+  },
+  "render_type": "cutout"
+}

@@ -1,0 +1,13 @@
+{
+  "type": "hbm_ntm:anvil_crafting",
+  "ingredients": [
+    { "item": "hbm_ntm:steel", "count": 8 },
+    { "item": "hbm_ntm:copper_plate", "count": 4 },
+    { "item": "hbm_ntm:motor", "count": 2 },
+    { "item": "hbm_ntm:vacuum_tube", "count": 4 }
+  ],
+  "output": {
+    "item": "hbm_ntm:assembly_machine",
+    "count": 1
+  }
+}

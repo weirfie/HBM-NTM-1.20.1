@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 400,
+  "experience": 0.25,
+  "group": "silicon_nugget",
+  "ingredient": {
+    "item": "minecraft:flint"
+  },
+  "result": "hbm_ntm:silicon_nugget"
+}

@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/tape_recorder.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/tape_recorder",
+    "m_d0fa639f-84ac-16ac-9c6e-5d6ae251926d": "hbm_ntm:block/tape_recorder",
+    "Material": "hbm_ntm:block/tape_recorder",
+    "none": "hbm_ntm:block/tape_recorder"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "S": {
+      "item": "hbm_ntm:steel_block"
+    }
+  },
+  "pattern": [
+    "S  ",
+    "   ",
+    "   "
+  ],
+  "result": {
+    "count": 9,
+    "item": "hbm_ntm:steel"
+  },
+  "show_notification": true
+}

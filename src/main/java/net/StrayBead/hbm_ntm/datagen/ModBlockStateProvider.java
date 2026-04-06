@@ -1,0 +1,143 @@
+package net.StrayBead.hbm_ntm.datagen;
+
+import net.StrayBead.hbm_ntm.HBMNTM;
+import net.StrayBead.hbm_ntm.block.ModBlocks;
+import net.minecraft.data.PackOutput;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.DoorBlock;
+import net.minecraftforge.client.model.generators.BlockStateProvider;
+import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.RegistryObject;
+
+public class ModBlockStateProvider extends BlockStateProvider {
+    public ModBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
+        super(output, HBMNTM.MOD_ID, exFileHelper);
+    }
+
+    @Override
+    protected void registerStatesAndModels() {
+        blockWithItem(ModBlocks.BLOCK_OF_GRAPHITE);
+        blockWithItem(ModBlocks.BLOCK_ON);
+        blockWithItem(ModBlocks.BLOCK_OFF);
+        blockWithItem(ModBlocks.SIGNAL_BLOCK);
+        blockWithItem(ModBlocks.TITANIUM_ORE_BLOCK);
+        blockWithItem(ModBlocks.SIM_CARD_SIGNAL_BROADCASTING_DEVICE);
+        blockWithItem(ModBlocks.STEAM_CONDENSER);
+        blockWithItem(ModBlocks.TITANIUM_ORE);
+        blockWithItem(ModBlocks.RARE_EARTH_ORE);
+        blockWithItem(ModBlocks.LIGNITE_ORE);
+        blockWithItem(ModBlocks.STEEL_BLOCK);
+        blockWithItem(ModBlocks.OIL_RESERVOIR);
+        blockWithItem(ModBlocks.SULFUR_ORE);
+        blockWithItem(ModBlocks.MALACHITE);
+        blockWithItem(ModBlocks.HEMATITE);
+        blockWithItem(ModBlocks.ALUMINUM_ORE);
+        blockWithItem(ModBlocks.POWER_SWITCH);
+        blockWithItem(ModBlocks.RED_COPPER_BLOCK);
+        blockWithItem(ModBlocks.QUARTZ_GLASS);
+        blockWithItem(ModBlocks.QUARTZ_SAND);
+        blockWithItem(ModBlocks.TUNGSTEN_ORE_BLOCK);
+        blockWithItem(ModBlocks.TUNGSTEN_ORE);
+        blockWithItem(ModBlocks.URANIUM_ORE_BLOCK);
+        blockWithItem(ModBlocks.GENERIC_BOUNDING_BOX);
+        blockWithItem(ModBlocks.URANIUM_ORE);
+        blockWithItem(ModBlocks.DRILLED_GRAPHITE);
+        blockWithItem(ModBlocks.GRAPHITE);
+        blockWithItem(ModBlocks.FLOURITE_ORE);
+        blockWithItem(ModBlocks.DRILLED_GRAPHITE_NEUTRON_SOURCE);
+        blockWithItem(ModBlocks.FUEL_ROD);
+        blockWithItem(ModBlocks.FUEL_ROD_EMPTY);
+        blockWithItem(ModBlocks.CONTROL_ROD);
+        blockWithItem(ModBlocks.GRAPHITE_MODERATOR);
+        blockWithItem(ModBlocks.STEAM_CHANNEL);
+        blockWithItem(ModBlocks.STRUCTURAL_COLUMN);
+        blockWithItem(ModBlocks.FUEL_ROD_NORMAL);
+        blockWithItem(ModBlocks.NEUTRON_REFLECTOR);
+        blockWithItem(ModBlocks.RADIATED_GRAPHITE);
+        blockWithItem(ModBlocks.WATER_DUCT);
+        blockWithItem(ModBlocks.NUCLEAR_SIREN);
+        blockWithItem(ModBlocks.CONCRETE_BRICKS);
+        blockWithItem(ModBlocks.STEAM_SEPARATOR);
+        blockWithItem(ModBlocks.ULTRA_DENSE_STEAM_PIPE);
+        blockWithItem(ModBlocks.SUPER_DENSE_STEAM_PIPE);
+        blockWithItem(ModBlocks.DENSE_STEAM_PIPE);
+        blockWithItem(ModBlocks.STEAM_PIPE);
+        blockWithItem(ModBlocks.CONTROL_SYSTEM);
+        blockWithItem(ModBlocks.DEAD_GRASS);
+        blockWithItem(ModBlocks.REINFORCED_GLASS);
+        blockWithItem(ModBlocks.WARNING_BLOCK);
+        blockWithItem(ModBlocks.WOOD_BRICKS);
+        blockWithItem(ModBlocks.PWR_CONTROL_ROD);
+        blockWithItem(ModBlocks.PWR_COOLANT_CHANNEL);
+        blockWithItem(ModBlocks.PWR_FUEL_ROD);
+        blockWithItem(ModBlocks.PWR_HEATSINK);
+        blockWithItem(ModBlocks.PWR_HEAT_EXCHANGER);
+        blockWithItem(ModBlocks.PWR_NEUTRON_SOURCE);
+        blockWithItem(ModBlocks.PWR_NEUTRON_REFLECTOR);
+        blockWithItem(ModBlocks.SOLAR_PANEL);
+        blockWithItem(ModBlocks.FAN);
+        blockWithItem(ModBlocks.SHREDDER);
+        blockWithItem(ModBlocks.SPARK_ENERGY_BATTERY);
+        blockWithItem(ModBlocks.PARTICLE_ACCELERATOR_PLATING);
+        blockWithItem(ModBlocks.DET_CORD);
+        blockWithItem(ModBlocks.SCHRABIDIUM_BLOCK);
+        blockWithItem(ModBlocks.THORIUM_ORE);
+        blockWithItem(ModBlocks.LEAD_ORE);
+        blockWithItem(ModBlocks.LEAD_BLOCK);
+        blockWithItem(ModBlocks.SCHRABIDIUM_ORE);
+        blockWithItem(ModBlocks.NEUTRON_ABSORBER);
+        blockWithItem(ModBlocks.TSAR_BOMBA);
+        blockWithItem(ModBlocks.BLAST_FURNACE);
+        blockWithItem(ModBlocks.COMBUSTION_GENERATOR);
+        blockWithItem(ModBlocks.RADIATION_ABSORBER);
+        blockWithItem(ModBlocks.ENHANCED_RADIATION_ABSORBER);
+        blockWithItem(ModBlocks.ADVANCED_RADIATION_ABSORBER);
+        blockWithItem(ModBlocks.ELITE_RADIATION_ABSORBER);
+        blockWithItem(ModBlocks.PLAYER_DECONTAMINATOR);
+        blockWithItem(ModBlocks.BERYLLIUM_ORE);
+        blockWithItem(ModBlocks.CHLORINE_VENT);
+        blockWithItem(ModBlocks.CHLORINE_SEAL);
+        blockWithItem(ModBlocks.CHLORINE_GAS);
+        blockWithItem(ModBlocks.MOLDY_DEBRIS);
+        blockWithItem(ModBlocks.ASPHALT);
+        blockWithItem(ModBlocks.GLOWING_ASPHALT);
+        blockWithItem(ModBlocks.LARGE_VINYL_TILE);
+        blockWithItem(ModBlocks.SMALL_VINYL_TILES);
+        blockWithItem(ModBlocks.FIREBRICKS);
+        blockWithItem(ModBlocks.REINFORCED_GLOWSTONE);
+        blockWithItem(ModBlocks.REINFORCED_LAMP);
+        blockWithItem(ModBlocks.REINFORCED_SANDSTONE);
+        blockWithItem(ModBlocks.CRUSHED_OBSIDIAN);
+        blockWithItem(ModBlocks.LIGHT_BRICKS);
+        blockWithItem(ModBlocks.REINFORCED_LAMINATE);
+        blockWithItem(ModBlocks.MARKED_CONCRETE_BRICKS);
+        blockWithItem(ModBlocks.BROKEN_CONCRETE_BRICKS);
+        blockWithItem(ModBlocks.CRACKED_CONCRETE_BRICKS);
+        blockWithItem(ModBlocks.DENSE_STONE);
+        blockWithItem(ModBlocks.CONCRETE_TILE);
+        blockWithItem(ModBlocks.ASBESTOS_CONCRETE);
+        blockWithItem(ModBlocks.REBAR_REINFORCED_CONCRETE_PILLAR);
+        blockWithItem(ModBlocks.MOSSY_CONCRETE_BRICKS);
+        blockWithItem(ModBlocks.CMB_STEEL_TILE);
+        blockWithItem(ModBlocks.DUCRETE);
+        blockWithItem(ModBlocks.DUCRETE_TILE);
+        blockWithItem(ModBlocks.OBSIDIAN_BRICKS);
+        blockWithItem(ModBlocks.REINFORCED_STONE);
+        blockWithItem(ModBlocks.UBER_CONCRETE);
+        blockWithItem(ModBlocks.COMPOUND_MESH);
+        blockWithItem(ModBlocks.DUCRETE_BRICKS);
+        blockWithItem(ModBlocks.REINFORCED_DUCRETE);
+        blockWithItem(ModBlocks.REINFORCED_CMB_BRICKS);
+        blockWithItem(ModBlocks.IVY_MIKE);
+        blockWithItem(ModBlocks.CASTLE_BRAVO);
+        blockWithItem(ModBlocks.PWR_CONTROLLER);
+        blockWithItem(ModBlocks.CONVEYOR_INSERTER);
+        blockWithItem(ModBlocks.CONVEYOR_EJECTOR);
+        doorBlockWithRenderType(((DoorBlock) ModBlocks.BUNKER_DOOR.get()), modLoc("block/door_bunker_lower"), modLoc("block/door_bunker_upper"), "cutout");
+        doorBlockWithRenderType(((DoorBlock) ModBlocks.DOOR_METAL.get()), modLoc("block/door_metal_lower"), modLoc("block/door_metal_upper"), "solid");
+    }
+
+    private void blockWithItem(RegistryObject<Block> blockRegistryObject) {
+        simpleBlockWithItem(blockRegistryObject.get(), cubeAll(blockRegistryObject.get()));
+    }
+}

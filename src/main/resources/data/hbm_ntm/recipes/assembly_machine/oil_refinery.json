@@ -1,0 +1,17 @@
+{
+  "type": "hbm_ntm:assembly_machine",
+  "template": {
+    "item": "hbm_ntm:assembly_template_oil_refinery"
+  },
+  "ingredients": [
+    { "item": "hbm_ntm:cast_steel_plate", "count": 3 },
+    { "item": "hbm_ntm:copper_plate", "count": 8 },
+    { "item": "hbm_ntm:steel_shell", "count": 4 },
+    { "item": "hbm_ntm:steel_pipe", "count": 12 },
+    { "item": "hbm_ntm:insulator", "count": 8 },
+    { "item": "hbm_ntm:analog_circuit_board", "count": 3 }
+  ],
+  "output": {
+    "item": "hbm_ntm:oil_refinery"
+  }
+}

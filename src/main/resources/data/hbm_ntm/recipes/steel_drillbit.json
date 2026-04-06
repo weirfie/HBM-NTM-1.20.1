@@ -1,0 +1,13 @@
+{
+  "type": "hbm_ntm:assembly_machine",
+  "template": {
+    "item": "hbm_ntm:assembly_template_titanium_drill"
+  },
+  "ingredients": [
+    { "item": "hbm_ntm:steel", "count": 12 },
+    { "item": "hbm_ntm:tungsten_ingot", "count": 4 }
+  ],
+  "output": {
+    "item": "hbm_ntm:steel_drillbit"
+  }
+}

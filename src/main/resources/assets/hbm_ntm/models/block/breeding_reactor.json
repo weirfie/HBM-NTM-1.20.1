@@ -1,0 +1,12 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/breeding_reactor.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/breeding_reactor",
+    "m_77654cb6-4379-e616-d6ae-8642c7c59b2e": "hbm_ntm:block/breeding_reactor",
+    "Material": "hbm_ntm:block/breeding_reactor",
+    "none": "hbm_ntm:block/breeding_reactor"
+  },
+  "render_type": "translucent"
+}

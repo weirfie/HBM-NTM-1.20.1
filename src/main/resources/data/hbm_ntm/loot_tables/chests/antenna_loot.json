@@ -1,0 +1,48 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": {
+        "min": 2,
+        "max": 6
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "hbm_ntm:vacuum_tube",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "hbm_ntm:reinforced_steel_scaffold",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "hbm_ntm:antenna_top",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "hbm_ntm:minecraft_grade_copper_wire",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "hbm_ntm:steel_pole",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "hbm_ntm:minecraft_grade_copper",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "hbm_ntm:titanium_ingot",
+          "weight": 2
+        }
+      ]
+    }
+  ]
+}

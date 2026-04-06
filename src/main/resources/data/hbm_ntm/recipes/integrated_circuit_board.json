@@ -1,0 +1,12 @@
+{
+  "type": "hbm_ntm:soldering",
+  "ingredients": [
+    { "item": { "item": "hbm_ntm:lead_wire" }, "count": 4 },
+    { "item": { "item": "hbm_ntm:printed_circuit_board" }, "count": 4 },
+    { "item": { "item": "hbm_ntm:microchip" }, "count": 4 }
+  ],
+  "result": {
+    "item": "hbm_ntm:integrated_circuit_board",
+    "count": 1
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_conveyor_belt": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hbm_ntm:conveyor_belt"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "hbm_ntm:conveyor_inserter"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_conveyor_belt",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "hbm_ntm:conveyor_inserter"
+    ]
+  },
+  "sends_telemetry_event": false
+}

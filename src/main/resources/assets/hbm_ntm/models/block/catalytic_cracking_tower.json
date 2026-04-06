@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/catalytic_cracking_tower.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/catalytic_cracking_tower",
+    "m_f7b41d45-7a8a-0aa8-54ca-94510c831a13": "hbm_ntm:block/catalytic_cracking_tower",
+    "Material": "hbm_ntm:block/catalytic_cracking_tower",
+    "none": "hbm_ntm:block/catalytic_cracking_tower"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": {
+      "item": "hbm_ntm:insulator"
+    },
+    "W": {
+      "item": "hbm_ntm:minecraft_grade_copper_wire"
+    }
+  },
+  "pattern": [
+    " I ",
+    "WWW",
+    " I "
+  ],
+  "result": {
+    "count": 16,
+    "item": "hbm_ntm:copper_cable"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/turbofan.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/turbofan",
+    "m_059d7f2b-3e1c-401d-9dc9-cd81466ea8ab": "hbm_ntm:block/turbofan",
+    "Material": "hbm_ntm:block/turbofan",
+    "none": "hbm_ntm:block/turbofan"
+  }
+}

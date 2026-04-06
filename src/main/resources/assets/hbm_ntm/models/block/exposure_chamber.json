@@ -1,0 +1,12 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/exposure_chamber.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/exposure_chamber",
+    "m_f715c5ee-3828-31a8-0e90-45211095a5f3": "hbm_ntm:block/exposure_chamber",
+    "Material": "hbm_ntm:block/exposure_chamber",
+    "none": "hbm_ntm:block/exposure_chamber"
+  },
+  "render_type": "translucent"
+}

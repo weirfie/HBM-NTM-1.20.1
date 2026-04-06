@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "hbm_ntm:block/reinforced_steel_scaffold" },
+    "facing=east":  { "model": "hbm_ntm:block/reinforced_steel_scaffold", "y": 90 },
+    "facing=south": { "model": "hbm_ntm:block/reinforced_steel_scaffold", "y": 180 },
+    "facing=west":  { "model": "hbm_ntm:block/reinforced_steel_scaffold", "y": 270 }
+  }
+}

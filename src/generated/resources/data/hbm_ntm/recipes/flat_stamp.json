@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:brick"
+    },
+    "S": {
+      "item": "minecraft:stone"
+    }
+  },
+  "pattern": [
+    "BBB",
+    "SSS",
+    "   "
+  ],
+  "result": {
+    "item": "hbm_ntm:flat_stamp"
+  },
+  "show_notification": true
+}

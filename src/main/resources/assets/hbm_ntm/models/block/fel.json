@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/fel.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/fel",
+    "m_86fac6b1-c5f1-54db-f850-30fd52d58198": "hbm_ntm:block/fel",
+    "Material": "hbm_ntm:block/fel",
+    "none": "hbm_ntm:block/fel"
+  }
+}

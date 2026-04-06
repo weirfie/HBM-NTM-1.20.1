@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "minecraft:clay"
+    },
+    "P": {
+      "item": "hbm_ntm:steel"
+    }
+  },
+  "pattern": [
+    "CC ",
+    "CP ",
+    "   "
+  ],
+  "result": {
+    "item": "hbm_ntm:fireclay"
+  },
+  "show_notification": true
+}

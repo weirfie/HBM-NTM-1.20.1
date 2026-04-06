@@ -1,0 +1,14 @@
+{
+  "type": "hbm_ntm:basin_casting",
+  "fluid": {
+    "fluid": "hbm_ntm:molten_steel",
+    "amount": 1000
+  },
+  "mold": {
+    "item": "hbm_ntm:shredder_blade_foundry_mold"
+  },
+  "output": {
+    "item": "hbm_ntm:steel_shredder_blades",
+    "count": 2
+  }
+}

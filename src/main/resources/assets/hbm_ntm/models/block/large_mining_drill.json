@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/large_mining_drill.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/large_mining_drill",
+    "m_670daa30-0582-498f-c412-3a53dfd17903": "hbm_ntm:block/large_mining_drill",
+    "Material": "hbm_ntm:block/large_mining_drill",
+    "none": "hbm_ntm:block/large_mining_drill"
+  }
+}

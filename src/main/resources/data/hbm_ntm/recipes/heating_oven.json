@@ -1,0 +1,12 @@
+{
+  "type": "hbm_ntm:anvil_crafting",
+  "ingredients": [
+    { "item": "minecraft:brick", "count": 16 },
+    { "item": "hbm_ntm:steel_plate", "count": 4 },
+    { "item": "hbm_ntm:industrial_grade_copper", "count": 8 }
+  ],
+  "output": {
+    "item": "hbm_ntm:heating_oven",
+    "count": 1
+  }
+}

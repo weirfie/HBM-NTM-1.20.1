@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "hbm_ntm:block/drainage_pipe" },
+    "facing=east":  { "model": "hbm_ntm:block/drainage_pipe", "y": 90 },
+    "facing=south": { "model": "hbm_ntm:block/drainage_pipe", "y": 180 },
+    "facing=west":  { "model": "hbm_ntm:block/drainage_pipe", "y": 270 }
+  }
+}

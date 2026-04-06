@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/pumpjack.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/pumpjack",
+    "m_c84439ac-ab90-24d8-1ba4-2e7f9dfb8ddd": "hbm_ntm:block/pumpjack",
+    "Material": "hbm_ntm:block/pumpjack",
+    "none": "hbm_ntm:block/pumpjack"
+  }
+}

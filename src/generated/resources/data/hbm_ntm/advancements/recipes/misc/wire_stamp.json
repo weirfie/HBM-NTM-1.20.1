@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_flat_stamp": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hbm_ntm:flat_stamp"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "hbm_ntm:wire_stamp"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_flat_stamp",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "hbm_ntm:wire_stamp"
+    ]
+  },
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "item": "hbm_ntm:steel"
+    },
+    "S": {
+      "item": "hbm_ntm:steel_plate"
+    }
+  },
+  "pattern": [
+    "SPS",
+    "P P",
+    "SPS"
+  ],
+  "result": {
+    "item": "hbm_ntm:steel_sphere"
+  },
+  "show_notification": true
+}

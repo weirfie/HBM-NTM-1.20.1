@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "item": "hbm_ntm:steel_plate"
+    }
+  },
+  "pattern": [
+    " P ",
+    " P ",
+    " P "
+  ],
+  "result": {
+    "item": "hbm_ntm:steel_pipe"
+  },
+  "show_notification": true
+}

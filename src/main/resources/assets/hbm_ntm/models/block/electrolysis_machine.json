@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/electrolysis_machine.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/electrolysis_machine",
+    "m_581455c2-dbce-44f7-0b8b-172b1915a538": "hbm_ntm:block/electrolysis_machine",
+    "Material": "hbm_ntm:block/electrolysis_machine",
+    "none": "hbm_ntm:block/electrolysis_machine"
+  }
+}

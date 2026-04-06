@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/wooden_watch_tower.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/wooden_watch_tower",
+    "watchtower": "hbm_ntm:block/wooden_watch_tower",
+    "Material": "hbm_ntm:block/wooden_watch_tower",
+    "none": "hbm_ntm:block/wooden_watch_tower"
+  }
+}

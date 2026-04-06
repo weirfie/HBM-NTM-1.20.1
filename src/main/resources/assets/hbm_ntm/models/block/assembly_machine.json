@@ -1,0 +1,12 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/assembly_machine.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/assembly_machine",
+    "m_c238c6ba-4ddf-6b78-c5de-ecf0b1f4d8d4": "hbm_ntm:block/assembly_machine",
+    "Material": "hbm_ntm:block/assembly_machine",
+    "none": "hbm_ntm:block/assembly_machine"
+  },
+  "render_type": "translucent"
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "hbm_ntm:blank_foundry_mold"
+    },
+    "I": {
+      "item": "hbm_ntm:steel_pipe"
+    }
+  },
+  "pattern": [
+    "IB ",
+    "   ",
+    "   "
+  ],
+  "result": {
+    "item": "hbm_ntm:pipe_foundry_mold"
+  },
+  "show_notification": true
+}

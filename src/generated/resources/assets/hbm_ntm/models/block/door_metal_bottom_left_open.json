@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/door_bottom_left_open",
+  "render_type": "minecraft:solid",
+  "textures": {
+    "bottom": "hbm_ntm:block/door_metal_lower",
+    "top": "hbm_ntm:block/door_metal_upper"
+  }
+}

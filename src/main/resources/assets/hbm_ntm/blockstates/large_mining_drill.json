@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "hbm_ntm:block/large_mining_drill" },
+    "facing=east":  { "model": "hbm_ntm:block/large_mining_drill", "y": 90 },
+    "facing=south": { "model": "hbm_ntm:block/large_mining_drill", "y": 180 },
+    "facing=west":  { "model": "hbm_ntm:block/large_mining_drill", "y": 270 }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "multipart": [
+    { "apply": { "model": "hbm_ntm:block/steel_deco_frame" } },
+
+    { "when": { "north": "true", "up": "true" },    "apply": { "model": "hbm_ntm:block/steel_inner_cap" } },
+    { "when": { "north": "true", "down": "true" },  "apply": { "model": "hbm_ntm:block/steel_inner_cap", "x": 180 } },
+    { "when": { "north": "true", "east": "true" },  "apply": { "model": "hbm_ntm:block/steel_inner_cap", "z": 90 } },
+    { "when": { "north": "true", "west": "true" },  "apply": { "model": "hbm_ntm:block/steel_inner_cap", "z": 270 } },
+
+    { "when": { "east": "true", "up": "true" },     "apply": { "model": "hbm_ntm:block/steel_inner_cap", "y": 90 } },
+    { "when": { "east": "true", "down": "true" },   "apply": { "model": "hbm_ntm:block/steel_inner_cap", "y": 90, "x": 180 } },
+    { "when": { "east": "true", "north": "true" },  "apply": { "model": "hbm_ntm:block/steel_inner_cap", "y": 90, "z": 90 } },
+    { "when": { "east": "true", "south": "true" },  "apply": { "model": "hbm_ntm:block/steel_inner_cap", "y": 90, "z": 270 } },
+
+    { "when": { "south": "true", "up": "true" },    "apply": { "model": "hbm_ntm:block/steel_inner_cap", "y": 180 } },
+    { "when": { "south": "true", "down": "true" },  "apply": { "model": "hbm_ntm:block/steel_inner_cap", "y": 180, "x": 180 } },
+
+    { "when": { "west": "true", "up": "true" },     "apply": { "model": "hbm_ntm:block/steel_inner_cap", "y": 270 } },
+    { "when": { "west": "true", "down": "true" },   "apply": { "model": "hbm_ntm:block/steel_inner_cap", "y": 270, "x": 180 } }
+  ]
+}

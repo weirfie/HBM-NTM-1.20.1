@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_redcopper": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hbm_ntm:redcopper"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "hbm_ntm:industrial_grade_copper_from_smelting_redcopper"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_redcopper",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "hbm_ntm:industrial_grade_copper_from_smelting_redcopper"
+    ]
+  },
+  "sends_telemetry_event": false
+}

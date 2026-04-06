@@ -1,0 +1,15 @@
+{
+  "type": "hbm_ntm:burner_press",
+  "stamp": {
+    "item": "hbm_ntm:flat_stamp"
+  },
+  "ingredients": [
+    {
+      "item": "hbm_ntm:steel"
+    }
+  ],
+  "output": {
+    "item": "hbm_ntm:steel_plate",
+    "count": 1
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "item": "minecraft:iron_ingot"
+    },
+    "S": {
+      "item": "hbm_ntm:minecraft_grade_copper_wire"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "SPS",
+    "SSS"
+  ],
+  "result": {
+    "item": "hbm_ntm:copper_coil"
+  },
+  "show_notification": true
+}

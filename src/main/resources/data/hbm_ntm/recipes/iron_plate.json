@@ -1,0 +1,15 @@
+{
+  "type": "hbm_ntm:burner_press",
+  "stamp": {
+    "item": "hbm_ntm:flat_stamp"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:iron_ingot"
+    }
+  ],
+  "output": {
+    "item": "hbm_ntm:iron_plate",
+    "count": 1
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "item": "hbm_ntm:quartz_powder"
+    },
+    "S": {
+      "item": "minecraft:sand"
+    }
+  },
+  "pattern": [
+    "SS ",
+    "PP ",
+    "   "
+  ],
+  "result": {
+    "item": "hbm_ntm:quartz_sand"
+  },
+  "show_notification": true
+}

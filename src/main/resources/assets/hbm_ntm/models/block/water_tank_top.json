@@ -1,0 +1,58 @@
+{
+  "credit": "Made with Blockbench",
+  "texture_size": [128, 128],
+  "textures": {
+    "1": "hbm_ntm:block/texturewatertank"
+  },
+  "elements": [
+    {
+      "from": [-16, 0, -16],
+      "to": [32, 32, 32],
+      "faces": {
+        "north": {"uv": [0, 4, 2.625, 8], "texture": "#1"},
+        "east": {"uv": [0, 0, 2.75, 4], "texture": "#1"},
+        "south": {"uv": [2.625, 4, 5.25, 8], "texture": "#1"},
+        "west": {"uv": [2.75, 0, 5.5, 4], "texture": "#1"},
+        "up": {"uv": [7.875, 6.75, 5.25, 4], "texture": "#1"},
+        "down": {"uv": [8.125, 0, 5.5, 2.75], "texture": "#1"}
+      }
+    }
+  ],
+  "display": {
+    "thirdperson_righthand": {
+      "scale": [0.5, 0.5, 0.5]
+    },
+    "thirdperson_lefthand": {
+      "scale": [0.5, 0.5, 0.5]
+    },
+    "firstperson_righthand": {
+      "translation": [2.25, 0, 0],
+      "scale": [0.3, 0.3, 0.3]
+    },
+    "firstperson_lefthand": {
+      "scale": [0.3, 0.3, 0.3]
+    },
+    "ground": {
+      "scale": [0.3, 0.3, 0.3]
+    },
+    "gui": {
+      "rotation": [-148.75, -28, 180],
+      "translation": [0, -2.5, 0],
+      "scale": [0.3, 0.3, 0.3]
+    },
+    "head": {
+      "scale": [0.3, 0.3, 0.3]
+    },
+    "fixed": {
+      "scale": [0.3, 0.3, 0.3]
+    }
+  },
+  "groups": [
+    {
+      "name": "water_tank_top",
+      "origin": [8, 8, 8],
+      "color": 0,
+      "children": [0]
+    }
+  ]
+}

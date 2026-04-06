@@ -1,0 +1,10 @@
+# Blender 4.4.3 MTL File: 'nuke bomb.blend'
+# www.blender.org
+
+newmtl Little_Boy
+Ka 0.372727 0.372727 0.372727
+Ks 0.500000 0.500000 0.500000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd hbm_ntm:block/little_boy

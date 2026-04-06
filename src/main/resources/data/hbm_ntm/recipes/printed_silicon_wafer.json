@@ -1,0 +1,15 @@
+{
+  "type": "hbm_ntm:burner_press",
+  "stamp": {
+    "item": "hbm_ntm:circuit_stamp"
+  },
+  "ingredients": [
+    {
+      "item": "hbm_ntm:silicon_wafer"
+    }
+  ],
+  "output": {
+    "item": "hbm_ntm:printed_silicon_wafer",
+    "count": 1
+  }
+}

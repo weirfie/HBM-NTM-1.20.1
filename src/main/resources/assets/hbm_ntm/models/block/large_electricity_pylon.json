@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/large_electricity_pylon.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/large_electricity_pylon",
+    "m_37c03d8d-9e88-4fdd-b6aa-170b364b015b": "hbm_ntm:block/large_electricity_pylon",
+    "Material": "hbm_ntm:block/large_electricity_pylon",
+    "none": "hbm_ntm:block/large_electricity_pylon"
+  }
+}

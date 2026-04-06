@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/drainage_pipe.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/drainage_pipe",
+    "m_28be27e6-7e22-fdc3-4052-a3095a648f47": "hbm_ntm:block/drainage_pipe",
+    "Material": "hbm_ntm:block/drainage_pipe",
+    "none": "hbm_ntm:block/drainage_pipe"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "N": {
+      "item": "hbm_ntm:silicon_nugget"
+    }
+  },
+  "pattern": [
+    "NNN",
+    "NNN",
+    "   "
+  ],
+  "result": {
+    "item": "hbm_ntm:silicon_wafer"
+  },
+  "show_notification": true
+}

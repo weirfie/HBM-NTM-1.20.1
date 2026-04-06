@@ -1,0 +1,12 @@
+{
+  "type": "hbm_ntm:anvil_crafting",
+  "ingredients": [
+    { "item": "hbm_ntm:steel_plate", "count": 2 },
+    { "item": "hbm_ntm:copper_coil", "count": 1 },
+    { "item": "hbm_ntm:ring_coil", "count": 1 }
+  ],
+  "output": {
+    "item": "hbm_ntm:motor",
+    "count": 2
+  }
+}

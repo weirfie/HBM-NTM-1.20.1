@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "hbm_ntm:block/ultra_dense_steam_pipe"
+  }
+}

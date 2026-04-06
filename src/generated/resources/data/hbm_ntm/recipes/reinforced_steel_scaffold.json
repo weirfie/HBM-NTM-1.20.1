@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "S": {
+      "item": "hbm_ntm:steel"
+    }
+  },
+  "pattern": [
+    "SSS",
+    " S ",
+    "SSS"
+  ],
+  "result": {
+    "item": "hbm_ntm:reinforced_steel_scaffold"
+  },
+  "show_notification": true
+}

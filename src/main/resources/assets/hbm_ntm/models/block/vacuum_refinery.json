@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/vacuum_refinery.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/vacuum_refinery",
+    "m_50c6ce0c-c468-ac5f-46a3-774133eed103": "hbm_ntm:block/vacuum_refinery",
+    "Material": "hbm_ntm:block/vacuum_refinery",
+    "none": "hbm_ntm:block/vacuum_refinery"
+  }
+}

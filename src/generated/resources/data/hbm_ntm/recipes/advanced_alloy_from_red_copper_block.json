@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "S": {
+      "item": "hbm_ntm:red_copper_block"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "SSS",
+    "SSS"
+  ],
+  "result": {
+    "count": 9,
+    "item": "hbm_ntm:advanced_alloy_ingot"
+  },
+  "show_notification": true
+}

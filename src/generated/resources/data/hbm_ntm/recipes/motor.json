@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "item": "hbm_ntm:steel_plate"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "T": {
+      "item": "minecraft:redstone_torch"
+    }
+  },
+  "pattern": [
+    " R ",
+    "PRP",
+    "PTP"
+  ],
+  "result": {
+    "item": "hbm_ntm:motor"
+  },
+  "show_notification": true
+}

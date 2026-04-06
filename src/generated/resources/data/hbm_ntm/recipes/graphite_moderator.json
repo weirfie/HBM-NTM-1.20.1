@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": {
+      "item": "hbm_ntm:block_of_graphite"
+    },
+    "P": {
+      "item": "hbm_ntm:structural_column"
+    }
+  },
+  "pattern": [
+    " G ",
+    "GPG",
+    " G "
+  ],
+  "result": {
+    "item": "hbm_ntm:graphite_moderator"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "hbm_ntm:block/electric_arc_furnace" },
+    "facing=east":  { "model": "hbm_ntm:block/electric_arc_furnace", "y": 90 },
+    "facing=south": { "model": "hbm_ntm:block/electric_arc_furnace", "y": 180 },
+    "facing=west":  { "model": "hbm_ntm:block/electric_arc_furnace", "y": 270 }
+  }
+}

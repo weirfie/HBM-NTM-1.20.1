@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": {
+      "item": "hbm_ntm:industrial_grade_copper"
+    },
+    "P": {
+      "item": "hbm_ntm:steel_tank"
+    },
+    "S": {
+      "item": "hbm_ntm:steel_plate"
+    }
+  },
+  "pattern": [
+    "SIS",
+    "IPI",
+    "SIS"
+  ],
+  "result": {
+    "item": "hbm_ntm:steam_separator"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "T": {
+      "item": "hbm_ntm:tungsten_ingot"
+    }
+  },
+  "pattern": [
+    "T  ",
+    "T  ",
+    "   "
+  ],
+  "result": {
+    "count": 16,
+    "item": "hbm_ntm:tungsten_bolt"
+  },
+  "show_notification": true
+}

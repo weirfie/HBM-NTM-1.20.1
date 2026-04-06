@@ -1,0 +1,14 @@
+{
+  "type": "hbm_ntm:assembly_machine",
+  "template": {
+    "item": "hbm_ntm:assembly_template_firebox"
+  },
+  "ingredients": [
+    { "item": "minecraft:furnace", "count": 1 },
+    { "item": "hbm_ntm:steel_plate", "count": 8 },
+    { "item": "hbm_ntm:industrial_grade_copper", "count": 8 }
+  ],
+  "output": {
+    "item": "hbm_ntm:firebox"
+  }
+}

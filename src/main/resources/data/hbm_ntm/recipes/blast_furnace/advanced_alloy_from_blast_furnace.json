@@ -1,0 +1,14 @@
+{
+  "type": "hbm_ntm:blast_furnace",
+  "input1": {
+    "item": "hbm_ntm:steel_ingot"
+  },
+  "input2": {
+    "item": "hbm_ntm:minecraft_grade_copper"
+  },
+  "fluid_amount": 780,
+  "result": {
+    "item": "hbm_ntm:advanced_alloy_ingot",
+    "count": 2
+  }
+}

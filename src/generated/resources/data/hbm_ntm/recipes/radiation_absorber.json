@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "minecraft:copper_ingot"
+    },
+    "L": {
+      "item": "hbm_ntm:lead_dust"
+    },
+    "O": {
+      "item": "minecraft:coal"
+    }
+  },
+  "pattern": [
+    "COC",
+    "OLO",
+    "COC"
+  ],
+  "result": {
+    "item": "hbm_ntm:radiation_absorber"
+  },
+  "show_notification": true
+}

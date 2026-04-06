@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "hbm_ntm:copper_coil"
+    },
+    "F": {
+      "item": "minecraft:furnace"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "S": {
+      "item": "hbm_ntm:steel_plate"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "CFC",
+    "I I"
+  ],
+  "result": {
+    "item": "hbm_ntm:wood_burning_generator"
+  },
+  "show_notification": true
+}

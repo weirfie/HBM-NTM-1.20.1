@@ -1,0 +1,13 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/little_boy.obj",
+  "flip_v": true,
+  "ambientocclusion": true,
+  "textures": {
+    "particle": "hbm_ntm:block/little_boy",
+    "Little_Boy": "hbm_ntm:block/little_boy",
+    "Material": "hbm_ntm:block/little_boy",
+    "none": "hbm_ntm:block/little_boy"
+  },
+  "render_type": "cutout"
+}

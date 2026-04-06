@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": {
+      "item": "hbm_ntm:steel_plate"
+    },
+    "P": {
+      "item": "hbm_ntm:cast_steel_plate"
+    },
+    "S": {
+      "item": "hbm_ntm:steel"
+    }
+  },
+  "pattern": [
+    "SIS",
+    "IPI",
+    "SIS"
+  ],
+  "result": {
+    "item": "hbm_ntm:steam_condenser"
+  },
+  "show_notification": true
+}

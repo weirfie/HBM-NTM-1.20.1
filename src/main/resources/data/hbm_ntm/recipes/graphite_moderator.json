@@ -1,0 +1,11 @@
+{
+  "type": "hbm_ntm:anvil_crafting",
+  "ingredients": [
+    { "item": "hbm_ntm:block_of_graphite", "count": 1 },
+    { "item": "hbm_ntm:structural_column", "count": 1 }
+  ],
+  "output": {
+    "item": "hbm_ntm:graphite_moderator",
+    "count": 1
+  }
+}

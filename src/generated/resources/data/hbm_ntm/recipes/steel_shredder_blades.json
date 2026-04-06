@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "item": "hbm_ntm:steel_plate"
+    },
+    "S": {
+      "item": "hbm_ntm:steel"
+    }
+  },
+  "pattern": [
+    " P ",
+    "PSP",
+    " P "
+  ],
+  "result": {
+    "item": "hbm_ntm:steel_shredder_blades"
+  },
+  "show_notification": true
+}

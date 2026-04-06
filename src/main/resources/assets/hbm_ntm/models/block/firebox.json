@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/firebox.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/firebox",
+    "m_5042312e-ae2b-1651-6e58-85b5a9b2bb74": "hbm_ntm:block/firebox",
+    "Material": "hbm_ntm:block/firebox",
+    "none": "hbm_ntm:block/firebox"
+  }
+}

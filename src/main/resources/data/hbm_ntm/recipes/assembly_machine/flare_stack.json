@@ -1,0 +1,15 @@
+{
+  "type": "hbm_ntm:assembly_machine",
+  "template": {
+    "item": "hbm_ntm:assembly_template_flare_stock"
+  },
+  "ingredients": [
+    { "item": "hbm_ntm:steel_plate", "count": 12 },
+    { "item": "hbm_ntm:copper_plate", "count": 4 },
+    { "item": "hbm_ntm:steel_shell", "count": 4 },
+    { "item": "hbm_ntm:thermoelectric_element", "count": 3 }
+  ],
+  "output": {
+    "item": "hbm_ntm:flare_stack"
+  }
+}

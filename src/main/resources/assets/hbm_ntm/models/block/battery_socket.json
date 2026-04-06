@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/battery_socket.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/battery_socket",
+    "m_83cd8604-e3f7-4a77-7351-ea104d8fdc4b": "hbm_ntm:block/battery_socket",
+    "Material": "hbm_ntm:block/battery_socket",
+    "none": "hbm_ntm:block/battery_socket"
+  }
+}

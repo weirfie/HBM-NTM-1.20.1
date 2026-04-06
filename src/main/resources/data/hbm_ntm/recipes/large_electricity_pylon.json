@@ -1,0 +1,12 @@
+{
+  "type": "hbm_ntm:anvil_crafting",
+  "ingredients": [
+    { "item": "hbm_ntm:steel_scaffold", "count": 8 },
+    { "item": "hbm_ntm:insulator", "count": 8 },
+    { "item": "hbm_ntm:copper_coil", "count": 4 }
+  ],
+  "output": {
+    "item": "hbm_ntm:large_electricity_pylon",
+    "count": 1
+  }
+}

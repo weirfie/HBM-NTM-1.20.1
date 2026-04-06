@@ -1,0 +1,17 @@
+{
+  "type": "hbm_ntm:assembly_machine",
+  "template": {
+    "item": "hbm_ntm:assembly_template_chemical_plant"
+  },
+  "ingredients": [
+    { "item": "hbm_ntm:steel", "count": 12 },
+    { "item": "hbm_ntm:analog_circuit_board" },
+    { "item": "hbm_ntm:insulator", "count": 8 },
+    { "item": "hbm_ntm:copper_plate", "count": 6 },
+    { "item": "hbm_ntm:steel_tank", "count": 4 }
+  ],
+  "output": {
+    "item": "hbm_ntm:chemical_plant",
+    "count": 1
+  }
+}

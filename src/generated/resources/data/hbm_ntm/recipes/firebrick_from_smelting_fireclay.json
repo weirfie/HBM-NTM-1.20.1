@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.25,
+  "group": "fireclay",
+  "ingredient": {
+    "item": "hbm_ntm:fireclay"
+  },
+  "result": "hbm_ntm:firebrick"
+}

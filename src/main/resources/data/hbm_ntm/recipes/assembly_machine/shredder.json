@@ -1,0 +1,16 @@
+{
+  "type": "hbm_ntm:assembly_machine",
+  "template": {
+    "item": "hbm_ntm:assembly_template_shredder"
+  },
+  "ingredients": [
+    { "item": "hbm_ntm:steel_plate", "count": 9 },
+    { "item": "hbm_ntm:motor", "count": 2 },
+    { "item": "minecraft:iron_bars", "count": 2 },
+    { "item": "hbm_ntm:steel_beam", "count": 2 },
+    { "item": "hbm_ntm:copper_cable", "count": 1 }
+  ],
+  "output": {
+    "item": "hbm_ntm:shredder"
+  }
+}

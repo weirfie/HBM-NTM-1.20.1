@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": {
+      "item": "minecraft:gray_dye"
+    },
+    "L": {
+      "item": "hbm_ntm:military_grade_circuit_board"
+    },
+    "N": {
+      "item": "hbm_ntm:gold_wire"
+    },
+    "O": {
+      "item": "hbm_ntm:steel_pedestal"
+    },
+    "P": {
+      "item": "hbm_ntm:steel_sphere"
+    },
+    "S": {
+      "item": "hbm_ntm:flat_steel_casing"
+    }
+  },
+  "pattern": [
+    "SPO",
+    "SGS",
+    "LPN"
+  ],
+  "result": {
+    "item": "hbm_ntm:the_gadget"
+  },
+  "show_notification": true
+}

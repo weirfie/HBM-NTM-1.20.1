@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "hbm_ntm:coal_powder"
+    },
+    "D": {
+      "item": "hbm_ntm:desh_blend"
+    },
+    "M": {
+      "item": "hbm_ntm:drop_of_mercury"
+    }
+  },
+  "pattern": [
+    "DM ",
+    "MC ",
+    "   "
+  ],
+  "result": {
+    "item": "hbm_ntm:deshready_blend"
+  },
+  "show_notification": true
+}

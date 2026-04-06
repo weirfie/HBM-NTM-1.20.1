@@ -1,0 +1,42 @@
+{
+	"credit": "Made with Blockbench",
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "hbm_ntm:block/copper_cable_turn_right",
+		"particle": "hbm_ntm:block/copper_cable_turn_right"
+	},
+	"elements": [
+		{
+			"name": "north_segment",
+			"from": [6, 6, 0],
+			"to": [10, 10, 10],
+			"faces": {
+				"north": {"uv": [7, 4, 9, 6], "texture": "#0"},
+				"east": {"uv": [4, 4, 7, 6], "texture": "#0"},
+				"south": {"uv": [8, 0, 10, 2], "texture": "#0"},
+				"west": {"uv": [5, 0, 8, 2], "texture": "#0"},
+				"up": {"uv": [6, 9, 4, 6], "texture": "#0"},
+				"down": {"uv": [8, 6, 6, 9], "texture": "#0"}
+			}
+		},
+		{
+			"name": "east_segment",
+			"from": [10, 6, 6],
+			"to": [16, 10, 10],
+			"faces": {
+				"north": {"uv": [5, 2, 7, 4], "texture": "#0"},
+				"east": {"uv": [0, 0, 5, 2], "texture": "#0"},
+				"south": {"uv": [7, 2, 9, 4], "texture": "#0"},
+				"west": {"uv": [0, 2, 5, 4], "texture": "#0"},
+				"up": {"uv": [2, 9, 0, 4], "texture": "#0"},
+				"down": {"uv": [4, 4, 2, 9], "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+		"gui": {
+			"rotation": [30, 225, 0],
+			"scale": [0.625, 0.625, 0.625]
+		}
+	}
+}

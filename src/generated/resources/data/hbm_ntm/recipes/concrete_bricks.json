@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:clay"
+    },
+    "C": {
+      "item": "minecraft:light_gray_concrete"
+    }
+  },
+  "pattern": [
+    " C ",
+    "CBC",
+    " C "
+  ],
+  "result": {
+    "item": "hbm_ntm:concrete_bricks"
+  },
+  "show_notification": true
+}

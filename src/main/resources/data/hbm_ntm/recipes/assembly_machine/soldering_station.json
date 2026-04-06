@@ -1,0 +1,15 @@
+{
+  "type": "hbm_ntm:assembly_machine",
+  "template": {
+    "item": "hbm_ntm:assembly_template_soldering_station"
+  },
+  "ingredients": [
+    { "item": "hbm_ntm:cast_steel_plate", "count": 2 },
+    { "item": "hbm_ntm:copper_coil", "count": 4 },
+    { "item": "hbm_ntm:tungsten_bolt", "count": 4 },
+    { "item": "hbm_ntm:vacuum_tube", "count": 2 }
+  ],
+  "output": {
+    "item": "hbm_ntm:soldering_station"
+  }
+}

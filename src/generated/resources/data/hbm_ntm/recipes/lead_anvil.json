@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "R": {
+      "item": "minecraft:iron_block"
+    },
+    "S": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "pattern": [
+    "SSS",
+    " R ",
+    "SSS"
+  ],
+  "result": {
+    "item": "hbm_ntm:lead_anvil"
+  },
+  "show_notification": true
+}

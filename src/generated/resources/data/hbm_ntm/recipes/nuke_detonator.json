@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "F": {
+      "item": "hbm_ntm:steel_plate"
+    },
+    "G": {
+      "item": "hbm_ntm:analog_circuit_board"
+    }
+  },
+  "pattern": [
+    "G  ",
+    "F  ",
+    "   "
+  ],
+  "result": {
+    "item": "hbm_ntm:nuke_detonator"
+  },
+  "show_notification": true
+}

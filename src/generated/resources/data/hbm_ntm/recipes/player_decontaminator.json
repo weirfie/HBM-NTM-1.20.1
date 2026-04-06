@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "hbm_ntm:beryllium_ingot"
+    },
+    "O": {
+      "item": "minecraft:iron_bars"
+    },
+    "R": {
+      "item": "hbm_ntm:radiation_absorber"
+    }
+  },
+  "pattern": [
+    "COC",
+    "CRC",
+    "CCC"
+  ],
+  "result": {
+    "item": "hbm_ntm:player_decontaminator"
+  },
+  "show_notification": true
+}

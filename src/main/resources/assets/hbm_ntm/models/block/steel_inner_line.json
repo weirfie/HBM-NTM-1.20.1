@@ -1,0 +1,14 @@
+{
+  "textures": { "inner": "hbm_ntm:block/steel_inner_texture" },
+  "elements": [
+    {
+      "from": [6, 0, 0.05],
+      "to": [10, 16, 0.95],
+      "faces": {
+        "north": { "uv": [6, 0, 10, 16], "texture": "#inner" },
+        "east":  { "uv": [0, 0, 1, 16],  "texture": "#inner" },
+        "west":  { "uv": [0, 0, 1, 16],  "texture": "#inner" }
+      }
+    }
+  ]
+}

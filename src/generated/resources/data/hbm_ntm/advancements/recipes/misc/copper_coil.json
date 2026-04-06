@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_minecraft_grade_copper_wire": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hbm_ntm:minecraft_grade_copper_wire"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "hbm_ntm:copper_coil"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_minecraft_grade_copper_wire",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "hbm_ntm:copper_coil"
+    ]
+  },
+  "sends_telemetry_event": false
+}

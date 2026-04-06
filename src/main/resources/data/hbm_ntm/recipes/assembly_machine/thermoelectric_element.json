@@ -1,0 +1,14 @@
+{
+  "type": "hbm_ntm:assembly_machine",
+  "template": {
+    "item": "hbm_ntm:assembly_template_thermoelectric_element"
+  },
+  "ingredients": [
+    { "item": "hbm_ntm:steel_plate", "count": 1 },
+    { "item": "hbm_ntm:gold_wire", "count": 2 },
+    { "item": "hbm_ntm:silicon_wafer", "count": 1 }
+  ],
+  "output": {
+    "item": "hbm_ntm:thermoelectric_element"
+  }
+}

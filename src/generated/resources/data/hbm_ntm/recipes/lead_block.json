@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "L": {
+      "item": "hbm_ntm:lead_ingot"
+    }
+  },
+  "pattern": [
+    "LLL",
+    "LLL",
+    "LLL"
+  ],
+  "result": {
+    "item": "hbm_ntm:lead_block"
+  },
+  "show_notification": true
+}

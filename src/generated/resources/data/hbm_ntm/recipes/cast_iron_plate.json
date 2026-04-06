@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "hbm_ntm:iron_plate"
+    },
+    "S": {
+      "item": "hbm_ntm:steel_bolt"
+    }
+  },
+  "pattern": [
+    "SBS",
+    "SBS",
+    "SBS"
+  ],
+  "result": {
+    "item": "hbm_ntm:cast_iron_plate"
+  },
+  "show_notification": true
+}

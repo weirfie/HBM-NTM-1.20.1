@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "hbm_ntm:silicon_boule"
+    }
+  },
+  "pattern": [
+    "B  ",
+    "   ",
+    "   "
+  ],
+  "result": {
+    "count": 9,
+    "item": "hbm_ntm:silicon_nugget"
+  },
+  "show_notification": true
+}

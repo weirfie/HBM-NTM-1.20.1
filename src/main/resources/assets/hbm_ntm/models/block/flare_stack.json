@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/flare_stack.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/flare_stack",
+    "m_c547d54c-fcf5-a5cc-8eee-da256dce74d4": "hbm_ntm:block/flare_stack",
+    "Material": "hbm_ntm:block/flare_stack",
+    "none": "hbm_ntm:block/flare_stack"
+  }
+}

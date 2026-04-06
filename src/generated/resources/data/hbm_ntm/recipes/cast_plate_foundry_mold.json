@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "hbm_ntm:blank_foundry_mold"
+    },
+    "C": {
+      "item": "hbm_ntm:cast_iron_plate"
+    }
+  },
+  "pattern": [
+    "CB ",
+    "   ",
+    "   "
+  ],
+  "result": {
+    "item": "hbm_ntm:cast_plate_foundry_mold"
+  },
+  "show_notification": true
+}

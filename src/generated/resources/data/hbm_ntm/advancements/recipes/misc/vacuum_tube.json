@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "hbm_ntm:vacuum_tube"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_tungsten_wire": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hbm_ntm:tungsten_wire"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_tungsten_wire",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "hbm_ntm:vacuum_tube"
+    ]
+  },
+  "sends_telemetry_event": false
+}

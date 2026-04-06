@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/fat_man.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/fat_man",
+    "DefaultMaterial": "hbm_ntm:block/fat_man",
+    "Material": "hbm_ntm:block/fat_man",
+    "none": "hbm_ntm:block/fat_man"
+  }
+}

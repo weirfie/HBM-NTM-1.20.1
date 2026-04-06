@@ -1,0 +1,15 @@
+{
+  "type": "hbm_ntm:assembly_machine",
+  "template": {
+    "item": "hbm_ntm:assembly_template_centrifuge"
+  },
+  "ingredients": [
+    { "item": "hbm_ntm:polymer_bar", "count": 4 },
+    { "item": "hbm_ntm:steel_plate", "count": 8 },
+    { "item": "hbm_ntm:copper_plate", "count": 4 },
+    { "item": "hbm_ntm:analog_circuit_board", "count": 1 }
+  ],
+  "output": {
+    "item": "hbm_ntm:centrifuge"
+  }
+}

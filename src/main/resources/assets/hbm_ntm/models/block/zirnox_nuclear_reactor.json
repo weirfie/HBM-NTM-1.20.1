@@ -1,0 +1,12 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/zirnox_nuclear_reactor.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/zirnox_nuclear_reactor",
+    "m_ed22ce15-7916-cf72-e4bb-634bfffbb2ea": "hbm_ntm:block/zirnox_nuclear_reactor",
+    "Material": "hbm_ntm:block/zirnox_nuclear_reactor",
+    "none": "hbm_ntm:block/zirnox_nuclear_reactor"
+  },
+  "render_type": "translucent"
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "hbm_ntm:advanced_alloy_ingot"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "AAA",
+    " S ",
+    " S "
+  ],
+  "result": {
+    "item": "hbm_ntm:advanced_alloy_pickaxe"
+  },
+  "show_notification": true
+}

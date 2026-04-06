@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "hbm_ntm:beryllium_ingot"
+    },
+    "G": {
+      "item": "hbm_ntm:gold_wire"
+    },
+    "I": {
+      "item": "hbm_ntm:integrated_circuit_board"
+    },
+    "O": {
+      "item": "minecraft:gold_ingot"
+    },
+    "P": {
+      "item": "hbm_ntm:gold_wire"
+    },
+    "R": {
+      "item": "hbm_ntm:rubber_bar"
+    },
+    "S": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "pattern": [
+    "OPR",
+    "GIS",
+    "GBB"
+  ],
+  "result": {
+    "item": "hbm_ntm:geiger_counter"
+  },
+  "show_notification": true
+}

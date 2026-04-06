@@ -1,0 +1,16 @@
+{
+  "type": "hbm_ntm:assembly_machine",
+  "template": {
+    "item": "hbm_ntm:assembly_template_catalytic_cracking_tower"
+  },
+  "ingredients": [
+    { "item": "hbm_ntm:steel_scaffold", "count": 16 },
+    { "item": "hbm_ntm:steel_shell", "count": 6 },
+    { "item": "hbm_ntm:polymer_bar", "count": 4 },
+    { "item": "hbm_ntm:niobium_ingot", "count": 2 },
+    { "item": "hbm_ntm:clay_catalyst", "count": 12 }
+  ],
+  "output": {
+    "item": "hbm_ntm:catalytic_cracking_tower"
+  }
+}

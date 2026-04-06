@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/redstone_battery.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/redstone_battery",
+    "m_10978700-ba6e-4c91-922b-d2867218b6a4": "hbm_ntm:block/redstone_battery",
+    "Material": "hbm_ntm:block/redstone_battery",
+    "none": "hbm_ntm:block/redstone_battery"
+  }
+}

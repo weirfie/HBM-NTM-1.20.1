@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "hbm_ntm:firebrick"
+    },
+    "S": {
+      "item": "minecraft:cobblestone_slab"
+    }
+  },
+  "pattern": [
+    "B B",
+    "BSB",
+    "   "
+  ],
+  "result": {
+    "item": "hbm_ntm:shallow_foundry_basin"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/steel_pole.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/steel_pole",
+    "m_c20e20d8-f88f-95a8-4cb2-dbeeb49703ae": "hbm_ntm:block/steel_pole",
+    "Material": "hbm_ntm:block/steel_pole",
+    "none": "hbm_ntm:block/steel_pole"
+  }
+}

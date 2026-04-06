@@ -1,0 +1,14 @@
+{
+  "type": "hbm_ntm:assembly_machine",
+  "template": {
+    "item": "hbm_ntm:assembly_template_crucible"
+  },
+  "ingredients": [
+    { "item": "hbm_ntm:firebrick", "count": 20 },
+    { "item": "hbm_ntm:industrial_grade_copper", "count": 8 },
+    { "item": "hbm_ntm:steel_plate", "count": 8 }
+  ],
+  "output": {
+    "item": "hbm_ntm:crucible"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.25,
+  "group": "lead",
+  "ingredient": {
+    "item": "hbm_ntm:lead_ore"
+  },
+  "result": "hbm_ntm:lead_ingot"
+}

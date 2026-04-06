@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "hbm_ntm:block/red_copper_block"
+    }
+  }
+}

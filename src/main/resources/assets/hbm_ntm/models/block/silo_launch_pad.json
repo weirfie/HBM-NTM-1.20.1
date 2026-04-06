@@ -1,0 +1,12 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/silo_launch_pad.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/silo_launch_pad",
+    "m_997da74f-34f1-4771-2643-40ae892b6be6": "hbm_ntm:block/silo_launch_pad",
+    "Material": "hbm_ntm:block/silo_launch_pad",
+    "none": "hbm_ntm:block/silo_launch_pad"
+  },
+  "render_type": "translucent"
+}

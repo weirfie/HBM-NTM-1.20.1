@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "minecraft:clay"
+    },
+    "I": {
+      "item": "hbm_ntm:iron_powder"
+    }
+  },
+  "pattern": [
+    "IC ",
+    "   ",
+    "   "
+  ],
+  "result": {
+    "item": "hbm_ntm:clay_catalyst"
+  },
+  "show_notification": true
+}

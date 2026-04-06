@@ -1,0 +1,21 @@
+{
+  "type": "hbm_ntm:welding",
+  "ingredients": [
+    {
+      "item": "hbm_ntm:ring_coil",
+      "count": 1
+    },
+    {
+      "item": "hbm_ntm:copper_coil",
+      "count": 1
+    },
+    {
+      "item": "hbm_ntm:steel_plate",
+      "count": 1
+    }
+  ],
+  "result": {
+    "item": "hbm_ntm:motor",
+    "count": 2
+  }
+}

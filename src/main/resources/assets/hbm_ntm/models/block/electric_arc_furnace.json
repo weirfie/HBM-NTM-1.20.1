@@ -1,0 +1,12 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/electric_arc_furnace.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/electric_arc_furnace",
+    "m_11670f53-443b-c731-297e-6abc7404d83e": "hbm_ntm:block/electric_arc_furnace",
+    "Material": "hbm_ntm:block/electric_arc_furnace",
+    "none": "hbm_ntm:block/electric_arc_furnace"
+  },
+  "render_type": "translucent"
+}

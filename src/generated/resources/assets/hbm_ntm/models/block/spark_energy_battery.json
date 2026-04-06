@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "hbm_ntm:block/spark_energy_battery"
+  }
+}

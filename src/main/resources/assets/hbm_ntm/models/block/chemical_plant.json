@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/chemical_plant.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/chemical_plant",
+    "m_7b78f0fa-f90a-8209-2f81-eae245ce24d9": "hbm_ntm:block/chemical_plant",
+    "Material": "hbm_ntm:block/chemical_plant",
+    "none": "hbm_ntm:block/chemical_plant"
+  }
+}

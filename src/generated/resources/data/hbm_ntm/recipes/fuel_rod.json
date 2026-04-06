@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "F": {
+      "item": "hbm_ntm:structural_column"
+    },
+    "G": {
+      "item": "hbm_ntm:steel_shell"
+    }
+  },
+  "pattern": [
+    "G  ",
+    "F  ",
+    "G  "
+  ],
+  "result": {
+    "item": "hbm_ntm:fuel_rod"
+  },
+  "show_notification": true
+}

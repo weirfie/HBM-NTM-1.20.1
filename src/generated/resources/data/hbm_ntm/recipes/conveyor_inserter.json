@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": {
+      "item": "hbm_ntm:conveyor_belt"
+    },
+    "L": {
+      "tag": "minecraft:stone_bricks"
+    }
+  },
+  "pattern": [
+    "LLL",
+    "L L",
+    "LIL"
+  ],
+  "result": {
+    "item": "hbm_ntm:conveyor_inserter"
+  },
+  "show_notification": true
+}

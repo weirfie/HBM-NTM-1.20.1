@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "hbm_ntm:analog_circuit_board"
+    },
+    "G": {
+      "item": "hbm_ntm:gold_wire"
+    },
+    "I": {
+      "item": "hbm_ntm:industrial_grade_copper"
+    },
+    "S": {
+      "item": "hbm_ntm:steel_plate"
+    }
+  },
+  "pattern": [
+    "G I",
+    "GAI",
+    "SSS"
+  ],
+  "result": {
+    "item": "hbm_ntm:oil_reservoir_detector"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/industrial_combustian_generator.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/industrial_combustian_generator",
+    "m_17a83d4f-976d-927c-ef4f-616423b405b5": "hbm_ntm:block/industrial_combustian_generator",
+    "Material": "hbm_ntm:block/industrial_combustian_generator",
+    "none": "hbm_ntm:block/industrial_combustian_generator"
+  }
+}

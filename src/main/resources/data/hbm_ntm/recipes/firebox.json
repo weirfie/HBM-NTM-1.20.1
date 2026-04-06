@@ -1,0 +1,12 @@
+{
+  "type": "hbm_ntm:anvil_crafting",
+  "ingredients": [
+    { "item": "minecraft:furnace", "count": 1 },
+    { "item": "hbm_ntm:steel_plate", "count": 8 },
+    { "item": "hbm_ntm:industrial_grade_copper", "count": 8 }
+  ],
+  "output": {
+    "item": "hbm_ntm:firebox",
+    "count": 1
+  }
+}

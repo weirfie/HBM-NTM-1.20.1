@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/the_gadget.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/the_gadget",
+    "m_6d9cec7e-bbca-55c3-7211-866fca4aafc3": "hbm_ntm:block/the_gadget",
+    "Material": "hbm_ntm:block/the_gadget",
+    "none": "hbm_ntm:block/the_gadget"
+  }
+}

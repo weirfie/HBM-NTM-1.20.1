@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "hbm_ntm:copper_wire"
+    },
+    "I": {
+      "item": "hbm_ntm:insulator"
+    },
+    "R": {
+      "item": "hbm_ntm:iron_powder"
+    }
+  },
+  "pattern": [
+    "IRI",
+    "C C",
+    "   "
+  ],
+  "result": {
+    "item": "hbm_ntm:capacitor"
+  },
+  "show_notification": true
+}

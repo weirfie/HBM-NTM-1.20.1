@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "hbm_ntm:firebrick"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "pattern": [
+    " B ",
+    "BIB",
+    " B "
+  ],
+  "result": {
+    "item": "hbm_ntm:blank_foundry_mold"
+  },
+  "show_notification": true
+}

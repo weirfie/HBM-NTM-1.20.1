@@ -1,0 +1,15 @@
+{
+  "type": "hbm_ntm:burner_press",
+  "stamp": {
+    "item": "hbm_ntm:wire_stamp"
+  },
+  "ingredients": [
+    {
+      "item": "hbm_ntm:minecraft_grade_copper"
+    }
+  ],
+  "output": {
+    "item": "hbm_ntm:minecraft_grade_copper_wire",
+    "count": 8
+  }
+}

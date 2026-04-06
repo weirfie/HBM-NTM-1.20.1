@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/tank.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/tank",
+    "m_ea8456ee-13e7-e105-8066-36ff4ecbfb61": "hbm_ntm:block/tank",
+    "Material": "hbm_ntm:block/tank",
+    "none": "hbm_ntm:block/tank"
+  }
+}

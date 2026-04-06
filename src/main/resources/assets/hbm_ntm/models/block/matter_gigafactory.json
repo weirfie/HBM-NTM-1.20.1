@@ -1,0 +1,12 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/matter_gigafactory.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/matter_gigafactory",
+    "m_602174c3-dbd4-dcfb-fe7e-dd6b52c019f5": "hbm_ntm:block/matter_gigafactory",
+    "Material": "hbm_ntm:block/matter_gigafactory",
+    "none": "hbm_ntm:block/matter_gigafactory"
+  },
+  "render_type": "translucent"
+}

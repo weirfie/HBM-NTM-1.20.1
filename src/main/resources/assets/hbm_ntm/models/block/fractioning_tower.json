@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/fractioning_tower.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/fractioning_tower",
+    "m_dc8f25ae-fd78-7d47-b1dd-99d247856aeb": "hbm_ntm:block/fractioning_tower",
+    "Material": "hbm_ntm:block/fractioning_tower",
+    "none": "hbm_ntm:block/fractioning_tower"
+  }
+}

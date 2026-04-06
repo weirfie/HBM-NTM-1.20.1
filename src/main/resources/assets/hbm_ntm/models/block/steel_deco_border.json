@@ -1,0 +1,15 @@
+{
+  "textures": {
+    "particle": "modid:block/steel_deco_border",
+    "border": "modid:block/steel_deco_border"
+  },
+  "elements": [
+    {
+      "from": [0, 0, -0.01],
+      "to": [16, 16, 0],
+      "faces": {
+        "north": { "uv": [0, 0, 16, 16], "texture": "#border" }
+      }
+    }
+  ]
+}

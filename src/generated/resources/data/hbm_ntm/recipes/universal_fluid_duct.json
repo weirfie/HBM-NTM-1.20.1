@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "hbm_ntm:aluminum_plate"
+    },
+    "S": {
+      "item": "hbm_ntm:steel_plate"
+    }
+  },
+  "pattern": [
+    "ASA",
+    "   ",
+    "ASA"
+  ],
+  "result": {
+    "count": 8,
+    "item": "hbm_ntm:universal_fluid_duct"
+  },
+  "show_notification": true
+}

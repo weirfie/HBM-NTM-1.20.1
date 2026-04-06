@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/oil_derrick.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/oil_derrick",
+    "m_7133d7d7-5667-352f-7c38-698ad33c6a89": "hbm_ntm:block/oil_derrick",
+    "Material": "hbm_ntm:block/oil_derrick",
+    "none": "hbm_ntm:block/oil_derrick"
+  }
+}

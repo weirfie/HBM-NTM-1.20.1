@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/crucible.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/crucible",
+    "m_0514ae23-bcee-df96-9384-7b40ae150af1": "hbm_ntm:block/crucible",
+    "Material": "hbm_ntm:block/crucible",
+    "none": "hbm_ntm:block/crucible"
+  }
+}

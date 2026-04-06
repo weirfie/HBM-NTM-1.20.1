@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/wood_burning_generator.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/wood_burning_generator",
+    "m_91b53bca-95d1-cda5-83fd-fda988be3506": "hbm_ntm:block/wood_burning_generator",
+    "Material": "hbm_ntm:block/wood_burning_generator",
+    "none": "hbm_ntm:block/wood_burning_generator"
+  }
+}

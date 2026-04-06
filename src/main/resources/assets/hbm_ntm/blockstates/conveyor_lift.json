@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "hbm_ntm:block/conveyor_lift" },
+    "facing=east":  { "model": "hbm_ntm:block/conveyor_lift", "y": 90 },
+    "facing=south": { "model": "hbm_ntm:block/conveyor_lift", "y": 180 },
+    "facing=west":  { "model": "hbm_ntm:block/conveyor_lift", "y": 270 }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/combination_oven.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/combination_oven",
+    "m_a7359ed0-6e3f-887c-df8b-28b15aafe7b4": "hbm_ntm:block/combination_oven",
+    "Material": "hbm_ntm:block/combination_oven",
+    "none": "hbm_ntm:block/combination_oven"
+  }
+}

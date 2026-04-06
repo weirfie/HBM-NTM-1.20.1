@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/soldering_station.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/soldering_station",
+    "m_ff9ebc74-caf9-0247-c712-cd139fb33fba": "hbm_ntm:block/soldering_station",
+    "Material": "hbm_ntm:block/soldering_station",
+    "none": "hbm_ntm:block/soldering_station"
+  }
+}

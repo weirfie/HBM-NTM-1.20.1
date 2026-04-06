@@ -1,0 +1,16 @@
+{
+  "type": "hbm_ntm:assembly_machine",
+  "template": {
+    "item": "hbm_ntm:assembly_template_oil_derrick"
+  },
+  "ingredients": [
+    { "item": "hbm_ntm:steel_plate", "count": 8 },
+    { "item": "hbm_ntm:cast_steel_plate", "count": 2 },
+    { "item": "hbm_ntm:steel_pipe", "count": 4 },
+    { "item": "hbm_ntm:motor", "count": 1 },
+    { "item": "hbm_ntm:steel_drillbit", "count": 1 }
+  ],
+  "output": {
+    "item": "hbm_ntm:oil_derrick"
+  }
+}

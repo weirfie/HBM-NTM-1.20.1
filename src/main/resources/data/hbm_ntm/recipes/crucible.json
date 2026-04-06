@@ -1,0 +1,21 @@
+{
+  "type": "hbm_ntm:anvil_crafting",
+  "ingredients": [
+    {
+      "item": { "item": "hbm_ntm:firebrick" },
+      "count": 20
+    },
+    {
+      "item": { "item": "hbm_ntm:industrial_grade_copper" },
+      "count": 8
+    },
+    {
+      "item": { "item": "hbm_ntm:steel_plate" },
+      "count": 8
+    }
+  ],
+  "output": {
+    "item": "hbm_ntm:crucible",
+    "count": 1
+  }
+}

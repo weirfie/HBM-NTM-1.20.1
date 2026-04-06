@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "hbm_ntm:blank_foundry_mold"
+    },
+    "S": {
+      "item": "hbm_ntm:steel_shell"
+    }
+  },
+  "pattern": [
+    "SB ",
+    "   ",
+    "   "
+  ],
+  "result": {
+    "item": "hbm_ntm:shell_foundry_mold"
+  },
+  "show_notification": true
+}

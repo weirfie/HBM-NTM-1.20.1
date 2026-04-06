@@ -1,0 +1,15 @@
+{
+  "type": "hbm_ntm:assembly_machine",
+  "template": {
+    "item": "hbm_ntm:assembly_template_rbmk_structural_column"
+  },
+  "ingredients": [
+    { "item": "hbm_ntm:asbestos_concrete", "count": 4 },
+    { "item": "hbm_ntm:cast_steel_plate", "count": 4 },
+    { "item": "hbm_ntm:copper_plate", "count": 8 },
+    { "item": "hbm_ntm:insulator", "count": 4 }
+  ],
+  "output": {
+    "item": "hbm_ntm:structural_column"
+  }
+}

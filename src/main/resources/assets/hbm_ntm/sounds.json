@@ -1,0 +1,64 @@
+{
+  "geiger_click": {
+    "subtitles": "sounds.hbm_ntm.geiger_click",
+    "sounds": [
+      "hbm_ntm:geiger_click"
+    ]
+  },
+  "nuclear_explosion": {
+    "subtitles": "sounds.hbm_ntm.nuclear_explosion",
+    "sounds": [
+      "hbm_ntm:nuclear_explosion"
+    ]
+  },"duct_place": {
+    "subtitles": "sounds.hbm_ntm.duct_place",
+    "sounds": [
+      "hbm_ntm:duct_place"
+    ]
+  },"rbmk_explosion": {
+    "subtitles": "sounds.hbm_ntm.rbmk_explosion",
+    "sounds": [
+      "hbm_ntm:rbmk_explosion"
+    ]
+  },"sim_card_activation": {
+    "subtitles": "sounds.hbm_ntm.sim_card_activation",
+    "sounds": [
+      "hbm_ntm:sim_card_activation"
+    ]
+  },"free_bird": {
+    "subtitles": "sounds.hbm_ntm.free_bird",
+    "sounds": [
+      "hbm_ntm:free_bird"
+    ]
+  },
+  "control_system_alarm": {
+    "subtitles": "sounds.hbm_ntm.control_system_alarm",
+    "sounds": [
+      "hbm_ntm:control_system_alarm"
+    ]
+  },
+  "nuclear_siren": {
+    "subtitles": "sounds.hbm_ntm.nuclear_siren",
+    "sounds": [
+      "hbm_ntm:nuclear_siren"
+    ]
+  },
+  "explosion_hit": {
+    "subtitles": "sounds.hbm_ntm.explosion_hit",
+    "sounds": [
+      "hbm_ntm:explosion_hit"
+    ]
+  },
+  "missile_launch": {
+    "subtitles": "sounds.hbm_ntm.missile_launch",
+    "sounds": [
+      "hbm_ntm:missile_launch"
+    ]
+  },
+  "door_creak_open": {
+    "subtitles": "sounds.hbm_ntm.door_creak_open",
+    "sounds": [
+      "hbm_ntm:door_creak_open"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/smokestack.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/smokestack",
+    "m_459f61b6-ddac-4ca8-1b49-d0677bda3c55": "hbm_ntm:block/smokestack",
+    "Material": "hbm_ntm:block/smokestack",
+    "none": "hbm_ntm:block/smokestack"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "hbm_ntm:anvil_crafting",
+  "ingredients": [
+    { "item": "minecraft:stone_bricks", "count": 4 },
+    { "item": "hbm_ntm:firebrick", "count": 4 },
+    { "item": "hbm_ntm:copper_plate", "count": 4 }
+  ],
+  "output": {
+    "item": "hbm_ntm:blast_furnace",
+    "count": 1
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    }
+  },
+  "pattern": [
+    "LLL",
+    "I I",
+    "LLL"
+  ],
+  "result": {
+    "count": 16,
+    "item": "hbm_ntm:conveyor_belt"
+  },
+  "show_notification": true
+}
