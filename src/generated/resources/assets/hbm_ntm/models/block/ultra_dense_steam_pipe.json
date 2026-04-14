@@ -1,6 +1,13 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "block/cube",
   "textures": {
-    "all": "hbm_ntm:block/ultra_dense_steam_pipe"
-  }
+    "down": "hbm_ntm:block/waterducttop",
+    "up": "hbm_ntm:block/waterducttop",
+    "north": "hbm_ntm:block/ultra_dense_steam_pipe",
+    "east": "hbm_ntm:block/ultra_dense_steam_pipe",
+    "south": "hbm_ntm:block/ultra_dense_steam_pipe",
+    "west": "hbm_ntm:block/ultra_dense_steam_pipe",
+    "particle": "hbm_ntm:block/waterducttop"
+  },
+  "render_type": "solid"
 }

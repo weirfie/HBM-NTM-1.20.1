@@ -1,6 +1,13 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "block/cube",
   "textures": {
-    "all": "hbm_ntm:block/neutron_absorber"
-  }
+    "down": "hbm_ntm:block/control_rod",
+    "up": "hbm_ntm:block/control_rod",
+    "north": "hbm_ntm:block/neutron_absorber",
+    "east": "hbm_ntm:block/neutron_absorber",
+    "south": "hbm_ntm:block/neutron_absorber",
+    "west": "hbm_ntm:block/neutron_absorber",
+    "particle": "hbm_ntm:block/control_rod"
+  },
+  "render_type": "solid"
 }

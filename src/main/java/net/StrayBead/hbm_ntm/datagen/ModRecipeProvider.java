@@ -30,7 +30,36 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     private static final List<ItemLike> FIRECLAY_SMELTABLES = List.of(ModItems.FIRECLAY.get());
     private static final List<ItemLike> SCHRABIDIUM_ORE_SMELTABLES = List.of(ModBlocks.SCHRABIDIUM_ORE.get());
     private static final List<ItemLike> ALUMINUM_ORE_SMELTABLES = List.of(ModBlocks.ALUMINUM_ORE.get());
+    private static final List<ItemLike> DIAMOND_POWDER_SMELTABLES = List.of(ModItems.POWDERS.get("diamond").get());
     private static final List<ItemLike> FLINT_SMELTABLES = List.of(Items.FLINT);
+    private static final List<ItemLike> GOLD_POWDER_SMELTABLES = List.of(ModItems.POWDERS.get("gold").get());
+    private static final List<ItemLike> LAPIS_POWDER_SMELTABLES = List.of(ModItems.POWDERS.get("lapis_lazuli").get());
+    private static final List<ItemLike> EMERALD_POWDER_SMELTABLES = List.of(ModItems.POWDERS.get("emerald").get());
+    private static final List<ItemLike> URANIUM_POWDER_SMELTABLES = List.of(ModItems.POWDERS.get("uranium").get());
+    private static final List<ItemLike> PLUTONIUM_POWDER_SMELTABLES = List.of(ModItems.POWDERS.get("plutonium").get());
+    private static final List<ItemLike> NEPTUNIUM_POWDER_SMELTABLES = List.of(ModItems.POWDERS.get("neptunium").get());
+    private static final List<ItemLike> TITANIUM_POWDER_SMELTABLES = List.of(ModItems.POWDERS.get("titanium").get());
+    private static final List<ItemLike> COPPER_POWDER_SMELTABLES = List.of(ModItems.POWDERS.get("copper").get());
+    private static final List<ItemLike> RED_COPPER_POWDER_SMELTABLES = List.of(ModItems.POWDERS.get("red_copper").get());
+    private static final List<ItemLike> ADV_ALLOY_POWDER_SMELTABLES = List.of(ModItems.POWDERS.get("advanced_alloy").get());
+    private static final List<ItemLike> TUNGSTEN_POWDER_SMELTABLES = List.of(ModItems.POWDERS.get("tungsten").get());
+    private static final List<ItemLike> TECH_STEEL_POWDER_SMELTABLES = List.of(ModItems.POWDERS.get("technetium_steel").get());
+    private static final List<ItemLike> LEAD_POWDER_SMELTABLES = List.of(ModItems.POWDERS.get("lead").get());
+    private static final List<ItemLike> BISMUTH_POWDER_SMELTABLES = List.of(ModItems.POWDERS.get("bismuth").get());
+    private static final List<ItemLike> BERYLLIUM_POWDER_SMELTABLES = List.of(ModItems.POWDERS.get("beryllium").get());
+    private static final List<ItemLike> HSS_POWDER_SMELTABLES = List.of(ModItems.POWDERS.get("high_speed_steel").get());
+    private static final List<ItemLike> POLYMER_POWDER_SMELTABLES = List.of(ModItems.POWDERS.get("polymer").get());
+    private static final List<ItemLike> BAKELITE_POWDER_SMELTABLES = List.of(ModItems.POWDERS.get("bakelite").get());
+    private static final List<ItemLike> SCHRABIDIUM_POWDER_SMELTABLES = List.of(ModItems.POWDERS.get("schrabidium").get());
+    private static final List<ItemLike> MAG_TUNGSTEN_POWDER_SMELTABLES = List.of(ModItems.POWDERS.get("magnetized_tungsten").get());
+    private static final List<ItemLike> CMB_STEEL_POWDER_SMELTABLES = List.of(ModItems.POWDERS.get("cmb_steel").get());
+    private static final List<ItemLike> ZIRCONIUM_POWDER_SMELTABLES = List.of(ModItems.POWDERS.get("zirconium").get());
+    private static final List<ItemLike> LIGNITE_POWDER_SMELTABLES = List.of(ModItems.POWDERS.get("lignite").get());
+    private static final List<ItemLike> THORIUM_POWDER_SMELTABLES = List.of(ModItems.POWDERS.get("thorium").get());
+    private static final List<ItemLike> NEODYMIUM_POWDER_SMELTABLES = List.of(ModItems.POWDERS.get("neodymium").get());
+    private static final List<ItemLike> NIOBIUM_POWDER_SMELTABLES = List.of(ModItems.POWDERS.get("niobium").get());
+    private static final List<ItemLike> IRON_POWDER_SMELTABLES = List.of(ModItems.IRON_POWDER.get());
+
 
     public ModRecipeProvider(PackOutput pOutput) {
         super(pOutput);
@@ -40,8 +69,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
         oreSmelting(pWriter, BERYLLIUM_SMELTABLES, RecipeCategory.MISC, ModItems.BERYLLIUM_INGOT.get(), 0.25f, 100, "beryllium");
         oreBlasting(pWriter, BERYLLIUM_SMELTABLES, RecipeCategory.MISC, ModItems.BERYLLIUM_INGOT.get(), 0.25f, 100, "beryllium");
-        oreSmelting(pWriter, URANIUM_SMELTABLES, RecipeCategory.MISC, ModItems.URANIUM_BEDROCK_ORE.get(), 0.25f, 100, "uranium");
-        oreBlasting(pWriter, URANIUM_SMELTABLES, RecipeCategory.MISC, ModItems.URANIUM_BEDROCK_ORE.get(), 0.25f, 100, "uranium");
+        oreSmelting(pWriter, URANIUM_SMELTABLES, RecipeCategory.MISC, ModItems.URANIUM_INGOT.get(), 0.25f, 150, "uranium");
+        oreBlasting(pWriter, URANIUM_SMELTABLES, RecipeCategory.MISC, ModItems.URANIUM_INGOT.get(), 0.25f, 50, "uranium");
         oreSmelting(pWriter, TITANIUM_SMELTABLES, RecipeCategory.MISC, ModItems.TITANIUM_INGOT.get(), 0.25f, 100, "titanium");
         oreBlasting(pWriter, TITANIUM_SMELTABLES, RecipeCategory.MISC, ModItems.TITANIUM_INGOT.get(), 0.25f, 100, "titanium");
         oreSmelting(pWriter, RED_COPPER_SMELTABLES, RecipeCategory.MISC, ModItems.REDCOPPER.get(), 0.25f, 100, "red_copper");
@@ -52,6 +81,252 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         oreSmelting(pWriter, FIRECLAY_SMELTABLES, RecipeCategory.MISC, ModItems.FIREBRICK.get(), 0.25f, 100, "fireclay");
         oreSmelting(pWriter, SCHRABIDIUM_ORE_SMELTABLES, RecipeCategory.MISC, ModItems.SCHRABIDIUM_INGOT.get(), 0.25f, 150, "schrabidium_ingot");
         oreSmelting(pWriter, ALUMINUM_ORE_SMELTABLES, RecipeCategory.MISC, ModItems.CRYOLITE_CHUNK.get(), 0.25f, 150, "cryolite_chunk");
+        oreSmelting(pWriter, DIAMOND_POWDER_SMELTABLES, RecipeCategory.MISC, Items.DIAMOND, 0.25f, 150, "diamond");
+        oreSmelting(pWriter, GOLD_POWDER_SMELTABLES, RecipeCategory.MISC, Items.GOLD_INGOT, 0.25f, 150, "gold");
+        oreSmelting(pWriter, LAPIS_POWDER_SMELTABLES, RecipeCategory.MISC, Items.LAPIS_LAZULI, 0.25f, 150, "lapis");
+        oreSmelting(pWriter, EMERALD_POWDER_SMELTABLES, RecipeCategory.MISC, Items.EMERALD, 0.25f, 150, "emerald");
+        oreSmelting(pWriter, IRON_POWDER_SMELTABLES, RecipeCategory.MISC, Items.IRON_INGOT, 0.25f, 150, "iron");
+
+        oreSmelting(pWriter, URANIUM_POWDER_SMELTABLES, RecipeCategory.MISC, ModItems.URANIUM_DUST.get(), 0.5f, 200, "uranium");
+        oreSmelting(pWriter, PLUTONIUM_POWDER_SMELTABLES, RecipeCategory.MISC, ModItems.PLUTONIUM_INGOT.get(), 0.5f, 200, "plutonium");
+        oreSmelting(pWriter, NEPTUNIUM_POWDER_SMELTABLES, RecipeCategory.MISC, ModItems.NEPTUNIUM_FUEL_INGOT.get(), 0.5f, 200, "neptunium");
+
+        oreSmelting(pWriter, TITANIUM_POWDER_SMELTABLES, RecipeCategory.MISC, ModItems.TITANIUM_INGOT.get(), 0.35f, 150, "titanium");
+        oreSmelting(pWriter, COPPER_POWDER_SMELTABLES, RecipeCategory.MISC, Items.COPPER_INGOT, 0.25f, 150, "copper");
+        oreSmelting(pWriter, RED_COPPER_POWDER_SMELTABLES, RecipeCategory.MISC, ModItems.REDCOPPER.get(), 0.35f, 150, "red_copper");
+        oreSmelting(pWriter, ADV_ALLOY_POWDER_SMELTABLES, RecipeCategory.MISC, ModItems.ADVANCED_ALLOY_INGOT.get(), 0.4f, 150, "advanced_alloy");
+        oreSmelting(pWriter, TUNGSTEN_POWDER_SMELTABLES, RecipeCategory.MISC, ModItems.TUNGSTEN_INGOT.get(), 0.5f, 200, "tungsten");
+        oreSmelting(pWriter, TECH_STEEL_POWDER_SMELTABLES, RecipeCategory.MISC, ModItems.TECHNETIUM_STEEL_INGOT.get(), 0.5f, 200, "technetium_steel");
+        oreSmelting(pWriter, LEAD_POWDER_SMELTABLES, RecipeCategory.MISC, ModItems.LEAD_INGOT.get(), 0.25f, 150, "lead");
+        oreSmelting(pWriter, BISMUTH_POWDER_SMELTABLES, RecipeCategory.MISC, ModItems.BISMUTH_INGOT.get(), 0.25f, 150, "bismuth");
+
+        oreSmelting(pWriter, BERYLLIUM_POWDER_SMELTABLES, RecipeCategory.MISC, ModItems.BERYLLIUM_INGOT.get(), 0.35f, 150, "beryllium");
+        oreSmelting(pWriter, HSS_POWDER_SMELTABLES, RecipeCategory.MISC, ModItems.HIGH_SPEED_STEEL_INGOT.get(), 0.5f, 200, "high_speed_steel");
+
+        oreSmelting(pWriter, POLYMER_POWDER_SMELTABLES, RecipeCategory.MISC, ModItems.POLYMER_BAR.get(), 0.25f, 150, "polymer");
+        oreSmelting(pWriter, BAKELITE_POWDER_SMELTABLES, RecipeCategory.MISC, ModItems.BAKELITE_BAR.get(), 0.25f, 150, "bakelite");
+        oreSmelting(pWriter, SCHRABIDIUM_POWDER_SMELTABLES, RecipeCategory.MISC, ModItems.SCHRABIDIUM_INGOT.get(), 0.7f, 300, "schrabidium");
+        oreSmelting(pWriter, MAG_TUNGSTEN_POWDER_SMELTABLES, RecipeCategory.MISC, ModItems.MAGNETIZED_TUNGSTEN_INGOT.get(), 0.5f, 200, "magnetized_tungsten");
+        oreSmelting(pWriter, CMB_STEEL_POWDER_SMELTABLES, RecipeCategory.MISC, ModItems.CMB_STEEL_INGOT.get(), 0.6f, 250, "cmb_steel");
+
+        oreSmelting(pWriter, THORIUM_POWDER_SMELTABLES, RecipeCategory.MISC, ModItems.THORIUM_INGOT.get(), 0.5f, 200, "thorium");
+        oreSmelting(pWriter, NEODYMIUM_POWDER_SMELTABLES, RecipeCategory.MISC, ModItems.NEODYMIUM_INGOT.get(), 0.4f, 150, "neodymium");
+        oreSmelting(pWriter, NIOBIUM_POWDER_SMELTABLES, RecipeCategory.MISC, ModItems.NIOBIUM_INGOT.get(), 0.4f, 150, "niobium");
+        oreSmelting(pWriter, ZIRCONIUM_POWDER_SMELTABLES, RecipeCategory.MISC, ModItems.ZIRCONIUM_CUBE.get(), 0.4f, 150, "zirconium");
+        oreSmelting(pWriter, LIGNITE_POWDER_SMELTABLES, RecipeCategory.MISC, ModItems.LIGNITE.get(), 0.4f, 150, "lignite");
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.POWDERS.get("lignite").get())
+                .pattern("SSS")
+                .pattern("SSS")
+                .pattern("SSS")
+                .define('S', ModItems.BEDROCK_ORE_FRAGMENTS.get("lignite").get())
+                .unlockedBy(getHasName(ModItems.BEDROCK_ORE_FRAGMENTS.get("lignite").get()), has(ModItems.BEDROCK_ORE_FRAGMENTS.get("lignite").get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.URANIUM_ORE_BLOCK.get())
+                .pattern("SSS")
+                .pattern("SSS")
+                .pattern("SSS")
+                .define('S', ModItems.URANIUM_INGOT.get())
+                .unlockedBy(getHasName(ModItems.URANIUM_INGOT.get()), has(ModItems.URANIUM_INGOT.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BILLETS.get("uranium").get(), 3)
+                .pattern("SS ")
+                .pattern("   ")
+                .pattern("   ")
+                .define('S', ModItems.URANIUM_INGOT.get())
+                .unlockedBy(getHasName(ModItems.URANIUM_INGOT.get()), has(ModItems.URANIUM_INGOT.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.IRON_CRATE.get())
+                .pattern("SSS")
+                .pattern("I I")
+                .pattern("III")
+                .define('S', ModItems.IRON_PLATE.get())
+                .define('I', Items.IRON_INGOT)
+                .unlockedBy(getHasName(ModItems.IRON_PLATE.get()), has(ModItems.IRON_PLATE.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.STEEL_CRATE.get())
+                .pattern("SSS")
+                .pattern("I I")
+                .pattern("III")
+                .define('S', ModItems.STEEL_PLATE.get())
+                .define('I', ModItems.STEEL.get())
+                .unlockedBy(getHasName(ModItems.STEEL.get()), has(ModItems.STEEL.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.URANIUM_ROD.get())
+                .pattern(" B ")
+                .pattern("IBI")
+                .pattern(" B ")
+                .define('B', ModItems.BILLETS.get("uranium").get())
+                .define('I', ModItems.IRON_PLATE.get())
+                .unlockedBy(getHasName(ModItems.BILLETS.get("uranium").get()), has(ModItems.BILLETS.get("uranium").get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.COAL)
+                .pattern("SSS").pattern("SSS").pattern("SSS")
+                .define('S', ModItems.BEDROCK_ORE_FRAGMENTS.get("coal").get())
+                .unlockedBy(getHasName(ModItems.BEDROCK_ORE_FRAGMENTS.get("coal").get()), has(ModItems.BEDROCK_ORE_FRAGMENTS.get("coal").get()))
+                .save(pWriter, "hbm_ntm:coal_from_fragments");
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.POWDERS.get("diamond").get())
+                .pattern("SSS").pattern("SSS").pattern("SSS")
+                .define('S', ModItems.BEDROCK_ORE_FRAGMENTS.get("diamond").get())
+                .unlockedBy(getHasName(ModItems.BEDROCK_ORE_FRAGMENTS.get("diamond").get()), has(ModItems.BEDROCK_ORE_FRAGMENTS.get("diamond").get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.IRON_POWDER.get())
+                .pattern("SSS").pattern("SSS").pattern("SSS")
+                .define('S', ModItems.BEDROCK_ORE_FRAGMENTS.get("iron").get())
+                .unlockedBy(getHasName(ModItems.BEDROCK_ORE_FRAGMENTS.get("iron").get()), has(ModItems.BEDROCK_ORE_FRAGMENTS.get("iron").get()))
+                .save(pWriter, "hbm_ntm:iron_powder_from_fragments");
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.POWDERS.get("gold").get())
+                .pattern("SSS").pattern("SSS").pattern("SSS")
+                .define('S', ModItems.BEDROCK_ORE_FRAGMENTS.get("gold").get())
+                .unlockedBy(getHasName(ModItems.BEDROCK_ORE_FRAGMENTS.get("gold").get()), has(ModItems.BEDROCK_ORE_FRAGMENTS.get("gold").get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.REDSTONE)
+                .pattern("SSS").pattern("SSS").pattern("SSS")
+                .define('S', ModItems.BEDROCK_ORE_FRAGMENTS.get("redstone").get())
+                .unlockedBy(getHasName(ModItems.BEDROCK_ORE_FRAGMENTS.get("redstone").get()), has(ModItems.BEDROCK_ORE_FRAGMENTS.get("redstone").get()))
+                .save(pWriter, "hbm_ntm:redstone_from_fragments");
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.POWDERS.get("emerald").get())
+                .pattern("SSS").pattern("SSS").pattern("SSS")
+                .define('S', ModItems.BEDROCK_ORE_FRAGMENTS.get("emerald").get())
+                .unlockedBy(getHasName(ModItems.BEDROCK_ORE_FRAGMENTS.get("emerald").get()), has(ModItems.BEDROCK_ORE_FRAGMENTS.get("emerald").get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.POWDERS.get("uranium").get())
+                .pattern("SSS").pattern("SSS").pattern("SSS")
+                .define('S', ModItems.BEDROCK_ORE_FRAGMENTS.get("uranium").get())
+                .unlockedBy(getHasName(ModItems.BEDROCK_ORE_FRAGMENTS.get("uranium").get()), has(ModItems.BEDROCK_ORE_FRAGMENTS.get("uranium").get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.POWDERS.get("uranium").get()) // U238 fragments yield standard Uranium powder
+                .pattern("SSS").pattern("SSS").pattern("SSS")
+                .define('S', ModItems.BEDROCK_ORE_FRAGMENTS.get("uranium_238").get())
+                .unlockedBy(getHasName(ModItems.BEDROCK_ORE_FRAGMENTS.get("uranium_238").get()), has(ModItems.BEDROCK_ORE_FRAGMENTS.get("uranium_238").get()))
+                .save(pWriter, "hbm_ntm:uranium_powder_from_u238_fragments");
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.POWDERS.get("thorium").get())
+                .pattern("SSS").pattern("SSS").pattern("SSS")
+                .define('S', ModItems.BEDROCK_ORE_FRAGMENTS.get("thorium_232").get())
+                .unlockedBy(getHasName(ModItems.BEDROCK_ORE_FRAGMENTS.get("thorium_232").get()), has(ModItems.BEDROCK_ORE_FRAGMENTS.get("thorium_232").get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.POWDERS.get("polonium_210").get())
+                .pattern("SSS").pattern("SSS").pattern("SSS")
+                .define('S', ModItems.BEDROCK_ORE_FRAGMENTS.get("polonium_210").get())
+                .unlockedBy(getHasName(ModItems.BEDROCK_ORE_FRAGMENTS.get("polonium_210").get()), has(ModItems.BEDROCK_ORE_FRAGMENTS.get("polonium_210").get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.POWDERS.get("radium_226").get())
+                .pattern("SSS").pattern("SSS").pattern("SSS")
+                .define('S', ModItems.BEDROCK_ORE_FRAGMENTS.get("radium_226").get())
+                .unlockedBy(getHasName(ModItems.BEDROCK_ORE_FRAGMENTS.get("radium_226").get()), has(ModItems.BEDROCK_ORE_FRAGMENTS.get("radium_226").get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.POWDERS.get("titanium").get())
+                .pattern("SSS").pattern("SSS").pattern("SSS")
+                .define('S', ModItems.BEDROCK_ORE_FRAGMENTS.get("titanium").get())
+                .unlockedBy(getHasName(ModItems.BEDROCK_ORE_FRAGMENTS.get("titanium").get()), has(ModItems.BEDROCK_ORE_FRAGMENTS.get("titanium").get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.POWDERS.get("copper").get())
+                .pattern("SSS").pattern("SSS").pattern("SSS")
+                .define('S', ModItems.BEDROCK_ORE_FRAGMENTS.get("copper").get())
+                .unlockedBy(getHasName(ModItems.BEDROCK_ORE_FRAGMENTS.get("copper").get()), has(ModItems.BEDROCK_ORE_FRAGMENTS.get("copper").get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.POWDERS.get("tungsten").get())
+                .pattern("SSS").pattern("SSS").pattern("SSS")
+                .define('S', ModItems.BEDROCK_ORE_FRAGMENTS.get("tungsten").get())
+                .unlockedBy(getHasName(ModItems.BEDROCK_ORE_FRAGMENTS.get("tungsten").get()), has(ModItems.BEDROCK_ORE_FRAGMENTS.get("tungsten").get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.POWDERS.get("lead").get())
+                .pattern("SSS").pattern("SSS").pattern("SSS")
+                .define('S', ModItems.BEDROCK_ORE_FRAGMENTS.get("lead").get())
+                .unlockedBy(getHasName(ModItems.BEDROCK_ORE_FRAGMENTS.get("lead").get()), has(ModItems.BEDROCK_ORE_FRAGMENTS.get("lead").get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.POWDERS.get("bismuth").get())
+                .pattern("SSS").pattern("SSS").pattern("SSS")
+                .define('S', ModItems.BEDROCK_ORE_FRAGMENTS.get("bismuth").get())
+                .unlockedBy(getHasName(ModItems.BEDROCK_ORE_FRAGMENTS.get("bismuth").get()), has(ModItems.BEDROCK_ORE_FRAGMENTS.get("bismuth").get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.POWDERS.get("tantalum").get())
+                .pattern("SSS").pattern("SSS").pattern("SSS")
+                .define('S', ModItems.BEDROCK_ORE_FRAGMENTS.get("tantalum").get())
+                .unlockedBy(getHasName(ModItems.BEDROCK_ORE_FRAGMENTS.get("tantalum").get()), has(ModItems.BEDROCK_ORE_FRAGMENTS.get("tantalum").get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.POWDERS.get("neodymium").get())
+                .pattern("SSS").pattern("SSS").pattern("SSS")
+                .define('S', ModItems.BEDROCK_ORE_FRAGMENTS.get("neodymium").get())
+                .unlockedBy(getHasName(ModItems.BEDROCK_ORE_FRAGMENTS.get("neodymium").get()), has(ModItems.BEDROCK_ORE_FRAGMENTS.get("neodymium").get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.POWDERS.get("niobium").get())
+                .pattern("SSS").pattern("SSS").pattern("SSS")
+                .define('S', ModItems.BEDROCK_ORE_FRAGMENTS.get("niobium").get())
+                .unlockedBy(getHasName(ModItems.BEDROCK_ORE_FRAGMENTS.get("niobium").get()), has(ModItems.BEDROCK_ORE_FRAGMENTS.get("niobium").get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.POWDERS.get("beryllium").get())
+                .pattern("SSS").pattern("SSS").pattern("SSS")
+                .define('S', ModItems.BEDROCK_ORE_FRAGMENTS.get("beryllium").get())
+                .unlockedBy(getHasName(ModItems.BEDROCK_ORE_FRAGMENTS.get("beryllium").get()), has(ModItems.BEDROCK_ORE_FRAGMENTS.get("beryllium").get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.POWDERS.get("cobalt").get())
+                .pattern("SSS").pattern("SSS").pattern("SSS")
+                .define('S', ModItems.BEDROCK_ORE_FRAGMENTS.get("cobalt").get())
+                .unlockedBy(getHasName(ModItems.BEDROCK_ORE_FRAGMENTS.get("cobalt").get()), has(ModItems.BEDROCK_ORE_FRAGMENTS.get("cobalt").get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.POWDERS.get("zirconium").get())
+                .pattern("SSS").pattern("SSS").pattern("SSS")
+                .define('S', ModItems.BEDROCK_ORE_FRAGMENTS.get("zirconium").get())
+                .unlockedBy(getHasName(ModItems.BEDROCK_ORE_FRAGMENTS.get("zirconium").get()), has(ModItems.BEDROCK_ORE_FRAGMENTS.get("zirconium").get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.POWDERS.get("lanthanium").get())
+                .pattern("SSS").pattern("SSS").pattern("SSS")
+                .define('S', ModItems.BEDROCK_ORE_FRAGMENTS.get("lanthanium").get())
+                .unlockedBy(getHasName(ModItems.BEDROCK_ORE_FRAGMENTS.get("lanthanium").get()), has(ModItems.BEDROCK_ORE_FRAGMENTS.get("lanthanium").get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.POWDERS.get("lithium").get())
+                .pattern("SSS").pattern("SSS").pattern("SSS")
+                .define('S', ModItems.BEDROCK_ORE_FRAGMENTS.get("lithium").get())
+                .unlockedBy(getHasName(ModItems.BEDROCK_ORE_FRAGMENTS.get("lithium").get()), has(ModItems.BEDROCK_ORE_FRAGMENTS.get("lithium").get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.POWDERS.get("strontium").get())
+                .pattern("SSS").pattern("SSS").pattern("SSS")
+                .define('S', ModItems.BEDROCK_ORE_FRAGMENTS.get("strontium").get())
+                .unlockedBy(getHasName(ModItems.BEDROCK_ORE_FRAGMENTS.get("strontium").get()), has(ModItems.BEDROCK_ORE_FRAGMENTS.get("strontium").get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.POWDERS.get("boron").get())
+                .pattern("SSS").pattern("SSS").pattern("SSS")
+                .define('S', ModItems.BEDROCK_ORE_FRAGMENTS.get("boron").get())
+                .unlockedBy(getHasName(ModItems.BEDROCK_ORE_FRAGMENTS.get("boron").get()), has(ModItems.BEDROCK_ORE_FRAGMENTS.get("boron").get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.POWDERS.get("asbestos").get())
+                .pattern("SSS").pattern("SSS").pattern("SSS")
+                .define('S', ModItems.BEDROCK_ORE_FRAGMENTS.get("asbestos").get())
+                .unlockedBy(getHasName(ModItems.BEDROCK_ORE_FRAGMENTS.get("asbestos").get()), has(ModItems.BEDROCK_ORE_FRAGMENTS.get("asbestos").get()))
+                .save(pWriter);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.REINFORCED_STEEL_SCAFFOLD.get())
                 .pattern("SSS")
@@ -60,6 +335,33 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('S', ModItems.STEEL.get())
                 .unlockedBy(getHasName(ModItems.STEEL.get()), has(ModItems.STEEL.get()))
                 .save(pWriter);
+
+        SimpleCookingRecipeBuilder.smelting(
+                        Ingredient.of(ModBlocks.METEOR_IRON_ORE.get()),
+                        RecipeCategory.MISC,
+                        Items.IRON_INGOT,
+                        0.25f,
+                        150)
+                .unlockedBy("has_meteor_iron", has(ModBlocks.METEOR_IRON_ORE.get()))
+                .save(pWriter, new ResourceLocation("hbm_ntm", "iron_ingots_from_smelting_meteor_iron"));
+
+        SimpleCookingRecipeBuilder.smelting(
+                        Ingredient.of(ModBlocks.METEOR_ALUMINUM_ORE.get()),
+                        RecipeCategory.MISC,
+                        ModItems.CRYOLITE_CHUNK.get(),
+                        0.25f,
+                        150)
+                .unlockedBy("has_meteor_aluminum", has(ModBlocks.METEOR_ALUMINUM_ORE.get()))
+                .save(pWriter, new ResourceLocation("hbm_ntm", "cryolite_from_smelting_meteor_aluminum"));
+
+        SimpleCookingRecipeBuilder.smelting(
+                        Ingredient.of(ModBlocks.RARE_EARTH_ORE.get()),
+                        RecipeCategory.MISC,
+                        ModItems.RARE_EARTH_CRYSTALS.get(),
+                        0.25f,
+                        150)
+                .unlockedBy("has_meteor_rare_earth", has(ModBlocks.RARE_EARTH_ORE.get()))
+                .save(pWriter, new ResourceLocation("hbm_ntm", "rare_earth_crystals_from_smelting_meteor_rare_earth"));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.STEEL_BLOCK.get())
                 .pattern("SSS")
@@ -75,6 +377,25 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("SSS")
                 .define('S', ModItems.MINECRAFT_GRADE_COPPER.get())
                 .unlockedBy(getHasName(ModItems.MINECRAFT_GRADE_COPPER.get()), has(ModItems.MINECRAFT_GRADE_COPPER.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.STEEL_BARREL.get())
+                .pattern("SIS")
+                .pattern("S S")
+                .pattern("SIS")
+                .define('S', ModItems.STEEL.get())
+                .define('I', ModItems.STEEL_PLATE.get())
+                .unlockedBy(getHasName(ModItems.STEEL.get()), has(ModItems.STEEL.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.REDSTONE_BATTERY.get())
+                .pattern("IRI")
+                .pattern("SRS")
+                .pattern("IRI")
+                .define('S', ModItems.INSULATOR.get())
+                .define('I', ModItems.IRON_PLATE.get())
+                .define('R', Blocks.REDSTONE_BLOCK)
+                .unlockedBy(getHasName(ModItems.INSULATOR.get()), has(ModItems.INSULATOR.get()))
                 .save(pWriter);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ADVANCED_ALLOY_INGOT.get())
@@ -127,6 +448,24 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('S', ModItems.STEEL.get())
                 .unlockedBy(getHasName(ModItems.STEEL_PLATE.get()), has(ModItems.STEEL_PLATE.get()))
                 .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.STEEL_SHREDDER_BLADES.get())
+                .pattern(" P ")
+                .pattern("PSP")
+                .pattern(" P ")
+                .define('P', ModItems.STEEL_PLATE.get())
+                .define('S', ModItems.STEEL.get())
+                .unlockedBy(getHasName(ModItems.STEEL.get()), has(ModItems.STEEL.get()))
+                .save(pWriter, new ResourceLocation(HBMNTM.MOD_ID, "shredder_blades_from_steel"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.STEEL_SHREDDER_BLADES.get())
+                .pattern("PSP")
+                .pattern("   ")
+                .pattern("   ")
+                .define('P', ModItems.STEEL_PLATE.get())
+                .define('S', ModItems.STEEL_SHREDDER_BLADES.get())
+                .unlockedBy(getHasName(ModItems.STEEL_PLATE.get()), has(ModItems.STEEL_PLATE.get()))
+                .save(pWriter, new ResourceLocation(HBMNTM.MOD_ID, "shredder_blades_from_shredder_blade"));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MICROCHIP.get())
                 .pattern("I  ")
@@ -246,6 +585,24 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
                 .save(pWriter);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CIRCUIT_STAMP.get())
+                .pattern("IS ")
+                .pattern("   ")
+                .pattern("   ")
+                .define('I', ModItems.FLAT_STAMP.get())
+                .define('S', ModItems.WIRE_STAMP.get())
+                .unlockedBy(getHasName(ModItems.WIRE_STAMP.get()), has(ModItems.WIRE_STAMP.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SHREDDER_BLADE_FOUNDRY_MOLD.get())
+                .pattern("IS ")
+                .pattern("   ")
+                .pattern("   ")
+                .define('I', ModItems.STEEL_SHREDDER_BLADES.get())
+                .define('S', ModItems.BLANK_FOUNDRY_MOLD.get())
+                .unlockedBy(getHasName(ModItems.STEEL_SHREDDER_BLADES.get()), has(ModItems.STEEL_SHREDDER_BLADES.get()))
+                .save(pWriter);
+
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CAST_IRON_PLATE.get())
                 .pattern("SBS")
                 .pattern("SBS")
@@ -261,6 +618,38 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("   ")
                 .define('N', ModItems.SILICON_NUGGET.get())
                 .unlockedBy(getHasName(ModItems.SILICON_NUGGET.get()), has(ModItems.SILICON_NUGGET.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.TANTALIUM_CAPACITOR.get())
+                .pattern("I  ")
+                .pattern("S  ")
+                .pattern("W  ")
+                .define('I', ModItems.INSULATOR.get())
+                .define('S', ModItems.STEEL.get())
+                .define('W', ModItems.COPPER_WIRE.get())
+                .unlockedBy(getHasName(ModItems.INSULATOR.get()), has(ModItems.INSULATOR.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CONTROL_UNIT_CASING.get())
+                .pattern("PPP")
+                .pattern("CNN")
+                .pattern("BBB")
+                .define('B', ModItems.BAKELITE_BAR.get())
+                .define('P', ModItems.POLYMER_BAR.get())
+                .define('C', ModItems.CATHODE_RAY_TUBE.get())
+                .define('N', ModItems.PRINTED_CIRCUIT_BOARD.get())
+                .unlockedBy(getHasName(ModItems.POLYMER_BAR.get()), has(ModItems.POLYMER_BAR.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CATHODE_RAY_TUBE.get(), 4)
+                .pattern(" A ")
+                .pattern("PSP")
+                .pattern(" V ")
+                .define('A', ModItems.POWDERS.get("aluminum").get())
+            .define('S', Blocks.GLASS_PANE)
+                .define('P', ModItems.IRON_PLATE.get())
+                .define('V', ModItems.VACUUM_TUBE.get())
+                .unlockedBy(getHasName(ModItems.VACUUM_TUBE.get()), has(ModItems.VACUUM_TUBE.get()))
                 .save(pWriter);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SILICON_NUGGET.get(), 9)

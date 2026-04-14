@@ -211,6 +211,12 @@ public class CrucibleBlockEntity extends BlockEntity implements MenuProvider {
                     pEntity.itemHandler.getStackInSlot(0).shrink(1);
                     pEntity.FLUID_TANK.fill(new FluidStack(ModFluids.MOLTEN_ALUMINUM.get(), 100), IFluidHandler.FluidAction.EXECUTE);
                 }
+            } else if (pEntity.itemHandler.getStackInSlot(9).getItem() == ModItems.CRUCIBLE_TEMPLATES.get("red_copper_production").get()) {
+                if (pEntity.itemHandler.getStackInSlot(0).getItem() == Items.REDSTONE) {
+                    pEntity.ENERGY_STORAGE.extractEnergy(100, false);
+                    pEntity.itemHandler.getStackInSlot(0).shrink(1);
+                    pEntity.FLUID_TANK.fill(new FluidStack(ModFluids.MOLTEN_REDSTONE.get(), 100), IFluidHandler.FluidAction.EXECUTE);
+                }
             }
         }
 

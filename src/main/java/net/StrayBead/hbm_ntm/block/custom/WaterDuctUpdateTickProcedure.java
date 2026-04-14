@@ -71,6 +71,21 @@ public class WaterDuctUpdateTickProcedure {
                                     targetCap.fill(drained, IFluidHandler.FluidAction.EXECUTE);
                                 }
                                 continue;
+                            } else if (targetEnt instanceof SteelBarrelBlockEntity steelBarrelBlockEntity) {
+                                if (steelBarrelBlockEntity.IS_OUTPUTTING) {
+                                    continue;
+                                }
+                                String ductFilter = getDuctFilter(sourceEnt);
+
+                                int boilerPushAmount = 2000;
+                                FluidStack moveStack = new FluidStack(sourceStack.getFluid(), boilerPushAmount);
+
+                                int accepted = targetCap.fill(moveStack, IFluidHandler.FluidAction.SIMULATE);
+                                if (accepted > 0) {
+                                    FluidStack drained = sourceCap.drain(new FluidStack(sourceStack.getFluid(), accepted), IFluidHandler.FluidAction.EXECUTE);
+                                    targetCap.fill(drained, IFluidHandler.FluidAction.EXECUTE);
+                                }
+                                continue;
                             } else if (targetEnt instanceof ZirnoxNuclearReactorBlockEntity) {
                                 String ductFilter = getDuctFilter(sourceEnt);
 

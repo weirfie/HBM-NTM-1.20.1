@@ -61,7 +61,7 @@ public class FluidTankRenderer {
 
     public void render(GuiGraphics guiGraphics, int x, int y, FluidStack fluidStack) {
         RenderSystem.enableBlend();
-        guiGraphics.pose().pushPose(); // Use the pose from GuiGraphics
+        guiGraphics.pose().pushPose();
         {
             guiGraphics.pose().translate(x, y, 0);
             drawFluid(guiGraphics, width, height, fluidStack);

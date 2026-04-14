@@ -134,9 +134,12 @@ public class FatManBlock extends Block {
         boolean doRandomizeTerrain = random.nextFloat() < 0.5F;
 
         if (world instanceof ServerLevel level) {
-            spawnCustomParticles(pos.getX(), pos.getY() + 30, pos.getZ(), 30, 30, 30, 7000);
+            ParticleManager.setClientHeatSource(new Vec3(pos.getX(), pos.getY() + 20, pos.getZ()));
+            spawnCustomParticles(pos.getX(), pos.getY() + 30, pos.getZ(), 30, 30, 30, 7000, true);
             spawnBaseParticles(pos.getX(), pos.getY() + 3, pos.getZ(), 40, 2, 40, 3000, level);
-            spawnCustomParticles(pos.getX(), pos.getY() - 180, pos.getZ(), 5, 80, 5, 3000);
+            spawnCustomParticles(pos.getX(), pos.getY() - 180, pos.getZ(), 5, 80, 5, 3000, false);
+
+            spawnFireRing(pos.getX(), pos.getY() + 3, pos.getZ(), 10.0, 3000);
         }
 
         ShockwaveRenderer.addShockwave(new Vec3(pos.getX(), pos.getY(), pos.getZ()), 600f, 800);
@@ -329,7 +332,7 @@ public class FatManBlock extends Block {
         }
     }
 
-    public static void spawnCustomParticles(double x, double y, double z, double dx, double dy, double dz, int count) {
+    public static void spawnCustomParticles(double x, double y, double z, double dx, double dy, double dz, int count, boolean convectionBehave) {
         RandomSource random = RandomSource.create();
         for (int i = 0; i < count; i++) {
             double offsetX = random.nextGaussian() * dx;
@@ -337,10 +340,10 @@ public class FatManBlock extends Block {
             double offsetZ = random.nextGaussian() * dz;
 
             float baseR = 255f / 255f;
-            float baseG = 150f / 255f;
-            float baseB = 40f / 255f;
+            float baseG = 247f / 255f;
+            float baseB = 94f / 255f;
 
-            float brightness = 0.8f + (random.nextFloat() * 0.3f);
+            float brightness = 0.8f + (random.nextFloat() * 0.8f);
 
             float r = Math.min(1.0f, baseR * brightness);
             float g = Math.min(1.0f, baseG * brightness);
@@ -352,11 +355,11 @@ public class FatManBlock extends Block {
                     (float) (x + offsetX),
                     (float) (y + offsetY),
                     (float) (z + offsetZ),
-                    15.0f,
+                    8f,
                     r, g, b,
                     1.0f,
                     0.0f, 0.2f, 0.0f,
-                    maxAge, 0.005f
+                    maxAge, 0.005f, false, false, convectionBehave, false
             );
         }
     }
@@ -420,6 +423,52 @@ public class FatManBlock extends Block {
                     0.8f,
                     vx, 0.0f, vz,
                     maxAge, 0.1f, true
+            );
+        }
+    }
+
+    public static void spawnFireRing(double x, double y, double z, double radius, int count) {
+        RandomSource random = RandomSource.create();
+
+        float expansionSpeed = 0.03f;
+
+        for (int i = 0; i < count; i++) {
+            double angle = (2 * Math.PI * i) / count;
+
+            double dx = Math.cos(angle);
+            double dz = Math.sin(angle);
+
+            double currentRadius = radius + (random.nextFloat() - 0.5) * 15.0;
+
+            double offsetX = dx * currentRadius;
+            double offsetZ = dz * currentRadius;
+
+            double offsetY = (random.nextFloat() - 0.5) * 2.0;
+
+            float r = 1.0f;
+            float g = 0.8f + (random.nextFloat() * 0.2f);
+            float b = 0.2f;
+
+            int maxAge = 2000 + random.nextInt(400);
+
+            float vx = (float) (dx * expansionSpeed);
+            float vy = 0.1f;
+            float vz = (float) (dz * expansionSpeed);
+
+            ParticleManager.addParticle(
+                    (float) (x + offsetX),
+                    (float) (y + offsetY),
+                    (float) (z + offsetZ),
+                    2f + random.nextFloat() * 2f,
+                    r, g, b,
+                    1.0f,
+                    vx, vy, vz,
+                    maxAge,
+                    0.001f,
+                    false,
+                    true,
+                    false,
+                    false
             );
         }
     }

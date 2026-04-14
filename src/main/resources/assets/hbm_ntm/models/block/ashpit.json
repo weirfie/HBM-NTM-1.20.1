@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/ashpit.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/ashpit",
+    "m_44b97e6f-2856-8f0f-b173-80d6ec0fd9b0": "hbm_ntm:block/ashpit",
+    "Material": "hbm_ntm:block/ashpit",
+    "none": "hbm_ntm:block/ashpit"
+  }
+}

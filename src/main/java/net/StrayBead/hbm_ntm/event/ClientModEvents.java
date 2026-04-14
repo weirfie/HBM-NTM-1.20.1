@@ -36,8 +36,15 @@ public class ClientModEvents {
                 ShallowFoundryBasinRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntites.CRUCIBLE.get(),
                 CrucibleRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntites.SILO_HATCH.get(),
+                SiloHatchBER::new);
         event.registerBlockEntityRenderer(ModBlockEntites.COATED_FLUID_DUCT.get(), DuctRenderer::new);
         event.registerEntityRenderer(ModEntities.FLYING_TERRAIN.get(), FlyingTerrainRenderer::new);
+    }
+
+    @SubscribeEvent
+    public static void onRegisterAdditional(ModelEvent.RegisterAdditional event) {
+        event.register(new net.minecraft.resources.ResourceLocation("hbm_ntm", "block/silo_hatch_door"));
     }
 
     @SubscribeEvent
@@ -62,6 +69,33 @@ public class ClientModEvents {
             event.register((stack, tintIndex) -> {
                 if (tintIndex == 1) {
                     return FluidColorRegistry.getColor(entry.getKey());
+                }
+                return -1;
+            }, entry.getValue().get());
+        }
+
+        for (Map.Entry<String, RegistryObject<Item>> entry : ModItems.BEDROCK_ORE_FRAGMENTS.entrySet()) {
+            event.register((stack, tintIndex) -> {
+                if (tintIndex == 1) {
+                    return BedrockOreFragmentColorRegistry.getColor(entry.getKey());
+                }
+                return -1;
+            }, entry.getValue().get());
+        }
+
+        for (Map.Entry<String, RegistryObject<Item>> entry : ModItems.BILLETS.entrySet()) {
+            event.register((stack, tintIndex) -> {
+                if (tintIndex == 1) {
+                    return BilletColorRegistry.getColor(entry.getKey());
+                }
+                return -1;
+            }, entry.getValue().get());
+        }
+
+        for (Map.Entry<String, RegistryObject<Item>> entry : ModItems.POWDERS.entrySet()) {
+            event.register((stack, tintIndex) -> {
+                if (tintIndex == 1) {
+                    return PowderColorRegistry.getColor(entry.getKey());
                 }
                 return -1;
             }, entry.getValue().get());

@@ -29,7 +29,7 @@ public class ParticlePacket {
 
     public static void handle(ParticlePacket msg, Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
-            FatManBlock.spawnCustomParticles(msg.x, msg.y, msg.z, msg.dx, msg.dy, msg.dz, msg.count);
+            FatManBlock.spawnCustomParticles(msg.x, msg.y, msg.z, msg.dx, msg.dy, msg.dz, msg.count, true);
         });
         ctx.get().setPacketHandled(true);
     }

@@ -39,6 +39,8 @@ public class NTMModMenus {
     public static final RegistryObject<MenuType<AssemblyMachineMenu>> ASSEMBLY_MACHINE_MENU = registerMenuType(AssemblyMachineMenu::new, "assembly_machine_menu");
     public static final RegistryObject<MenuType<OilDerrickMenu>> OIL_DERRICK_MENU = registerMenuType(OilDerrickMenu::new, "oil_derrick_menu");
     public static final RegistryObject<MenuType<CrucibleMenu>> CRUCIBLE_MENU = registerMenuType(CrucibleMenu::new, "crucible_menu");
+    public static final RegistryObject<MenuType<IronCrateMenu>> IRON_CRATE_MENU = registerMenuType(IronCrateMenu::new, "iron_crate_menu");
+    public static final RegistryObject<MenuType<SteelBarrelGuiMenu>> STEEL_BARREL_GUI = registerMenuType(SteelBarrelGuiMenu::new, "steel_barrel_menu");
     public static final RegistryObject<MenuType<MeltdownBlastFurnaceMenu>> BLAST_FURNACE_MENU = registerMenuType(MeltdownBlastFurnaceMenu::new, "blast_furnace_menu");
     public static final RegistryObject<MenuType<FlareStackMenu>> FLARE_STACK_MENU = registerMenuType(FlareStackMenu::new, "flare_stack_menu");
     public static final RegistryObject<MenuType<ArcWelderMenu>> ARC_WELDER_MENU = registerMenuType(ArcWelderMenu::new, "arc_welder_menu");

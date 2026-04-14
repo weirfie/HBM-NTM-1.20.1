@@ -4,7 +4,7 @@
   "flip_v": true,
   "textures": {
     "particle": "hbm_ntm:block/centrifuge",
-    "m_263072dd-d8cd-6739-c2ac-be00bdd1e822": "hbm_ntm:block/ore_acidizer",
+    "m_f90432d4-4f36-e44e-521e-9963977c06dd": "hbm_ntm:block/ore_acidizer",
     "Material": "hbm_ntm:block/ore_acidizer",
     "none": "hbm_ntm:block/ore_acidizer"
   },

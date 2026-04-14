@@ -1,0 +1,7 @@
+{
+  "textures": { "metal": "hbm_ntm:block/steel_deco_frame_texture" },
+  "elements": [
+    { "from": [6, 6, -0.1], "to": [10, 10, 0.4],
+      "faces": { "north": { "uv": [6, 6, 10, 10], "texture": "#metal" } } }
+  ]
+}

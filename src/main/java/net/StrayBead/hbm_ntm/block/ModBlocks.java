@@ -183,6 +183,8 @@ public class ModBlocks {
             () -> new GenericLiquidBlock(ModFluids.MOLTEN_ALUMINUM, MapColor.SNOW));
     public static final RegistryObject<Block> MOLTEN_FUEL = BLOCKS.register("molten_fuel",
             () -> new GenericLiquidBlock(ModFluids.MOLTEN_FUEL, MapColor.SNOW));
+    public static final RegistryObject<Block> MOLTEN_REDSTONE = BLOCKS.register("molten_redstone",
+            () -> new GenericLiquidBlock(ModFluids.MOLTEN_REDSTONE, MapColor.SNOW));
     public static final RegistryObject<Block> HEAVY_WATER = BLOCKS.register("heavy_water",
             () -> new GenericLiquidBlock(ModFluids.HEAVY_WATER, MapColor.SNOW));
 
@@ -431,6 +433,8 @@ public class ModBlocks {
             () -> new IndustrialCoolingTowerBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
     public static final RegistryObject<Block> THE_GADGET = registerBlock("the_gadget",
             () -> new TheGadgetBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
+    public static final RegistryObject<Block> THE_PROTOTYPE = registerBlock("the_prototype",
+            () -> new VaultBlastDoorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
     public static final RegistryObject<Block> CENTRIFUGE = registerBlock("centrifuge",
             () -> new CentrifugeBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
     public static final RegistryObject<Block> CORIUM = registerBlock("corium",
@@ -497,6 +501,22 @@ public class ModBlocks {
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
     public static final RegistryObject<Block> SULFUR_ORE = registerBlock("sulfur_ore",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)));
+    public static final RegistryObject<Block> BROKEN_METEORITE_BLOCK = registerBlock("broken_meteorite_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> METEORITE_COBBLESTONE = registerBlock("meteorite_cobblestone",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> METEOR_COBALT_ORE = registerBlock("meteor_cobalt_ore",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> METEOR_IRON_ORE = registerBlock("meteor_iron_ore",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> METEOR_COPPER_ORE = registerBlock("meteor_copper_ore",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> METEOR_ALUMINUM_ORE = registerBlock("meteor_aluminum_ore",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> METEOR_RARE_EARTH_ORE = registerBlock("meteor_rare_earth_ore",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> HOT_METEORITE_COBBLESTONE = registerBlock("hot_meteorite_cobblestone",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
     public static final RegistryObject<Block> BUNKER_DOOR = BLOCKS.register("bunker_door",
             () -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).sound(SoundType.METAL).noOcclusion(), BlockSetType.IRON));
     public static final RegistryObject<Block> DOOR_METAL = BLOCKS.register("door_metal",
@@ -511,10 +531,90 @@ public class ModBlocks {
             () -> new SteelPoleBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().dynamicShape()));
     public static final RegistryObject<Block> ANTENNA_TOP = registerBlock("antenna_top",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().dynamicShape()));
+    public static final RegistryObject<Block> CONCRETE_SLAB = registerBlock("concrete_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.GRAY_CONCRETE)));
+    public static final RegistryObject<Block> CONCRETE_BRICK_STAIRS = registerBlock("concrete_brick_stairs",
+            () -> new StairBlock(() -> ModBlocks.CONCRETE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.GRAY_CONCRETE)));
+    public static final RegistryObject<Block> BROKEN_CONCRETE_BRICK_SLAB = registerBlock("broken_concrete_brick_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.GRAY_CONCRETE)));
+    public static final RegistryObject<Block> CONCRETE_BRICK_SLAB = registerBlock("concrete_brick_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.GRAY_CONCRETE)));
+    public static final RegistryObject<Block> CONCRETE_STAIRS = registerBlock("concrete_stairs",
+            () -> new StairBlock(Blocks.LIGHT_GRAY_CONCRETE::defaultBlockState, BlockBehaviour.Properties.copy(Blocks.GRAY_CONCRETE)));
+    public static final RegistryObject<Block> CRACKED_CONCRETE_BRICK_STAIRS = registerBlock("cracked_concrete_brick_stairs",
+            () -> new StairBlock(() -> ModBlocks.CRACKED_CONCRETE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.GRAY_CONCRETE)));
     public static final RegistryObject<Block> TAPE_RECORDER = registerBlock("tape_recorder",
             () -> new SteelPoleBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().dynamicShape()));
     public static final RegistryObject<Block> PAINTABLE_COATED_UNIVERSAL_FLUID_DUCT = registerBlock("paintable_coated_universal_fluid_duct",
             () -> new PaintableCoatedUniversalFluidDuctBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
+    public static final RegistryObject<Block> CHAINLINK_FENCE = registerBlock("chainlink_fence",
+            () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().dynamicShape()));
+    public static final RegistryObject<Block> CHAINLINK_FENCE_POST = registerBlock("chainlink_fence_post",
+            () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().dynamicShape()));
+    public static final RegistryObject<Block> ASH = registerBlock("ash",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.SAND)));
+    public static final RegistryObject<Block> BORON_SAND = registerBlock("boron_sand",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.SAND)));
+    public static final RegistryObject<Block> LEAD_SAND = registerBlock("lead_sand",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.SAND)));
+    public static final RegistryObject<Block> URANIUM_SAND = registerBlock("uranium_sand",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.SAND)));
+    public static final RegistryObject<Block> POLONIUM_SAND = registerBlock("polonium_sand",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.SAND)));
+    public static final RegistryObject<Block> BORON_GLASS = registerBlock("boron_glass",
+            () -> new QuartzGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).noOcclusion()));
+    public static final RegistryObject<Block> LEAD_GLASS = registerBlock("lead_glass",
+            () -> new QuartzGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).noOcclusion()));
+    public static final RegistryObject<Block> URANIUM_GLASS = registerBlock("uranium_glass",
+            () -> new QuartzGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).noOcclusion()));
+    public static final RegistryObject<Block> TRINITY_GLASS = registerBlock("trinity_glass",
+            () -> new QuartzGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).noOcclusion()));
+    public static final RegistryObject<Block> POLONIUM_GLASS = registerBlock("polonium_glass",
+            () -> new QuartzGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).noOcclusion()));
+    public static final RegistryObject<Block> ASH_GLASS = registerBlock("ash_glass",
+            () -> new QuartzGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).noOcclusion()));
+    public static final RegistryObject<Block> POLARIZED_GLASS = registerBlock("polarized_glass",
+            () -> new QuartzGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).noOcclusion()));
+    public static final RegistryObject<Block> SILO_HATCH_FRAME = registerBlock("silo_hatch_frame",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> SILO_HATCH_OPENER = registerBlock("silo_hatch_opener",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> IRON_CRATE = registerBlock("iron_crate",
+            () -> new IronCrateBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> STEEL_CRATE = registerBlock("steel_crate",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> DESH_CRATE = registerBlock("desh_crate",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> TUNGSTEN_CRATE = registerBlock("tungsten_crate",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> TEMPLATE_CRATE = registerBlock("template_crate",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> SAFE = registerBlock("safe",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> MASS_STORAGE_UNIT = registerBlock("mass_storage_unit",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> AUTOMATIC_CRAFTING_TABLE = registerBlock("automatic_crafting_table",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> BURNER_PRESS_PREHEATER = registerBlock("burner_press_preheater",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> STEEL_BARREL = registerBlock("steel_barrel",
+            () -> new SteelBarrelBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().dynamicShape()));
+    public static final RegistryObject<Block> CYCLOTRON = registerBlock("cyclotron",
+            () -> new CyclotronBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().dynamicShape()));
+    public static final RegistryObject<Block> ASHPIT = registerBlock("ashpit",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().dynamicShape()));
+    public static final RegistryObject<Block> VAULT_TECH_BLAST_DOOR = registerBlock("vault_tech_blast_door",
+            () -> new VaultBlastDoorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().dynamicShape()));
+    public static final RegistryObject<Block> SLIDING_BLAST_DOOR = registerBlock("sliding_blast_door",
+            () -> new SlidingBlastDoorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().dynamicShape()));
+    public static final RegistryObject<Block> FIRE_DOOR = registerBlock("fire_door",
+            () -> new VaultBlastDoorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().dynamicShape()));
+    public static final RegistryObject<Block> SILO_HATCH = registerBlock("silo_hatch",
+            () -> new SiloHatchBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().dynamicShape()));
+    public static final RegistryObject<Block> FLEIJA = registerBlock("fleija",
+            () -> new VaultBlastDoorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().dynamicShape()));
+    public static final RegistryObject<Block> THE_BLUE_RINSE = registerBlock("the_blue_rinse",
+            () -> new VaultBlastDoorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().dynamicShape()));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

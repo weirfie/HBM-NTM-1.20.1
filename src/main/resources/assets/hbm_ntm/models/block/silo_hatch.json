@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/silo_hatch.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/silo_hatch",
+    "m_9d2af439-2b1e-c5e9-c7b6-a6263d9b4336": "hbm_ntm:block/silo_hatch",
+    "Material": "hbm_ntm:block/silo_hatch",
+    "none": "hbm_ntm:block/silo_hatch"
+  }
+}

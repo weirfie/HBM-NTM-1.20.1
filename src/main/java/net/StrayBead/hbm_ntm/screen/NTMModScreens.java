@@ -23,6 +23,8 @@ public class NTMModScreens {
             MenuScreens.register(NTMModMenus.CRUCIBLE_MENU.get(), CrucibleScreen::new);
             MenuScreens.register(NTMModMenus.ARC_WELDER_MENU.get(), ArcWelderScreen::new);
             MenuScreens.register(NTMModMenus.FLARE_STACK_MENU.get(), FlareStackScreen::new);
+            MenuScreens.register(NTMModMenus.STEEL_BARREL_GUI.get(), SteelBarrelGuiScreen::new);
+            MenuScreens.register(NTMModMenus.IRON_CRATE_MENU.get(), IronCrateScreen::new);
             MenuScreens.register(NTMModMenus.BLAST_FURNACE_MENU.get(), MeltdownBlastFurnaceScreen::new);
             MenuScreens.register(NTMModMenus.SOLDERING_STATION_MENU.get(), SolderingStationScreen::new);
             MenuScreens.register(NTMModMenus.SPARK_ENERGY_BATTERY_GUI.get(), SparkEnergyBatteryScreen::new);

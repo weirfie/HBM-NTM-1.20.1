@@ -1,6 +1,13 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "block/cube",
   "textures": {
-    "all": "hbm_ntm:block/neutron_reflector"
-  }
+    "down": "hbm_ntm:block/neutron_reflector_top",
+    "up": "hbm_ntm:block/neutron_reflector_top",
+    "north": "hbm_ntm:block/neutron_reflector",
+    "east": "hbm_ntm:block/neutron_reflector",
+    "south": "hbm_ntm:block/neutron_reflector",
+    "west": "hbm_ntm:block/neutron_reflector",
+    "particle": "hbm_ntm:block/neutron_reflector_top"
+  },
+  "render_type": "solid"
 }

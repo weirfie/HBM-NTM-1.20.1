@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "hbm_ntm:block/fleija" },
+    "facing=east":  { "model": "hbm_ntm:block/fleija", "y": 90 },
+    "facing=south": { "model": "hbm_ntm:block/fleija", "y": 180 },
+    "facing=west":  { "model": "hbm_ntm:block/fleija", "y": 270 }
+  }
+}

@@ -8,6 +8,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -41,6 +42,14 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModBlocks.RARE_EARTH_ORE.get());
                         pOutput.accept(ModBlocks.TITANIUM_ORE.get());
                         pOutput.accept(ModBlocks.TUNGSTEN_ORE.get());
+                        pOutput.accept(ModBlocks.METEOR_IRON_ORE.get());
+                        pOutput.accept(ModBlocks.METEOR_COPPER_ORE.get());
+                        pOutput.accept(ModBlocks.METEOR_ALUMINUM_ORE.get());
+                        pOutput.accept(ModBlocks.METEOR_RARE_EARTH_ORE.get());
+                        pOutput.accept(ModBlocks.HOT_METEORITE_COBBLESTONE.get());
+                        pOutput.accept(ModBlocks.METEOR_COBALT_ORE.get());
+                        pOutput.accept(ModBlocks.METEORITE_COBBLESTONE.get());
+                        pOutput.accept(ModBlocks.BROKEN_METEORITE_BLOCK.get());
                         pOutput.accept(ModBlocks.STEEL_BLOCK.get());
                         pOutput.accept(ModBlocks.RED_COPPER_BLOCK.get());
                         pOutput.accept(ModBlocks.POWER_SWITCH.get());
@@ -83,14 +92,6 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModItems.URANIUM_BEDROCK_ORE.get());
                         pOutput.accept(ModItems.URANIUM_ROD_NEUTRON_SOURCE.get());
                         pOutput.accept(ModItems.MACHINE_TEMPLATE_FOLDER.get());
-                        pOutput.accept(ModBlocks.FUEL_ROD_NORMAL.get());
-                        pOutput.accept(ModBlocks.FUEL_ROD_EMPTY.get());
-                        pOutput.accept(ModBlocks.CONTROL_ROD.get());
-                        pOutput.accept(ModBlocks.GRAPHITE_MODERATOR.get());
-                        pOutput.accept(ModBlocks.STEAM_CHANNEL.get());
-                        pOutput.accept(ModBlocks.STRUCTURAL_COLUMN.get());
-                        pOutput.accept(ModBlocks.NEUTRON_REFLECTOR.get());
-                        pOutput.accept(ModBlocks.NEUTRON_ABSORBER.get());
                         pOutput.accept(ModItems.ENERGY_INJECTOR.get());
                         pOutput.accept(ModItems.RADIATION_MEASURER.get());
                         pOutput.accept(ModItems.FLUID_MEASURER.get());
@@ -98,26 +99,15 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModBlocks.ULTRA_DENSE_STEAM_PIPE.get());
                         pOutput.accept(ModBlocks.SUPER_DENSE_STEAM_PIPE.get());
                         pOutput.accept(ModBlocks.DENSE_STEAM_PIPE.get());
-                        pOutput.accept(ModBlocks.BURNER_PRESS.get());
                         pOutput.accept(ModBlocks.STEAM_PIPE.get());
                         pOutput.accept(ModBlocks.WATER_DUCT.get());
-                        pOutput.accept(ModBlocks.STEAM_SEPARATOR.get());
                         pOutput.accept(ModBlocks.CONCRETE_BRICKS.get());
-                        pOutput.accept(ModBlocks.CONTROL_SYSTEM.get());
                         pOutput.accept(ModItems.GEIGER_COUNTER.get());
                         pOutput.accept(ModItems.INTEGRATED_CIRCUIT_BOARD.get());
                         pOutput.accept(ModBlocks.DEAD_GRASS.get());
                         pOutput.accept(ModBlocks.REINFORCED_GLASS.get());
                         pOutput.accept(ModBlocks.WARNING_BLOCK.get());
                         pOutput.accept(ModBlocks.WOOD_BRICKS.get());
-                        pOutput.accept(ModBlocks.PWR_HEATSINK.get());
-                        pOutput.accept(ModBlocks.PWR_HEAT_EXCHANGER.get());
-                        pOutput.accept(ModBlocks.PWR_CONTROL_ROD.get());
-                        pOutput.accept(ModBlocks.PWR_FUEL_ROD.get());
-                        pOutput.accept(ModBlocks.PWR_NEUTRON_SOURCE.get());
-                        pOutput.accept(ModBlocks.PWR_NEUTRON_REFLECTOR.get());
-                        pOutput.accept(ModBlocks.PWR_COOLANT_CHANNEL.get());
-                        pOutput.accept(ModBlocks.PWR_CONTROLLER.get());
                         pOutput.accept(ModBlocks.SOLAR_PANEL.get());
                         pOutput.accept(ModItems.CENTRIFUGED_URANIUM_BEDROCK_ORE.get());
                         pOutput.accept(ModBlocks.FAN.get());
@@ -127,27 +117,14 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModBlocks.IVY_MIKE.get());
                         pOutput.accept(ModBlocks.CASTLE_BRAVO.get());
                         pOutput.accept(ModBlocks.TSAR_BOMBA.get());
-                        pOutput.accept(ModBlocks.LEVIATHAN_STEAM_TURBINE.get());
-                        pOutput.accept(ModBlocks.COOLING_TOWER.get());
                         pOutput.accept(ModItems.NUKE_DETONATOR.get());
                         pOutput.accept(ModBlocks.WATER_TANK.get());
                         pOutput.accept(ModBlocks.SPARK_ENERGY_BATTERY.get());
                         pOutput.accept(ModBlocks.PARTICLE_ACCELERATOR_PLATING.get());
                         pOutput.accept(ModBlocks.SCHRABIDIUM_BLOCK.get());
                         pOutput.accept(ModBlocks.DET_CORD.get());
-                        pOutput.accept(ModBlocks.SHREDDER.get());
                         pOutput.accept(ModItems.DETONATOR.get());
                         pOutput.accept(ModBlocks.RADIOACTIVE_BARREL.get());
-                        pOutput.accept(ModBlocks.LEAD_ANVIL.get());
-                        pOutput.accept(ModBlocks.BLAST_FURNACE.get());
-                        pOutput.accept(ModBlocks.COMBUSTION_GENERATOR.get());
-                        pOutput.accept(ModBlocks.RADIATION_ABSORBER.get());
-                        pOutput.accept(ModBlocks.ENHANCED_RADIATION_ABSORBER.get());
-                        pOutput.accept(ModBlocks.ADVANCED_RADIATION_ABSORBER.get());
-                        pOutput.accept(ModBlocks.ELITE_RADIATION_ABSORBER.get());
-                        pOutput.accept(ModBlocks.PLAYER_DECONTAMINATOR.get());
-                        pOutput.accept(ModBlocks.CHLORINE_VENT.get());
-                        pOutput.accept(ModBlocks.CHLORINE_SEAL.get());
                         pOutput.accept(ModBlocks.MOLDY_DEBRIS.get());
                         pOutput.accept(ModBlocks.ASPHALT.get());
                         pOutput.accept(ModBlocks.REINFORCED_GLOWSTONE.get());
@@ -186,13 +163,14 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModBlocks.DUCRETE_BRICKS.get());
                         pOutput.accept(ModBlocks.REINFORCED_DUCRETE.get());
                         pOutput.accept(ModBlocks.REINFORCED_CMB_BRICKS.get());
+                        pOutput.accept(ModBlocks.CONCRETE_SLAB.get());
+                        pOutput.accept(ModBlocks.CONCRETE_BRICK_STAIRS.get());
+                        pOutput.accept(ModBlocks.BROKEN_CONCRETE_BRICK_SLAB.get());
+                        pOutput.accept(ModBlocks.CONCRETE_BRICK_SLAB.get());
+                        pOutput.accept(ModBlocks.CONCRETE_STAIRS.get());
+                        pOutput.accept(ModBlocks.CRACKED_CONCRETE_BRICK_STAIRS.get());
                         pOutput.accept(ModBlocks.CONVEYOR_BELT.get());
                         pOutput.accept(ModItems.SCREWDRIVER.get());
-                        pOutput.accept(ModBlocks.INDUSTRIAL_COOLING_TOWER.get());
-                        pOutput.accept(ModBlocks.CENTRIFUGE.get());
-                        pOutput.accept(ModBlocks.CONVEYOR_INSERTER.get());
-                        pOutput.accept(ModBlocks.CONVEYOR_EJECTOR.get());
-                        pOutput.accept(ModBlocks.ORE_ACIDIZER.get());
                         pOutput.accept(ModBlocks.CONVEYOR_SPLITTER.get());
                         pOutput.accept(ModItems.STEEL_SPHERE.get());
                         pOutput.accept(ModItems.FLAT_STEEL_CASING.get());
@@ -202,29 +180,12 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModItems.SHORT_RANGE_TARGET_DESIGNATOR.get());
                         pOutput.accept(ModItems.LONG_RANGE_TARGET_DESIGNATOR.get());
                         pOutput.accept(ModItems.CABLE_DRUM.get());
-                        pOutput.accept(ModBlocks.BOILER.get());
                         pOutput.accept(ModItems.INFINITE_BATTERY.get());
                         pOutput.accept(ModItems.SIM_CARD.get());
                         pOutput.accept(ModItems.SIM_CARD_ACTIVATOR.get());
                         pOutput.accept(ModBlocks.SIM_CARD_SIGNAL_BROADCASTING_DEVICE.get());
                         pOutput.accept(ModBlocks.SHORT_RANGE_SIM_CARD_DATA_SENDER.get());
-                        pOutput.accept(ModBlocks.COPPER_CABLE.get());
-                        pOutput.accept(ModBlocks.TANK.get());
-                        pOutput.accept(ModBlocks.STEAM_CONDENSER.get());
-                        pOutput.accept(ModBlocks.SMOKESTACK.get());
-                        pOutput.accept(ModBlocks.HYDRAULIC_FRACKING_TOWER.get());
-                        pOutput.accept(ModBlocks.HYDROTREATER.get());
-                        pOutput.accept(ModBlocks.COMBINATION_OVEN.get());
-                        pOutput.accept(ModBlocks.CATALYTIC_CRACKING_TOWER.get());
-                        pOutput.accept(ModBlocks.FEL.get());
-                        pOutput.accept(ModBlocks.SILEX.get());
-                        pOutput.accept(ModBlocks.BREEDING_REACTOR.get());
-                        pOutput.accept(ModBlocks.ELECTROLYSIS_MACHINE.get());
                         pOutput.accept(ModBlocks.CONVEYOR_CHAIN_LIFT.get());
-                        pOutput.accept(ModBlocks.OIL_REFINERY.get());
-                        pOutput.accept(ModBlocks.OIL_DERRICK.get());
-                        pOutput.accept(ModBlocks.NUCLEAR_SIREN.get());
-                        pOutput.accept(ModBlocks.ZIRNOX_NUCLEAR_REACTOR.get());
                         pOutput.accept(ModBlocks.UNIVERSAL_FLUID_DUCT.get());
                         pOutput.accept(ModItems.INFINITE_WATER_TANK.get());
                         pOutput.accept(ModItems.CORIUM_BUCKET.get());
@@ -232,44 +193,17 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModItems.FAT_MAN_DROP_LOCATION_DESIGNATOR.get());
                         pOutput.accept(ModItems.INFINITE_FLUID_BARREL.get());
                         pOutput.accept(ModBlocks.CHEMICAL_PLANT.get());
-                        pOutput.accept(ModBlocks.MATTER_GIGAFACTORY.get());
-                        pOutput.accept(ModBlocks.BATTERY_SOCKET.get());
                         pOutput.accept(ModBlocks.REDSTONE_BATTERY.get());
-                        pOutput.accept(ModBlocks.INDUSTRIAL_STEAM_TURBINE.get());
-                        pOutput.accept(ModBlocks.FIREBOX.get());
-                        pOutput.accept(ModBlocks.HEATING_OVEN.get());
-                        pOutput.accept(ModBlocks.FRACTIONATING_TOWER.get());
-                        pOutput.accept(ModBlocks.FRACTIONATING_TOWER_SEPARATOR.get());
-                        pOutput.accept(ModBlocks.DRAINAGE_PIPE.get());
-                        pOutput.accept(ModBlocks.CHEMICAL_FACTORY.get());
-                        pOutput.accept(ModBlocks.ASSEMBLY_MACHINE.get());
                         pOutput.accept(ModBlocks.SILO_LAUNCH_PAD.get());
                         pOutput.accept(ModItems.HIGH_EXPLOSIVE_MISSILE.get());
                         pOutput.accept(ModItems.INCENDIARY_MISSILE.get());
                         pOutput.accept(ModItems.ANTI_BALLISTIC_MISSILE.get());
                         pOutput.accept(ModItems.NUCLEAR_MISSILE.get());
-                        pOutput.accept(ModBlocks.WOOD_BURNING_GENERATOR.get());
-                        pOutput.accept(ModBlocks.INDUSTRIAL_BOILER.get());
-                        pOutput.accept(ModBlocks.INDUSTRIAL_COMBUSTION_GENERATOR.get());
-                        pOutput.accept(ModBlocks.CRUCIBLE.get());
-                        pOutput.accept(ModBlocks.SOLDERING_STATION.get());
-                        pOutput.accept(ModBlocks.LARGE_ELECTRICITY_PYLON.get());
-                        pOutput.accept(ModBlocks.DEUTERIUM_EXTRACTION_TOWER.get());
-                        pOutput.accept(ModBlocks.ARC_WELDER.get());
-                        pOutput.accept(ModBlocks.FLARE_STACK.get());
-                        pOutput.accept(ModBlocks.COMPRESSOR.get());
-                        pOutput.accept(ModBlocks.LARGE_MINING_DRILL.get());
-                        pOutput.accept(ModBlocks.EXPOSURE_CHAMBER.get());
-                        pOutput.accept(ModBlocks.ELECTRIC_ARC_FURNACE.get());
-                        pOutput.accept(ModBlocks.VACUUM_REFINERY.get());
-                        pOutput.accept(ModBlocks.PUMPJACK.get());
-                        pOutput.accept(ModBlocks.CATALYTIC_REFORMER.get());
-                        pOutput.accept(ModBlocks.SHALLOW_FOUNDRY_BASIN.get());
-                        pOutput.accept(ModBlocks.TURBOFAN.get());
                         pOutput.accept(ModBlocks.STEEL_DECO_BLOCK.get());
                         pOutput.accept(ModBlocks.STEEL_POLE.get());
                         pOutput.accept(ModBlocks.ANTENNA_TOP.get());
                         pOutput.accept(ModBlocks.TAPE_RECORDER.get());
+                        pOutput.accept(ModBlocks.STEEL_BARREL.get());
                     })
                     .build());
 
@@ -297,6 +231,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SATURNITE_INGOT.get());
                         output.accept(ModItems.STARMETAL_INGOT.get());
                         output.accept(ModItems.EUPHEMIUM_INGOT.get());
+                        output.accept(ModItems.URANIUM_INGOT.get());
                         output.accept(ModItems.DINEUTRONIUM_INGOT.get());
                         output.accept(ModItems.BISMUTH_INGOT.get());
                         output.accept(ModItems.AIRSTRIKE_DESIGNATOR.get());
@@ -356,9 +291,46 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.PRINTED_SILICON_WAFER.get());
                         output.accept(ModItems.CIRCUIT_STAMP.get());
                         output.accept(ModBlocks.TEST.get());
+                        for (RegistryObject<Item> item : ModItems.BILLETS.values()) {
+                            output.accept(item.get());
+                        }
+                        output.accept(ModItems.COAL_COKE.get());
+                        output.accept(ModItems.LIGNITE_COKE.get());
+                        output.accept(ModItems.PETROLEUM_COKE.get());
+                        output.accept(ModItems.LIGNITE.get());
+                        output.accept(ModItems.INFERNAL_COAL.get());
+                        for (RegistryObject<Item> item : ModItems.POWDERS.values()) {
+                            output.accept(item.get());
+                        }
                         for (RegistryObject<Item> item : ModItems.BEDROCK_ORE_NAMES.values()) {
                             output.accept(item.get());
                         }
+                        output.accept(ModItems.CRYSTALLINE_IRON_FRAGMENT.get());
+                        output.accept(ModItems.CRYSTALLINE_COPPER_FRAGMENT.get());
+                        output.accept(ModItems.CRYSTALLINE_LITHIUM_FRAGMENT.get());
+                        output.accept(ModItems.CRYSTALLINE_SILICON_FRAGMENT.get());
+                        output.accept(ModItems.CRYSTALLINE_LEAD_FRAGMENT.get());
+                        output.accept(ModItems.CRYSTALLINE_TITANIUM_FRAGMENT.get());
+                        output.accept(ModItems.CRYSTALLINE_ALUMINUM_FRAGMENT.get());
+                        output.accept(ModItems.CRYSTALLINE_SULFUR_FRAGMENT.get());
+                        output.accept(ModItems.CRYSTALLINE_CALCIUM_FRAGMENT.get());
+                        output.accept(ModItems.CRYSTALLINE_BISMUTH_FRAGMENT.get());
+                        output.accept(ModItems.CRYSTALLINE_RADIUM_FRAGMENT.get());
+                        output.accept(ModItems.CRYSTALLINE_TECHNETIUM_FRAGMENT.get());
+                        output.accept(ModItems.CRYSTALLINE_POLONIUM_FRAGMENT.get());
+                        output.accept(ModItems.CRYSTALLINE_URANIUM_FRAGMENT.get());
+                        for (RegistryObject<Item> item : ModItems.BEDROCK_ORE_FRAGMENTS.values()) {
+                            output.accept(item.get());
+                        }
+                        output.accept(ModItems.CONTROL_UNIT.get());
+                        output.accept(ModItems.CAPACITOR.get());
+                        output.accept(ModItems.TANTALIUM_CAPACITOR.get());
+                        output.accept(ModItems.CONTROL_UNIT_CASING.get());
+                        output.accept(ModItems.SPEED_UPGRADE.get());
+                        output.accept(ModItems.CATHODE_RAY_TUBE.get());
+                        output.accept(ModItems.ATOMIC_CLOCK.get());
+                        output.accept(ModItems.VERSATILE_INTEGRATED_CIRCUIT.get());
+                        output.accept(ModItems.SOLID_STATE_QUANTUM_PROCESSOR.get());
                     }).build());
 
     public static final RegistryObject<CreativeModeTab> NTM_TEMPLATES = CREATIVE_MODE_TABS.register("hbm_ntm_templates",
@@ -403,7 +375,7 @@ public class ModCreativeModeTabs {
 
     public static final RegistryObject<CreativeModeTab> NTM_MACHINE_ITEMS_AND_FUEL = CREATIVE_MODE_TABS.register("hbm_ntm_machine_items_and_fuel",
             () -> CreativeModeTab.builder()
-                    .icon(() -> new ItemStack(ModItems.ZIRCONIUM_CUBE.get()))
+                    .icon(() -> new ItemStack(ModItems.RTG_PELLETS.get("plutonium_238").get()))
                     .title(Component.translatable("creativetab.hbm_ntm_machine_items_and_fuel"))
                     .displayItems((parameters, output) -> {
                         for (RegistryObject<Item> item : ModItems.RTG_PELLETS.values()) {
@@ -428,6 +400,14 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.ANTIMATTER_CELL.get());
                         output.accept(ModItems.ANTISCHRABIDIUM_CELL.get());
                         output.accept(ModItems.GASEOUS_BALEFIRE_CELL.get());
+                        output.accept(ModItems.EMPTY_PARTICLE_CAPSULE.get());
+                        output.accept(ModItems.HYDROGEN_ION_CAPSULE.get());
+                        output.accept(ModItems.SPARKTICLE_CAPSULE.get());
+                        output.accept(ModItems.DARK_MATTER_CAPSULE.get());
+                        output.accept(ModItems.STRANGE_QUARK_CAPSULE.get());
+                        output.accept(ModItems.LEAD_ION_CAPSULE.get());
+                        output.accept(ModItems.MUON_CAPSULE.get());
+                        output.accept(ModItems.THE_DIGAMMA_PARTICLE.get());
                         for (RegistryObject<Item> item : ModItems.CANISTERS.values()) {
                             output.accept(item.get());
                         }
@@ -459,6 +439,153 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SHELL_FOUNDRY_MOLD.get());
                         output.accept(ModItems.PIPE_FOUNDRY_MOLD.get());
                         output.accept(ModItems.DYATLOV_INSTANT_MELTDOWN_APPLICATOR.get());
+                    }).build());
+
+    public static final RegistryObject<CreativeModeTab> NTM_MACHINES = CREATIVE_MODE_TABS.register("ntm_machines",
+            () -> CreativeModeTab.builder()
+                    .icon(() -> new ItemStack(ModBlocks.PWR_CONTROLLER.get()))
+                    .title(Component.translatable("creativetab.ntm_machines"))
+                    .displayItems((parameters, output) -> {
+                        output.accept(ModBlocks.NUCLEAR_SIREN.get());
+                        output.accept(ModItems.CORRUPTED_BROADCASTER.get());
+                        output.accept(ModItems.SUIT_BATTERY.get());
+                        output.accept(ModBlocks.CHAINLINK_FENCE.get());
+                        output.accept(ModBlocks.CHAINLINK_FENCE_POST.get());
+                        output.accept(ModBlocks.ASH.get());
+                        output.accept(ModBlocks.BORON_SAND.get());
+                        output.accept(ModBlocks.LEAD_SAND.get());
+                        output.accept(ModBlocks.URANIUM_SAND.get());
+                        output.accept(ModBlocks.POLONIUM_SAND.get());
+                        output.accept(ModBlocks.BORON_GLASS.get());
+                        output.accept(ModBlocks.LEAD_GLASS.get());
+                        output.accept(ModBlocks.URANIUM_GLASS.get());
+                        output.accept(ModBlocks.TRINITY_GLASS.get());
+                        output.accept(ModBlocks.POLONIUM_GLASS.get());
+                        output.accept(ModBlocks.ASH_GLASS.get());
+                        output.accept(ModBlocks.POLARIZED_GLASS.get());
+                        output.accept(ModBlocks.SILO_HATCH_FRAME.get());
+                        output.accept(ModBlocks.SILO_HATCH_OPENER.get());
+                        output.accept(ModBlocks.VAULT_TECH_BLAST_DOOR.get());
+                        output.accept(ModBlocks.SLIDING_BLAST_DOOR.get());
+                        output.accept(ModBlocks.FIRE_DOOR.get());
+                        output.accept(ModItems.TRANSITION_SEAL.get());
+                        output.accept(ModBlocks.SILO_HATCH.get());
+                        output.accept(ModBlocks.IRON_CRATE.get());
+                        output.accept(ModBlocks.STEEL_CRATE.get());
+                        output.accept(ModBlocks.DESH_CRATE.get());
+                        output.accept(ModBlocks.TUNGSTEN_CRATE.get());
+                        output.accept(ModBlocks.TEMPLATE_CRATE.get());
+                        output.accept(ModBlocks.SAFE.get());
+                        output.accept(ModBlocks.MASS_STORAGE_UNIT.get());
+                        output.accept(ModBlocks.AUTOMATIC_CRAFTING_TABLE.get());
+                        output.accept(ModBlocks.BURNER_PRESS_PREHEATER.get());
+                        output.accept(ModBlocks.LEAD_ANVIL.get());
+                        output.accept(ModBlocks.BURNER_PRESS.get());
+                        output.accept(ModBlocks.FIREBOX.get());
+                        output.accept(ModBlocks.HEATING_OVEN.get());
+                        output.accept(ModBlocks.ASHPIT.get());
+                        output.accept(ModBlocks.COMBINATION_OVEN.get());
+                        output.accept(ModBlocks.CRUCIBLE.get());
+                        output.accept(ModBlocks.BOILER.get());
+                        output.accept(ModBlocks.INDUSTRIAL_BOILER.get());
+                        output.accept(ModBlocks.SHALLOW_FOUNDRY_BASIN.get());
+                        output.accept(ModBlocks.BLAST_FURNACE.get());
+                        output.accept(ModBlocks.CENTRIFUGE.get());
+                        output.accept(ModBlocks.FEL.get());
+                        output.accept(ModBlocks.SILEX.get());
+                        output.accept(ModBlocks.ORE_ACIDIZER.get());
+                        output.accept(ModBlocks.BREEDING_REACTOR.get());
+                        output.accept(ModBlocks.WOOD_BURNING_GENERATOR.get());
+                        output.accept(ModBlocks.INDUSTRIAL_COMBUSTION_GENERATOR.get());
+                        output.accept(ModBlocks.ZIRNOX_NUCLEAR_REACTOR.get());
+                        output.accept(ModBlocks.CYCLOTRON.get());
+                        output.accept(ModBlocks.EXPOSURE_CHAMBER.get());
+                        output.accept(ModBlocks.FUEL_ROD_EMPTY.get());
+                        output.accept(ModBlocks.FUEL_ROD_NORMAL.get());
+                        output.accept(ModBlocks.CONTROL_ROD.get());
+                        output.accept(ModBlocks.STRUCTURAL_COLUMN.get());
+                        output.accept(ModBlocks.STEAM_CHANNEL.get());
+                        output.accept(ModBlocks.NEUTRON_REFLECTOR.get());
+                        output.accept(ModBlocks.NEUTRON_ABSORBER.get());
+                        output.accept(ModBlocks.GRAPHITE_MODERATOR.get());
+                        output.accept(ModBlocks.CONTROL_SYSTEM.get());
+                        output.accept(ModBlocks.STEAM_SEPARATOR.get());
+                        output.accept(ModBlocks.COPPER_CABLE.get());
+                        output.accept(ModBlocks.LARGE_ELECTRICITY_PYLON.get());
+                        output.accept(ModBlocks.POWER_SWITCH.get());
+                        output.accept(ModBlocks.UNIVERSAL_FLUID_DUCT.get());
+                        output.accept(ModBlocks.PAINTABLE_COATED_UNIVERSAL_FLUID_DUCT.get());
+                        output.accept(ModBlocks.DRAINAGE_PIPE.get());
+                        output.accept(ModBlocks.CONVEYOR_EJECTOR.get());
+                        output.accept(ModBlocks.CONVEYOR_INSERTER.get());
+                        output.accept(ModBlocks.CONVEYOR_SPLITTER.get());
+                        output.accept(ModBlocks.BATTERY_SOCKET.get());
+                        output.accept(ModBlocks.ASSEMBLY_MACHINE.get());
+                        output.accept(ModBlocks.CHEMICAL_PLANT.get());
+                        output.accept(ModBlocks.CHEMICAL_FACTORY.get());
+                        output.accept(ModBlocks.ARC_WELDER.get());
+                        output.accept(ModBlocks.SOLDERING_STATION.get());
+                        output.accept(ModBlocks.ELECTRIC_ARC_FURNACE.get());
+                        output.accept(ModBlocks.TANK.get());
+                        output.accept(ModBlocks.WATER_TANK.get());
+                        output.accept(ModBlocks.INDUSTRIAL_STEAM_TURBINE.get());
+                        output.accept(ModBlocks.LEVIATHAN_STEAM_TURBINE.get());
+                        output.accept(ModBlocks.STEAM_CONDENSER.get());
+                        output.accept(ModBlocks.COOLING_TOWER.get());
+                        output.accept(ModBlocks.INDUSTRIAL_COOLING_TOWER.get());
+                        output.accept(ModBlocks.DEUTERIUM_EXTRACTION_TOWER.get());
+                        output.accept(ModBlocks.COMPRESSOR.get());
+                        output.accept(ModBlocks.ELECTROLYSIS_MACHINE.get());
+                        output.accept(ModBlocks.SHREDDER.get());
+                        output.accept(ModBlocks.OIL_DERRICK.get());
+                        output.accept(ModBlocks.PUMPJACK.get());
+                        output.accept(ModBlocks.HYDRAULIC_FRACKING_TOWER.get());
+                        output.accept(ModBlocks.FLARE_STACK.get());
+                        output.accept(ModBlocks.SMOKESTACK.get());
+                        output.accept(ModBlocks.OIL_REFINERY.get());
+                        output.accept(ModBlocks.VACUUM_REFINERY.get());
+                        output.accept(ModBlocks.FRACTIONATING_TOWER.get());
+                        output.accept(ModBlocks.FRACTIONATING_TOWER_SEPARATOR.get());
+                        output.accept(ModBlocks.CATALYTIC_CRACKING_TOWER.get());
+                        output.accept(ModBlocks.CATALYTIC_REFORMER.get());
+                        output.accept(ModBlocks.HYDROTREATER.get());
+                        output.accept(ModBlocks.LARGE_MINING_DRILL.get());
+                        output.accept(ModBlocks.TURBOFAN.get());
+                        output.accept(ModBlocks.MATTER_GIGAFACTORY.get());
+                        output.accept(ModBlocks.RADIATION_ABSORBER.get());
+                        output.accept(ModBlocks.ENHANCED_RADIATION_ABSORBER.get());
+                        output.accept(ModBlocks.ADVANCED_RADIATION_ABSORBER.get());
+                        output.accept(ModBlocks.ELITE_RADIATION_ABSORBER.get());
+                        output.accept(ModBlocks.PLAYER_DECONTAMINATOR.get());
+                        output.accept(ModBlocks.PWR_FUEL_ROD.get());
+                        output.accept(ModBlocks.PWR_CONTROL_ROD.get());
+                        output.accept(ModBlocks.PWR_COOLANT_CHANNEL.get());
+                        output.accept(ModBlocks.PWR_HEAT_EXCHANGER.get());
+                        output.accept(ModBlocks.PWR_HEATSINK.get());
+                        output.accept(ModBlocks.PWR_NEUTRON_SOURCE.get());
+                        output.accept(ModBlocks.PWR_NEUTRON_REFLECTOR.get());
+                        output.accept(ModBlocks.DUCRETE_BRICKS.get());
+                        output.accept(ModBlocks.PWR_CONTROLLER.get());
+                        output.accept(ModBlocks.CHLORINE_VENT.get());
+                        output.accept(ModBlocks.CHLORINE_SEAL.get());
+                        output.accept(ModBlocks.CHLORINE_GAS.get());
+                        output.accept(ModBlocks.CONVEYOR_BELT.get());
+                    }).build());
+
+    public static final RegistryObject<CreativeModeTab> NTM_BOMBS = CREATIVE_MODE_TABS.register("hbm_ntm_bombs",
+            () -> CreativeModeTab.builder()
+                    .icon(() -> new ItemStack(ModBlocks.FAT_MAN.get()))
+                    .title(Component.translatable("creativetab.hbm_ntm_templates"))
+                    .displayItems((parameters, output) -> {
+                        output.accept(ModBlocks.THE_GADGET.get());
+                        output.accept(ModBlocks.LITTLE_BOY.get());
+                        output.accept(ModBlocks.FAT_MAN.get());
+                        output.accept(ModBlocks.IVY_MIKE.get());
+                        output.accept(ModBlocks.TSAR_BOMBA.get());
+                        output.accept(ModBlocks.THE_GADGET.get());
+                        output.accept(ModBlocks.THE_PROTOTYPE.get());
+                        output.accept(ModBlocks.FLEIJA.get());
+                        output.accept(ModBlocks.THE_BLUE_RINSE.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {

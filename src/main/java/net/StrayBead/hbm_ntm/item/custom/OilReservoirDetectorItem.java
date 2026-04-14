@@ -24,7 +24,7 @@ public class OilReservoirDetectorItem extends Item {
             Player player = pContext.getPlayer();
             boolean foundBlock = false;
 
-            for (int i = 0; i <= positionClicked.getY() + 64; i++) {
+            for (int i = 0; i <= positionClicked.getY() + 100; i++) {
                 BlockState state = pContext.getLevel().getBlockState(positionClicked.below(i));
 
                 if(isValuableBlock(state)) {

@@ -44,17 +44,6 @@ public class SilexBlockEntity extends BlockEntity implements MenuProvider {
         protected void onContentsChanged(int slot) {
             setChanged();
         }
-
-        @Override
-        public boolean isItemValid(int slot, @NotNull ItemStack stack) {
-            return switch (slot) {
-                case 0 -> stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).isPresent();
-                case 1 -> stack.getItem() == ModItems.URANIUM_DUST.get();
-                case 6 -> stack.getItem() == ModItems.URANIUM_235_INGOT.get();
-                case 7 -> stack.getItem() == ModItems.INFINITE_BATTERY.get();
-                default -> true;
-            };
-        }
     };
 
     private final ModEnergyStorage ENERGY_STORAGE = new ModEnergyStorage(60000, 256) {
@@ -309,7 +298,7 @@ public class SilexBlockEntity extends BlockEntity implements MenuProvider {
 
     private static boolean hasRecipe(SilexBlockEntity entity) {
         ItemStack input = entity.itemHandler.getStackInSlot(1);
-        boolean hasUranium = input.getItem() == ModItems.URANIUM_DUST.get();
+        boolean hasUranium = input.getItem() == ModItems.URANIUM_DUST.get() || input.getItem() == ModItems.URANIUM_INGOT.get();
 
         ItemStack outputSlot = entity.itemHandler.getStackInSlot(6);
         boolean canOutput = outputSlot.isEmpty() ||

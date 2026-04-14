@@ -1,0 +1,15 @@
+{
+  "type": "hbm_ntm:soldering",
+  "ingredients": [
+    { "item": { "item": "hbm_ntm:tantalium_capacitor" }, "count": 16 },
+    { "item": { "item": "hbm_ntm:capacitor" }, "count": 32 },
+    { "item": { "item": "hbm_ntm:microchip" }, "count": 32 },
+    { "item": { "item": "hbm_ntm:lead_wire" }, "count": 16 },
+    { "item": { "item": "hbm_ntm:speed_upgrade" }, "count": 1 },
+    { "item": { "item": "hbm_ntm:control_unit_casing" }, "count": 1 }
+  ],
+  "result": {
+    "item": "hbm_ntm:control_unit",
+    "count": 1
+  }
+}

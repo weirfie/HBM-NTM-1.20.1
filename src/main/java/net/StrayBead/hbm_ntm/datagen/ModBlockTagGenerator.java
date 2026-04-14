@@ -5,6 +5,8 @@ import net.StrayBead.hbm_ntm.block.ModBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -18,6 +20,25 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
+        this.tag(Tags.Blocks.ORES)
+                .add(ModBlocks.THORIUM_ORE.get(),
+                        ModBlocks.BERYLLIUM_ORE.get(),
+                        ModBlocks.SCHRABIDIUM_ORE.get(),
+                        ModBlocks.METEOR_COBALT_ORE.get(),
+                        ModBlocks.METEOR_IRON_ORE.get(),
+                        ModBlocks.METEOR_COPPER_ORE.get(),
+                        ModBlocks.METEOR_ALUMINUM_ORE.get(),
+                        ModBlocks.METEOR_RARE_EARTH_ORE.get(),
+                        ModBlocks.LIGNITE_ORE.get(),
+                        ModBlocks.SULFUR_ORE.get(),
+                        ModBlocks.ALUMINUM_ORE.get(),
+                        ModBlocks.TUNGSTEN_ORE.get(),
+                        ModBlocks.RARE_EARTH_ORE.get(),
+                        ModBlocks.URANIUM_ORE.get(),
+                        ModBlocks.LEAD_ORE.get(),
+                        ModBlocks.FLOURITE_ORE.get(),
+                        ModBlocks.TITANIUM_ORE.get());
+
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.THORIUM_ORE.get(),
                         ModBlocks.BERYLLIUM_ORE.get(),
@@ -31,6 +52,17 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                         ModBlocks.STEEL_BLOCK.get(),
                         ModBlocks.POWER_SWITCH.get(),
                         ModBlocks.RED_COPPER_BLOCK.get(),
+                        ModBlocks.BROKEN_METEORITE_BLOCK.get(),
+                        ModBlocks.THE_PROTOTYPE.get(),
+                        ModBlocks.FLEIJA.get(),
+                        ModBlocks.THE_BLUE_RINSE.get(),
+                        ModBlocks.METEORITE_COBBLESTONE.get(),
+                        ModBlocks.METEOR_COBALT_ORE.get(),
+                        ModBlocks.METEOR_IRON_ORE.get(),
+                        ModBlocks.METEOR_COPPER_ORE.get(),
+                        ModBlocks.METEOR_ALUMINUM_ORE.get(),
+                        ModBlocks.METEOR_RARE_EARTH_ORE.get(),
+                        ModBlocks.HOT_METEORITE_COBBLESTONE.get(),
                         ModBlocks.BUNKER_DOOR.get(),
                         ModBlocks.STEEL_DECO_BLOCK.get(),
                         ModBlocks.LIGNITE_ORE.get(),
@@ -141,6 +173,38 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                         ModBlocks.SMOKESTACK.get(),
                         ModBlocks.HYDRAULIC_FRACKING_TOWER.get(),
                         ModBlocks.TANK.get(),
+                        ModBlocks.CHAINLINK_FENCE.get(),
+                        ModBlocks.CHAINLINK_FENCE_POST.get(),
+                        ModBlocks.ASH.get(),
+                        ModBlocks.BORON_SAND.get(),
+                        ModBlocks.LEAD_SAND.get(),
+                        ModBlocks.URANIUM_SAND.get(),
+                        ModBlocks.POLONIUM_SAND.get(),
+                        ModBlocks.BORON_GLASS.get(),
+                        ModBlocks.LEAD_GLASS.get(),
+                        ModBlocks.URANIUM_GLASS.get(),
+                        ModBlocks.TRINITY_GLASS.get(),
+                        ModBlocks.POLONIUM_GLASS.get(),
+                        ModBlocks.ASH_GLASS.get(),
+                        ModBlocks.POLARIZED_GLASS.get(),
+                        ModBlocks.SILO_HATCH_FRAME.get(),
+                        ModBlocks.SILO_HATCH_OPENER.get(),
+                        ModBlocks.IRON_CRATE.get(),
+                        ModBlocks.STEEL_CRATE.get(),
+                        ModBlocks.SLIDING_BLAST_DOOR.get(),
+                        ModBlocks.FIRE_DOOR.get(),
+                        ModBlocks.SILO_HATCH.get(),
+                        ModBlocks.CYCLOTRON.get(),
+                        ModBlocks.ASHPIT.get(),
+                        ModBlocks.VAULT_TECH_BLAST_DOOR.get(),
+                        ModBlocks.DESH_CRATE.get(),
+                        ModBlocks.TUNGSTEN_CRATE.get(),
+                        ModBlocks.TEMPLATE_CRATE.get(),
+                        ModBlocks.SAFE.get(),
+                        ModBlocks.MASS_STORAGE_UNIT.get(),
+                        ModBlocks.AUTOMATIC_CRAFTING_TABLE.get(),
+                        ModBlocks.BURNER_PRESS_PREHEATER.get(),
+                        ModBlocks.STEEL_BARREL.get(),
                         ModBlocks.TITANIUM_ORE.get());
     }
 }

@@ -1,7 +1,7 @@
 {
   "type": "hbm_ntm:blast_furnace",
   "input1": {
-    "item": "hbm_ntm:steel_ingot"
+    "item": "hbm_ntm:steel"
   },
   "input2": {
     "item": "hbm_ntm:minecraft_grade_copper"

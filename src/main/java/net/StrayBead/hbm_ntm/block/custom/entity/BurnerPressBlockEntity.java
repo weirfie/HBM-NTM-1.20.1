@@ -168,7 +168,7 @@ public class BurnerPressBlockEntity extends BlockEntity implements MenuProvider 
         if (level.isClientSide()) return;
 
         ItemStack fuelSource = pEntity.itemHandler.getStackInSlot(3);
-        if (fuelSource.getItem() == Items.COAL || fuelSource.getItem() == Items.CHARCOAL) {
+        if (fuelSource.getItem() == Items.COAL || fuelSource.getItem() == Items.CHARCOAL || fuelSource.getItem() == ModItems.LIGNITE.get() || fuelSource.getItem() == ModItems.LIGNITE_COKE.get() || fuelSource.getItem() == ModItems.PETROLEUM_COKE.get()) {
             fuelSource.shrink(1);
             pEntity.ENERGY_STORAGE.receiveEnergy(300, false);
         }

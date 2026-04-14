@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/the_blue_rinse.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/the_blue_rinse",
+    "m_b0e376cb-b983-d8a0-d931-4e9b48dc9515": "hbm_ntm:block/the_blue_rinse",
+    "Material": "hbm_ntm:block/the_blue_rinse",
+    "none": "hbm_ntm:block/the_blue_rinse"
+  }
+}

@@ -1,6 +1,13 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "block/cube",
   "textures": {
-    "all": "hbm_ntm:block/pwrfuelrod"
-  }
+    "down": "hbm_ntm:block/pwrfuelrod",
+    "up": "hbm_ntm:block/pwrfuelrod",
+    "north": "hbm_ntm:block/fuelrodside",
+    "east": "hbm_ntm:block/fuelrodside",
+    "south": "hbm_ntm:block/fuelrodside",
+    "west": "hbm_ntm:block/fuelrodside",
+    "particle": "hbm_ntm:block/pwrfuelrod"
+  },
+  "render_type": "solid"
 }

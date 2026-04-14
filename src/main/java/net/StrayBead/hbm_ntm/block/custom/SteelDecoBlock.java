@@ -21,17 +21,8 @@ public class SteelDecoBlock extends Block {
     public static final BooleanProperty UP = BlockStateProperties.UP;
     public static final BooleanProperty DOWN = BlockStateProperties.DOWN;
 
-    public static final Map<Direction, BooleanProperty> PROPERTY_BY_DIRECTION = Map.of(
-            Direction.NORTH, NORTH,
-            Direction.SOUTH, SOUTH,
-            Direction.EAST, EAST,
-            Direction.WEST, WEST,
-            Direction.UP, UP,
-            Direction.DOWN, DOWN
-    );
-
-    public SteelDecoBlock(Properties p_49795_) {
-        super(p_49795_);
+    public SteelDecoBlock(Properties properties) {
+        super(properties);
         this.registerDefaultState(this.stateDefinition.any()
                 .setValue(NORTH, false).setValue(EAST, false)
                 .setValue(SOUTH, false).setValue(WEST, false)
@@ -47,7 +38,6 @@ public class SteelDecoBlock extends Block {
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         Level level = context.getLevel();
         BlockPos pos = context.getClickedPos();
-
         return this.defaultBlockState()
                 .setValue(NORTH, level.getBlockState(pos.north()).is(this))
                 .setValue(SOUTH, level.getBlockState(pos.south()).is(this))
@@ -60,13 +50,14 @@ public class SteelDecoBlock extends Block {
     @Override
     public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState,
                                   LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
-
-        boolean isSameBlock = neighborState.is(this);
-
-        if (PROPERTY_BY_DIRECTION.containsKey(direction)) {
-            return state.setValue(PROPERTY_BY_DIRECTION.get(direction), isSameBlock);
-        }
-
-        return state;
+        boolean isSame = neighborState.is(this);
+        return switch (direction) {
+            case NORTH -> state.setValue(NORTH, isSame);
+            case SOUTH -> state.setValue(SOUTH, isSame);
+            case EAST -> state.setValue(EAST, isSame);
+            case WEST -> state.setValue(WEST, isSame);
+            case UP -> state.setValue(UP, isSame);
+            case DOWN -> state.setValue(DOWN, isSame);
+        };
     }
 }

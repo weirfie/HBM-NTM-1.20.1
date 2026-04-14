@@ -91,7 +91,7 @@ public class NormalFuelRodBlock extends Block{
                         }.getArrow(projectileLevel, 5, 1);
                         _entityToSpawn.getEntityData().set(projectileEntity.DATA_isFastNeutron, true);
                         _entityToSpawn.setPos(pos.getX(), pos.getY(), pos.getZ());
-                        _entityToSpawn.shoot((Mth.nextInt(RandomSource.create(), -10, 10)), 0, (Mth.nextInt(RandomSource.create(), -10, 10)), 2, 0);
+                        _entityToSpawn.shoot((Mth.nextInt(RandomSource.create(), -10, 10)), 0, (Mth.nextInt(RandomSource.create(), -10, 10)), 1, 0);
                         projectileLevel.addFreshEntity(_entityToSpawn);
                     }
                 }
@@ -110,7 +110,7 @@ public class NormalFuelRodBlock extends Block{
                         }.getArrow(projectileLevel, 5, 1);
                         _entityToSpawn.getEntityData().set(projectileEntity.DATA_isFastNeutron, true);
                         _entityToSpawn.setPos(pos.getX(), pos.getY(), pos.getZ());
-                        _entityToSpawn.shoot((Mth.nextInt(RandomSource.create(), -10, 10)), 0, (Mth.nextInt(RandomSource.create(), -10, 10)), 2, 0);
+                        _entityToSpawn.shoot((Mth.nextInt(RandomSource.create(), -10, 10)), 0, (Mth.nextInt(RandomSource.create(), -10, 10)), 1, 0);
                         projectileLevel.addFreshEntity(_entityToSpawn);
                     }
                 }
@@ -127,16 +127,16 @@ public class NormalFuelRodBlock extends Block{
     public void tick(BlockState blockstate, ServerLevel world, BlockPos pos, RandomSource random) {
         super.tick(blockstate, world, pos, random);
         if (blockstate.getValue(ISXENON)) {
-            {
-                final Vec3 _center = new Vec3(pos.getX(), pos.getY(), pos.getZ());
-                List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(2 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
-                for (Entity entityiterator : _entfound) {
-                    if (entityiterator instanceof NeutronProjectileEntity neutronProjectileEntity) {
-                        neutronProjectileEntity.discard();
-                        world.setBlock(pos, blockstate.setValue(ISXENON, false), 3);
-                    }
-                }
-            }
+//            {
+//                final Vec3 _center = new Vec3(pos.getX(), pos.getY(), pos.getZ());
+//                List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(2 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
+//                for (Entity entityiterator : _entfound) {
+//                    if (entityiterator instanceof NeutronProjectileEntity neutronProjectileEntity) {
+//                        neutronProjectileEntity.discard();
+//                        world.setBlock(pos, blockstate.setValue(ISXENON, false), 3);
+//                    }
+//                }
+//            }
         }
         world.scheduleTick(pos, this, 2);
     }

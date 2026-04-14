@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/vault_tech_blast_door.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/vault_tech_blast_door",
+    "m_ebbe5012-9feb-f3d4-75eb-2fb01efe90f1": "hbm_ntm:block/vault_tech_blast_door",
+    "Material": "hbm_ntm:block/vault_tech_blast_door",
+    "none": "hbm_ntm:block/vault_tech_blast_door"
+  }
+}

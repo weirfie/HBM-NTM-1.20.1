@@ -63,6 +63,13 @@ public class FluidSyncS2CPacket {
                         menu.getBlockEntity().getBlockPos().equals(pos)) {
                     menu.setFluid(this.fluidStack);
                 }
+            } else if(Minecraft.getInstance().level.getBlockEntity(pos) instanceof SteelBarrelBlockEntity blockEntity) {
+                blockEntity.setFluid(this.fluidStack);
+
+                if(Minecraft.getInstance().player.containerMenu instanceof SteelBarrelGuiMenu menu &&
+                        menu.getBlockEntity().getBlockPos().equals(pos)) {
+                    menu.setFluid(this.fluidStack);
+                }
             } else if(Minecraft.getInstance().level.getBlockEntity(pos) instanceof ShallowFoundryBasinBlockEntity blockEntity) {
                 blockEntity.setFluid(this.fluidStack);
             } else if(Minecraft.getInstance().level.getBlockEntity(pos) instanceof CrucibleBlockEntity blockEntity) {

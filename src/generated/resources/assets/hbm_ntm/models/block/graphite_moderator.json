@@ -1,6 +1,13 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "block/cube",
   "textures": {
-    "all": "hbm_ntm:block/graphite_moderator"
-  }
+    "down": "hbm_ntm:block/control_rod",
+    "up": "hbm_ntm:block/control_rod",
+    "north": "hbm_ntm:block/graphite_moderator",
+    "east": "hbm_ntm:block/graphite_moderator",
+    "south": "hbm_ntm:block/graphite_moderator",
+    "west": "hbm_ntm:block/graphite_moderator",
+    "particle": "hbm_ntm:block/control_rod"
+  },
+  "render_type": "solid"
 }

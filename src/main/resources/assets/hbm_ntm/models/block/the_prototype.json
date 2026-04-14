@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/the_prototype.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/the_prototype",
+    "m_9748f872-d850-eb93-f507-5408ecdc88f7": "hbm_ntm:block/the_prototype",
+    "Material": "hbm_ntm:block/the_prototype",
+    "none": "hbm_ntm:block/the_prototype"
+  }
+}

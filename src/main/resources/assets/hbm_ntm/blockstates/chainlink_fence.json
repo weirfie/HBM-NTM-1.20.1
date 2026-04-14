@@ -1,0 +1,22 @@
+{
+  "multipart": [
+    {
+      "when": { "OR": [
+        { "north": "false", "east": "false", "south": "false", "west": "false" },
+        { "north": "true", "east": "true" },
+        { "east": "true", "south": "true" },
+        { "south": "true", "west": "true" },
+        { "west": "true", "north": "true" },
+        { "north": "true", "south": "false", "east": "false", "west": "false" },
+        { "south": "true", "north": "false", "east": "false", "west": "false" },
+        { "east": "true", "west": "false", "north": "false", "south": "false" },
+        { "west": "true", "east": "false", "north": "false", "south": "false" }
+      ]},
+      "apply": { "model": "hbm_ntm:block/chainlink_fence_post_fence" }
+    },
+    { "when": { "north": "true" }, "apply": { "model": "hbm_ntm:block/chainlink_fence_side", "uvlock": true }},
+    { "when": { "east": "true" },  "apply": { "model": "hbm_ntm:block/chainlink_fence_side", "y": 90, "uvlock": true }},
+    { "when": { "south": "true" }, "apply": { "model": "hbm_ntm:block/chainlink_fence_side", "y": 180, "uvlock": true }},
+    { "when": { "west": "true" },  "apply": { "model": "hbm_ntm:block/chainlink_fence_side", "y": 270, "uvlock": true }}
+  ]
+}

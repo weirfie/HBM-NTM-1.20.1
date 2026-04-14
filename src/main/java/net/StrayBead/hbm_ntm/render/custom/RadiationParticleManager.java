@@ -40,7 +40,6 @@ public class RadiationParticleManager {
 
     public static void tick(net.minecraft.world.level.Level level) {
         synchronized (PARTICLES) {
-            Vec3 heatSource = LittleBoyBlock.glowingPosition;
             for (int i = 0; i < PARTICLES.size(); i++) {
                 CloudParticleData data = PARTICLES.get(i);
 
@@ -53,22 +52,6 @@ public class RadiationParticleManager {
                 if (data.shouldVelocityDecrease) {
                     data.velocity = data.velocity.scale(0.9d);
                     data.delta = data.delta.scale(0.9d);
-                }
-
-                if (heatSource != null) {
-                    double distance = data.pos.distanceTo(heatSource);
-                    float maxHeatDistance = 40.0f;
-                    float rawFactor = 1.0f - (float) Math.min(distance / maxHeatDistance, 1.0);
-
-                    float heatFactor = rawFactor * rawFactor;
-
-                    float hotR = 1.0f;
-                    float hotG = Mth.clamp(0.5f + data.heatBias, 0.3f, 0.7f);
-                    float hotB = Mth.clamp(0.0f + (data.heatBias * 0.5f), 0.0f, 0.1f);
-
-                    data.r = Mth.lerp(heatFactor, data.r, hotR);
-                    data.g = Mth.lerp(heatFactor, data.g, hotG);
-                    data.b = Mth.lerp(heatFactor, data.b, hotB);
                 }
 
 //                if (data.shouldAlphaDecrease) {
@@ -97,48 +80,22 @@ public class RadiationParticleManager {
                 }
 
                 float progress = (float) data.age / (float) data.maxAge;
+                float maxA = 0.3f;
 
                 if (data.doesAlphaIncrease) {
                     if (progress < 0.2f) {
-                        data.a = (progress / 0.2f) * 0.4f;
-                    }
-                    else if (progress <= 0.8f) {
-                        data.a = 0.4f;
-                    }
-                    else {
-                        data.a = 0.4f * (1.0f - ((progress - 0.8f) / 0.2f));
+                        data.a = (progress / 0.2f) * maxA;
+                    } else if (progress <= 0.8f) {
+                        data.a = maxA;
+                    } else {
+                        data.a = maxA * (1.0f - ((progress - 0.8f) / 0.2f));
                     }
                 } else {
                     if (progress > 0.8f) {
-                        data.a = 1.0f - ((progress - 0.8f) / 0.2f);
-                    }
-                }
-
-                if (data.isShockwave) {
-                    float growthSpeed = 0.1f;
-                    float maxAllowedSize = data.baseSize * 4.0f;
-                    data.size = Math.min(data.size + growthSpeed, maxAllowedSize);
-
-                    double newVX = data.delta.x * 0.98;
-                    double newVZ = data.delta.z * 0.98;
-                    double newVY;
-
-                    if (data.isFireball) {
-                        newVY = (data.delta.y * 0.90) + 0.015;
+                        data.a = maxA * (1.0f - ((progress - 0.8f) / 0.2f));
                     } else {
-                        newVY = data.delta.y * 0.98;
+                        data.a = maxA;
                     }
-
-                    data.delta = new Vec3(newVX, newVY, newVZ);
-                }
-
-                float progress2 = (float) data.age / (float) data.maxAge;
-                data.r += (data.targetGray - data.r) * data.lerpSpeed;
-                data.g += (data.targetGray - data.g) * data.lerpSpeed;
-                data.b += (data.targetGray - data.b) * data.lerpSpeed;
-
-                if (progress2 > 0.8f) {
-                    data.a = 1.0f - ((progress2 - 0.8f) / 0.2f);
                 }
 
                 if (data.age >= data.maxAge) {
@@ -193,16 +150,19 @@ public class RadiationParticleManager {
             Vec3 cameraPos = camera.getPosition();
 
             RenderSystem.enableDepthTest();
-            RenderSystem.depthMask(true);
+            RenderSystem.depthMask(false);
             RenderSystem.enableBlend();
             RenderSystem.defaultBlendFunc();
-            RenderSystem.setShader(GameRenderer::getPositionColorTexShader);
+
+            RenderSystem.setShader(GameRenderer::getPositionColorTexLightmapShader);
             RenderSystem.setShaderTexture(0, CLOUD_TEXTURE);
 
             Tesselator tess = Tesselator.getInstance();
             BufferBuilder bf = tess.getBuilder();
 
-            bf.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR_TEX);
+            bf.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR_TEX_LIGHTMAP);
+
+            int fullBright = 15728880;
 
             for (int i = 0; i < PARTICLES.size(); i++) {
                 CloudParticleData data = PARTICLES.get(i);
@@ -221,16 +181,16 @@ public class RadiationParticleManager {
                 int b = (int)(data.b * 255);
                 int a = (int)(data.a * 255);
 
-                bf.vertex(mat, -s, -s, 0).color(r, g, b, a).uv(0f, 1f).endVertex();
-                bf.vertex(mat,  s, -s, 0).color(r, g, b, a).uv(1f, 1f).endVertex();
-                bf.vertex(mat,  s,  s, 0).color(r, g, b, a).uv(1f, 0f).endVertex();
-                bf.vertex(mat, -s,  s, 0).color(r, g, b, a).uv(0f, 0f).endVertex();
+                bf.vertex(mat, -s, -s, 0).color(r, g, b, a).uv(0f, 1f).uv2(fullBright).endVertex();
+                bf.vertex(mat,  s, -s, 0).color(r, g, b, a).uv(1f, 1f).uv2(fullBright).endVertex();
+                bf.vertex(mat,  s,  s, 0).color(r, g, b, a).uv(1f, 0f).uv2(fullBright).endVertex();
+                bf.vertex(mat, -s,  s, 0).color(r, g, b, a).uv(0f, 0f).uv2(fullBright).endVertex();
 
                 ps.popPose();
             }
 
             tess.end();
-            RenderSystem.depthMask(false);
+            RenderSystem.depthMask(true);
         }
     }
 

@@ -71,6 +71,7 @@ public class ModFluids {
     public static final RegistryObject<FlowingFluid> MOLTEN_GOLD = register("molten_gold", ModFluidTypes.MOLTEN_GOLD, () -> (LiquidBlock) ModBlocks.MOLTEN_GOLD.get());
     public static final RegistryObject<FlowingFluid> MOLTEN_ALUMINUM = register("molten_aluminum", ModFluidTypes.MOLTEN_ALUMINUM, () -> (LiquidBlock) ModBlocks.MOLTEN_ALUMINUM.get());
     public static final RegistryObject<FlowingFluid> MOLTEN_FUEL = register("molten_fuel", ModFluidTypes.MOLTEN_FUEL, () -> (LiquidBlock) ModBlocks.MOLTEN_FUEL.get());
+    public static final RegistryObject<FlowingFluid> MOLTEN_REDSTONE = register("molten_redstone", ModFluidTypes.MOLTEN_REDSTONE, () -> (LiquidBlock) ModBlocks.MOLTEN_REDSTONE.get());
     public static final RegistryObject<FlowingFluid> HEAVY_WATER = register("heavy_water", ModFluidTypes.HEAVY_WATER, () -> (LiquidBlock) ModBlocks.HEAVY_WATER.get());
 
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)

@@ -3,8 +3,8 @@ package net.StrayBead.hbm_ntm.datagen;
 import net.StrayBead.hbm_ntm.HBMNTM;
 import net.StrayBead.hbm_ntm.block.ModBlocks;
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.DoorBlock;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.*;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
@@ -50,7 +50,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.CONTROL_ROD);
         blockWithItem(ModBlocks.GRAPHITE_MODERATOR);
         blockWithItem(ModBlocks.STEAM_CHANNEL);
-        blockWithItem(ModBlocks.STRUCTURAL_COLUMN);
         blockWithItem(ModBlocks.FUEL_ROD_NORMAL);
         blockWithItem(ModBlocks.NEUTRON_REFLECTOR);
         blockWithItem(ModBlocks.RADIATED_GRAPHITE);
@@ -62,7 +61,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.SUPER_DENSE_STEAM_PIPE);
         blockWithItem(ModBlocks.DENSE_STEAM_PIPE);
         blockWithItem(ModBlocks.STEAM_PIPE);
-        blockWithItem(ModBlocks.CONTROL_SYSTEM);
         blockWithItem(ModBlocks.DEAD_GRASS);
         blockWithItem(ModBlocks.REINFORCED_GLASS);
         blockWithItem(ModBlocks.WARNING_BLOCK);
@@ -132,12 +130,60 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.CASTLE_BRAVO);
         blockWithItem(ModBlocks.PWR_CONTROLLER);
         blockWithItem(ModBlocks.CONVEYOR_INSERTER);
+        blockWithItem(ModBlocks.METEORITE_COBBLESTONE);
+        blockWithItem(ModBlocks.METEOR_RARE_EARTH_ORE);
+        blockWithItem(ModBlocks.METEOR_ALUMINUM_ORE);
+        blockWithItem(ModBlocks.METEOR_COBALT_ORE);
+        blockWithItem(ModBlocks.METEOR_IRON_ORE);
+        blockWithItem(ModBlocks.BROKEN_METEORITE_BLOCK);
+        blockWithItem(ModBlocks.HOT_METEORITE_COBBLESTONE);
         blockWithItem(ModBlocks.CONVEYOR_EJECTOR);
+        blockWithItem(ModBlocks.ASH);
+        blockWithItem(ModBlocks.BORON_SAND);
+        blockWithItem(ModBlocks.LEAD_SAND);
+        blockWithItem(ModBlocks.URANIUM_SAND);
+        blockWithItem(ModBlocks.POLONIUM_SAND);
+        blockWithItem(ModBlocks.BORON_GLASS);
+        blockWithItem(ModBlocks.LEAD_GLASS);
+        blockWithItem(ModBlocks.URANIUM_GLASS);
+        blockWithItem(ModBlocks.TRINITY_GLASS);
+        blockWithItem(ModBlocks.POLONIUM_GLASS);
+        blockWithItem(ModBlocks.ASH_GLASS);
+        blockWithItem(ModBlocks.POLARIZED_GLASS);
+        blockWithItem(ModBlocks.SILO_HATCH_FRAME);
+        blockWithItem(ModBlocks.SILO_HATCH_OPENER);
+        fixedColumnBlock(ModBlocks.IRON_CRATE);
+        fixedColumnBlock(ModBlocks.STEEL_CRATE);
+        fixedColumnBlock(ModBlocks.DESH_CRATE);
+        fixedColumnBlock(ModBlocks.TUNGSTEN_CRATE);
+        blockWithItem(ModBlocks.TEMPLATE_CRATE);
+        blockWithItem(ModBlocks.SAFE);
+        fixedColumnBlock(ModBlocks.MASS_STORAGE_UNIT);
+        fixedColumnBlock(ModBlocks.AUTOMATIC_CRAFTING_TABLE);
+        blockWithItem(ModBlocks.BURNER_PRESS_PREHEATER);
         doorBlockWithRenderType(((DoorBlock) ModBlocks.BUNKER_DOOR.get()), modLoc("block/door_bunker_lower"), modLoc("block/door_bunker_upper"), "cutout");
         doorBlockWithRenderType(((DoorBlock) ModBlocks.DOOR_METAL.get()), modLoc("block/door_metal_lower"), modLoc("block/door_metal_upper"), "solid");
+
+        stairsBlock(((StairBlock) ModBlocks.CONCRETE_STAIRS.get()), blockTexture(Blocks.LIGHT_GRAY_CONCRETE));
+        stairsBlock(((StairBlock) ModBlocks.CRACKED_CONCRETE_BRICK_STAIRS.get()), blockTexture(ModBlocks.CRACKED_CONCRETE_BRICKS.get()));
+        stairsBlock(((StairBlock) ModBlocks.CONCRETE_BRICK_STAIRS.get()), blockTexture(ModBlocks.CONCRETE_BRICKS.get()));
+
+        slabBlock(((SlabBlock) ModBlocks.CONCRETE_SLAB.get()), blockTexture(Blocks.LIGHT_GRAY_CONCRETE), blockTexture(Blocks.LIGHT_GRAY_CONCRETE));
+        slabBlock(((SlabBlock) ModBlocks.CONCRETE_BRICK_SLAB.get()),
+                blockTexture(ModBlocks.CONCRETE_BRICKS.get()),
+                blockTexture(ModBlocks.CONCRETE_BRICKS.get()));
+        slabBlock(((SlabBlock) ModBlocks.BROKEN_CONCRETE_BRICK_SLAB.get()), blockTexture(ModBlocks.BROKEN_CONCRETE_BRICKS.get()), blockTexture(ModBlocks.BROKEN_CONCRETE_BRICKS.get()));
     }
 
     private void blockWithItem(RegistryObject<Block> blockRegistryObject) {
         simpleBlockWithItem(blockRegistryObject.get(), cubeAll(blockRegistryObject.get()));
+    }
+
+    private void fixedColumnBlock(RegistryObject<Block> block) {
+        ResourceLocation side = modLoc("block/" + block.getId().getPath() + "_side");
+        ResourceLocation top = modLoc("block/" + block.getId().getPath() + "_top");
+
+        simpleBlock(block.get(), models().cubeColumn(block.getId().getPath(), side, top));
+        simpleBlockItem(block.get(), models().getExistingFile(block.getId()));
     }
 }

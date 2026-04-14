@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/cyclotron.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/cyclotron",
+    "m_8535d11f-ecdd-1896-8581-cbfbe6fc087b": "hbm_ntm:block/cyclotron",
+    "Material": "hbm_ntm:block/cyclotron",
+    "none": "hbm_ntm:block/cyclotron"
+  }
+}

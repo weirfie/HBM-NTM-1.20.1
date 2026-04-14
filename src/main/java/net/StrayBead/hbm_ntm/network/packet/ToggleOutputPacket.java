@@ -1,6 +1,7 @@
 package net.StrayBead.hbm_ntm.network.packet;
 
 import net.StrayBead.hbm_ntm.block.custom.entity.SparkEnergyBatteryBlockEntity;
+import net.StrayBead.hbm_ntm.block.custom.entity.SteelBarrelBlockEntity;
 import net.StrayBead.hbm_ntm.block.custom.entity.WaterTankBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
@@ -39,6 +40,10 @@ public class ToggleOutputPacket {
                     finishToggle(level, battery);
                 }
                 else if (blockEntity instanceof WaterTankBlockEntity tank) {
+                    tank.IS_OUTPUTTING = !tank.IS_OUTPUTTING;
+                    finishToggle(level, tank);
+                }
+                else if (blockEntity instanceof SteelBarrelBlockEntity tank) {
                     tank.IS_OUTPUTTING = !tank.IS_OUTPUTTING;
                     finishToggle(level, tank);
                 }

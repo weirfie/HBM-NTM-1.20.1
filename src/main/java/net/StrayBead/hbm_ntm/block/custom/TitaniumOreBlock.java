@@ -31,7 +31,7 @@ public class TitaniumOreBlock extends Block {
     @Override
     public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         super.tick(state, level, pos, random);
-        if (Mth.nextInt(RandomSource.create(), 1, 100) < 5) {
+        if (Mth.nextInt(RandomSource.create(), 1, 100) < 30) {
             float rand1 = Mth.nextInt(RandomSource.create(), -200, 200);
             float rand2 = Mth.nextInt(RandomSource.create(), -200, 200);
             RadiationParticleManager.addParticle(pos.getX() + rand1, level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (int) (pos.getX() + rand1), (int) (pos.getZ() + rand2)) + 4, pos.getZ() + rand2, Mth.nextFloat(RandomSource.create(), 1, 20), 120f / 255f, 155f / 255f, 115f / 255f, 0.0f, 0, 0, 0, Mth.nextInt(RandomSource.create(), 400, 1000), 0.0f, false, false, false, false, true);

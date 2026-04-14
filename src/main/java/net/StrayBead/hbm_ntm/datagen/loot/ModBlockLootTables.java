@@ -23,6 +23,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
+        this.add(ModBlocks.LIGNITE_ORE.get(),
+                block -> createOreDrop(ModBlocks.LIGNITE_ORE.get(), ModItems.LIGNITE.get()));
         this.dropSelf(ModBlocks.BLOCK_ON.get());
         this.dropSelf(ModBlocks.BLOCK_OFF.get());
         this.dropSelf(ModBlocks.BLOCK_OF_GRAPHITE.get());
@@ -33,14 +35,19 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.OIL_REFINERY.get());
         this.dropSelf(ModBlocks.SILO_LAUNCH_PAD.get());
         this.dropSelf(ModBlocks.INDUSTRIAL_STEAM_TURBINE.get());
+        this.dropSelf(ModBlocks.THE_PROTOTYPE.get());
+        this.dropSelf(ModBlocks.FLEIJA.get());
+        this.dropSelf(ModBlocks.THE_BLUE_RINSE.get());
         this.dropSelf(ModBlocks.STEEL_BLOCK.get());
         this.dropSelf(ModBlocks.WOOD_BURNING_GENERATOR.get());
         this.dropSelf(ModBlocks.POWER_SWITCH.get());
         this.dropSelf(ModBlocks.RED_COPPER_BLOCK.get());
         this.dropSelf(ModBlocks.SIM_CARD_SIGNAL_BROADCASTING_DEVICE.get());
-        this.dropSelf(ModBlocks.LIGNITE_ORE.get());
         this.dropSelf(ModBlocks.OIL_RESERVOIR.get());
         this.dropSelf(ModBlocks.SHORT_RANGE_SIM_CARD_DATA_SENDER.get());
+        this.dropSelf(ModBlocks.CONCRETE_BRICK_STAIRS.get());
+        this.dropSelf(ModBlocks.CONCRETE_STAIRS.get());
+        this.dropSelf(ModBlocks.CRACKED_CONCRETE_BRICK_STAIRS.get());
         this.dropSelf(ModBlocks.ELECTRIC_ARC_FURNACE.get());
         this.dropSelf(ModBlocks.PUMPJACK.get());
         this.dropSelf(ModBlocks.EXPOSURE_CHAMBER.get());
@@ -224,6 +231,46 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.STEEL_POLE.get());
         this.dropSelf(ModBlocks.ANTENNA_TOP.get());
         this.dropSelf(ModBlocks.CONVEYOR_CHAIN_LIFT.get());
+        this.dropSelf(ModBlocks.BROKEN_METEORITE_BLOCK.get());
+        this.dropSelf(ModBlocks.METEORITE_COBBLESTONE.get());
+        this.dropSelf(ModBlocks.METEOR_COBALT_ORE.get());
+        this.dropSelf(ModBlocks.METEOR_IRON_ORE.get());
+        this.dropSelf(ModBlocks.METEOR_COPPER_ORE.get());
+        this.dropSelf(ModBlocks.METEOR_ALUMINUM_ORE.get());
+        this.dropSelf(ModBlocks.METEOR_RARE_EARTH_ORE.get());
+        this.dropSelf(ModBlocks.HOT_METEORITE_COBBLESTONE.get());
+        this.dropSelf(ModBlocks.CHAINLINK_FENCE.get());
+        this.dropSelf(ModBlocks.CHAINLINK_FENCE_POST.get());
+        this.dropSelf(ModBlocks.ASH.get());
+        this.dropSelf(ModBlocks.BORON_SAND.get());
+        this.dropSelf(ModBlocks.LEAD_SAND.get());
+        this.dropSelf(ModBlocks.URANIUM_SAND.get());
+        this.dropSelf(ModBlocks.POLONIUM_SAND.get());
+        this.dropSelf(ModBlocks.BORON_GLASS.get());
+        this.dropSelf(ModBlocks.LEAD_GLASS.get());
+        this.dropSelf(ModBlocks.URANIUM_GLASS.get());
+        this.dropSelf(ModBlocks.TRINITY_GLASS.get());
+        this.dropSelf(ModBlocks.POLONIUM_GLASS.get());
+        this.dropSelf(ModBlocks.ASH_GLASS.get());
+        this.dropSelf(ModBlocks.POLARIZED_GLASS.get());
+        this.dropSelf(ModBlocks.SILO_HATCH_FRAME.get());
+        this.dropSelf(ModBlocks.SILO_HATCH_OPENER.get());
+        this.dropSelf(ModBlocks.IRON_CRATE.get());
+        this.dropSelf(ModBlocks.STEEL_CRATE.get());
+        this.dropSelf(ModBlocks.DESH_CRATE.get());
+        this.dropSelf(ModBlocks.TUNGSTEN_CRATE.get());
+        this.dropSelf(ModBlocks.TEMPLATE_CRATE.get());
+        this.dropSelf(ModBlocks.SAFE.get());
+        this.dropSelf(ModBlocks.SILO_HATCH.get());
+        this.dropSelf(ModBlocks.CYCLOTRON.get());
+        this.dropSelf(ModBlocks.ASHPIT.get());
+        this.dropSelf(ModBlocks.FIRE_DOOR.get());
+        this.dropSelf(ModBlocks.VAULT_TECH_BLAST_DOOR.get());
+        this.dropSelf(ModBlocks.SLIDING_BLAST_DOOR.get());
+        this.dropSelf(ModBlocks.MASS_STORAGE_UNIT.get());
+        this.dropSelf(ModBlocks.STEEL_BARREL.get());
+        this.dropSelf(ModBlocks.AUTOMATIC_CRAFTING_TABLE.get());
+        this.dropSelf(ModBlocks.BURNER_PRESS_PREHEATER.get());
         this.add(ModBlocks.BERYLLIUM_ORE.get(),
                 block -> createCopperLikeOreDrops(ModBlocks.BERYLLIUM_ORE.get(), ModItems.RAW_BERYLLIUM.get()));
         this.add(ModBlocks.FLOURITE_ORE.get(),
@@ -233,6 +280,13 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                 block -> createDoorTable(ModBlocks.BUNKER_DOOR.get()));
         this.add(ModBlocks.DOOR_METAL.get(),
                 block -> createDoorTable(ModBlocks.DOOR_METAL.get()));
+
+        this.add(ModBlocks.BROKEN_CONCRETE_BRICK_SLAB.get(),
+                block -> createSlabItemTable(ModBlocks.BROKEN_CONCRETE_BRICK_SLAB.get()));
+        this.add(ModBlocks.CONCRETE_BRICK_SLAB.get(),
+                block -> createSlabItemTable(ModBlocks.CONCRETE_BRICK_SLAB.get()));
+        this.add(ModBlocks.CONCRETE_SLAB.get(),
+                block -> createSlabItemTable(ModBlocks.CONCRETE_SLAB.get()));
     }
 
     protected LootTable.Builder createCopperLikeOreDrops(Block pBlock, Item item) {

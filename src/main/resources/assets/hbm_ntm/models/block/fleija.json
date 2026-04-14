@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/fleija.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/fleija",
+    "m_ab459633-0aa9-b744-daf7-bf0bc8bedcf0": "hbm_ntm:block/fleija",
+    "Material": "hbm_ntm:block/fleija",
+    "none": "hbm_ntm:block/fleija"
+  }
+}

@@ -1,6 +1,13 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "block/cube",
   "textures": {
-    "all": "hbm_ntm:block/fuel_rod_normal"
-  }
+    "down": "hbm_ntm:block/fuel_rod_normal",
+    "up": "hbm_ntm:block/fuel_rod_normal",
+    "north": "hbm_ntm:block/rod",
+    "east": "hbm_ntm:block/rod",
+    "south": "hbm_ntm:block/rod",
+    "west": "hbm_ntm:block/rod",
+    "particle": "hbm_ntm:block/fuel_rod_normal"
+  },
+  "render_type": "solid"
 }

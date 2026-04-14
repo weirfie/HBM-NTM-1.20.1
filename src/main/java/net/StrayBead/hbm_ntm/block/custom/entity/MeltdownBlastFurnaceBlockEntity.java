@@ -2,6 +2,7 @@ package net.StrayBead.hbm_ntm.block.custom.entity;
 
 import net.StrayBead.hbm_ntm.block.ModBlocks;
 import net.StrayBead.hbm_ntm.fluid.ModFluids;
+import net.StrayBead.hbm_ntm.item.ModItems;
 import net.StrayBead.hbm_ntm.network.ModMessages;
 import net.StrayBead.hbm_ntm.network.packet.FluidSyncS2CPacket;
 import net.StrayBead.hbm_ntm.recipe.BlastFurnaceRecipe;
@@ -188,7 +189,7 @@ public class MeltdownBlastFurnaceBlockEntity extends BlockEntity implements Menu
 
         // 1. FUEL CHECK
         ItemStack fuelSlot = pEntity.itemHandler.getStackInSlot(0);
-        if (fuelSlot.is(Items.COAL) || fuelSlot.is(Items.CHARCOAL) || fuelSlot.is(ModBlocks.LIGNITE_ORE.get().asItem())) {
+        if (fuelSlot.is(Items.COAL) || fuelSlot.is(Items.CHARCOAL) || fuelSlot.is(ModItems.LIGNITE.get())) {
             if (pEntity.FLUID_TANK.getFluidAmount() <= pEntity.FLUID_TANK.getCapacity() - 100) {
                 // Only consume/print fuel once per second to avoid spam
                 System.out.println("DEBUG: [Fuel] Consuming " + fuelSlot.getItem().toString() + ". Tank now: " + (pEntity.FLUID_TANK.getFluidAmount() + 100));

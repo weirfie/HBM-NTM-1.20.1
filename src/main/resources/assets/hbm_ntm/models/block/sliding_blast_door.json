@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/sliding_blast_door.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/sliding_blast_door",
+    "m_1910f7f9-3234-1da3-bab7-23d70675ae09": "hbm_ntm:block/sliding_blast_door",
+    "Material": "hbm_ntm:block/sliding_blast_door",
+    "none": "hbm_ntm:block/sliding_blast_door"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/steel_barrel.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/steel_barrel",
+    "m_0d38ee2a-d3a9-0be3-f8f2-2a6ca2866ab8": "hbm_ntm:block/steel_barrel",
+    "Material": "hbm_ntm:block/steel_barrel",
+    "none": "hbm_ntm:block/steel_barrel"
+  }
+}

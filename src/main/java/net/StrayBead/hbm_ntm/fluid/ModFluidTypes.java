@@ -54,6 +54,8 @@ public class ModFluidTypes {
             new GenericFluidType(FluidType.Properties.create().density(-100).viscosity(100).canSwim(false), "heavy_water", 0));
     public static final RegistryObject<FluidType> REFORMATE = REGISTRY.register("reformate", () ->
             new GenericFluidType(FluidType.Properties.create().density(-100).viscosity(100).canSwim(false), "reformate", 0));
+    public static final RegistryObject<FluidType> MOLTEN_REDSTONE = REGISTRY.register("molten_redstone", () ->
+            new GenericFluidType(FluidType.Properties.create().density(-100).viscosity(100).canSwim(false), "molten_redstone", 0));
     public static final RegistryObject<FluidType> MOLTEN_FUEL = REGISTRY.register("molten_fuel", () ->
             new GenericFluidType(FluidType.Properties.create().density(-100).viscosity(100).canSwim(false), "molten_fuel", 0));
 }

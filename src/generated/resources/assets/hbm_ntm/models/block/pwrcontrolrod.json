@@ -1,6 +1,13 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "block/cube",
   "textures": {
-    "all": "hbm_ntm:block/pwrcontrolrod"
-  }
+    "down": "hbm_ntm:block/pwrcontrolrod",
+    "up": "hbm_ntm:block/pwrcontrolrod",
+    "north": "hbm_ntm:block/controlrodside",
+    "east": "hbm_ntm:block/controlrodside",
+    "south": "hbm_ntm:block/controlrodside",
+    "west": "hbm_ntm:block/controlrodside",
+    "particle": "hbm_ntm:block/pwrcontrolrod"
+  },
+  "render_type": "solid"
 }

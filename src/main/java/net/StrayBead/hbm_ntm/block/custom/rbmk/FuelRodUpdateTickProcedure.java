@@ -40,7 +40,7 @@ public class FuelRodUpdateTickProcedure {
                     }
                 }.getArrow(projectileLevel, 5, 1);
                 _entityToSpawn.setPos(x - 0.5, y, z - 0.5);
-                _entityToSpawn.shoot((Mth.nextInt(RandomSource.create(), -10, 10)), 0, (Mth.nextInt(RandomSource.create(), -10, 10)), 0.7f, 0);
+                _entityToSpawn.shoot((Mth.nextInt(RandomSource.create(), -10, 10)), 0, (Mth.nextInt(RandomSource.create(), -10, 10)), 0.5f, 0);
                 projectileLevel.addFreshEntity(_entityToSpawn);
             }
         }
@@ -54,6 +54,27 @@ public class FuelRodUpdateTickProcedure {
                 return _retval.get();
             }
         }.getEnergyStored(world, BlockPos.containing(x, y, z)) >= 32000) {
+            double sx = 0;
+            double sy = 0;
+            double sz = 0;
+            sx = -10;
+            for (int index0 = 0; index0 < 20; index0++) {
+                sy = -10;
+                for (int index1 = 0; index1 < 20; index1++) {
+                    sz = -10;
+                    for (int index2 = 0; index2 < 20; index2++) {
+                        if ((world.getBlockState(BlockPos.containing(x + sx, y + sy, z + sz))).getBlock() == ModBlocks.FUEL_ROD_NORMAL.get()) {
+                            world.setBlock(BlockPos.containing(x + sx, y + sy, z + sz), ModBlocks.CORIUM.get().defaultBlockState(), 3);
+                            if (Mth.nextInt(RandomSource.create(), 1, 10) == 1) {
+                                world.setBlock(BlockPos.containing(x + sx, y + sy, z + sz), ModBlocks.TITANIUM_ORE_BLOCK.get().defaultBlockState(), 3);
+                            }
+                        }
+                        sz = sz + 1;
+                    }
+                    sy = sy + 1;
+                }
+                sx = sx + 1;
+            }
             NTMModVariables.WorldVariables worldVars = NTMModVariables.WorldVariables.get(world);
             worldVars.hasReactorExploded = true;
             worldVars.syncData(world);

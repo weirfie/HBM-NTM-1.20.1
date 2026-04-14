@@ -28,6 +28,33 @@ public class ModLanguageProvider extends LanguageProvider {
             safeAdd(entry.getValue().get(), prettyName + " Fluid Identifier");
         }
 
+        // --- 1. DYNAMIC BEDROCK ORE FRAGMENTS ---
+        for (Map.Entry<String, RegistryObject<Item>> entry : ModItems.BEDROCK_ORE_FRAGMENTS.entrySet()) {
+            String rawName = entry.getKey();
+            String prettyName = Arrays.stream(rawName.split("_"))
+                    .map(word -> word.substring(0, 1).toUpperCase() + word.substring(1))
+                    .collect(Collectors.joining(" "));
+            safeAdd(entry.getValue().get(), prettyName + " Bedrock Ore Fragment");
+        }
+
+        // --- 1. DYNAMIC POWDERS ---
+        for (Map.Entry<String, RegistryObject<Item>> entry : ModItems.POWDERS.entrySet()) {
+            String rawName = entry.getKey();
+            String prettyName = Arrays.stream(rawName.split("_"))
+                    .map(word -> word.substring(0, 1).toUpperCase() + word.substring(1))
+                    .collect(Collectors.joining(" "));
+            safeAdd(entry.getValue().get(), prettyName + " Powder");
+        }
+
+        // --- 1. DYNAMIC BILLETS ---
+        for (Map.Entry<String, RegistryObject<Item>> entry : ModItems.BILLETS.entrySet()) {
+            String rawName = entry.getKey();
+            String prettyName = Arrays.stream(rawName.split("_"))
+                    .map(word -> word.substring(0, 1).toUpperCase() + word.substring(1))
+                    .collect(Collectors.joining(" "));
+            safeAdd(entry.getValue().get(), prettyName + " Billet");
+        }
+
         // --- 1. DYNAMIC FLUID CANISTERS ---
         for (Map.Entry<String, RegistryObject<Item>> entry : ModItems.CANISTERS.entrySet()) {
             String rawName = entry.getKey();
@@ -143,8 +170,39 @@ public class ModLanguageProvider extends LanguageProvider {
         safeAdd(ModItems.INFINITE_FLUID_BARREL.get(), "Infinite Fluid Barrel");
         safeAdd(ModItems.NUKE_DETONATOR.get(), "Nuke Detonator");
         safeAdd(ModItems.FLUORITE.get(), "Fluorite");
+        safeAdd(ModItems.CRYSTALLINE_IRON_FRAGMENT.get(), "Crystalline Iron Fragment");
+        safeAdd(ModItems.CRYSTALLINE_COPPER_FRAGMENT.get(), "Crystalline Copper Fragment");
+        safeAdd(ModItems.CRYSTALLINE_LITHIUM_FRAGMENT.get(), "Crystalline Lithium Fragment");
+        safeAdd(ModItems.CRYSTALLINE_SILICON_FRAGMENT.get(), "Crystalline Silicon Fragment");
+        safeAdd(ModItems.CRYSTALLINE_LEAD_FRAGMENT.get(), "Crystalline Lead Fragment");
+        safeAdd(ModItems.CRYSTALLINE_TITANIUM_FRAGMENT.get(), "Crystalline Titanium Fragment");
+        safeAdd(ModItems.CRYSTALLINE_ALUMINUM_FRAGMENT.get(), "Crystalline Aluminum Fragment");
+        safeAdd(ModItems.CRYSTALLINE_SULFUR_FRAGMENT.get(), "Crystalline Sulfur Fragment");
+        safeAdd(ModItems.CRYSTALLINE_CALCIUM_FRAGMENT.get(), "Crystalline Calcium Fragment");
+        safeAdd(ModItems.CRYSTALLINE_BISMUTH_FRAGMENT.get(), "Crystalline Bismuth Fragment");
+        safeAdd(ModItems.CRYSTALLINE_RADIUM_FRAGMENT.get(), "Crystalline Radium Fragment");
+        safeAdd(ModItems.CRYSTALLINE_TECHNETIUM_FRAGMENT.get(), "Crystalline Technetium Fragment");
+        safeAdd(ModItems.CRYSTALLINE_POLONIUM_FRAGMENT.get(), "Crystalline Polonium Fragment");
+        safeAdd(ModItems.CRYSTALLINE_URANIUM_FRAGMENT.get(), "Crystalline Uranium Fragment");
         safeAdd(ModItems.LEAD_DUST.get(), "Lead Dust");
         safeAdd(ModItems.DETONATOR.get(), "Detonator");
+        safeAdd(ModItems.EMPTY_PARTICLE_CAPSULE.get(), "Empty Particle Capsule");
+        safeAdd(ModItems.HYDROGEN_ION_CAPSULE.get(), "Hydrogen Ion Capsule");
+        safeAdd(ModItems.SPARKTICLE_CAPSULE.get(), "Sparkticle Capsule");
+        safeAdd(ModItems.DARK_MATTER_CAPSULE.get(), "Dark Matter Capsule");
+        safeAdd(ModItems.STRANGE_QUARK_CAPSULE.get(), "Strange Quark Capsule");
+        safeAdd(ModItems.LEAD_ION_CAPSULE.get(), "Lead Ion Capsule");
+        safeAdd(ModItems.MUON_CAPSULE.get(), "Muon Capsule");
+        safeAdd(ModItems.THE_DIGAMMA_PARTICLE.get(), "The Digamma Particle");
+        safeAdd(ModItems.URANIUM_INGOT.get(), "Uranium Ingot");
+        safeAdd(ModItems.CONTROL_UNIT.get(), "Control Unit");
+        safeAdd(ModItems.TANTALIUM_CAPACITOR.get(), "Tantalium Capacitor");
+        safeAdd(ModItems.CONTROL_UNIT_CASING.get(), "Control Unit Casing");
+        safeAdd(ModItems.SPEED_UPGRADE.get(), "Speed Upgrade");
+        safeAdd(ModItems.CATHODE_RAY_TUBE.get(), "Cathode Ray Tube");
+        safeAdd(ModItems.ATOMIC_CLOCK.get(), "Atomic Clock");
+        safeAdd(ModItems.VERSATILE_INTEGRATED_CIRCUIT.get(), "Versatile Integrated Circuit");
+        safeAdd(ModItems.SOLID_STATE_QUANTUM_PROCESSOR.get(), "Solid State Quantum Processor");
         safeAdd(ModItems.EMPTY_CELL.get(), "Empty Cell");
         safeAdd(ModItems.URANIUM_HEXAFLUORIDE_CELL.get(), "Uranium Hexafluoride Cell");
         safeAdd(ModItems.PLUTONIUM_HEXAFLUORIDE_CELL.get(), "Plutonium Hexafluoride Cell");
@@ -197,6 +255,7 @@ public class ModLanguageProvider extends LanguageProvider {
         safeAdd(ModItems.FLAT_STEEL_CASING.get(), "Flat Steel Casing");
         safeAdd(ModItems.CAST_IRON_PLATE.get(), "Cast Iron Plate");
         safeAdd(ModItems.STEEL_PEDESTAL.get(), "Steel Pedestal");
+        safeAdd(ModItems.TRANSITION_SEAL.get(), "Transition Seal");
         safeAdd(ModItems.MILITARY_GRADE_CIRCUIT_BOARD.get(), "Military Grade Circuit Board");
         safeAdd(ModItems.GOLD_WIRE.get(), "Gold Wire");
         safeAdd(ModItems.NITRATED_URANIUM_BEDROCK_ORE.get(), "Nitrated Uranium Bedrock Ore");
@@ -220,6 +279,12 @@ public class ModLanguageProvider extends LanguageProvider {
         safeAdd(ModItems.URANIUM_235_INGOT.get(), "Uranium-235 Ingot");
         safeAdd(ModItems.STEEL_TANK.get(), "Steel Tank");
         safeAdd(ModItems.MOTOR.get(), "Motor");
+        safeAdd(ModItems.GUIDE_BOOK.get(), "Guide Book");
+        safeAdd(ModItems.LIGNITE.get(), "Lignite");
+        safeAdd(ModItems.COAL_COKE.get(), "Coal Coke");
+        safeAdd(ModItems.LIGNITE_COKE.get(), "Lignite Coke");
+        safeAdd(ModItems.PETROLEUM_COKE.get(), "Petroleum Coke");
+        safeAdd(ModItems.INFERNAL_COAL.get(), "Infernal Coal");
         safeAdd(ModItems.STEEL_BEAM.get(), "Steel Beam");
         safeAdd(ModItems.STEEL_PLATE.get(), "Steel Plate");
         safeAdd(ModItems.ANALOG_CIRCUIT_BOARD.get(), "Analog Circuit Board");
@@ -246,6 +311,8 @@ public class ModLanguageProvider extends LanguageProvider {
         safeAdd(ModItems.REDSTONE_CRYSTALS.get(), "Redstone Crystals");
         safeAdd(ModItems.DROP_OF_MERCURY.get(), "Drop of Mercury");
         safeAdd(ModItems.COAL_POWDER.get(), "Coal Powder");
+        safeAdd(ModItems.CORRUPTED_BROADCASTER.get(), "Corrupted Broadcaster");
+        safeAdd(ModItems.SUIT_BATTERY.get(), "Suit Battery");
         safeAdd(ModItems.RARE_EARTH_CRYSTALS.get(), "Rare Earth Crystals");
         safeAdd(ModItems.DESHREADY_BLEND.get(), "DeshReady Blend");
         safeAdd(ModItems.AIRSTRIKE_DESIGNATOR.get(), "Airstrike Designator");
@@ -420,6 +487,9 @@ public class ModLanguageProvider extends LanguageProvider {
         safeAdd(ModBlocks.WATER_TANK.get(), "Water Tank");
         safeAdd(ModBlocks.WATER_TANK_TOP.get(), "Water Tank");
         safeAdd(ModBlocks.SHREDDER.get(), "Shredder");
+        safeAdd(ModBlocks.THE_BLUE_RINSE.get(), "The Blue Rinse");
+        safeAdd(ModBlocks.THE_PROTOTYPE.get(), "The Prototype");
+        safeAdd(ModBlocks.FLEIJA.get(), "F.L.E.I.J.A");
         safeAdd(ModBlocks.SPARK_ENERGY_BATTERY.get(), "Spark Energy Battery");
         safeAdd(ModBlocks.SCHRABIDIUM_BLOCK.get(), "Schrabidium Block");
         safeAdd(ModBlocks.SCHRABIDIUM_ORE.get(), "Schrabidium Ore");
@@ -467,6 +537,7 @@ public class ModLanguageProvider extends LanguageProvider {
         safeAdd(ModBlocks.MOSSY_CONCRETE_BRICKS.get(), "Mossy Concrete Bricks");
         safeAdd(ModBlocks.CMB_STEEL_TILE.get(), "CMB Steel Tile");
         safeAdd(ModBlocks.DUCRETE.get(), "Ducrete");
+        safeAdd(ModBlocks.SILO_HATCH.get(), "Silo Hatch");
         safeAdd(ModBlocks.FRACTIONATING_TOWER.get(), "Fractionating Tower");
         safeAdd(ModBlocks.DUCRETE_TILE.get(), "Ducrete Tile");
         safeAdd(ModBlocks.OBSIDIAN_BRICKS.get(), "Obsidian Bricks");
@@ -487,10 +558,50 @@ public class ModLanguageProvider extends LanguageProvider {
         safeAdd(ModBlocks.VACUUM_REFINERY.get(), "Vacuum Refinery");
         safeAdd(ModBlocks.CATALYTIC_REFORMER.get(), "Catalytic Reformer");
         safeAdd(ModBlocks.PUMPJACK.get(), "Pumpjack");
+        safeAdd(ModBlocks.BROKEN_METEORITE_BLOCK.get(), "Broken Meteorite Block");
+        safeAdd(ModBlocks.METEORITE_COBBLESTONE.get(), "Meteorite Cobblestone");
+        safeAdd(ModBlocks.METEOR_COBALT_ORE.get(), "Meteor Cobalt Ore");
+        safeAdd(ModBlocks.METEOR_IRON_ORE.get(), "Meteor Iron Ore");
+        safeAdd(ModBlocks.METEOR_COPPER_ORE.get(), "Meteor Copper Ore");
+        safeAdd(ModBlocks.METEOR_ALUMINUM_ORE.get(), "Meteor Aluminum Ore");
+        safeAdd(ModBlocks.METEOR_RARE_EARTH_ORE.get(), "Meteor Rare Earth Ore");
+        safeAdd(ModBlocks.HOT_METEORITE_COBBLESTONE.get(), "Hot Meteorite Cobblestone");
+        safeAdd(ModBlocks.PUMPJACK.get(), "Pumpjack");
         safeAdd(ModBlocks.ELECTRIC_ARC_FURNACE.get(), "Electric Arc Furnace");
         safeAdd(ModBlocks.LARGE_MINING_DRILL.get(), "Large Mining Drill");
         safeAdd(ModBlocks.EXPOSURE_CHAMBER.get(), "Exposure Chamber");
         safeAdd(ModBlocks.COMPRESSOR.get(), "Compressor");
+        safeAdd(ModBlocks.CHAINLINK_FENCE.get(), "Chainlink Fence");
+        safeAdd(ModBlocks.CHAINLINK_FENCE_POST.get(), "Chainlink Fence Post");
+        safeAdd(ModBlocks.ASH.get(), "Ash");
+        safeAdd(ModBlocks.SILO_HATCH_FRAME.get(), "Silo Hatch Frame");
+        safeAdd(ModBlocks.SILO_HATCH_OPENER.get(), "Silo Hatch Opener");
+        safeAdd(ModBlocks.IRON_CRATE.get(), "Iron Crate");
+        safeAdd(ModBlocks.STEEL_CRATE.get(), "Steel Crate");
+        safeAdd(ModBlocks.DESH_CRATE.get(), "Desh Crate");
+        safeAdd(ModBlocks.TUNGSTEN_CRATE.get(), "Tungsten Crate");
+        safeAdd(ModBlocks.TEMPLATE_CRATE.get(), "Template Crate");
+        safeAdd(ModBlocks.SAFE.get(), "Safe");
+        safeAdd(ModBlocks.MASS_STORAGE_UNIT.get(), "Mass Storage Unit");
+        safeAdd(ModBlocks.AUTOMATIC_CRAFTING_TABLE.get(), "Automatic Crafting Table");
+        safeAdd(ModBlocks.BURNER_PRESS_PREHEATER.get(), "Burner Press Preheater");
+        safeAdd(ModBlocks.BORON_SAND.get(), "Boron Sand");
+        safeAdd(ModBlocks.LEAD_SAND.get(), "Lead Sand");
+        safeAdd(ModBlocks.URANIUM_SAND.get(), "Uranium Sand");
+        safeAdd(ModBlocks.POLONIUM_SAND.get(), "Polonium Sand");
+        safeAdd(ModBlocks.STEEL_BARREL.get(), "Steel Barrel");
+        safeAdd(ModBlocks.CYCLOTRON.get(), "Cyclotron");
+        safeAdd(ModBlocks.ASHPIT.get(), "Ashpit");
+        safeAdd(ModBlocks.FIRE_DOOR.get(), "Fire Block");
+        safeAdd(ModBlocks.SLIDING_BLAST_DOOR.get(), "Sliding Blast Door");
+        safeAdd(ModBlocks.VAULT_TECH_BLAST_DOOR.get(), "Vault Tech Blast Door");
+        safeAdd(ModBlocks.BORON_GLASS.get(), "Boron Glass");
+        safeAdd(ModBlocks.LEAD_GLASS.get(), "Lead Glass");
+        safeAdd(ModBlocks.URANIUM_GLASS.get(), "Uranium Glass");
+        safeAdd(ModBlocks.TRINITY_GLASS.get(), "Trinity Glass");
+        safeAdd(ModBlocks.POLONIUM_GLASS.get(), "Polonium Glass");
+        safeAdd(ModBlocks.ASH_GLASS.get(), "Ash Glass");
+        safeAdd(ModBlocks.POLARIZED_GLASS.get(), "Polarized Glass");
         safeAdd(ModBlocks.FLARE_STACK.get(), "Flare Stack");
 
         // --- 5. GUIs & STRINGS ---
@@ -532,7 +643,9 @@ public class ModLanguageProvider extends LanguageProvider {
         add("sounds.hbm_ntm.geiger_click", "Geiger Clicks");
         add("sounds.hbm_ntm.nuclear_explosion", "Nuclear Explosion");
 
-        add("creativetab.hbm_ntm_machine_items_and_fuel", "hbm_ntm Machine Items and Fuel");
+        add("creativetab.hbm_ntm_machine_items_and_fuel", "NTM Machine Items and Fuel");
+        add("creativetab.ntm_machines", "NTM Machines");
+        add("creativetab.hbm_ntm_bombs", "NTM Bombs");
 
         // FLUIDS
         add("fluid_type.hbm_ntm.steam", "Steam");
@@ -553,6 +666,9 @@ public class ModLanguageProvider extends LanguageProvider {
         add("fluid_type.hbm_ntm.vacuum_light_oil", "Vacuum Light Oil");
         add("fluid_type.hbm_ntm.heavy_water", "Heavy Water");
         add("fluid_type.hbm_ntm.molten_fuel", "Molten Fuel");
+        add("fluid_type.hbm_ntm.molten_redstone", "Molten Redstone");
+        add("fluid_type.hbm_ntm.molten_aluminum", "Molten Aluminum");
+        add("fluid_type.hbm_ntm.molten_steel", "Molten Steel");
 
         // ADVANCEMENTS
         add("advancements.coal_and_iron.title", "Coal and Iron");

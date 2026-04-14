@@ -1,0 +1,17 @@
+{
+  "structures": [
+    {
+      "structure": "hbm_ntm:meteor",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1642136474,
+
+    "spacing": 30,
+
+    "separation": 15,
+
+    "type": "minecraft:random_spread"
+  }
+}

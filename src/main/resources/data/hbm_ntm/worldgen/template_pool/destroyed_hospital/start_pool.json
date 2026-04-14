@@ -1,0 +1,22 @@
+{
+  "name": "hbm_ntm:destroyed_hospital/start_pool",
+
+  "fallback": "minecraft:empty",
+
+  "elements": [
+    {
+
+      "weight": 1,
+      "element": {
+
+        "location": "hbm_ntm:destroyed_hospital",
+
+        "processors": "minecraft:empty",
+
+        "projection": "terrain_matching",
+
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

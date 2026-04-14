@@ -212,7 +212,7 @@ public class OilDerrickBlockEntity extends BlockEntity implements MenuProvider {
 
         if (hasEnoughEnergy(pEntity)) {
             boolean foundBlock = false;
-            for (int i = 0; i <= pos.getY() + 80; i++) {
+            for (int i = 0; i <= pos.getY() + 100; i++) {
                 BlockState oilState = level.getBlockState(pos.below(i));
 
                 if(isOilReservoir(oilState)) {

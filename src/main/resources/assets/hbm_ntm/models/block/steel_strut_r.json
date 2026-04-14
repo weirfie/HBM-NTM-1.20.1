@@ -1,0 +1,17 @@
+{
+  "textures": {
+    "m": "hbm_ntm:block/steel_strut_inner"
+  },
+  "elements": [
+    {
+      "from": [10, 6, -0.1],
+      "to": [16, 10, 0.4],
+      "faces": {
+        "north": {
+          "uv": [10, 6, 16, 10],
+          "texture": "#m"
+        }
+      }
+    }
+  ]
+}

@@ -18,6 +18,8 @@ public class ModBlockEntites {
             BLOCK_ENTITIES.register("fuel_rod_entity", () ->
                     BlockEntityType.Builder.of(FuelRodEntity::new,
                             ModBlocks.FUEL_ROD.get()).build(null));
+    public static final RegistryObject<BlockEntityType<SiloHatchBE>> SILO_HATCH =
+            BLOCK_ENTITIES.register("silo_hatch", () -> BlockEntityType.Builder.of(SiloHatchBE::new, ModBlocks.SILO_HATCH.get()).build(null));
     public static final RegistryObject<BlockEntityType<ZirnoxNuclearReactorBlockEntity>> ZIRNOX_NUCLEAR_REACTOR =
             BLOCK_ENTITIES.register("zirnox_nuclear_reactor_entity", () ->
                     BlockEntityType.Builder.of(ZirnoxNuclearReactorBlockEntity::new,
@@ -26,6 +28,14 @@ public class ModBlockEntites {
             BLOCK_ENTITIES.register("blast_furnace_entity", () ->
                     BlockEntityType.Builder.of(MeltdownBlastFurnaceBlockEntity::new,
                             ModBlocks.BLAST_FURNACE.get()).build(null));
+    public static final RegistryObject<BlockEntityType<SteelBarrelBlockEntity>> STEEL_BARREL =
+            BLOCK_ENTITIES.register("steel_barrel_entity", () ->
+                    BlockEntityType.Builder.of(SteelBarrelBlockEntity::new,
+                            ModBlocks.STEEL_BARREL.get()).build(null));
+    public static final RegistryObject<BlockEntityType<IronCrateBlockEntity>> IRON_CRATE =
+            BLOCK_ENTITIES.register("iron_crate_entity", () ->
+                    BlockEntityType.Builder.of(IronCrateBlockEntity::new,
+                            ModBlocks.IRON_CRATE.get()).build(null));
     public static final RegistryObject<BlockEntityType<FlareStackBlockEntity>> FLARE_STACK =
             BLOCK_ENTITIES.register("flare_stack_entity", () ->
                     BlockEntityType.Builder.of(FlareStackBlockEntity::new,

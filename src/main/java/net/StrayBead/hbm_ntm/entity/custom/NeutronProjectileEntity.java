@@ -94,7 +94,7 @@ public class NeutronProjectileEntity extends AbstractArrow implements ItemSuppli
         }
         tickCounter++;
         waitTickCounter++;
-        if (waitTickCounter > 100) {
+        if (waitTickCounter > 300) {
             this.discard();
         }        if(this.inGround) {
             if ((world.getBlockState(BlockPos.containing(this.getX(), this.getY(), this.getZ()))).getBlock() == ModBlocks.NEUTRON_ABSORBER.get()) {
@@ -122,7 +122,7 @@ public class NeutronProjectileEntity extends AbstractArrow implements ItemSuppli
             } else if ((world.getBlockState(BlockPos.containing(this.getX(), this.getY(), this.getZ()))).getBlock() == ModBlocks.FUEL_ROD.get()) {
                 {
                     BlockEntity _ent = world.getBlockEntity(BlockPos.containing(this.getX(), this.getY(), this.getZ()));
-                    int _amount = 100;
+                    int _amount = 200;
                     if (_ent != null)
                         _ent.getCapability(ForgeCapabilities.ENERGY, null).ifPresent(capability -> capability.receiveEnergy(_amount, false));
                 }

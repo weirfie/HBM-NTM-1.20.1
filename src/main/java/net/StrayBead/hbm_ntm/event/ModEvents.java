@@ -21,6 +21,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -50,6 +51,26 @@ public class ModEvents {
                     new ItemStack(Items.EMERALD, 60),
                     new ItemStack(ModItems.METAL_DETECTOR.get(), 1),
                     2, 12, 0.035f));
+        }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
+        Player player = event.getEntity();
+
+        if (!player.level().isClientSide()) {
+
+            CompoundTag data = player.getPersistentData();
+            CompoundTag persistent = data.getCompound(Player.PERSISTED_NBT_TAG);
+
+            if (!persistent.getBoolean("hbm_ntm_joined_before")) {
+
+                player.addItem(new ItemStack(ModItems.GUIDE_BOOK.get()));
+
+                persistent.putBoolean("hbm_ntm_joined_before", true);
+
+                data.put(Player.PERSISTED_NBT_TAG, persistent);
+            }
         }
     }
 

@@ -1,6 +1,13 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "block/cube",
   "textures": {
-    "all": "hbm_ntm:block/steam_channel"
-  }
+    "down": "hbm_ntm:block/steam_channel",
+    "up": "hbm_ntm:block/steam_channel",
+    "north": "hbm_ntm:block/rod",
+    "east": "hbm_ntm:block/rod",
+    "south": "hbm_ntm:block/rod",
+    "west": "hbm_ntm:block/rod",
+    "particle": "hbm_ntm:block/steam_channel"
+  },
+  "render_type": "solid"
 }

@@ -31,6 +31,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.THERMOELECTRIC_ELEMENT);
         simpleItem(ModItems.STEEL_SHREDDER_BLADES);
         simpleItem(ModItems.OIL_RESERVOIR_DETECTOR);
+        simpleItem(ModItems.CORRUPTED_BROADCASTER);
+        simpleItem(ModItems.SUIT_BATTERY);
+        simpleItem(ModItems.TRANSITION_SEAL);
         simpleItem(ModItems.REDSTONE_INGOT);
         simpleItem(ModItems.CRYOLITE_CHUNK);
         simpleItem(ModItems.POLYMER_BAR);
@@ -211,13 +214,75 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.DYATLOV_INSTANT_MELTDOWN_APPLICATOR);
         simpleItem(ModItems.IRON_PLATE);
         simpleItem(ModItems.STEEL_BOLT);
+        simpleItem(ModItems.LIGNITE);
+        simpleItem(ModItems.COAL_COKE);
+        simpleItem(ModItems.LIGNITE_COKE);
+        simpleItem(ModItems.PETROLEUM_COKE);
+        simpleItem(ModItems.INFERNAL_COAL);
+        simpleItem(ModItems.GUIDE_BOOK);
+        simpleItem(ModItems.CRYSTALLINE_IRON_FRAGMENT);
+        simpleItem(ModItems.CRYSTALLINE_COPPER_FRAGMENT);
+        simpleItem(ModItems.CRYSTALLINE_LITHIUM_FRAGMENT);
+        simpleItem(ModItems.CRYSTALLINE_SILICON_FRAGMENT);
+        simpleItem(ModItems.CRYSTALLINE_LEAD_FRAGMENT);
+        simpleItem(ModItems.CRYSTALLINE_TITANIUM_FRAGMENT);
+        simpleItem(ModItems.CRYSTALLINE_ALUMINUM_FRAGMENT);
+        simpleItem(ModItems.CRYSTALLINE_SULFUR_FRAGMENT);
+        simpleItem(ModItems.CRYSTALLINE_CALCIUM_FRAGMENT);
+        simpleItem(ModItems.CRYSTALLINE_BISMUTH_FRAGMENT);
+        simpleItem(ModItems.CRYSTALLINE_RADIUM_FRAGMENT);
+        simpleItem(ModItems.CRYSTALLINE_TECHNETIUM_FRAGMENT);
+        simpleItem(ModItems.CRYSTALLINE_POLONIUM_FRAGMENT);
+        simpleItem(ModItems.CRYSTALLINE_URANIUM_FRAGMENT);
+        simpleItem(ModItems.CONTROL_UNIT);
+        simpleItem(ModItems.TANTALIUM_CAPACITOR);
+        simpleItem(ModItems.CONTROL_UNIT_CASING);
+        simpleItem(ModItems.SPEED_UPGRADE);
+        simpleItem(ModItems.CATHODE_RAY_TUBE);
+        simpleItem(ModItems.URANIUM_INGOT);
+        simpleItem(ModItems.EMPTY_PARTICLE_CAPSULE);
+        simpleItem(ModItems.HYDROGEN_ION_CAPSULE);
+        simpleItem(ModItems.SPARKTICLE_CAPSULE);
+        simpleItem(ModItems.DARK_MATTER_CAPSULE);
+        simpleItem(ModItems.STRANGE_QUARK_CAPSULE);
+        simpleItem(ModItems.LEAD_ION_CAPSULE);
+        simpleItem(ModItems.MUON_CAPSULE);
+        simpleItem(ModItems.THE_DIGAMMA_PARTICLE);
+        simpleItem(ModItems.ATOMIC_CLOCK);
+        simpleItem(ModItems.VERSATILE_INTEGRATED_CIRCUIT);
+        simpleItem(ModItems.SOLID_STATE_QUANTUM_PROCESSOR);
         simpleBlockItem(ModBlocks.BUNKER_DOOR);
         simpleBlockItem(ModBlocks.DOOR_METAL);
+
+        evenSimplerBlockItem(ModBlocks.CONCRETE_STAIRS);
+        evenSimplerBlockItem(ModBlocks.CRACKED_CONCRETE_BRICK_STAIRS);
+        evenSimplerBlockItem(ModBlocks.CONCRETE_BRICK_STAIRS);
+        evenSimplerBlockItem(ModBlocks.CONCRETE_SLAB);
+        evenSimplerBlockItem(ModBlocks.CONCRETE_BRICK_SLAB);
+        evenSimplerBlockItem(ModBlocks.BROKEN_CONCRETE_BRICK_SLAB);
 
         for (RegistryObject<Item> item : ModItems.FLUID_IDENTIFIERS.values()) {
             withExistingParent(item.getId().getPath(), new ResourceLocation("item/generated"))
                     .texture("layer0", new ResourceLocation(HBMNTM.MOD_ID, "item/fluid_identifier_base"))
                     .texture("layer1", new ResourceLocation(HBMNTM.MOD_ID, "item/fluid_identifier_center"));
+        }
+
+        for (RegistryObject<Item> item : ModItems.BEDROCK_ORE_FRAGMENTS.values()) {
+            withExistingParent(item.getId().getPath(), new ResourceLocation("item/generated"))
+                    .texture("layer0", new ResourceLocation(HBMNTM.MOD_ID, "item/bedrock_ore_fragment_base"))
+                    .texture("layer1", new ResourceLocation(HBMNTM.MOD_ID, "item/bedrock_ore_fragment_center"));
+        }
+
+        for (RegistryObject<Item> item : ModItems.POWDERS.values()) {
+            withExistingParent(item.getId().getPath(), new ResourceLocation("item/generated"))
+                    .texture("layer0", new ResourceLocation(HBMNTM.MOD_ID, "item/powder_base"))
+                    .texture("layer1", new ResourceLocation(HBMNTM.MOD_ID, "item/powder_center"));
+        }
+
+        for (RegistryObject<Item> item : ModItems.BILLETS.values()) {
+            withExistingParent(item.getId().getPath(), new ResourceLocation("item/generated"))
+                    .texture("layer0", new ResourceLocation(HBMNTM.MOD_ID, "item/billet_base"))
+                    .texture("layer1", new ResourceLocation(HBMNTM.MOD_ID, "item/billet_center"));
         }
 
         for (RegistryObject<Item> item : ModItems.FLUID_BARRELS.values()) {

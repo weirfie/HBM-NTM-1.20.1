@@ -1,6 +1,7 @@
 package net.StrayBead.hbm_ntm.block.custom.entity;
 
 import io.netty.buffer.Unpooled;
+import net.StrayBead.hbm_ntm.block.ModBlocks;
 import net.StrayBead.hbm_ntm.item.ModItems;
 import net.StrayBead.hbm_ntm.screen.ShredderGuiMenu;
 import net.minecraft.core.BlockPos;
@@ -16,6 +17,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
@@ -72,17 +74,46 @@ public class ShredderBlockEntity extends RandomizableContainerBlockEntity implem
         ItemStack inputStack = entity.stacks.get(0);
 
         if (entity.stacks.get(27).getItem() == ModItems.STEEL_SHREDDER_BLADES.get()) {
+            ItemStack result = ItemStack.EMPTY;
+
             if (inputStack.getItem() == ModItems.NITRATED_URANIUM_BEDROCK_ORE.get()) {
+                result = new ItemStack(ModItems.URANIUM_DUST.get(), 1);
+            } else if (inputStack.getItem() == Blocks.ANVIL.asItem()) {
+                result = new ItemStack(ModItems.IRON_POWDER.get(), 31);
+            } else if (inputStack.getItem() == ModItems.STEEL_PLATE.get()) {
+                result = new ItemStack(ModItems.POWDERS.get("steel").get(), 1);
+            } else if (inputStack.getItem() == ModItems.URANIUM_INGOT.get()) {
+                result = new ItemStack(ModItems.URANIUM_DUST.get(), 1);
+            } else if (inputStack.getItem() == ModBlocks.STEEL_DECO_BLOCK.get().asItem()) {
+                result = new ItemStack(ModItems.POWDERS.get("steel").get(), 1);
+            } else if (inputStack.getItem() == ModBlocks.LIGNITE_ORE.get().asItem()) {
+                result = new ItemStack(ModItems.POWDERS.get("lignite").get(), 1);
+            }
 
-                if (canOutput(entity)) {
+            if (!result.isEmpty()) {
+                if (insertResult(entity, result)) {
                     inputStack.shrink(1);
-
-                    entity.stacks.set(9, new ItemStack(ModItems.URANIUM_DUST.get(), 1));
-
                     entity.setChanged();
                 }
             }
         }
+    }
+
+    private static boolean insertResult(ShredderBlockEntity entity, ItemStack result) {
+        for (int i = 9; i <= 15; i++) {
+            ItemStack existing = entity.stacks.get(i);
+
+            if (existing.isEmpty()) {
+                entity.stacks.set(i, result.copy());
+                return true;
+            }
+
+            if (ItemStack.isSameItem(existing, result) && existing.getCount() + result.getCount() <= existing.getMaxStackSize()) {
+                existing.grow(result.getCount());
+                return true;
+            }
+        }
+        return false;
     }
 
     private static boolean canOutput(ShredderBlockEntity entity) {

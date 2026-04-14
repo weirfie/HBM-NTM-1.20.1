@@ -30,11 +30,28 @@ public class ParticleManager {
     private static final ResourceLocation CLOUD_TEXTURE = new ResourceLocation("hbm_ntm", "textures/particle/dust.png");
     private static final List<CloudParticleData> PARTICLES = new CopyOnWriteArrayList<>();
 
+    private static Vec3 clientHeatSource = null;
+    private static int heatSourceAge = 0;
+    private static final int MAX_HEAT_SOURCE_AGE = 1500;
+
+    public static void setClientHeatSource(Vec3 pos) {
+        clientHeatSource = pos;
+        heatSourceAge = 0;
+    }
+
     @SubscribeEvent
     public static void onClientTick(TickEvent.ClientTickEvent event) {
         if (event.phase == TickEvent.Phase.END) {
             Minecraft mc = Minecraft.getInstance();
             if (mc.level != null) {
+                if (clientHeatSource != null) {
+                    clientHeatSource = clientHeatSource.add(0, 0.15, 0);
+                    heatSourceAge++;
+
+                    if (heatSourceAge > MAX_HEAT_SOURCE_AGE) {
+                        clientHeatSource = null;
+                    }
+                }
                 tick(mc.level);
             }
         }
@@ -42,13 +59,13 @@ public class ParticleManager {
 
     public static void tick(net.minecraft.world.level.Level level) {
         synchronized (PARTICLES) {
-            Vec3 heatSource = LittleBoyBlock.glowingPosition;
+            Vec3 heatSource = clientHeatSource;
+            System.out.println(heatSource);
             for (int i = 0; i < PARTICLES.size(); i++) {
                 CloudParticleData data = PARTICLES.get(i);
 
                 if (data == null) continue;
 
-                data.pos = data.pos.add(data.delta);
                 data.pos = data.pos.add(data.delta).add(data.velocity);
                 data.age++;
 
@@ -57,20 +74,50 @@ public class ParticleManager {
                     data.delta = data.delta.scale(0.9d);
                 }
 
+                float colorLerp = data.lerpSpeed;
+                data.r += (data.targetGray - data.r) * colorLerp;
+                data.g += (data.targetGray - data.g) * colorLerp;
+                data.b += (data.targetGray - data.b) * colorLerp;
+
                 if (heatSource != null) {
-                    double distance = data.pos.distanceTo(heatSource);
-                    float maxHeatDistance = 40.0f;
-                    float rawFactor = 1.0f - (float) Math.min(distance / maxHeatDistance, 1.0);
+                    Vec3 visualHeatCenter = heatSource.add(0, -18.0, 0);
+                    double distance = data.pos.distanceTo(visualHeatCenter);
 
-                    float heatFactor = rawFactor * rawFactor;
+                    float yellowRadius = 20.0f;
+                    float orangeRadius = 35.0f;
+                    float maxHeatDistance = 50.0f;
 
-                    float hotR = 1.0f;
-                    float hotG = Mth.clamp(0.5f + data.heatBias, 0.3f, 0.7f);
-                    float hotB = Mth.clamp(0.0f + (data.heatBias * 0.5f), 0.0f, 0.1f);
+                    if (distance < maxHeatDistance) {
+                        float targetR, targetG, targetB;
+                        float heatIntensity;
 
-                    data.r = Mth.lerp(heatFactor, data.r, hotR);
-                    data.g = Mth.lerp(heatFactor, data.g, hotG);
-                    data.b = Mth.lerp(heatFactor, data.b, hotB);
+                        if (distance <= yellowRadius) {
+                            targetR = 1.0f;
+                            targetG = 1.0f;
+                            targetB = 0.0f;
+                            heatIntensity = 1.0f;
+                        } else if (distance <= orangeRadius) {
+                            float t = (float) ((distance - yellowRadius) / (orangeRadius - yellowRadius));
+                            targetR = 1.0f;
+                            targetG = Mth.lerp(t, 1.0f, 0.45f);
+                            targetB = 0.0f;
+                            heatIntensity = 1.0f;
+                        } else {
+                            float t = (float) ((distance - orangeRadius) / (maxHeatDistance - orangeRadius));
+                            targetR = 1.0f;
+                            targetG = 0.45f;
+                            targetB = 0.0f;
+                            heatIntensity = 1.0f - t;
+                        }
+
+                        targetG = Mth.clamp(targetG + (data.heatBias * 0.2f), 0.0f, 1.0f);
+
+                        data.r = Mth.lerp(heatIntensity, data.r, targetR);
+                        data.g = Mth.lerp(heatIntensity, data.g, targetG);
+                        data.b = Mth.lerp(heatIntensity, data.b, targetB);
+
+                        data.a = Math.max(data.a, heatIntensity * 0.95f);
+                    }
                 }
 
 //                if (data.shouldAlphaDecrease) {
@@ -83,6 +130,45 @@ public class ParticleManager {
 //                    PARTICLES.remove(data);
 //                    continue;
 //                }
+
+                if (data.shouldHaveConvectionCurrent && heatSource != null) {
+                    double dx = data.pos.x - heatSource.x;
+                    double dz = data.pos.z - heatSource.z;
+                    double dy = data.pos.y - heatSource.y;
+
+                    double horizontalDist = Math.sqrt(dx * dx + dz * dz);
+                    if (horizontalDist < 0.1) horizontalDist = 0.1;
+
+                    double expansionProgress = (double) data.age / data.maxAge;
+                    double vortexRadius = 20.0 + (expansionProgress * 25.0);
+
+                    double vortexStrength = 0.02;
+                    if (data.age < 60) {
+                        vortexStrength = 0.2;
+                    }
+                    double diffRadius = horizontalDist - vortexRadius;
+
+                    double rollY = -diffRadius * vortexStrength * 0.55;
+                    double rollRadius = dy * vortexStrength;
+
+                    double unitX = dx / horizontalDist;
+                    double unitZ = dz / horizontalDist;
+
+                    double expansionSpeed = 0.008;
+
+                    double vx = unitX * (rollRadius + expansionSpeed);
+                    double vz = unitZ * (rollRadius + expansionSpeed);
+                    double vy = rollY;
+
+                    vx += (Math.random() - 0.5) * 0.01;
+                    vz += (Math.random() - 0.5) * 0.01;
+
+                    data.velocity = new Vec3(
+                            Mth.lerp(0.15, data.velocity.x, vx),
+                            Mth.lerp(0.15, data.velocity.y, vy),
+                            Mth.lerp(0.15, data.velocity.z, vz)
+                    );
+                }
 
                 if (data.shouldClimbOverLand) {
                     BlockPos bPos = BlockPos.containing(data.pos.x, data.pos.y, data.pos.z);
@@ -151,35 +237,35 @@ public class ParticleManager {
     }
 
     public static void addParticle(float x, float y, float z, float size, float r, float g, float b, float a, float dx, float dy, float dz, int maxAge, float transitionSpeed) {
-        PARTICLES.add(new CloudParticleData(new Vec3(x, y, z), new Vec3(dx, dy, dz), new Vec3(0, 0, 0), size, r, g, b, a, maxAge, transitionSpeed, false, false, false, false, false, false));
+        PARTICLES.add(new CloudParticleData(new Vec3(x, y, z), new Vec3(dx, dy, dz), new Vec3(0, 0, 0), size, r, g, b, a, maxAge, transitionSpeed, false, false, false, false, false, false, false));
     }
 
     public static void addParticle(float x, float y, float z, float size, float r, float g, float b, float a, float dx, float dy, float dz, int maxAge, float transitionSpeed, boolean isShockwave) {
-        PARTICLES.add(new CloudParticleData(new Vec3(x, y, z), new Vec3(dx, dy, dz), new Vec3(0, 0, 0), size, r, g, b, a, maxAge, transitionSpeed, isShockwave, false, false, false, false, false));
+        PARTICLES.add(new CloudParticleData(new Vec3(x, y, z), new Vec3(dx, dy, dz), new Vec3(0, 0, 0), size, r, g, b, a, maxAge, transitionSpeed, isShockwave, false, false, false, false, false, false));
     }
 
     public static void addParticle(float x, float y, float z, float size, float r, float g, float b, float a, float dx, float dy, float dz, int maxAge, float transitionSpeed, boolean isShockwave, boolean e, boolean shouldAlphaDecrease) {
-        PARTICLES.add(new CloudParticleData(new Vec3(x, y, z), new Vec3(dx, dy, dz), new Vec3(0, 0, 0), size, r, g, b, a, maxAge, transitionSpeed, isShockwave, false, shouldAlphaDecrease, false, false, false));
+        PARTICLES.add(new CloudParticleData(new Vec3(x, y, z), new Vec3(dx, dy, dz), new Vec3(0, 0, 0), size, r, g, b, a, maxAge, transitionSpeed, isShockwave, false, shouldAlphaDecrease, false, false, false, false));
     }
 
     public static void addParticle(float x, float y, float z, float size, float r, float g, float b, float a, float dx, float dy, float dz, int maxAge, float transitionSpeed, boolean isShockwave, boolean e, boolean s, boolean h, boolean doesAlphaIncrease) {
-        PARTICLES.add(new CloudParticleData(new Vec3(x, y, z), new Vec3(dx, dy, dz), new Vec3(0, 0, 0), size, r, g, b, a, maxAge, transitionSpeed, isShockwave, false, false, false, doesAlphaIncrease, false));
+        PARTICLES.add(new CloudParticleData(new Vec3(x, y, z), new Vec3(dx, dy, dz), new Vec3(0, 0, 0), size, r, g, b, a, maxAge, transitionSpeed, isShockwave, false, false, false, false, doesAlphaIncrease, false));
     }
 
     public static void addParticle(float x, float y, float z, float size, float r, float g, float b, float a, float dx, float dy, float dz, int maxAge, float transitionSpeed, boolean isShockwave, boolean isFireball) {
-        PARTICLES.add(new CloudParticleData(new Vec3(x, y, z), new Vec3(dx, dy, dz), new Vec3(0, 0, 0), size, r, g, b, a, maxAge, transitionSpeed, isShockwave, isFireball, false, false, false, false));
+        PARTICLES.add(new CloudParticleData(new Vec3(x, y, z), new Vec3(dx, dy, dz), new Vec3(0, 0, 0), size, r, g, b, a, maxAge, transitionSpeed, isShockwave, isFireball, false, false, false, false, false));
     }
 
     public static void addParticle(float x, float y, float z, float size, float r, float g, float b, float a, float dx, float dy, float dz, float vx, float vy, float vz, int maxAge, float transitionSpeed, boolean isShockwave, boolean isFireball) {
-        PARTICLES.add(new CloudParticleData(new Vec3(x, y, z), new Vec3(dx, dy, dz), new Vec3(vx, vy, vz), size, r, g, b, a, maxAge, transitionSpeed, isShockwave, isFireball, false, false, false, false));
+        PARTICLES.add(new CloudParticleData(new Vec3(x, y, z), new Vec3(dx, dy, dz), new Vec3(vx, vy, vz), size, r, g, b, a, maxAge, transitionSpeed, isShockwave, isFireball, false, false, false, false, false));
     }
 
-    public static void addParticle(float x, float y, float z, float size, float r, float g, float b, float a, float dx, float dy, float dz, int maxAge, float transitionSpeed, boolean isShockwave, boolean isFireball, boolean e, boolean shouldClimbOverLand) {
-        PARTICLES.add(new CloudParticleData(new Vec3(x, y, z), new Vec3(dx, dy, dz), new Vec3(0, 0, 0), size, r, g, b, a, maxAge, transitionSpeed, isShockwave, isFireball, false, shouldClimbOverLand, false, false));
+    public static void addParticle(float x, float y, float z, float size, float r, float g, float b, float a, float dx, float dy, float dz, int maxAge, float transitionSpeed, boolean isShockwave, boolean isFireball, boolean shouldHaveConvectionCurrent, boolean shouldClimbOverLand) {
+        PARTICLES.add(new CloudParticleData(new Vec3(x, y, z), new Vec3(dx, dy, dz), new Vec3(0, 0, 0), size, r, g, b, a, maxAge, transitionSpeed, isShockwave, isFireball, false, shouldHaveConvectionCurrent, shouldClimbOverLand, false, false));
     }
 
     public static void addParticle(float x, float y, float z, float size, float r, float g, float b, float a, float dx, float dy, float dz, int maxAge, float transitionSpeed, boolean isShockwave, boolean isFireball, boolean e, boolean shouldClimbOverLand, boolean v, boolean shouldVelocityDecrease) {
-        PARTICLES.add(new CloudParticleData(new Vec3(x, y, z), new Vec3(dx, dy, dz), new Vec3(0, 0, 0), size, r, g, b, a, maxAge, transitionSpeed, isShockwave, isFireball, false, shouldClimbOverLand, false, shouldVelocityDecrease));
+        PARTICLES.add(new CloudParticleData(new Vec3(x, y, z), new Vec3(dx, dy, dz), new Vec3(0, 0, 0), size, r, g, b, a, maxAge, transitionSpeed, isShockwave, isFireball, false, false, shouldClimbOverLand, false, shouldVelocityDecrease));
     }
 
     @SubscribeEvent
@@ -249,6 +335,7 @@ public class ParticleManager {
         public final boolean isFireball;
         public final float heatBias;
         public final boolean shouldVelocityDecrease;
+        public final boolean shouldHaveConvectionCurrent;
 
         public float r, g, b, a;
         public int age = 0;
@@ -257,13 +344,14 @@ public class ParticleManager {
         public float yOffset;
         public final float lerpSpeed;
 
-        public CloudParticleData(Vec3 pos, Vec3 delta, Vec3 velocity, float size, float r, float g, float b, float a, int maxAge, float lerpSpeed, boolean isShockwave, boolean isFireball, boolean shouldAlphaDecrease, boolean shouldClimbOverLand, boolean doesAlphaIncrease, boolean shouldVelocityDecrease) {
+        public CloudParticleData(Vec3 pos, Vec3 delta, Vec3 velocity, float size, float r, float g, float b, float a, int maxAge, float lerpSpeed, boolean isShockwave, boolean isFireball, boolean shouldAlphaDecrease, boolean shouldHaveConvectionCurrent, boolean shouldClimbOverLand, boolean doesAlphaIncrease, boolean shouldVelocityDecrease) {
             this.pos = pos;
             this.delta = delta;
             this.velocity = velocity;
             this.yOffset = -1000f;
             this.size = size;
             this.shouldVelocityDecrease = shouldVelocityDecrease;
+            this.shouldHaveConvectionCurrent = shouldHaveConvectionCurrent;
 
             this.baseSize = size;
             this.isShockwave = isShockwave;

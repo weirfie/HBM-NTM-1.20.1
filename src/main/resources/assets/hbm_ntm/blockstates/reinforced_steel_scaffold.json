@@ -1,8 +1,16 @@
 {
   "variants": {
-    "facing=north": { "model": "hbm_ntm:block/reinforced_steel_scaffold" },
-    "facing=east":  { "model": "hbm_ntm:block/reinforced_steel_scaffold", "y": 90 },
-    "facing=south": { "model": "hbm_ntm:block/reinforced_steel_scaffold", "y": 180 },
-    "facing=west":  { "model": "hbm_ntm:block/reinforced_steel_scaffold", "y": 270 }
+    "axis=x": {
+      "model": "meltdown:block/reinforced_steel_scaffold",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "meltdown:block/reinforced_steel_scaffold"
+    },
+    "axis=z": {
+      "model": "meltdown:block/reinforced_steel_scaffold",
+      "x": 90
+    }
   }
 }
