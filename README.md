@@ -1,8 +1,4 @@
-To capture the sheer scale and technical "grind" of the original 1.7.10 experience while framing it for a modern 1.20.1 audience, you need a README that sounds as heavy and industrial as the steel blocks you're modeling.
-
-Here is a wordier, "cooler," and more lore-heavy version of your project description.
-
- HBM’s Nuclear Tech: The Great Port 
+HBM’s Nuclear Tech: The Great Port 
 Re-Engineering the Apocalypse for the 1.20.1 Era
 In the golden age of Minecraft 1.7.10, there was a mod that didn't just add items—it added consequence. A mod where progress was measured in strange joules and the cost of failure was a radioactive wasteland.
 
