@@ -1,0 +1,16 @@
+{
+  "type": "hbm_ntm:assembly_machine",
+  "template": {
+    "item": "hbm_ntm:assembly_template_bedrock_ore_processor"
+  },
+  "ingredients": [
+    { "item": "hbm_ntm:cast_steel_plate", "count": 6 },
+    { "item": "hbm_ntm:titanium_plate", "count": 8 },
+    { "item": "hbm_ntm:steel_pipe", "count": 3 },
+    { "item": "hbm_ntm:motor", "count": 3 },
+    { "item": "hbm_ntm:analog_circuit_board", "count": 1 }
+  ],
+  "output": {
+    "item": "hbm_ntm:bedrock_ore_processor"
+  }
+}

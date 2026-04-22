@@ -1,0 +1,14 @@
+{
+  "type": "hbm_ntm:soldering",
+  "ingredients": [
+    { "item": { "item": "hbm_ntm:printed_circuit_board" }, "count": 8 },
+    { "item": { "item": "hbm_ntm:capacitor" }, "count": 4 },
+    { "item": { "item": "hbm_ntm:microchip" }, "count": 16 },
+    { "item": { "item": "hbm_ntm:lead_wire" }, "count": 8 },
+    { "item": { "item": "hbm_ntm:rubber_bar" }, "count": 2 }
+  ],
+  "result": {
+    "item": "hbm_ntm:military_grade_circuit_board",
+    "count": 1
+  }
+}

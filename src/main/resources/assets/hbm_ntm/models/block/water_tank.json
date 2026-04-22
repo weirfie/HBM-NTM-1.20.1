@@ -4,7 +4,7 @@
   "flip_v": true,
   "textures": {
     "particle": "hbm_ntm:block/water_tank",
-    "m_4840df1f-ae19-4f6b-c923-25eca82c01ea": "hbm_ntm:block/water_tank",
+    "m_f43e507f-652e-92b4-4414-3a0dfabe0a0e": "hbm_ntm:block/water_tank",
     "Material": "hbm_ntm:block/water_tank",
     "none": "hbm_ntm:block/water_tank"
   },

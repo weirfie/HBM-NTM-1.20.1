@@ -58,4 +58,14 @@ public class ModFluidTypes {
             new GenericFluidType(FluidType.Properties.create().density(-100).viscosity(100).canSwim(false), "molten_redstone", 0));
     public static final RegistryObject<FluidType> MOLTEN_FUEL = REGISTRY.register("molten_fuel", () ->
             new GenericFluidType(FluidType.Properties.create().density(-100).viscosity(100).canSwim(false), "molten_fuel", 0));
+    public static final RegistryObject<FluidType> COKER_OIL = REGISTRY.register("coker_oil", () ->
+            new GenericFluidType(FluidType.Properties.create().density(-100).viscosity(100).canSwim(false), "coker_oil", 0));
+    public static final RegistryObject<FluidType> ORE_SLOP = REGISTRY.register("ore_slop", () ->
+            new GenericFluidType(FluidType.Properties.create().density(-100).viscosity(100).canSwim(false), "ore_slop", 0));
+    public static final RegistryObject<FluidType> VITROIL = REGISTRY.register("vitroil", () ->
+            new GenericFluidType(FluidType.Properties.create().density(-100).viscosity(100).canSwim(false), "vitroil", 0));
+    public static final RegistryObject<FluidType> SULFURIC_ACID = REGISTRY.register("sulfuric_acid", () ->
+            new GenericFluidType(FluidType.Properties.create().density(-100).viscosity(100).canSwim(false), "sulfuric_acid", 0));
+    public static final RegistryObject<FluidType> CHLORINE_GAS = REGISTRY.register("chlorine_gas_liquid", () ->
+            new GenericFluidType(FluidType.Properties.create().density(-100).viscosity(100).canSwim(false), "chlorine_gas_liquid", 0));
 }

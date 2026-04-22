@@ -1,0 +1,15 @@
+{
+  "type": "hbm_ntm:assembly_machine",
+  "template": {
+    "item": "hbm_ntm:assembly_template_industrial_combustion_generator"
+  },
+  "ingredients": [
+    { "item": "hbm_ntm:steel_plate", "count": 16 },
+    { "item": "hbm_ntm:industrial_grade_copper", "count": 12 },
+    { "item": "hbm_ntm:gold_wire", "count": 8 },
+    { "item": "hbm_ntm:integrated_circuit_board", "count": 1 }
+  ],
+  "output": {
+    "item": "hbm_ntm:industrial_combustian_generator"
+  }
+}

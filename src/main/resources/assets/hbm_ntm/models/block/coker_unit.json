@@ -1,0 +1,12 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/coker_unit.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/coker_unit",
+    "m_949ae068-ab12-138a-8da5-bd25cddd81f2": "hbm_ntm:block/coker_unit",
+    "Material": "hbm_ntm:block/coker_unit",
+    "none": "hbm_ntm:block/coker_unit"
+  },
+  "render_type": "cutout"
+}

@@ -140,7 +140,7 @@ public class ParticleManager {
                     if (horizontalDist < 0.1) horizontalDist = 0.1;
 
                     double expansionProgress = (double) data.age / data.maxAge;
-                    double vortexRadius = 20.0 + (expansionProgress * 25.0);
+                    double vortexRadius = data.fireballSize + (expansionProgress * (data.fireballSize * 1.25));
 
                     double vortexStrength = 0.02;
                     if (data.age < 60) {
@@ -237,35 +237,35 @@ public class ParticleManager {
     }
 
     public static void addParticle(float x, float y, float z, float size, float r, float g, float b, float a, float dx, float dy, float dz, int maxAge, float transitionSpeed) {
-        PARTICLES.add(new CloudParticleData(new Vec3(x, y, z), new Vec3(dx, dy, dz), new Vec3(0, 0, 0), size, r, g, b, a, maxAge, transitionSpeed, false, false, false, false, false, false, false));
+        PARTICLES.add(new CloudParticleData(new Vec3(x, y, z), new Vec3(dx, dy, dz), new Vec3(0, 0, 0), size, r, g, b, a, maxAge, transitionSpeed, false, false, false, false, false, false, false, 0));
     }
 
     public static void addParticle(float x, float y, float z, float size, float r, float g, float b, float a, float dx, float dy, float dz, int maxAge, float transitionSpeed, boolean isShockwave) {
-        PARTICLES.add(new CloudParticleData(new Vec3(x, y, z), new Vec3(dx, dy, dz), new Vec3(0, 0, 0), size, r, g, b, a, maxAge, transitionSpeed, isShockwave, false, false, false, false, false, false));
+        PARTICLES.add(new CloudParticleData(new Vec3(x, y, z), new Vec3(dx, dy, dz), new Vec3(0, 0, 0), size, r, g, b, a, maxAge, transitionSpeed, isShockwave, false, false, false, false, false, false, 0));
     }
 
     public static void addParticle(float x, float y, float z, float size, float r, float g, float b, float a, float dx, float dy, float dz, int maxAge, float transitionSpeed, boolean isShockwave, boolean e, boolean shouldAlphaDecrease) {
-        PARTICLES.add(new CloudParticleData(new Vec3(x, y, z), new Vec3(dx, dy, dz), new Vec3(0, 0, 0), size, r, g, b, a, maxAge, transitionSpeed, isShockwave, false, shouldAlphaDecrease, false, false, false, false));
+        PARTICLES.add(new CloudParticleData(new Vec3(x, y, z), new Vec3(dx, dy, dz), new Vec3(0, 0, 0), size, r, g, b, a, maxAge, transitionSpeed, isShockwave, false, shouldAlphaDecrease, false, false, false, false, 0));
     }
 
     public static void addParticle(float x, float y, float z, float size, float r, float g, float b, float a, float dx, float dy, float dz, int maxAge, float transitionSpeed, boolean isShockwave, boolean e, boolean s, boolean h, boolean doesAlphaIncrease) {
-        PARTICLES.add(new CloudParticleData(new Vec3(x, y, z), new Vec3(dx, dy, dz), new Vec3(0, 0, 0), size, r, g, b, a, maxAge, transitionSpeed, isShockwave, false, false, false, false, doesAlphaIncrease, false));
+        PARTICLES.add(new CloudParticleData(new Vec3(x, y, z), new Vec3(dx, dy, dz), new Vec3(0, 0, 0), size, r, g, b, a, maxAge, transitionSpeed, isShockwave, false, false, false, false, doesAlphaIncrease, false, 0));
     }
 
     public static void addParticle(float x, float y, float z, float size, float r, float g, float b, float a, float dx, float dy, float dz, int maxAge, float transitionSpeed, boolean isShockwave, boolean isFireball) {
-        PARTICLES.add(new CloudParticleData(new Vec3(x, y, z), new Vec3(dx, dy, dz), new Vec3(0, 0, 0), size, r, g, b, a, maxAge, transitionSpeed, isShockwave, isFireball, false, false, false, false, false));
+        PARTICLES.add(new CloudParticleData(new Vec3(x, y, z), new Vec3(dx, dy, dz), new Vec3(0, 0, 0), size, r, g, b, a, maxAge, transitionSpeed, isShockwave, isFireball, false, false, false, false, false, 0));
     }
 
     public static void addParticle(float x, float y, float z, float size, float r, float g, float b, float a, float dx, float dy, float dz, float vx, float vy, float vz, int maxAge, float transitionSpeed, boolean isShockwave, boolean isFireball) {
-        PARTICLES.add(new CloudParticleData(new Vec3(x, y, z), new Vec3(dx, dy, dz), new Vec3(vx, vy, vz), size, r, g, b, a, maxAge, transitionSpeed, isShockwave, isFireball, false, false, false, false, false));
+        PARTICLES.add(new CloudParticleData(new Vec3(x, y, z), new Vec3(dx, dy, dz), new Vec3(vx, vy, vz), size, r, g, b, a, maxAge, transitionSpeed, isShockwave, isFireball, false, false, false, false, false, 0));
     }
 
-    public static void addParticle(float x, float y, float z, float size, float r, float g, float b, float a, float dx, float dy, float dz, int maxAge, float transitionSpeed, boolean isShockwave, boolean isFireball, boolean shouldHaveConvectionCurrent, boolean shouldClimbOverLand) {
-        PARTICLES.add(new CloudParticleData(new Vec3(x, y, z), new Vec3(dx, dy, dz), new Vec3(0, 0, 0), size, r, g, b, a, maxAge, transitionSpeed, isShockwave, isFireball, false, shouldHaveConvectionCurrent, shouldClimbOverLand, false, false));
+    public static void addParticle(float x, float y, float z, float size, float r, float g, float b, float a, float dx, float dy, float dz, int maxAge, float transitionSpeed, boolean isShockwave, boolean isFireball, boolean shouldHaveConvectionCurrent, boolean shouldClimbOverLand, float fireBallSize) {
+        PARTICLES.add(new CloudParticleData(new Vec3(x, y, z), new Vec3(dx, dy, dz), new Vec3(0, 0, 0), size, r, g, b, a, maxAge, transitionSpeed, isShockwave, isFireball, false, shouldHaveConvectionCurrent, shouldClimbOverLand, false, false, fireBallSize));
     }
 
     public static void addParticle(float x, float y, float z, float size, float r, float g, float b, float a, float dx, float dy, float dz, int maxAge, float transitionSpeed, boolean isShockwave, boolean isFireball, boolean e, boolean shouldClimbOverLand, boolean v, boolean shouldVelocityDecrease) {
-        PARTICLES.add(new CloudParticleData(new Vec3(x, y, z), new Vec3(dx, dy, dz), new Vec3(0, 0, 0), size, r, g, b, a, maxAge, transitionSpeed, isShockwave, isFireball, false, false, shouldClimbOverLand, false, shouldVelocityDecrease));
+        PARTICLES.add(new CloudParticleData(new Vec3(x, y, z), new Vec3(dx, dy, dz), new Vec3(0, 0, 0), size, r, g, b, a, maxAge, transitionSpeed, isShockwave, isFireball, false, false, shouldClimbOverLand, false, shouldVelocityDecrease, 0));
     }
 
     @SubscribeEvent
@@ -336,6 +336,7 @@ public class ParticleManager {
         public final float heatBias;
         public final boolean shouldVelocityDecrease;
         public final boolean shouldHaveConvectionCurrent;
+        public final float fireballSize;
 
         public float r, g, b, a;
         public int age = 0;
@@ -344,7 +345,7 @@ public class ParticleManager {
         public float yOffset;
         public final float lerpSpeed;
 
-        public CloudParticleData(Vec3 pos, Vec3 delta, Vec3 velocity, float size, float r, float g, float b, float a, int maxAge, float lerpSpeed, boolean isShockwave, boolean isFireball, boolean shouldAlphaDecrease, boolean shouldHaveConvectionCurrent, boolean shouldClimbOverLand, boolean doesAlphaIncrease, boolean shouldVelocityDecrease) {
+        public CloudParticleData(Vec3 pos, Vec3 delta, Vec3 velocity, float size, float r, float g, float b, float a, int maxAge, float lerpSpeed, boolean isShockwave, boolean isFireball, boolean shouldAlphaDecrease, boolean shouldHaveConvectionCurrent, boolean shouldClimbOverLand, boolean doesAlphaIncrease, boolean shouldVelocityDecrease, float fireballSize) {
             this.pos = pos;
             this.delta = delta;
             this.velocity = velocity;
@@ -352,6 +353,7 @@ public class ParticleManager {
             this.size = size;
             this.shouldVelocityDecrease = shouldVelocityDecrease;
             this.shouldHaveConvectionCurrent = shouldHaveConvectionCurrent;
+            this.fireballSize = fireballSize;
 
             this.baseSize = size;
             this.isShockwave = isShockwave;

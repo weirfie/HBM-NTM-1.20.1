@@ -43,10 +43,14 @@ import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
+
 public class ChemicalPlantBlockEntity extends BlockEntity implements MenuProvider {
+
     private final ItemStackHandler itemHandler = new ItemStackHandler(22) {
         @Override
         protected void onContentsChanged(int slot) {
@@ -63,25 +67,14 @@ public class ChemicalPlantBlockEntity extends BlockEntity implements MenuProvide
     };
     private static final int ENERGY_REQ = 32;
 
-    private final FluidTank FLUID_TANK = new FluidTank(64000) {
-        @Override
-        protected void onContentsChanged() {
-            setChanged();
-            if(!level.isClientSide()) {
-                ModMessages.sendToClients(new FluidSyncS2CPacket(this.fluid, worldPosition));
-            }
-        }
-    };
+    private final FluidTank FLUID_TANK = createTank(64000, 1);
+    private final FluidTank inputTank2 = createTank(40000, 2);
+    private final FluidTank inputTank3 = createTank(40000, 3);
+    private final FluidTank outputTank1 = createTank(40000, 4);
+    private final FluidTank outputTank2 = createTank(40000, 5);
+    private final FluidTank outputTank3 = createTank(40000, 6);
 
-    private LazyOptional<IFluidHandler> lazyFluidHandler = LazyOptional.empty();
-
-    private final FluidTank inputTank2 = createOutputTank(40000, 2);
-    private final FluidTank inputTank3 = createOutputTank(40000, 3);
-    private final FluidTank outputTank1 = createOutputTank(40000, 4);
-    private final FluidTank outputTank2 = createOutputTank(40000, 5);
-    private final FluidTank outputTank3 = createOutputTank(40000, 6);
-
-    private FluidTank createOutputTank(int capacity, int tankID) {
+    private FluidTank createTank(int capacity, int tankID) {
         return new FluidTank(capacity) {
             @Override
             protected void onContentsChanged() {
@@ -92,40 +85,73 @@ public class ChemicalPlantBlockEntity extends BlockEntity implements MenuProvide
             }
         };
     }
+    private final FluidTank inputTank1 = createTank(64000, 0);
 
-    public FluidTank getOutputTank1() { return this.outputTank1; }
-    public FluidTank getOutputTank2() { return this.outputTank2; }
-    public FluidTank getOutputTank3() { return this.outputTank3; }
+    public IEnergyStorage getEnergyStorage() { return ENERGY_STORAGE; }
 
-    public FluidTank getInputTank2() { return this.inputTank2; }
-    public FluidTank getInputTank3() { return this.inputTank3; }
 
+    public void setFluid(FluidStack stack) { this.inputTank1.setFluid(stack); }
+    public void setInputTank2(FluidStack stack) { this.inputTank2.setFluid(stack); }
+    public void setInputTank3(FluidStack stack) { this.inputTank3.setFluid(stack); }
     public void setOutputTank1(FluidStack stack) { this.outputTank1.setFluid(stack); }
     public void setOutputTank2(FluidStack stack) { this.outputTank2.setFluid(stack); }
     public void setOutputTank3(FluidStack stack) { this.outputTank3.setFluid(stack); }
 
-    public void setInputTank2(FluidStack stack) { this.inputTank2.setFluid(stack); }
-    public void setInputTank3(FluidStack stack) { this.inputTank3.setFluid(stack); }
+    public FluidStack getFluidStack() { return this.inputTank1.getFluid(); }
+    public FluidTank getInputTank1() { return this.inputTank1; }
+    public FluidTank getInputTank2() { return this.inputTank2; }
+    public FluidTank getInputTank3() { return this.inputTank3; }
+    public FluidTank getOutputTank1() { return this.outputTank1; }
+    public FluidTank getOutputTank2() { return this.outputTank2; }
+    public FluidTank getOutputTank3() { return this.outputTank3; }
 
-    public void setFluid(FluidStack stack) {
-        this.FLUID_TANK.setFluid(stack);
-    }
-
-    public FluidStack getFluidStack() {
-        return this.FLUID_TANK.getFluid();
-    }
-
+    // --- RECIPE SYSTEM ---
     public record ChemicalRecipe(
-            Fluid inputFluid, int fluidAmount,
-            ItemStack input1, ItemStack input2,
-            ItemStack output, int processTime
+            List<FluidStack> inputFluids,
+            List<ItemStack> inputItems,
+            List<FluidStack> outputFluids,
+            List<ItemStack> outputItems,
+            int processTime,
+            int energyPerTick
     ) {}
 
+    private static final List<ChemicalRecipe> RECIPES = List.of(
+            new ChemicalRecipe(
+                    List.of(new FluidStack(ModFluids.PETROLEUM_GAS.get(), 20)),
+                    List.of(new ItemStack(ModItems.COAL_POWDER.get()), new ItemStack(ModItems.FLUORITE.get())),
+                    List.of(),
+                    List.of(new ItemStack(ModItems.POLYMER_BAR.get())),
+                    100, 20),
+
+            new ChemicalRecipe(
+                    List.of(new FluidStack(ModFluids.UNSATURATED_HYDROCARBONS.get(), 100)),
+                    List.of(new ItemStack(ModItems.SULFUR.get())),
+                    List.of(),
+                    List.of(new ItemStack(ModItems.RUBBER_BAR.get())),
+                    50, 20),
+
+            new ChemicalRecipe(
+                    List.of(new FluidStack(Fluids.WATER, 100)),
+                    List.of(new ItemStack(ModItems.SULFUR.get())),
+                    List.of(),
+                    List.of(new ItemStack(ModItems.RUBBER_BAR.get())),
+                    50, 20),
+
+            new ChemicalRecipe(
+                    List.of(new FluidStack(Fluids.WATER, 100)),
+                    List.of(new ItemStack(Items.SAND), new ItemStack(Items.GRAVEL)),
+                    List.of(),
+                    List.of(new ItemStack(Blocks.LIGHT_GRAY_CONCRETE, 12)),
+                    50, 20)
+    );
+
+    // --- CAPS & DATA ---
+    private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
     private LazyOptional<IEnergyStorage> lazyEnergyHandler = LazyOptional.empty();
+    private LazyOptional<IFluidHandler> lazyFluidHandler = LazyOptional.empty();
     private final CombinedFluidHandler combinedFluidHandler = new CombinedFluidHandler(
             FLUID_TANK, inputTank2, inputTank3, outputTank1, outputTank2, outputTank3
     );
-    private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
 
     protected final ContainerData data;
     private int progress = 0;
@@ -142,7 +168,6 @@ public class ChemicalPlantBlockEntity extends BlockEntity implements MenuProvide
                     default -> 0;
                 };
             }
-
             @Override
             public void set(int index, int value) {
                 switch (index) {
@@ -150,63 +175,12 @@ public class ChemicalPlantBlockEntity extends BlockEntity implements MenuProvide
                     case 1 -> ChemicalPlantBlockEntity.this.maxProgress = value;
                 }
             }
-
             @Override
-            public int getCount() {
-                return 2;
-            }
+            public int getCount() { return 2; }
         };
     }
 
-    @Override
-    public Component getDisplayName() {
-        return Component.literal("Chemical Plant");
-    }
-
-    @Nullable
-    @Override
-    public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-        ModMessages.sendToClients(new EnergySyncS2CPacket(this.ENERGY_STORAGE.getEnergyStored(), getBlockPos()));
-        ModMessages.sendToClients(new FluidSyncS2CPacket(this.getFluidStack(), worldPosition));
-        return new ChemicalPlantMenu(id, inventory, this, this.data);
-    }
-
-    @Override
-    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        if (cap == ForgeCapabilities.ITEM_HANDLER) {
-            return lazyItemHandler.cast();
-        }
-        if(cap == ForgeCapabilities.ENERGY) {
-            return lazyEnergyHandler.cast();
-        }
-        if(cap == ForgeCapabilities.FLUID_HANDLER) {
-            return lazyFluidHandler.cast();
-        }
-        return super.getCapability(cap, side);
-    }
-
-    public IEnergyStorage getEnergyStorage() {
-        return ENERGY_STORAGE;
-    }
-
-    public void setEnergyLevel(int energy) {
-        this.ENERGY_STORAGE.setEnergy(energy);
-    }
-
-    private static final java.util.List<ChemicalRecipe> RECIPES = java.util.List.of(
-            new ChemicalRecipe(ModFluids.PETROLEUM_GAS.get(), 20,
-                    new ItemStack(ModItems.COAL_POWDER.get()), new ItemStack(ModItems.FLUORITE.get()),
-                    new ItemStack(ModItems.POLYMER_BAR.get()), 100),
-
-            new ChemicalRecipe(ModFluids.UNSATURATED_HYDROCARBONS.get(), 100,
-                    new ItemStack(ModItems.SULFUR.get()), ItemStack.EMPTY,
-                    new ItemStack(ModItems.RUBBER_BAR.get()), 50),
-
-            new ChemicalRecipe(Fluids.WATER, 100,
-                    new ItemStack(Items.SAND), new ItemStack(Items.GRAVEL),
-                    new ItemStack(Blocks.LIGHT_GRAY_CONCRETE, 12), 50)
-    );
-
+    // --- TICK LOGIC ---
     public static void tick(Level level, BlockPos pos, BlockState state, ChemicalPlantBlockEntity pEntity) {
         if (level.isClientSide()) return;
 
@@ -215,10 +189,10 @@ public class ChemicalPlantBlockEntity extends BlockEntity implements MenuProvide
 
         ChemicalRecipe currentRecipe = getMatchingRecipe(pEntity);
 
-        if (currentRecipe != null && pEntity.ENERGY_STORAGE.getEnergyStored() >= 20) {
+        if (currentRecipe != null && pEntity.ENERGY_STORAGE.getEnergyStored() >= currentRecipe.energyPerTick()) {
             pEntity.maxProgress = currentRecipe.processTime();
             pEntity.progress++;
-            pEntity.ENERGY_STORAGE.extractEnergy(20, false);
+            pEntity.ENERGY_STORAGE.extractEnergy(currentRecipe.energyPerTick(), false);
 
             if (level.getGameTime() % 2 == 0) {
                 spawnWorkingParticles(level, pos, state);
@@ -233,105 +207,132 @@ public class ChemicalPlantBlockEntity extends BlockEntity implements MenuProvide
         }
     }
 
-    private static void spawnWorkingParticles(Level level, BlockPos pos, BlockState state) {
-        if (level instanceof net.minecraft.server.level.ServerLevel serverLevel) {
-            Direction facing = state.getValue(net.minecraft.world.level.block.state.properties.BlockStateProperties.HORIZONTAL_FACING);
-
-            double localX = 0.42;
-            double localZ = -0.4;
-            double finalX, finalZ;
-
-            switch (facing) {
-                case NORTH -> { finalX = localX; finalZ = localZ; }
-                case SOUTH -> { finalX = -localX; finalZ = -localZ; }
-                case WEST -> { finalX = localZ; finalZ = -localX; }
-                case EAST -> { finalX = -localZ; finalZ = localX; }
-                default -> { finalX = 0; finalZ = 0; }
-            }
-
-            double x = pos.getX() + 0.5 + finalX;
-            double y = pos.getY() + 3.5;
-            double z = pos.getZ() + 0.5 + finalZ;
-            serverLevel.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, serverLevel, 4, "", Component.literal(""), serverLevel.getServer(), null).withSuppressedOutput(),
-                    "particle minecraft:smoke ~ ~ ~ 0.01 0.01 0.01 0 10 force @a");
-
-        }
-    }
-
     private static ChemicalRecipe getMatchingRecipe(ChemicalPlantBlockEntity pEntity) {
-        FluidStack internalFluid = pEntity.FLUID_TANK.getFluid();
-        ItemStack slot6 = pEntity.itemHandler.getStackInSlot(6);
-        ItemStack slot7 = pEntity.itemHandler.getStackInSlot(7);
+        FluidTank[] inputTanks = { pEntity.FLUID_TANK, pEntity.inputTank2, pEntity.inputTank3 };
 
         for (ChemicalRecipe recipe : RECIPES) {
-            if (!internalFluid.getFluid().isSame(recipe.inputFluid()) || internalFluid.getAmount() < recipe.fluidAmount()) continue;
-
-            boolean matchNormal = itemMatches(slot6, recipe.input1()) && itemMatches(slot7, recipe.input2());
-            boolean matchSwapped = itemMatches(slot6, recipe.input2()) && itemMatches(slot7, recipe.input1());
-
-            if (matchNormal || matchSwapped) {
-                ItemStack outputSlot = pEntity.itemHandler.getStackInSlot(15);
-                if (outputSlot.isEmpty() || (ItemStack.isSameItem(outputSlot, recipe.output()) &&
-                        outputSlot.getCount() + recipe.output().getCount() <= outputSlot.getMaxStackSize())) {
-                    return recipe;
+            boolean fluidsMatch = true;
+            for (FluidStack reqFluid : recipe.inputFluids()) {
+                if (!hasFluidInAnyTank(inputTanks, reqFluid)) {
+                    fluidsMatch = false;
+                    break;
                 }
             }
+            if (!fluidsMatch) continue;
+
+            if (!hasItemsInSlots(pEntity, recipe.inputItems())) continue;
+
+            if (canFitOutputs(pEntity, recipe)) return recipe;
         }
         return null;
     }
 
+    private static boolean hasFluidInAnyTank(FluidTank[] tanks, FluidStack req) {
+        for (FluidTank tank : tanks) {
+            if (tank.getFluid().isFluidEqual(req) && tank.getFluidAmount() >= req.getAmount()) return true;
+        }
+        return false;
+    }
+
+    private static boolean hasItemsInSlots(ChemicalPlantBlockEntity pEntity, List<ItemStack> requirements) {
+        if (requirements.isEmpty()) return true;
+
+        ItemStack slot6 = pEntity.itemHandler.getStackInSlot(6);
+        ItemStack slot7 = pEntity.itemHandler.getStackInSlot(7);
+
+        if (requirements.size() == 1) {
+            return itemMatches(slot6, requirements.get(0)) || itemMatches(slot7, requirements.get(0));
+        } else if (requirements.size() == 2) {
+            boolean order1 = itemMatches(slot6, requirements.get(0)) && itemMatches(slot7, requirements.get(1));
+            boolean order2 = itemMatches(slot6, requirements.get(1)) && itemMatches(slot7, requirements.get(0));
+            return order1 || order2;
+        }
+        return false;
+    }
+
     private static boolean itemMatches(ItemStack slotStack, ItemStack recipeStack) {
-        if (recipeStack.isEmpty()) return true;
         return slotStack.is(recipeStack.getItem()) && slotStack.getCount() >= recipeStack.getCount();
     }
 
-    private static void executeCraft(ChemicalPlantBlockEntity pEntity, ChemicalRecipe recipe) {
-        pEntity.FLUID_TANK.drain(recipe.fluidAmount(), IFluidHandler.FluidAction.EXECUTE);
+    private static boolean canFitOutputs(ChemicalPlantBlockEntity pEntity, ChemicalRecipe recipe) {
+        // Check Item Output (Slot 15)
+        ItemStack outputSlot = pEntity.itemHandler.getStackInSlot(15);
+        for (ItemStack out : recipe.outputItems()) {
+            if (!outputSlot.isEmpty() && (!ItemStack.isSameItem(outputSlot, out) || (outputSlot.getCount() + out.getCount() > outputSlot.getMaxStackSize()))) {
+                return false;
+            }
+        }
 
-        consumeInput(pEntity.itemHandler, 6, recipe.input1(), recipe.input2());
-        consumeInput(pEntity.itemHandler, 7, recipe.input1(), recipe.input2());
-
-        ItemStack result = recipe.output().copy();
-        pEntity.itemHandler.insertItem(15, result, false);
-        pEntity.setChanged();
+        // Check Fluid Outputs
+        FluidTank[] outTanks = { pEntity.outputTank1, pEntity.outputTank2, pEntity.outputTank3 };
+        for (FluidStack outFluid : recipe.outputFluids()) {
+            boolean canFit = false;
+            for (FluidTank tank : outTanks) {
+                if (tank.fill(outFluid, IFluidHandler.FluidAction.SIMULATE) == outFluid.getAmount()) {
+                    canFit = true;
+                    break;
+                }
+            }
+            if (!canFit) return false;
+        }
+        return true;
     }
 
-    private static void consumeInput(ItemStackHandler handler, int slot, ItemStack req1, ItemStack req2) {
-        ItemStack stack = handler.getStackInSlot(slot);
-        if (stack.isEmpty()) return;
+    private static void executeCraft(ChemicalPlantBlockEntity pEntity, ChemicalRecipe recipe) {
+        FluidTank[] inTanks = { pEntity.FLUID_TANK, pEntity.inputTank2, pEntity.inputTank3 };
+        FluidTank[] outTanks = { pEntity.outputTank1, pEntity.outputTank2, pEntity.outputTank3 };
 
-        if (!req1.isEmpty() && stack.is(req1.getItem())) {
-            stack.shrink(req1.getCount());
-        } else if (!req2.isEmpty() && stack.is(req2.getItem())) {
-            stack.shrink(req2.getCount());
+        // Consume Fluids
+        for (FluidStack req : recipe.inputFluids()) {
+            for (FluidTank tank : inTanks) {
+                if (tank.getFluid().isFluidEqual(req)) {
+                    tank.drain(req.getAmount(), IFluidHandler.FluidAction.EXECUTE);
+                    break;
+                }
+            }
         }
+
+        // Consume Items
+        for (ItemStack req : recipe.inputItems()) {
+            if (itemMatches(pEntity.itemHandler.getStackInSlot(6), req)) {
+                pEntity.itemHandler.getStackInSlot(6).shrink(req.getCount());
+            } else {
+                pEntity.itemHandler.getStackInSlot(7).shrink(req.getCount());
+            }
+        }
+
+        // Produce Fluids
+        for (FluidStack out : recipe.outputFluids()) {
+            for (FluidTank tank : outTanks) {
+                if (tank.fill(out, IFluidHandler.FluidAction.SIMULATE) == out.getAmount()) {
+                    tank.fill(out, IFluidHandler.FluidAction.EXECUTE);
+                    break;
+                }
+            }
+        }
+
+        for (ItemStack out : recipe.outputItems()) {
+            pEntity.itemHandler.insertItem(15, out.copy(), false);
+        }
+
+        pEntity.setChanged();
     }
 
     private static void handleFluidItemInput(ChemicalPlantBlockEntity pEntity) {
         for (int i = 0; i <= 2; i++) {
             ItemStack stack = pEntity.itemHandler.getStackInSlot(i);
-
-            if (!stack.isEmpty() && stack.getItem() instanceof FluidTankItem tankItem) {
-                String itemFluidId = FluidTankItem.getFluidType(stack);
-                int amountInItem = FluidTankItem.getFluidAmount(stack);
-
-                if (amountInItem > 0) {
-                    FluidTank targetTank = pEntity.FLUID_TANK;
-
-
-                    int spaceInTank = targetTank.getCapacity() - targetTank.getFluidAmount();
-                    int transfer = Math.min(amountInItem, Math.min(spaceInTank, 1000));
-
+            if (!stack.isEmpty() && stack.getItem() instanceof FluidTankItem) {
+                String fluidId = FluidTankItem.getFluidType(stack);
+                int amount = FluidTankItem.getFluidAmount(stack);
+                if (amount > 0) {
+                    FluidTank target = pEntity.FLUID_TANK;
+                    int space = target.getCapacity() - target.getFluidAmount();
+                    int transfer = Math.min(amount, Math.min(space, 1000));
                     if (transfer > 0) {
-                        String fluidPath = itemFluidId.contains(":") ? itemFluidId : "hbm_ntm:" + itemFluidId;
-                        var fluid = net.minecraftforge.registries.ForgeRegistries.FLUIDS.getValue(new ResourceLocation(fluidPath));
-
-                        if (fluid != null && fluid != net.minecraft.world.level.material.Fluids.EMPTY) {
-                            targetTank.fill(new FluidStack(fluid, transfer), IFluidHandler.FluidAction.EXECUTE);
-
-                            int newAmount = amountInItem - transfer;
-                            FluidTankItem.setFluidData(stack, newAmount, newAmount > 0 ? itemFluidId : "");
-
+                        var fluid = ForgeRegistries.FLUIDS.getValue(new ResourceLocation(fluidId.contains(":") ? fluidId : "hbm_ntm:" + fluidId));
+                        if (fluid != null && fluid != Fluids.EMPTY) {
+                            target.fill(new FluidStack(fluid, transfer), IFluidHandler.FluidAction.EXECUTE);
+                            FluidTankItem.setFluidData(stack, amount - transfer, (amount - transfer) > 0 ? fluidId : "");
                             pEntity.setChanged();
                         }
                     }
@@ -340,58 +341,41 @@ public class ChemicalPlantBlockEntity extends BlockEntity implements MenuProvide
         }
     }
 
-    private static boolean canProcess(ChemicalPlantBlockEntity pEntity) {
-        return pEntity.ENERGY_STORAGE.getEnergyStored() >= 20 &&
-                pEntity.itemHandler.getStackInSlot(6).getItem() == ModItems.COAL_POWDER.get() &&
-                pEntity.itemHandler.getStackInSlot(7).getItem() == ModItems.FLUORITE.get() &&
-                pEntity.FLUID_TANK.getFluidAmount() >= 20 &&
-                pEntity.FLUID_TANK.getFluid().getFluid() == ModFluids.PETROLEUM_GAS.get();
-    }
-
-    private static void craftItem(ChemicalPlantBlockEntity pEntity) {
-        pEntity.FLUID_TANK.drain(20, IFluidHandler.FluidAction.EXECUTE);
-        pEntity.itemHandler.getStackInSlot(6).shrink(1);
-        pEntity.itemHandler.getStackInSlot(7).shrink(1);
-        pEntity.itemHandler.setStackInSlot(15, new ItemStack(ModItems.POLYMER_BAR.get()));
-    }
-
     private void pushFluidToNeighbors() {
         FluidTank[] outputTanks = {outputTank1, outputTank2, outputTank3};
-        int pushAmount = 5;
-
         for (FluidTank tank : outputTanks) {
-            FluidStack stackInTank = tank.getFluid();
-            if (stackInTank.isEmpty()) continue;
-
-            String currentFluidName = net.minecraftforge.registries.ForgeRegistries.FLUIDS.getKey(stackInTank.getFluid()).getPath();
-
+            FluidStack stack = tank.getFluid();
+            if (stack.isEmpty()) continue;
             for (Direction dir : Direction.values()) {
-                BlockPos neighborPos = worldPosition.relative(dir);
-                BlockEntity neighborBE = level.getBlockEntity(neighborPos);
-
-                if (neighborBE != null) {
-                    if (neighborBE instanceof FluidBlockEntity duct) {
-                        String filter = duct.getAllowedFluid();
-
-                        if (filter.isEmpty() || !filter.equals(currentFluidName)) {
-                            continue;
-                        }
-                    } else {
-                    }
-
-                    neighborBE.getCapability(ForgeCapabilities.FLUID_HANDLER, dir.getOpposite()).ifPresent(handler -> {
-                        FluidStack toPush = new FluidStack(stackInTank.getFluid(), Math.min(stackInTank.getAmount(), pushAmount));
-                        int filled = handler.fill(toPush, IFluidHandler.FluidAction.EXECUTE);
-
-                        if (filled > 0) {
-                            tank.drain(filled, IFluidHandler.FluidAction.EXECUTE);
-                        }
+                BlockEntity be = level.getBlockEntity(worldPosition.relative(dir));
+                if (be != null) {
+                    be.getCapability(ForgeCapabilities.FLUID_HANDLER, dir.getOpposite()).ifPresent(handler -> {
+                        int filled = handler.fill(new FluidStack(stack.getFluid(), Math.min(stack.getAmount(), 100)), IFluidHandler.FluidAction.EXECUTE);
+                        tank.drain(filled, IFluidHandler.FluidAction.EXECUTE);
                     });
                 }
             }
         }
     }
 
+    private static void spawnWorkingParticles(Level level, BlockPos pos, BlockState state) {
+        if (level instanceof net.minecraft.server.level.ServerLevel serverLevel) {
+            Direction facing = state.getValue(net.minecraft.world.level.block.state.properties.BlockStateProperties.HORIZONTAL_FACING);
+            double lx = 0.42, lz = -0.4, fx, fz;
+            switch (facing) {
+                case NORTH -> { fx = lx; fz = lz; }
+                case SOUTH -> { fx = -lx; fz = -lz; }
+                case WEST -> { fx = lz; fz = -lx; }
+                case EAST -> { fx = -lz; fz = lx; }
+                default -> { fx = 0; fz = 0; }
+            }
+            double x = pos.getX() + 0.5 + fx, y = pos.getY() + 3.5, z = pos.getZ() + 0.5 + fz;
+            serverLevel.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, serverLevel, 4, "", Component.literal(""), serverLevel.getServer(), null).withSuppressedOutput(),
+                    "particle minecraft:smoke ~ ~ ~ 0.01 0.01 0.01 0 10 force @a");
+        }
+    }
+
+    // --- OVERRIDES ---
     @Override
     public void onLoad() {
         super.onLoad();
@@ -411,15 +395,14 @@ public class ChemicalPlantBlockEntity extends BlockEntity implements MenuProvide
     @Override
     protected void saveAdditional(CompoundTag nbt) {
         nbt.put("inventory", itemHandler.serializeNBT());
-        nbt.putInt("chemical_plant.progress", this.progress);
-        nbt.putInt("chemical_plant.energy", ENERGY_STORAGE.getEnergyStored());
-        nbt.put("input_tank", FLUID_TANK.writeToNBT(new CompoundTag()));
-        nbt.put("input_tank_2", inputTank2.writeToNBT(new CompoundTag()));
-        nbt.put("input_tank_3", inputTank3.writeToNBT(new CompoundTag()));
-        nbt.put("output_tank_1", outputTank1.writeToNBT(new CompoundTag()));
-        nbt.put("output_tank_2", outputTank2.writeToNBT(new CompoundTag()));
-        nbt.put("output_tank_3", outputTank3.writeToNBT(new CompoundTag()));
-
+        nbt.putInt("progress", progress);
+        nbt.putInt("energy", ENERGY_STORAGE.getEnergyStored());
+        nbt.put("t1", FLUID_TANK.writeToNBT(new CompoundTag()));
+        nbt.put("t2", inputTank2.writeToNBT(new CompoundTag()));
+        nbt.put("t3", inputTank3.writeToNBT(new CompoundTag()));
+        nbt.put("o1", outputTank1.writeToNBT(new CompoundTag()));
+        nbt.put("o2", outputTank2.writeToNBT(new CompoundTag()));
+        nbt.put("o3", outputTank3.writeToNBT(new CompoundTag()));
         super.saveAdditional(nbt);
     }
 
@@ -427,64 +410,61 @@ public class ChemicalPlantBlockEntity extends BlockEntity implements MenuProvide
     public void load(CompoundTag nbt) {
         super.load(nbt);
         itemHandler.deserializeNBT(nbt.getCompound("inventory"));
-        this.progress = nbt.getInt("chemical_plant.progress");
-        ENERGY_STORAGE.setEnergy(nbt.getInt("chemical_plant.energy"));
-        FLUID_TANK.readFromNBT(nbt.getCompound("input_tank"));
-        inputTank2.readFromNBT(nbt.getCompound("input_tank_2"));
-        inputTank3.readFromNBT(nbt.getCompound("input_tank_3"));
-        outputTank1.readFromNBT(nbt.getCompound("output_tank_1"));
-        outputTank2.readFromNBT(nbt.getCompound("output_tank_2"));
-        outputTank3.readFromNBT(nbt.getCompound("output_tank_3"));
+        progress = nbt.getInt("progress");
+        ENERGY_STORAGE.setEnergy(nbt.getInt("energy"));
+        FLUID_TANK.readFromNBT(nbt.getCompound("t1"));
+        inputTank2.readFromNBT(nbt.getCompound("t2"));
+        inputTank3.readFromNBT(nbt.getCompound("t3"));
+        outputTank1.readFromNBT(nbt.getCompound("o1"));
+        outputTank2.readFromNBT(nbt.getCompound("o2"));
+        outputTank3.readFromNBT(nbt.getCompound("o3"));
+    }
+
+    @Override
+    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
+        if (cap == ForgeCapabilities.ITEM_HANDLER) return lazyItemHandler.cast();
+        if (cap == ForgeCapabilities.ENERGY) return lazyEnergyHandler.cast();
+        if (cap == ForgeCapabilities.FLUID_HANDLER) return lazyFluidHandler.cast();
+        return super.getCapability(cap, side);
+    }
+
+    @Override
+    public Component getDisplayName() { return Component.literal("Chemical Plant"); }
+
+    @Nullable
+    @Override
+    public AbstractContainerMenu createMenu(int id, Inventory inv, Player player) {
+        return new ChemicalPlantMenu(id, inv, this, this.data);
     }
 
     public void drops() {
         SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
-        for (int i = 0; i < itemHandler.getSlots(); i++) {
-            inventory.setItem(i, itemHandler.getStackInSlot(i));
-        }
-
+        for (int i = 0; i < itemHandler.getSlots(); i++) inventory.setItem(i, itemHandler.getStackInSlot(i));
         Containers.dropContents(this.level, this.worldPosition, inventory);
     }
 
-    private static void fillTankWithFluid(ChemicalPlantBlockEntity pEntity, FluidStack stack, ItemStack container) {
-        pEntity.FLUID_TANK.fill(stack, IFluidHandler.FluidAction.EXECUTE);
-
-        pEntity.itemHandler.extractItem(0, 1, false);
-        pEntity.itemHandler.insertItem(0, container, false);
-    }
-
-    private static boolean hasEnoughEnergy(ChemicalPlantBlockEntity pEntity) {
-        return pEntity.ENERGY_STORAGE.getEnergyStored() >= ENERGY_REQ;
-    }
-
+    // --- INNER HANDLER ---
     private static class CombinedFluidHandler implements IFluidHandler {
         private final FluidTank[] tanks;
-
-        public CombinedFluidHandler(FluidTank... tanks) {
-            this.tanks = tanks;
-        }
-
+        public CombinedFluidHandler(FluidTank... tanks) { this.tanks = tanks; }
         @Override public int getTanks() { return tanks.length; }
         @Override public FluidStack getFluidInTank(int tank) { return tanks[tank].getFluid(); }
         @Override public int getTankCapacity(int tank) { return tanks[tank].getCapacity(); }
         @Override public boolean isFluidValid(int tank, FluidStack stack) { return tanks[tank].isFluidValid(stack); }
-
-        @Override
-        public int fill(FluidStack resource, FluidAction action) {
-            if (tanks[0].isFluidValid(resource)) return tanks[0].fill(resource, action);
+        @Override public int fill(FluidStack resource, FluidAction action) {
+            for (int i = 0; i < 3; i++) { // Only allow filling input tanks (0, 1, 2)
+                int filled = tanks[i].fill(resource, action);
+                if (filled > 0) return filled;
+            }
             return 0;
         }
-
-        @Override
-        public FluidStack drain(FluidStack resource, FluidAction action) {
+        @Override public FluidStack drain(FluidStack resource, FluidAction action) {
             for (FluidTank tank : tanks) {
                 if (tank.getFluid().isFluidEqual(resource)) return tank.drain(resource, action);
             }
             return FluidStack.EMPTY;
         }
-
-        @Override
-        public FluidStack drain(int maxDrain, FluidAction action) {
+        @Override public FluidStack drain(int maxDrain, FluidAction action) {
             for (FluidTank tank : tanks) {
                 if (!tank.getFluid().isEmpty()) return tank.drain(maxDrain, action);
             }

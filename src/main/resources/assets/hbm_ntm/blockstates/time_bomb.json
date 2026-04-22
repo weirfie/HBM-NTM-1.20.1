@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "hbm_ntm:block/time_bomb",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "hbm_ntm:block/time_bomb"
+    },
+    "axis=z": {
+      "model": "hbm_ntm:block/time_bomb",
+      "x": 90
+    }
+  }
+}

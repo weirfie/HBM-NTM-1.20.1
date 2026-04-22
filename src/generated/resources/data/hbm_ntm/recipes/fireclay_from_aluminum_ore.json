@@ -3,7 +3,7 @@
   "category": "misc",
   "key": {
     "C": {
-      "item": "minecraft:clay"
+      "item": "minecraft:clay_ball"
     },
     "P": {
       "item": "hbm_ntm:aluminum_ore"
@@ -15,6 +15,7 @@
     "   "
   ],
   "result": {
+    "count": 4,
     "item": "hbm_ntm:fireclay"
   },
   "show_notification": true

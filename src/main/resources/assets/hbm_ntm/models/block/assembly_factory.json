@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/assembly_factory.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/assembly_factory",
+    "m_64898306-5420-4b8d-bcf7-00811e8c8990": "hbm_ntm:block/assembly_factory",
+    "Material": "hbm_ntm:block/assembly_factory",
+    "none": "hbm_ntm:block/assembly_factory"
+  }
+}

@@ -79,6 +79,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         oreSmelting(pWriter, TUNGSTEN_ORE_SMELTABLES, RecipeCategory.MISC, ModItems.TUNGSTEN_INGOT.get(), 0.25f, 100, "tungsten");
         oreSmelting(pWriter, LEAD_ORE_SMELTABLES, RecipeCategory.MISC, ModItems.LEAD_INGOT.get(), 0.25f, 100, "lead");
         oreSmelting(pWriter, FIRECLAY_SMELTABLES, RecipeCategory.MISC, ModItems.FIREBRICK.get(), 0.25f, 100, "fireclay");
+        oreBlasting(pWriter, FIRECLAY_SMELTABLES, RecipeCategory.MISC, ModItems.FIREBRICK.get(), 0.25f, 40, "fireclay");
         oreSmelting(pWriter, SCHRABIDIUM_ORE_SMELTABLES, RecipeCategory.MISC, ModItems.SCHRABIDIUM_INGOT.get(), 0.25f, 150, "schrabidium_ingot");
         oreSmelting(pWriter, ALUMINUM_ORE_SMELTABLES, RecipeCategory.MISC, ModItems.CRYOLITE_CHUNK.get(), 0.25f, 150, "cryolite_chunk");
         oreSmelting(pWriter, DIAMOND_POWDER_SMELTABLES, RecipeCategory.MISC, Items.DIAMOND, 0.25f, 150, "diamond");
@@ -396,6 +397,47 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('I', ModItems.IRON_PLATE.get())
                 .define('R', Blocks.REDSTONE_BLOCK)
                 .unlockedBy(getHasName(ModItems.INSULATOR.get()), has(ModItems.INSULATOR.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.FIREWORK_BATTERY.get())
+                .pattern("PPP")
+                .pattern("PPP")
+                .pattern("IRI")
+                .define('P', Items.PAPER)
+                .define('I', Blocks.OAK_PLANKS)
+                .define('R', Items.IRON_INGOT)
+                .unlockedBy(getHasName(Items.PAPER), has(Items.PAPER))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.EXPLOSIVE_CHARGE.get())
+                .pattern("PDP")
+                .pattern("DBD")
+                .pattern("PDP")
+                .define('P', ModItems.STEEL_PLATE.get())
+                .define('D', ModBlocks.DET_CORD.get())
+                .define('B', ModItems.POLYMER_BAR.get())
+                .unlockedBy(getHasName(ModItems.STEEL_PLATE.get()), has(ModItems.STEEL_PLATE.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.NUCLEAR_CHARGE.get())
+                .pattern("PDP")
+                .pattern("EBE")
+                .pattern("PDP")
+                .define('P', ModItems.CAST_STEEL_PLATE.get())
+                .define('D', ModItems.CONTROL_UNIT.get())
+                .define('E', ModItems.PLUTONIUM_CORE.get())
+                .define('B', ModItems.POLYMER_BAR.get())
+                .unlockedBy(getHasName(ModItems.PLUTONIUM_CORE.get()), has(ModItems.PLUTONIUM_CORE.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.EMP_DEVICE.get())
+                .pattern("PDP")
+                .pattern("PBP")
+                .pattern("PDP")
+                .define('P', ModItems.ALUMINUM_PLATE.get())
+                .define('D', ModItems.MAGNETRON.get())
+                .define('B', ModItems.MILITARY_GRADE_CIRCUIT_BOARD.get())
+                .unlockedBy(getHasName(ModItems.MILITARY_GRADE_CIRCUIT_BOARD.get()), has(ModItems.MILITARY_GRADE_CIRCUIT_BOARD.get()))
                 .save(pWriter);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ADVANCED_ALLOY_INGOT.get())
@@ -915,6 +957,16 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
                 .save(pWriter);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.IRON_FURNACE.get())
+                .pattern("SSS")
+                .pattern("SFS")
+                .pattern("BBB")
+                .define('S', Items.IRON_INGOT)
+                .define('B', Blocks.STONE_BRICKS)
+                .define('F', Items.FURNACE)
+                .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
+                .save(pWriter);
+
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.STEAM_CONDENSER.get())
                 .pattern("SIS")
                 .pattern("IPI")
@@ -989,20 +1041,20 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(Blocks.COBBLESTONE_SLAB), has(Blocks.COBBLESTONE_SLAB))
                 .save(pWriter);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.FIRECLAY.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.FIRECLAY.get(), 4)
                 .pattern("CC ")
                 .pattern("CP ")
                 .pattern("   ")
-                .define('C', Items.CLAY)
+                .define('C', Items.CLAY_BALL)
                 .define('P', ModItems.STEEL.get())
                 .unlockedBy(getHasName(ModItems.STEEL.get()), has(ModItems.STEEL.get()))
                 .save(pWriter, new ResourceLocation(HBMNTM.MOD_ID, "fireclay_from_steel"));
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.FIRECLAY.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.FIRECLAY.get(), 4)
                 .pattern("CC ")
                 .pattern("CP ")
                 .pattern("   ")
-                .define('C', Items.CLAY)
+                .define('C', Items.CLAY_BALL)
                 .define('P', ModBlocks.ALUMINUM_ORE.get())
                 .unlockedBy(getHasName(ModBlocks.ALUMINUM_ORE.get()), has(ModBlocks.ALUMINUM_ORE.get()))
                 .save(pWriter, new ResourceLocation(HBMNTM.MOD_ID, "fireclay_from_aluminum_ore"));

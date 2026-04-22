@@ -249,6 +249,100 @@ public class GenericBoundingBoxBE extends BlockEntity {
                         }
                     }
                 }
+                else if (core instanceof ElectrolysisMachineBlockEntity electrolysisMachine) {
+                    FluidTank[] outputTanks = {
+                            electrolysisMachine.getOutputTank1(),
+                            electrolysisMachine.getOutputTank2()
+                    };
+
+                    for (FluidTank tank : outputTanks) {
+                        FluidStack stack = tank.getFluid();
+                        if (stack.isEmpty()) continue;
+
+                        if (neighborBE instanceof FluidBlockEntity duct) {
+                            String filter = duct.getAllowedFluid();
+
+                            if (filter.isEmpty()) continue;
+
+                            String currentFluidName = net.minecraftforge.registries.ForgeRegistries.FLUIDS.getKey(stack.getFluid()).getPath();
+
+                            if (!filter.equals(currentFluidName)) {
+                                continue;
+                            }
+
+                            int amountToPush = Math.min(stack.getAmount(), pushAmount);
+                            FluidStack toPush = new FluidStack(stack.getFluid(), amountToPush);
+
+                            int accepted = neighborHandler.fill(toPush, IFluidHandler.FluidAction.EXECUTE);
+                            if (accepted > 0) {
+                                tank.drain(accepted, IFluidHandler.FluidAction.EXECUTE);
+                                break;
+                            }
+                        }
+                    }
+                }
+                else if (core instanceof BedrockOreProcessorBlockEntity bedrockOreProcessor) {
+                    FluidTank[] outputTanks = {
+                            bedrockOreProcessor.getOutputTank1()
+                    };
+
+                    for (FluidTank tank : outputTanks) {
+                        FluidStack stack = tank.getFluid();
+                        if (stack.isEmpty()) continue;
+
+                        if (neighborBE instanceof FluidBlockEntity duct) {
+                            String filter = duct.getAllowedFluid();
+
+                            if (filter.isEmpty()) continue;
+
+                            String currentFluidName = net.minecraftforge.registries.ForgeRegistries.FLUIDS.getKey(stack.getFluid()).getPath();
+
+                            if (!filter.equals(currentFluidName)) {
+                                continue;
+                            }
+
+                            int amountToPush = Math.min(stack.getAmount(), pushAmount);
+                            FluidStack toPush = new FluidStack(stack.getFluid(), amountToPush);
+
+                            int accepted = neighborHandler.fill(toPush, IFluidHandler.FluidAction.EXECUTE);
+                            if (accepted > 0) {
+                                tank.drain(accepted, IFluidHandler.FluidAction.EXECUTE);
+                                break;
+                            }
+                        }
+                    }
+                }
+                else if (core instanceof PyrolysisOvenBlockEntity pyrolysisOven) {
+                    FluidTank[] outputTanks = {
+                            pyrolysisOven.getOutputTank1()
+                    };
+
+                    for (FluidTank tank : outputTanks) {
+                        FluidStack stack = tank.getFluid();
+                        if (stack.isEmpty()) continue;
+
+                        if (neighborBE instanceof FluidBlockEntity duct) {
+                            String filter = duct.getAllowedFluid();
+
+                            if (filter.isEmpty()) continue;
+
+                            String currentFluidName = net.minecraftforge.registries.ForgeRegistries.FLUIDS.getKey(stack.getFluid()).getPath();
+
+                            if (!filter.equals(currentFluidName)) {
+                                continue;
+                            }
+
+                            int amountToPush = Math.min(stack.getAmount(), pushAmount);
+                            FluidStack toPush = new FluidStack(stack.getFluid(), amountToPush);
+
+                            int accepted = neighborHandler.fill(toPush, IFluidHandler.FluidAction.EXECUTE);
+                            if (accepted > 0) {
+                                tank.drain(accepted, IFluidHandler.FluidAction.EXECUTE);
+                                break;
+                            }
+                        }
+                    }
+                }
                 else if (core instanceof DeuteriumExtractionTowerBlockEntity deuteriumExtractionTower) {
                     FluidTank[] outputTanks = {
                             deuteriumExtractionTower.getOutputTank()

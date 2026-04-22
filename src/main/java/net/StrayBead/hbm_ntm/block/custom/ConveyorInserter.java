@@ -42,6 +42,13 @@ public class ConveyorInserter extends Block {
                     BlockPos targetPos = pos.relative(searchDir);
                     BlockEntity targetBE = level.getBlockEntity(targetPos);
 
+                    if (targetBE instanceof GenericBoundingBoxBE proxy) {
+                        BlockPos corePos = proxy.getCorePos();
+                        if (corePos != null && !corePos.equals(BlockPos.ZERO)) {
+                            targetBE = level.getBlockEntity(corePos);
+                        }
+                    }
+
                     if (targetBE instanceof CentrifugeBlockEntity centrifuge) {
                         centrifuge.getCapability(ForgeCapabilities.ITEM_HANDLER, searchDir.getOpposite()).ifPresent(handler -> {
                             ItemStack toInsert = itemEntity.getItem();
@@ -70,6 +77,21 @@ public class ConveyorInserter extends Block {
                                     itemEntity.setItem(remaining);
                                 }
                                 ore_acidizer.setChanged();
+                            }
+                        });
+                    } else if (targetBE instanceof PyrolysisOvenBlockEntity pyrolysisOven) {
+                        pyrolysisOven.getCapability(ForgeCapabilities.ITEM_HANDLER, searchDir.getOpposite()).ifPresent(handler -> {
+                            ItemStack toInsert = itemEntity.getItem();
+
+                            ItemStack remaining = handler.insertItem(1, toInsert, false);
+
+                            if (remaining.getCount() < toInsert.getCount()) {
+                                if (remaining.isEmpty()) {
+                                    itemEntity.discard();
+                                } else {
+                                    itemEntity.setItem(remaining);
+                                }
+                                pyrolysisOven.setChanged();
                             }
                         });
                     } else if (targetBE instanceof SilexBlockEntity silexBlock) {

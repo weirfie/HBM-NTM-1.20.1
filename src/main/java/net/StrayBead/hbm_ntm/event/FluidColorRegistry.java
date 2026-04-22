@@ -28,6 +28,7 @@ public class FluidColorRegistry {
         FLUID_COLORS.put("unsaturated_hydrocarbons", 0x708090);
         FLUID_COLORS.put("petroleum_gas", 0xB0C4DE);
         FLUID_COLORS.put("reformate_gas", 0x58537D);
+        FLUID_COLORS.put("vitroil", 0x575037);
 
         // --- NUCLEAR & RADIOACTIVE ---
         FLUID_COLORS.put("liquid_nuclear_waste", 0x4DFF00);
@@ -50,6 +51,7 @@ public class FluidColorRegistry {
         FLUID_COLORS.put("liquid_hydrogen", 0xE1F5FE);
         FLUID_COLORS.put("chlorocalcite_solution", 0x8BC34A);
         FLUID_COLORS.put("lye", 0xFFFFFF);
+        FLUID_COLORS.put("ore_slop", 0x4C5737);
 
         // --- GASES & STEAM ---
         FLUID_COLORS.put("steam", 0xE0E0E0);

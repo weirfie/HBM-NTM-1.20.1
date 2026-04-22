@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "hbm_ntm:block/soyuz_launch_platform" },
+    "facing=east":  { "model": "hbm_ntm:block/soyuz_launch_platform", "y": 90 },
+    "facing=south": { "model": "hbm_ntm:block/soyuz_launch_platform", "y": 180 },
+    "facing=west":  { "model": "hbm_ntm:block/soyuz_launch_platform", "y": 270 }
+  }
+}

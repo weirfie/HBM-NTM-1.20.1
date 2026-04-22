@@ -5,10 +5,12 @@ import net.StrayBead.hbm_ntm.block.ModBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
@@ -20,6 +22,12 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
+        var pickaxeTag = this.tag(BlockTags.MINEABLE_WITH_PICKAXE);
+
+        for (RegistryObject<Block> blockObj : ModBlocks.GENERAL_SIMPLE_BLOCK.values()) {
+            pickaxeTag.add(blockObj.get());
+        }
+
         this.tag(Tags.Blocks.ORES)
                 .add(ModBlocks.THORIUM_ORE.get(),
                         ModBlocks.BERYLLIUM_ORE.get(),
@@ -44,6 +52,40 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                         ModBlocks.BERYLLIUM_ORE.get(),
                         ModBlocks.PLAYER_DECONTAMINATOR.get(),
                         ModBlocks.LEAD_ANVIL.get(),
+                        ModBlocks.FIREWORK_BATTERY.get(),
+                        ModBlocks.DYNAMITE.get(),
+                        ModBlocks.ACTUAL_TNT.get(),
+                        ModBlocks.SEMTEX.get(),
+                        ModBlocks.C_4.get(),
+                        ModBlocks.BEDROCK_ORE_PROCESSOR.get(),
+                        ModBlocks.PYROLYSIS_OVEN.get(),
+                        ModBlocks.FISSURE_BOMB.get(),
+                        ModBlocks.FLAME_WAR_IN_A_BOX.get(),
+                        ModBlocks.LEVITATION_BOMB.get(),
+                        ModBlocks.ENDOTHERMIC_BOMB.get(),
+                        ModBlocks.COKER_UNIT.get(),
+                        ModBlocks.EXOTHERMIC_BOMB.get(),
+                        ModBlocks.ANTI_PERSONELL_MINE.get(),
+                        ModBlocks.TIME_BOMB.get(),
+                        ModBlocks.BURNING_GRASS.get(),
+                        ModBlocks.COMPACT_LAUNCH_PAD.get(),
+                        ModBlocks.SOYUZ_LAUNCH_PLATFORM.get(),
+                        ModBlocks.LIGHTSTONE_TILE.get(),
+                        ModBlocks.LIGHTSTONE_BRICKS.get(),
+                        ModBlocks.LIGHTSTONE_CHISELED_BRICKS.get(),
+                        ModBlocks.CHISELED_LIGHTSTONE.get(),
+                        ModBlocks.LIGHTSTONE_TILE_STAIRS.get(),
+                        ModBlocks.LIGHTSTONE_BRICK_STAIRS.get(),
+                        ModBlocks.LIGHTSTONE_TILE_SLAB.get(),
+                        ModBlocks.LIGHTSTONE_BRICK_SLAB.get(),
+                        ModBlocks.EMP_DEVICE.get(),
+                        ModBlocks.EXPLOSIVE_CHARGE.get(),
+                        ModBlocks.NUCLEAR_CHARGE.get(),
+                        ModBlocks.ASSEMBLY_FACTORY.get(),
+                        ModBlocks.IRON_FURNACE.get(),
+                        ModBlocks.STEEL_FURNACE.get(),
+                        ModBlocks.STEAM_PUMP.get(),
+                        ModBlocks.MINING_CHARGE.get(),
                         ModBlocks.SIM_CARD_SIGNAL_BROADCASTING_DEVICE.get(),
                         ModBlocks.SHALLOW_FOUNDRY_BASIN.get(),
                         ModBlocks.MALACHITE.get(),

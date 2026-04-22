@@ -141,7 +141,7 @@ public class MachineTemplateFolderScreen extends Screen {
             case "identifier" -> FluidColorRegistry.getRegisteredFluids().toArray(new String[0]);
             case "tank" -> FLUID_TANKS;
             case "crucible" -> CRUCIBLE_TEMPLATE_NAMES;
-            default -> ASSEMBLY_TEMPLATE_NAMES;
+            default -> ModItems.ASSEMBLY_TEMPLATE_NAMES;
         };
 
         filteredItems = Arrays.stream(sourceArray)

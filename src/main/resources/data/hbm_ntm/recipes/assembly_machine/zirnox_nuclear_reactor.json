@@ -1,0 +1,17 @@
+{
+  "type": "hbm_ntm:assembly_machine",
+  "template": {
+    "item": "hbm_ntm:assembly_template_zirnox_nuclear_reactor"
+  },
+  "ingredients": [
+    { "item": "hbm_ntm:steel_shell", "count": 4 },
+    { "item": "hbm_ntm:steel_pipe", "count": 8 },
+    { "item": "hbm_ntm:boron_ingot", "count": 3 },
+    { "item": "hbm_ntm:graphite", "count": 8 },
+    { "item": "hbm_ntm:rubber_bar", "count": 16 },
+    { "item": "hbm_ntm:integrated_circuit_board", "count": 4 }
+  ],
+  "output": {
+    "item": "hbm_ntm:zirnox_nuclear_reactor"
+  }
+}

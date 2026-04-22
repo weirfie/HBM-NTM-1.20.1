@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/anti_personell_mine.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/anti_personell_mine",
+    "m_87df431f-ef1f-ef75-dbb0-05013e1565a8": "hbm_ntm:block/anti_personell_mine",
+    "Material": "hbm_ntm:block/anti_personell_mine",
+    "none": "hbm_ntm:block/anti_personell_mine"
+  }
+}

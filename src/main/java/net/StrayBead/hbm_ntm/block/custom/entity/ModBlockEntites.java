@@ -28,10 +28,42 @@ public class ModBlockEntites {
             BLOCK_ENTITIES.register("blast_furnace_entity", () ->
                     BlockEntityType.Builder.of(MeltdownBlastFurnaceBlockEntity::new,
                             ModBlocks.BLAST_FURNACE.get()).build(null));
+    public static final RegistryObject<BlockEntityType<ThePrototypeBlockEntity>> THE_PROTOTYPE =
+            BLOCK_ENTITIES.register("the_prototype_entity", () ->
+                    BlockEntityType.Builder.of(ThePrototypeBlockEntity::new,
+                            ModBlocks.THE_PROTOTYPE.get()).build(null));
+    public static final RegistryObject<BlockEntityType<PyrolysisOvenBlockEntity>> PYROLYSIS_OVEN_ENTITY =
+            BLOCK_ENTITIES.register("pyrolysis_oven_entity", () ->
+                    BlockEntityType.Builder.of(PyrolysisOvenBlockEntity::new,
+                            ModBlocks.PYROLYSIS_OVEN.get()).build(null));
+    public static final RegistryObject<BlockEntityType<TimeBombEntity>> TIME_BOMB =
+            BLOCK_ENTITIES.register("time_bomb", () ->
+                    BlockEntityType.Builder.of(TimeBombEntity::new,
+                            ModBlocks.TIME_BOMB.get()).build(null));
+    public static final RegistryObject<BlockEntityType<LittleBoyBlockEntity>> LITTLE_BOY =
+            BLOCK_ENTITIES.register("little_boy_entity", () ->
+                    BlockEntityType.Builder.of(LittleBoyBlockEntity::new,
+                            ModBlocks.LITTLE_BOY.get()).build(null));
+    public static final RegistryObject<BlockEntityType<BedrockOreProcessorBlockEntity>> BEDROCK_ORE_PROCESSOR_ENTITY =
+            BLOCK_ENTITIES.register("bedrock_ore_processor_entity", () ->
+                    BlockEntityType.Builder.of(BedrockOreProcessorBlockEntity::new,
+                            ModBlocks.BEDROCK_ORE_PROCESSOR.get()).build(null));
+    public static final RegistryObject<BlockEntityType<ElectrolysisMachineBlockEntity>> ELECTROLYSIS_MACHINE =
+            BLOCK_ENTITIES.register("electrolysis_machine_entity", () ->
+                    BlockEntityType.Builder.of(ElectrolysisMachineBlockEntity::new,
+                            ModBlocks.ELECTROLYSIS_MACHINE.get()).build(null));
     public static final RegistryObject<BlockEntityType<SteelBarrelBlockEntity>> STEEL_BARREL =
             BLOCK_ENTITIES.register("steel_barrel_entity", () ->
                     BlockEntityType.Builder.of(SteelBarrelBlockEntity::new,
                             ModBlocks.STEEL_BARREL.get()).build(null));
+    public static final RegistryObject<BlockEntityType<CokerUnitBlockEntity>> COKER_UNIT =
+            BLOCK_ENTITIES.register("coker_unit_entity", () ->
+                    BlockEntityType.Builder.of(CokerUnitBlockEntity::new,
+                            ModBlocks.COKER_UNIT.get()).build(null));
+    public static final RegistryObject<BlockEntityType<FatManBlockEntity>> FAT_MAN =
+            BLOCK_ENTITIES.register("fat_man_entity", () ->
+                    BlockEntityType.Builder.of(FatManBlockEntity::new,
+                            ModBlocks.FAT_MAN.get()).build(null));
     public static final RegistryObject<BlockEntityType<IronCrateBlockEntity>> IRON_CRATE =
             BLOCK_ENTITIES.register("iron_crate_entity", () ->
                     BlockEntityType.Builder.of(IronCrateBlockEntity::new,

@@ -1,0 +1,14 @@
+{
+  "type": "hbm_ntm:assembly_machine",
+  "template": {
+    "item": "hbm_ntm:assembly_template_industrial_boiler"
+  },
+  "ingredients": [
+    { "item": "hbm_ntm:cast_steel_plate", "count": 8 },
+    { "item": "hbm_ntm:industrial_grade_copper", "count": 8 },
+    { "item": "hbm_ntm:bakelite_bar", "count": 4 }
+  ],
+  "output": {
+    "item": "hbm_ntm:industrial_boiler"
+  }
+}

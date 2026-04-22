@@ -23,11 +23,10 @@ import java.util.List;
 
 public class AssemblyRecipeCategory implements IRecipeCategory<AssemblyRecipe> {
     public static final ResourceLocation UID = new ResourceLocation(HBMNTM.MOD_ID, "assembly_machine");
-    public static final ResourceLocation TEXTURE = new ResourceLocation(HBMNTM.MOD_ID, "textures/screens/assembly_machine_gui.png");
 
     private final IDrawable background;
     private final IDrawable icon;
-    private final IDrawable slot;
+    private final IDrawable slot; // The JEI slot drawable
 
     private final IDrawable cog;
     private final IDrawable arrowLine;
@@ -35,8 +34,9 @@ public class AssemblyRecipeCategory implements IRecipeCategory<AssemblyRecipe> {
     private final IDrawable templateBase;
 
     public AssemblyRecipeCategory(IGuiHelper helper) {
-        this.background = helper.createDrawable(TEXTURE, 5, 15, 165, 120);
+        this.background = helper.createBlankDrawable(160, 115);
         this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModBlocks.ASSEMBLY_MACHINE.get()));
+
         this.slot = helper.getSlotDrawable();
 
         this.cog = helper.drawableBuilder(new ResourceLocation(HBMNTM.MOD_ID, "textures/screens/cogwheel.png"), 0, 0, 16, 16).setTextureSize(16, 16).build();
@@ -47,37 +47,39 @@ public class AssemblyRecipeCategory implements IRecipeCategory<AssemblyRecipe> {
 
     @Override
     public void draw(AssemblyRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
-        templateBase.draw(guiGraphics, 81 - 5, 68 - 15);
+        templateBase.draw(guiGraphics, 76, 53);
 
-        cog.draw(guiGraphics, 52 - 5, 90 - 15);
-        cog.draw(guiGraphics, 67 - 5, 106 - 15);
-        cog.draw(guiGraphics, 83 - 5, 89 - 15);
-        cog.draw(guiGraphics, 99 - 5, 106 - 15);
+        cog.draw(guiGraphics, 47, 75);
+        cog.draw(guiGraphics, 62, 91);
+        cog.draw(guiGraphics, 78, 74);
+        cog.draw(guiGraphics, 94, 91);
 
-        arrowLine.draw(guiGraphics, 46 - 5, 98 - 15);
-        arrowLine.draw(guiGraphics, 62 - 5, 98 - 15);
-        arrowLine.draw(guiGraphics, 78 - 5, 98 - 15);
-        arrowLine.draw(guiGraphics, 94 - 5, 98 - 15);
-        arrowHead.draw(guiGraphics, 110 - 5, 98 - 15);
+        arrowLine.draw(guiGraphics, 41, 83);
+        arrowLine.draw(guiGraphics, 57, 83);
+        arrowLine.draw(guiGraphics, 73, 83);
+        arrowLine.draw(guiGraphics, 89, 83);
+        arrowHead.draw(guiGraphics, 105, 83);
     }
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, AssemblyRecipe recipe, IFocusGroup focuses) {
         int[][] ingredientCoords = {
-                {9, 21}, {9, 39}, {9, 57}, {9, 75}, {9, 93}, {9, 111},
-                {27, 21}, {27, 39}, {27, 57}, {27, 75}, {27, 93}, {27, 111}
+                {4, 6}, {4, 24}, {4, 42}, {4, 60}, {4, 78}, {4, 96},
+                {22, 6}, {22, 24}, {22, 42}, {22, 60}, {22, 78}, {22, 96}
         };
 
         List<Ingredient> ingredients = recipe.getIngredients();
         for (int i = 0; i < Math.min(ingredients.size(), 12); i++) {
-            builder.addSlot(RecipeIngredientRole.INPUT, ingredientCoords[i][0] - 5, ingredientCoords[i][1] - 15)
-                    .addIngredients(ingredients.get(i));
+            builder.addSlot(RecipeIngredientRole.INPUT, ingredientCoords[i][0], ingredientCoords[i][1])
+                    .addIngredients(ingredients.get(i))
+                    .setBackground(this.slot, -1, -1);
         }
 
-        builder.addSlot(RecipeIngredientRole.CATALYST, 81 - 5, 68 - 15)
-                .addIngredients(recipe.getTemplate());
+        builder.addSlot(RecipeIngredientRole.CATALYST, 76, 53)
+                .addIngredients(recipe.getTemplate())
+                .setBackground(this.slot, -1, -1);
 
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 137 - 5, 98 - 15)
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 132, 83)
                 .addItemStack(recipe.getResultItem(RegistryAccess.EMPTY))
                 .setBackground(this.slot, -1, -1);
     }

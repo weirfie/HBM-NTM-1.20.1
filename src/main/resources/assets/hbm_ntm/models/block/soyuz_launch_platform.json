@@ -1,0 +1,15 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/soyuz_launch_platform.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/launcher_table",
+    "m_e2ec2e20-c976-38bf-87a7-d481cec1dfa1": "hbm_ntm:block/launcher_leg",
+    "m_cdfcdc5d-0386-d5f8-9597-d796b9330a4a": "hbm_ntm:block/launcher_table",
+    "m_d8beeb06-8b4d-c698-123c-12f354b96fb5": "hbm_ntm:block/launcher_tower",
+    "m_cca7551f-83f1-4d0e-a2fe-8990e6b5f33a": "hbm_ntm:block/launcher_support",
+    "m_0360f59d-ee04-1c38-b0f5-74e46319b8b9": "hbm_ntm:block/launcher_tower_base",
+    "m_459a665c-3742-6a56-efa7-67fb4e258ba1": "hbm_ntm:block/launcher_support_base"
+  },
+  "render_type": "cutout"
+}

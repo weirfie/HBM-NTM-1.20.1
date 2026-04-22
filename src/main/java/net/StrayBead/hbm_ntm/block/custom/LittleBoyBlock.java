@@ -1,11 +1,16 @@
 package net.StrayBead.hbm_ntm.block.custom;
 
+import mezz.jei.api.constants.Tags;
 import net.StrayBead.hbm_ntm.HBMNTM;
+import net.StrayBead.hbm_ntm.block.ModBlocks;
+import net.StrayBead.hbm_ntm.block.custom.entity.FatManBlockEntity;
+import net.StrayBead.hbm_ntm.block.custom.entity.LittleBoyBlockEntity;
 import net.StrayBead.hbm_ntm.block.custom.render.ExplosionShakeHandler;
 import net.StrayBead.hbm_ntm.block.custom.render.LittleBoyShockwaveRenderer;
 import net.StrayBead.hbm_ntm.client.ClientExplosionEffects;
 import net.StrayBead.hbm_ntm.client.ShockwaveData;
 import net.StrayBead.hbm_ntm.client.screens.FlashOverlay;
+import net.StrayBead.hbm_ntm.item.ModItems;
 import net.StrayBead.hbm_ntm.render.custom.FlashParticleManager;
 import net.StrayBead.hbm_ntm.render.custom.ParticleManager;
 import net.StrayBead.hbm_ntm.sounds.ModSounds;
@@ -16,10 +21,13 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
@@ -29,19 +37,24 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
-public class LittleBoyBlock extends Block {
+public class LittleBoyBlock extends BaseEntityBlock {
     private boolean isActive = false;
     private int counter = 0;
     public static boolean hasDetonated = false;
@@ -113,6 +126,14 @@ public class LittleBoyBlock extends Block {
         world.scheduleTick(pos, this, TICK_INTERVAL);
     }
 
+    private static boolean hasRequiredItems(LittleBoyBlockEntity littleBoyBlockEntity) {
+        return littleBoyBlockEntity.itemHandler.getStackInSlot(0).getItem() == ModItems.NEUTRON_SHIELDING.get() &&
+                littleBoyBlockEntity.itemHandler.getStackInSlot(1).getItem() == ModItems.SUBCRITICAL_TARGET.get() &&
+                littleBoyBlockEntity.itemHandler.getStackInSlot(2).getItem() == ModItems.U235_PROJECTILE.get() &&
+                littleBoyBlockEntity.itemHandler.getStackInSlot(3).getItem() == ModItems.PROPELLANT.get() &&
+                littleBoyBlockEntity.itemHandler.getStackInSlot(4).getItem() == ModItems.BOMB_IGNITER.get();
+    }
+
     public static void detonate(Level world, BlockPos pos) {
         if (world.isClientSide || hasDetonated) return;
         RandomSource random = RandomSource.create();
@@ -126,6 +147,11 @@ public class LittleBoyBlock extends Block {
                 0.0f, 0.0f, 0.0f,
                 70, 0f
         );
+        if (world.getBlockEntity(pos) instanceof LittleBoyBlockEntity littleBoyBlockEntity) {
+            if (!hasRequiredItems(littleBoyBlockEntity)) {
+                return;
+            }
+        }
         spawnFireballFlashParticles(pos.getX(), pos.getY() + 30, pos.getZ(), 20, 30, 30, 30, 10000, 40 + random.nextInt(20));
         FlashOverlay.triggerFlash();
 
@@ -175,11 +201,11 @@ public class LittleBoyBlock extends Block {
         if (world instanceof ServerLevel level) {
             BlockPos center = pos;
 
-            for (double r = 0; r <= 350; r += 1) {
+            for (double r = 0; r <= 350; r += 2) {
                 final double radius = r;
                 double delay = r;
                 HBMNTM.queueServerWork((int) delay, () -> {
-                    for (int a = 0; a < 360; a += 1) {
+                    for (int a = 0; a < 360; a += Mth.nextInt(RandomSource.create(), 1, 3)) {
                         double radians = Math.toRadians(a);
                         double x = center.getX() + Math.cos(radians) * radius;
                         double z = center.getZ() + Math.sin(radians) * radius;
@@ -222,7 +248,7 @@ public class LittleBoyBlock extends Block {
                             entityiterator.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.EXPLOSION)), 100);
                         }
 
-                        int radiusReplace = 2;
+                        int radiusReplace = 6;
                         BlockPos origin = new BlockPos((int) x, (int) y, (int) z);
 
                         for (int dx = -radiusReplace; dx <= radiusReplace; dx++) {
@@ -242,6 +268,15 @@ public class LittleBoyBlock extends Block {
                                         if (world.getBlockState(firePos).isAir() && random.nextFloat() < 0.6F) {
                                             world.setBlock(firePos, Blocks.FIRE.defaultBlockState(), 3);
                                         }
+                                    }
+                                    if (state.getBlock() == Blocks.GRASS_BLOCK) {
+                                        world.setBlock(targetPos, ModBlocks.BURNING_GRASS.get().defaultBlockState(), 3);
+                                    }
+                                    if (state.getBlock() == Blocks.OAK_LEAVES || state.getBlock() == Blocks.ACACIA_LEAVES ||
+                                            state.getBlock() == Blocks.DARK_OAK_LEAVES || state.getBlock() == Blocks.BIRCH_LEAVES ||
+                                            state.getBlock() == Blocks.AZALEA_LEAVES || state.getBlock() == Blocks.JUNGLE_LEAVES ||
+                                            state.getBlock() == Blocks.SPRUCE_LEAVES || state.getBlock() == Blocks.MANGROVE_LEAVES) {
+                                        world.setBlock(targetPos, ModBlocks.DEAD_LEAVES.get().defaultBlockState(), 3);
                                     }
                                 }
                             }
@@ -284,6 +319,12 @@ public class LittleBoyBlock extends Block {
 
     @Override
     public void onRemove(BlockState p_60515_, Level p_60516_, BlockPos p_60517_, BlockState p_60518_, boolean p_60519_) {
+        if (p_60515_.getBlock() != p_60518_.getBlock()) {
+            BlockEntity blockEntity = p_60516_.getBlockEntity(p_60517_);
+            if (blockEntity instanceof LittleBoyBlockEntity) {
+                ((LittleBoyBlockEntity) blockEntity).drops();
+            }
+        }
         super.onRemove(p_60515_, p_60516_, p_60517_, p_60518_, p_60519_);
         hasDetonated = false;
         if (!p_60515_.is(p_60518_.getBlock())) {
@@ -298,9 +339,9 @@ public class LittleBoyBlock extends Block {
         return switch (pick) {
             case 0 -> Blocks.COBBLED_DEEPSLATE;
             case 1 -> Blocks.TUFF;
-            case 2 -> Blocks.DIRT;
-            case 3 -> Blocks.COARSE_DIRT;
-            case 4, 5 -> Blocks.AIR;
+            case 2 -> Blocks.COBBLED_DEEPSLATE;
+            case 3 -> Blocks.COBBLED_DEEPSLATE;
+            case 4 -> Blocks.AIR;
             default -> Blocks.COBBLED_DEEPSLATE;
         };
     }
@@ -355,7 +396,8 @@ public class LittleBoyBlock extends Block {
                     r, g, b,
                     1.0f,
                     0.0f, 0.2f, 0.0f,
-                    maxAge, 0.005f, false, false, convectionBehave, false
+                    maxAge, 0.005f, false, false, convectionBehave, false,
+                    20f
             );
         }
     }
@@ -400,6 +442,7 @@ public class LittleBoyBlock extends Block {
                     0.001f,
                     false,
                     true,
+                    false,
                     false,
                     false
             );
@@ -527,5 +570,30 @@ public class LittleBoyBlock extends Block {
                     age, 0f, true, true
             );
         }
+    }
+
+    @Override
+    public RenderShape getRenderShape(BlockState p_49232_) {
+        return RenderShape.MODEL;
+    }
+
+    @Override
+    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos,
+                                 Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+        if (!pLevel.isClientSide()) {
+            BlockEntity entity = pLevel.getBlockEntity(pPos);
+            if(entity instanceof LittleBoyBlockEntity) {
+                NetworkHooks.openScreen(((ServerPlayer)pPlayer), (LittleBoyBlockEntity)entity, pPos);
+            } else {
+                throw new IllegalStateException("Our Container provider is missing!");
+            }
+        }
+
+        return InteractionResult.sidedSuccess(pLevel.isClientSide());
+    }
+
+    @Override
+    public @Nullable BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
+        return new LittleBoyBlockEntity(blockPos, blockState);
     }
 }

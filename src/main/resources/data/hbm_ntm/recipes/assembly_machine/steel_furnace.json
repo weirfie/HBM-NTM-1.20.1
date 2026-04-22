@@ -1,0 +1,16 @@
+{
+  "type": "hbm_ntm:assembly_machine",
+  "template": {
+    "item": "hbm_ntm:assembly_template_steel_furnace"
+  },
+  "ingredients": [
+    { "item": "minecraft:stone_bricks", "count": 6 },
+    { "item": "minecraft:iron_ingot", "count": 8 },
+    { "item": "hbm_ntm:steel_plate", "count": 16 },
+    { "item": "hbm_ntm:industrial_grade_copper", "count": 8 },
+    { "item": "hbm_ntm:steel_grate", "count": 16 }
+  ],
+  "output": {
+    "item": "hbm_ntm:steel_furnace"
+  }
+}

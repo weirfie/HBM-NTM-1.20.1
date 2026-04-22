@@ -31,9 +31,18 @@ public class ConveyorEjector extends Block {
             BlockPos targetPos = pos.relative(searchDir);
             BlockEntity targetBE = level.getBlockEntity(targetPos);
 
+            if (targetBE instanceof GenericBoundingBoxBE proxy) {
+                BlockPos corePos = proxy.getCorePos();
+                if (corePos != null && !corePos.equals(BlockPos.ZERO)) {
+                    targetBE = level.getBlockEntity(corePos);
+                }
+            }
+
             if (targetBE != null) {
-                targetBE.getCapability(ForgeCapabilities.ITEM_HANDLER, searchDir.getOpposite()).ifPresent(handler -> {
-                    int[] outputSlots = getOutputSlotsFor(targetBE);
+                final BlockEntity finalTargetBE = targetBE;
+
+                finalTargetBE.getCapability(ForgeCapabilities.ITEM_HANDLER, searchDir.getOpposite()).ifPresent(handler -> {
+                    int[] outputSlots = getOutputSlotsFor(finalTargetBE);
 
                     for (int slot : outputSlots) {
                         ItemStack stackInSlot = handler.getStackInSlot(slot);
@@ -58,7 +67,7 @@ public class ConveyorEjector extends Block {
                                     entity.setDeltaMovement(0, 0, 0);
                                     level.addFreshEntity(entity);
 
-                                    targetBE.setChanged();
+                                    finalTargetBE.setChanged();
                                     return;
                                 }
                             }
@@ -82,6 +91,7 @@ public class ConveyorEjector extends Block {
         if (be instanceof SilexBlockEntity) return new int[]{6};
         if (be instanceof ShredderBlockEntity) return new int[]{9, 10, 11, 12, 13, 14, 15};
         if (be instanceof BoilerBlockEntity) return new int[]{2};
+        if (be instanceof PyrolysisOvenBlockEntity) return new int[]{2};
         return new int[0];
     }
 }

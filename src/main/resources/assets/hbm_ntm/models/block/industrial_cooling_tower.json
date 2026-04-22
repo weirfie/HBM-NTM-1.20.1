@@ -4,7 +4,7 @@
   "flip_v": true,
   "textures": {
     "particle": "hbm_ntm:block/industrial_cooling_tower",
-    "m_3a2e483f-172e-7a8c-ca9a-5645746c7f54": "hbm_ntm:block/industrial_cooling_tower",
+    "m_76a1a1c5-ac65-1d84-2ce4-96a237ca23a0": "hbm_ntm:block/industrial_cooling_tower",
     "Material": "hbm_ntm:block/industrial_cooling_tower",
     "none": "hbm_ntm:block/industrial_cooling_tower"
   },

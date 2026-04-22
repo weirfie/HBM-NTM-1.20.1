@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/steel_furnace.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/steel_furnace",
+    "m_a7312d24-0b0c-669d-ac73-951e3cf5f871": "hbm_ntm:block/steel_furnace",
+    "Material": "hbm_ntm:block/steel_furnace",
+    "none": "hbm_ntm:block/steel_furnace"
+  }
+}

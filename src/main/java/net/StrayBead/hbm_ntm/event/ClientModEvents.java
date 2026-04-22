@@ -38,6 +38,10 @@ public class ClientModEvents {
                 CrucibleRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntites.SILO_HATCH.get(),
                 SiloHatchBER::new);
+        event.registerBlockEntityRenderer(ModBlockEntites.BEDROCK_ORE_PROCESSOR_ENTITY.get(),
+                BedrockOreProcessorBER::new);
+        event.registerBlockEntityRenderer(ModBlockEntites.TIME_BOMB.get(),
+                TimeBombRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntites.COATED_FLUID_DUCT.get(), DuctRenderer::new);
         event.registerEntityRenderer(ModEntities.FLYING_TERRAIN.get(), FlyingTerrainRenderer::new);
     }
@@ -45,6 +49,7 @@ public class ClientModEvents {
     @SubscribeEvent
     public static void onRegisterAdditional(ModelEvent.RegisterAdditional event) {
         event.register(new net.minecraft.resources.ResourceLocation("hbm_ntm", "block/silo_hatch_door"));
+        event.register(new net.minecraft.resources.ResourceLocation("hbm_ntm", "block/bedrock_ore_processor_top"));
     }
 
     @SubscribeEvent
@@ -69,6 +74,35 @@ public class ClientModEvents {
             event.register((stack, tintIndex) -> {
                 if (tintIndex == 1) {
                     return FluidColorRegistry.getColor(entry.getKey());
+                }
+                return -1;
+            }, entry.getValue().get());
+        }
+
+        for (RegistryObject<Item> itemObj : ModItems.NUCLEAR_COMPONENTS.values()) {
+            String name = itemObj.getId().getPath();
+
+            for (Map.Entry<String, Integer> entry : ModItems.ORE_TYPES.entrySet()) {
+                if (name.startsWith(entry.getKey())) {
+                    event.register((stack, tintIndex) -> entry.getValue(), itemObj.get());
+                    break;
+                }
+            }
+        }
+
+        for (Map.Entry<String, RegistryObject<Item>> entry : ModItems.CRYSTALS.entrySet()) {
+            event.register((stack, tintIndex) -> {
+                if (tintIndex == 1) {
+                    return CrystalsColorRegistry.getColor(entry.getKey());
+                }
+                return -1;
+            }, entry.getValue().get());
+        }
+
+        for (Map.Entry<String, RegistryObject<Item>> entry : ModItems.FOUNDRY_SCRAPS.entrySet()) {
+            event.register((stack, tintIndex) -> {
+                if (tintIndex == 1) {
+                    return FoundryScrapsColorRegistry.getColor(entry.getKey());
                 }
                 return -1;
             }, entry.getValue().get());

@@ -73,6 +73,11 @@ public class ModFluids {
     public static final RegistryObject<FlowingFluid> MOLTEN_FUEL = register("molten_fuel", ModFluidTypes.MOLTEN_FUEL, () -> (LiquidBlock) ModBlocks.MOLTEN_FUEL.get());
     public static final RegistryObject<FlowingFluid> MOLTEN_REDSTONE = register("molten_redstone", ModFluidTypes.MOLTEN_REDSTONE, () -> (LiquidBlock) ModBlocks.MOLTEN_REDSTONE.get());
     public static final RegistryObject<FlowingFluid> HEAVY_WATER = register("heavy_water", ModFluidTypes.HEAVY_WATER, () -> (LiquidBlock) ModBlocks.HEAVY_WATER.get());
+    public static final RegistryObject<FlowingFluid> COKER_OIL = register("coker_oil", ModFluidTypes.COKER_OIL, () -> (LiquidBlock) ModBlocks.COKER_OIL.get());
+    public static final RegistryObject<FlowingFluid> ORE_SLOP = register("ore_slop", ModFluidTypes.ORE_SLOP, () -> (LiquidBlock) ModBlocks.ORE_SLOP.get());
+    public static final RegistryObject<FlowingFluid> VITROIL = register("vitroil", ModFluidTypes.VITROIL, () -> (LiquidBlock) ModBlocks.VITROIL.get());
+    public static final RegistryObject<FlowingFluid> SULFURIC_ACID = register("sulfuric_acid", ModFluidTypes.SULFURIC_ACID, () -> (LiquidBlock) ModBlocks.SULFURIC_ACID.get());
+    public static final RegistryObject<FlowingFluid> CHLORINE_GAS = register("chlorine_gas_liquid", ModFluidTypes.CHLORINE_GAS, () -> (LiquidBlock) ModBlocks.CHLORINE_GAS_LIQUID.get());
 
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class FluidsClientSideHandler {

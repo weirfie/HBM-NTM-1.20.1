@@ -1,0 +1,12 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/compact_launch_pad.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/compact_launch_pad",
+    "m_bdd13e88-6f8a-221f-2f94-9621f8e0f820": "hbm_ntm:block/compact_launch_pad",
+    "Material": "hbm_ntm:block/compact_launch_pad",
+    "none": "hbm_ntm:block/compact_launch_pad"
+  },
+  "render_type": "cutout"
+}

@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/bedrock_ore_processor.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/bedrock_ore_processor",
+    "m_98478765-d80e-3b31-2f77-47e044b0fb91": "hbm_ntm:block/bedrock_ore_processor",
+    "Material": "hbm_ntm:block/bedrock_ore_processor",
+    "none": "hbm_ntm:block/bedrock_ore_processor"
+  }
+}

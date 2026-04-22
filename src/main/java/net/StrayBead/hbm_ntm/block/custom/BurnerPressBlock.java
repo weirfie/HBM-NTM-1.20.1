@@ -1,16 +1,15 @@
 package net.StrayBead.hbm_ntm.block.custom;
 
 import io.netty.buffer.Unpooled;
-import net.StrayBead.hbm_ntm.block.custom.entity.AssemblyMachineBlockEntity;
-import net.StrayBead.hbm_ntm.block.custom.entity.BurnerPressBlockEntity;
-import net.StrayBead.hbm_ntm.block.custom.entity.ModBlockEntites;
-import net.StrayBead.hbm_ntm.block.custom.entity.ShredderBlockEntity;
+import net.StrayBead.hbm_ntm.block.ModBlocks;
+import net.StrayBead.hbm_ntm.block.custom.entity.*;
 import net.StrayBead.hbm_ntm.screen.BurnerPressGuiMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.*;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -31,6 +30,21 @@ public class BurnerPressBlock extends BaseEntityBlock {
 
     public BurnerPressBlock(Properties p_49795_) {
         super(p_49795_);
+    }
+
+    @Override
+    public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity entity, net.minecraft.world.item.ItemStack stack) {
+        super.setPlacedBy(level, pos, state, entity, stack);
+        level.setBlock(BlockPos.containing(pos.getX(), pos.getY() + 1, pos.getZ()), ModBlocks.GENERIC_BOUNDING_BOX.get().defaultBlockState(), 3);
+        BlockEntity targetBe = level.getBlockEntity(BlockPos.containing(pos.getX(), pos.getY() + 1, pos.getZ()));
+        if (targetBe instanceof GenericBoundingBoxBE boundingBE) {
+            boundingBE.setCorePos(pos);
+        }
+        level.setBlock(BlockPos.containing(pos.getX(), pos.getY() + 2, pos.getZ()), ModBlocks.GENERIC_BOUNDING_BOX.get().defaultBlockState(), 3);
+        BlockEntity targetBe2 = level.getBlockEntity(BlockPos.containing(pos.getX(), pos.getY() + 2, pos.getZ()));
+        if (targetBe2 instanceof GenericBoundingBoxBE boundingBE) {
+            boundingBE.setCorePos(pos);
+        }
     }
 
     @Override

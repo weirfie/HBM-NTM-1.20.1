@@ -128,6 +128,27 @@ public class FluidSyncS2CPacket {
                     case 4 -> chemicalPlant.setOutputTank2(this.fluidStack);
                     case 5 -> chemicalPlant.setOutputTank3(this.fluidStack);
                 }
+            } else if(Minecraft.getInstance().level.getBlockEntity(pos) instanceof ElectrolysisMachineBlockEntity electrolysisMachine) {
+                switch (tankID) {
+                    case 0 -> electrolysisMachine.setFluid(this.fluidStack);
+                    case 1 -> electrolysisMachine.setOutputTank1(this.fluidStack);
+                    case 2 -> electrolysisMachine.setOutputTank2(this.fluidStack);
+                }
+            }  else if(Minecraft.getInstance().level.getBlockEntity(pos) instanceof BedrockOreProcessorBlockEntity bedrockOreProcessor) {
+                switch (tankID) {
+                    case 0 -> bedrockOreProcessor.setFluid(this.fluidStack);
+                    case 1 -> bedrockOreProcessor.setOutputTank1(this.fluidStack);
+                }
+            }  else if(Minecraft.getInstance().level.getBlockEntity(pos) instanceof PyrolysisOvenBlockEntity pyrolysisOven) {
+                switch (tankID) {
+                    case 0 -> pyrolysisOven.setFluid(this.fluidStack);
+                    case 1 -> pyrolysisOven.setOutputTank1(this.fluidStack);
+                }
+            } else if(Minecraft.getInstance().level.getBlockEntity(pos) instanceof CokerUnitBlockEntity cokerUnit) {
+                switch (tankID) {
+                    case 0 -> cokerUnit.setFluid(this.fluidStack);
+                    case 1 -> cokerUnit.setOutputTank1(this.fluidStack);
+                }
             } else if(Minecraft.getInstance().level.getBlockEntity(pos) instanceof VacuumRefineryBlockEntity refinery) {
                 switch (tankID) {
                     case 0 -> refinery.setFluid(this.fluidStack);

@@ -1,11 +1,14 @@
 package net.StrayBead.hbm_ntm.block.custom;
 
 import net.StrayBead.hbm_ntm.HBMNTM;
+import net.StrayBead.hbm_ntm.block.custom.entity.BoilerBlockEntity;
+import net.StrayBead.hbm_ntm.block.custom.entity.FatManBlockEntity;
 import net.StrayBead.hbm_ntm.block.custom.render.ExplosionShakeHandler;
 import net.StrayBead.hbm_ntm.block.custom.render.ShockwaveRenderer;
 import net.StrayBead.hbm_ntm.client.ClientExplosionEffects;
 import net.StrayBead.hbm_ntm.client.ShockwaveData;
 import net.StrayBead.hbm_ntm.client.screens.FlashOverlay;
+import net.StrayBead.hbm_ntm.item.ModItems;
 import net.StrayBead.hbm_ntm.render.custom.FlashParticleManager;
 import net.StrayBead.hbm_ntm.render.custom.ParticleManager;
 import net.StrayBead.hbm_ntm.sounds.ModSounds;
@@ -16,9 +19,12 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
@@ -28,21 +34,26 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
 import static net.StrayBead.hbm_ntm.block.custom.LittleBoyBlock.spawnFireballFlashParticles;
 
-public class FatManBlock extends Block {
+public class FatManBlock extends BaseEntityBlock {
     private boolean isActive = false;
     private int counter = 0;
     public static boolean hasDetonated = false;
@@ -116,6 +127,11 @@ public class FatManBlock extends Block {
 
     public static void detonate(Level world, BlockPos pos) {
         if (world.isClientSide || hasDetonated) return;
+        if (world.getBlockEntity(pos) instanceof FatManBlockEntity fatManBlockEntity) {
+            if (!hasRequiredItems(fatManBlockEntity)) {
+                return;
+            }
+        }
         RandomSource random = RandomSource.create();
         FlashOverlay.triggerFlash();
 
@@ -264,6 +280,15 @@ public class FatManBlock extends Block {
         }
     }
 
+    private static boolean hasRequiredItems(FatManBlockEntity fatManBlockEntity) {
+        return fatManBlockEntity.itemHandler.getStackInSlot(0).getItem() == ModItems.HIGH_EXPLOSIVE_LENSES.get() &&
+                fatManBlockEntity.itemHandler.getStackInSlot(1).getItem() == ModItems.HIGH_EXPLOSIVE_LENSES.get() &&
+                fatManBlockEntity.itemHandler.getStackInSlot(3).getItem() == ModItems.HIGH_EXPLOSIVE_LENSES.get() &&
+                fatManBlockEntity.itemHandler.getStackInSlot(4).getItem() == ModItems.HIGH_EXPLOSIVE_LENSES.get() &&
+                fatManBlockEntity.itemHandler.getStackInSlot(2).getItem() == ModItems.BOMB_FIRING_UNIT.get() &&
+                fatManBlockEntity.itemHandler.getStackInSlot(5).getItem() == ModItems.PLUTONIUM_CORE.get();
+    }
+
     @Override
     public void tick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
         if (ShockwaveData.hasHitPlayer) {
@@ -288,6 +313,12 @@ public class FatManBlock extends Block {
 
     @Override
     public void onRemove(BlockState p_60515_, Level p_60516_, BlockPos p_60517_, BlockState p_60518_, boolean p_60519_) {
+        if (p_60515_.getBlock() != p_60518_.getBlock()) {
+            BlockEntity blockEntity = p_60516_.getBlockEntity(p_60517_);
+            if (blockEntity instanceof FatManBlockEntity) {
+                ((FatManBlockEntity) blockEntity).drops();
+            }
+        }
         super.onRemove(p_60515_, p_60516_, p_60517_, p_60518_, p_60519_);
         hasDetonated = false;
         if (!p_60515_.is(p_60518_.getBlock())) {
@@ -359,7 +390,8 @@ public class FatManBlock extends Block {
                     r, g, b,
                     1.0f,
                     0.0f, 0.2f, 0.0f,
-                    maxAge, 0.005f, false, false, convectionBehave, false
+                    maxAge, 0.005f, false, false, convectionBehave, false,
+                    30f
             );
         }
     }
@@ -468,8 +500,34 @@ public class FatManBlock extends Block {
                     false,
                     true,
                     false,
+                    false,
                     false
             );
         }
+    }
+
+    @Override
+    public RenderShape getRenderShape(BlockState p_49232_) {
+        return RenderShape.MODEL;
+    }
+
+    @Override
+    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos,
+                                 Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+        if (!pLevel.isClientSide()) {
+            BlockEntity entity = pLevel.getBlockEntity(pPos);
+            if(entity instanceof FatManBlockEntity) {
+                NetworkHooks.openScreen(((ServerPlayer)pPlayer), (FatManBlockEntity)entity, pPos);
+            } else {
+                throw new IllegalStateException("Our Container provider is missing!");
+            }
+        }
+
+        return InteractionResult.sidedSuccess(pLevel.isClientSide());
+    }
+
+    @Override
+    public @Nullable BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
+        return new FatManBlockEntity(blockPos, blockState);
     }
 }

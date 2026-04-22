@@ -1,0 +1,18 @@
+{
+  "type": "hbm_ntm:assembly_machine",
+  "template": {
+    "item": "hbm_ntm:assembly_template_cryo-electrolysis"
+  },
+  "ingredients": [
+    { "item": "hbm_ntm:cast_steel_plate", "count": 8 },
+    { "item": "hbm_ntm:copper_plate", "count": 16 },
+    { "item": "hbm_ntm:steel_shell", "count": 3 },
+    { "item": "hbm_ntm:rubber_bar", "count": 8 },
+    { "item": "hbm_ntm:firebrick", "count": 16 },
+    { "item": "hbm_ntm:copper_coil", "count": 16 },
+    { "item": "hbm_ntm:integrated_circuit_board", "count": 8 }
+  ],
+  "output": {
+    "item": "hbm_ntm:electrolysis_machine"
+  }
+}

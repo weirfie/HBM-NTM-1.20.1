@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/steam_pump.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/steam_pump",
+    "m_be7e837b-b22b-3bee-c9d0-d0fc94961953": "hbm_ntm:block/steam_pump",
+    "Material": "hbm_ntm:block/steam_pump",
+    "none": "hbm_ntm:block/steam_pump"
+  }
+}

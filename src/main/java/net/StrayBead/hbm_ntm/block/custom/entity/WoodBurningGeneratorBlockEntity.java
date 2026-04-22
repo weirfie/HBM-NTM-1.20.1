@@ -54,6 +54,8 @@ public class WoodBurningGeneratorBlockEntity extends BlockEntity implements Menu
     private int progress = 0;
     private int maxProgress = 78;
     private boolean IS_ON = false;
+    private int burnTimer = 0;
+    private static final int BURN_INTERVAL = 300;
 
     public WoodBurningGeneratorBlockEntity(BlockPos blockPos, BlockState blockState) {
         super(ModBlockEntites.WOOD_BURNING_GENERATOR.get(), blockPos, blockState);
@@ -242,6 +244,13 @@ public class WoodBurningGeneratorBlockEntity extends BlockEntity implements Menu
 
         if (pEntity.IS_ON) {
             if (pEntity.itemHandler.getStackInSlot(0).getItem() == Items.OAK_LOG) {
+                pEntity.burnTimer++;
+                if (pEntity.burnTimer >= BURN_INTERVAL) {
+                    pEntity.itemHandler.extractItem(0, 1, false);
+
+                    pEntity.burnTimer = 0;
+
+                }
                 pEntity.ENERGY_STORAGE.receiveEnergy(ENERGY_REQ, false);
             }
         }

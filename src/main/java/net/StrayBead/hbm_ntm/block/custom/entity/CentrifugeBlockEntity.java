@@ -21,6 +21,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
@@ -111,6 +112,7 @@ public class CentrifugeBlockEntity extends RandomizableContainerBlockEntity impl
                     inputStack.is(ModItems.PURIFIED_URANIUM_BEDROCK_ORE.get()) ||
                     inputStack.is(ModItems.REDSTONE_CRYSTALS.get()) ||
                     inputStack.is(ModItems.RARE_EARTH_CRYSTALS.get()) ||
+                    inputStack.is(ModItems.NUCLEAR_COMPONENTS.get("light_metal_bedrock_ore_roasted").get()) ||
                     inputStack.is(Items.COAL_ORE);
 
             if (hasRecipe && canOutput(entity)) {
@@ -143,6 +145,11 @@ public class CentrifugeBlockEntity extends RandomizableContainerBlockEntity impl
             entity.stacks.set(5, result.copy());
             entity.stacks.set(6, result.copy());
             entity.stacks.set(7, result.copy());
+        } else if (input.is(ModItems.NUCLEAR_COMPONENTS.get("light_metal_bedrock_ore_roasted").get())) {
+            result = new ItemStack(ModItems.NUCLEAR_COMPONENTS.get("light_metal_bedrock_ore_primary_faction").get());
+            input.shrink(1);
+            entity.stacks.set(4, result.copy());
+            entity.stacks.set(5, new ItemStack(Blocks.GRAVEL.asItem()));
         } else if (input.is(ModItems.REDSTONE_CRYSTALS.get())) {
             ItemStack redstone_crystals_result = new ItemStack(Items.REDSTONE, 3);
             input.shrink(1);

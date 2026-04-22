@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/ore_processor.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/ore_processor",
+    "m_8144886b-1595-15be-8004-e3a39890bdb7": "hbm_ntm:block/ore_processor",
+    "Material": "hbm_ntm:block/ore_processor",
+    "none": "hbm_ntm:block/ore_processor"
+  }
+}

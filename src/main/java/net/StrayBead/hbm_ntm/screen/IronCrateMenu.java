@@ -93,12 +93,12 @@ public class IronCrateMenu extends AbstractContainerMenu {
     private void addPlayerInventory(Inventory inv) {
         for (int si = 0; si < 3; ++si)
             for (int sj = 0; sj < 9; ++sj)
-                this.addSlot(new Slot(inv, sj + (si + 1) * 9, 8 + sj * 18, 19 + 84 + si * 18));
+                this.addSlot(new Slot(inv, sj + (si + 1) * 9, 8 + sj * 18, 19 + 83 + si * 18));
     }
 
     private void addPlayerHotbar(Inventory inv) {
         for (int si = 0; si < 9; ++si)
-            this.addSlot(new Slot(inv, si, 8 + si * 18, 19 + 142));
+            this.addSlot(new Slot(inv, si, 8 + si * 18, 19 + 141));
     }
 
     public IronCrateBlockEntity getBlockEntity() {

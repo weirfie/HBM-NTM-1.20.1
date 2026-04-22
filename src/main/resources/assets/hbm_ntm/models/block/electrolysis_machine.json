@@ -4,7 +4,7 @@
   "flip_v": true,
   "textures": {
     "particle": "hbm_ntm:block/electrolysis_machine",
-    "m_581455c2-dbce-44f7-0b8b-172b1915a538": "hbm_ntm:block/electrolysis_machine",
+    "m_71935e2f-2ff7-fe53-4458-b0d51abbbfc8": "hbm_ntm:block/electrolysis_machine",
     "Material": "hbm_ntm:block/electrolysis_machine",
     "none": "hbm_ntm:block/electrolysis_machine"
   }

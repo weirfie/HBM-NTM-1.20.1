@@ -21,8 +21,15 @@ public class NTMModScreens {
             MenuScreens.register(NTMModMenus.ORE_ACIDIZER_GUI.get(), OreAcidizerGuiScreen::new);
             MenuScreens.register(NTMModMenus.LEAD_ANVIL_MENU.get(), LeadAnvilScreen::new);
             MenuScreens.register(NTMModMenus.CRUCIBLE_MENU.get(), CrucibleScreen::new);
+            MenuScreens.register(NTMModMenus.LITTLE_BOY_MENU.get(), LittleBoyScreen::new);
+            MenuScreens.register(NTMModMenus.PYROLYSIS_OVEN_ENTITY.get(), PyrolysisOvenScreen::new);
+            MenuScreens.register(NTMModMenus.BEDROCK_ORE_PROCESSOR_MENU.get(), BedrockOreProcessorScreen::new);
             MenuScreens.register(NTMModMenus.ARC_WELDER_MENU.get(), ArcWelderScreen::new);
             MenuScreens.register(NTMModMenus.FLARE_STACK_MENU.get(), FlareStackScreen::new);
+            MenuScreens.register(NTMModMenus.FAT_MAN_MENU.get(), FatManuScreen::new);
+            MenuScreens.register(NTMModMenus.THE_PROTOTYPE_MENU.get(), ThePrototypeScreen::new);
+            MenuScreens.register(NTMModMenus.COKER_UNIT_MENU.get(), CokerUnitScreen::new);
+            MenuScreens.register(NTMModMenus.ELECTROLYSIS_MACHINE_MENU.get(), ElectrolysisMachineScreen::new);
             MenuScreens.register(NTMModMenus.STEEL_BARREL_GUI.get(), SteelBarrelGuiScreen::new);
             MenuScreens.register(NTMModMenus.IRON_CRATE_MENU.get(), IronCrateScreen::new);
             MenuScreens.register(NTMModMenus.BLAST_FURNACE_MENU.get(), MeltdownBlastFurnaceScreen::new);

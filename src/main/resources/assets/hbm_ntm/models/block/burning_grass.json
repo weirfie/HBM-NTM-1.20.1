@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "hbm_ntm:block/dirt_dead",
+    "up": "hbm_ntm:block/burning_grass_top",
+    "north": "hbm_ntm:block/burning_grass_side",
+    "east": "hbm_ntm:block/burning_grass_side",
+    "south": "hbm_ntm:block/burning_grass_side",
+    "west": "hbm_ntm:block/burning_grass_side",
+    "particle": "hbm_ntm:block/burning_grass_top"
+  },
+  "render_type": "solid"
+}

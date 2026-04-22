@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/pyrolysis_oven.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/pyrolysis_oven",
+    "m_4ed17c22-d317-9f59-99e6-4aa5c1fb798e": "hbm_ntm:block/pyrolysis_oven",
+    "Material": "hbm_ntm:block/pyrolysis_oven",
+    "none": "hbm_ntm:block/pyrolysis_oven"
+  }
+}

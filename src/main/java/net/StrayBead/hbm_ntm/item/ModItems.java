@@ -1,8 +1,10 @@
 package net.StrayBead.hbm_ntm.item;
 
 import net.StrayBead.hbm_ntm.HBMNTM;
+import net.StrayBead.hbm_ntm.block.ModBlocks;
 import net.StrayBead.hbm_ntm.item.custom.*;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.Tiers;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -11,16 +13,56 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.function.Supplier;
 
 public class ModItems {
+    public static final Map<String, RegistryObject<Item>> NUCLEAR_COMPONENTS = new LinkedHashMap<>();
+
+    public static final Map<String, Integer> ORE_TYPES = Map.of(
+            "light_metal", 0xFFFFFF,
+            "heavy_metal", 0x808080,
+            "rare_earth",  0x88FF88,
+            "actinide",    0xC0D080,
+            "non_metal",   0x606060,
+            "crystalline", 0x80FFFF
+    );
+
+    public static final List<String> ORE_VARIANTS = List.of(
+            "", "_roasted", "_washed", "_crumbs",
+            "_primary_faction", "_roasted_primary_faction", "_sulfuric_primary_faction",
+            "_separated_sulfuric_primary_faction", "_dissolved_primary_faction",
+            "_separated_dissolved_primary_faction", "_cleaned_primary_faction",
+            "_separated_cleaned_primary_faction", "_primary_faction_higher_weight",
+            "_primary_faction_lower_weight", "_sulfuric_byproduct",
+            "_roasted_sulfuric_byproduct", "_seared_sulfuric_byproduct",
+            "_washed_sulfuric_byproduct", "_dissolved_byproduct",
+            "_roasted_dissolved_byproduct", "_seared_dissolved_byproduct",
+            "_washed_dissolved_byproduct", "_cleaned_byproduct",
+            "_roasted_cleaned_byproduct", "_seared_cleaned_byproduct",
+            "_washed_cleaned_byproduct"
+    );
+
+    public static void registerAllOres() {
+        for (String type : ORE_TYPES.keySet()) {
+            for (String variant : ORE_VARIANTS) {
+                String name = type + "_bedrock_ore" + variant;
+                name = name.replace("__", "_").replace("roasted_roasted", "roasted");
+
+                registerNuclear(name, () -> new Item(new Item.Properties()));
+            }
+        }
+    }
+
     private static final String[] FLUID_NAMES = {
             "crude_oil", "deuterium", "tritium", "water", "steam", "heavy_water", "sulfuric_acid", "hot_steam", "liquid_oxygen",
             "liquid_hydrogen", "liquid_sodium", "mercury", "naphtha", "diesel", "kerosene", "petroil", "heavy_oil",
             "poisonous_mud", "cracked_oil", "desulfurized_cracked_oil", "coal_oil", "coker_oil", "hot_crude_oil", "desulfurized_hot_crude_oil",
             "vacuum_heavy_oil", "desulfurized_naphtha", "cracked_naphtha", "coker_naphtha", "reformate", "light_oil", "desulfurized_light_oil",
             "cracked_light_oil", "vacuum_light_oil", "bitumen", "industrial_oil", "heating_oil", "heavy_heating_oil", "reclaimed_industrial_oil",
-            "natural_gas", "petroleum_gas", "sour_gas", "lpg", "syngas", "oxyhydrogen", "aromatic_hydrocarbons", "reformate_gas",
+            "natural_gas", "petroleum_gas", "sour_gas", "vitroil", "ore_slop", "lpg", "syngas", "oxyhydrogen", "aromatic_hydrocarbons", "reformate_gas",
             "high_cetane_diesel", "cracked_diesel", "high_cetane_cracked_diesel", "jet_fuel", "gasoline", "leaded_gasoline",
             "coal_gasoline", "leaded_coal_gasoline", "coal_tar_creosote", "wood_oil", "biogas", "ethanol", "fish_oil", "sunflower_seed_oil",
             "salient_green", "seeding_slurry", "colloid", "ionic_gel", "hydrogen_peroxide", "nitric_acid", "solvent", "high_performance_solvent",
@@ -32,24 +74,24 @@ public class ModItems {
             "multi_fluid_identifier", "carbon_dioxide", "unsaturated_hydrocarbons"
     };
 
-    private static final String[] ASSEMBLY_TEMPLATE_NAMES = {
-            "iron_plate", "gold_plate", "titanium_plate", "aluminum_plate", "steel_plate", "lead_plate", "copper_plate", "advanced_alloy_plate",
+    public static final String[] ASSEMBLY_TEMPLATE_NAMES = {
+            "iron_plate", "gold_plate", "titanium_plate", "industrial_combustion_generator", "aluminum_plate", "steel_plate", "lead_plate", "copper_plate", "advanced_alloy_plate",
             "schrabidium_plate", "cmb_steel_plate", "saturnite_plate", "mixed_plate", "hazmat_cloth", "fire_proximity_cloth",
             "activated_carbon_filter", "centrifuge_element", "breeding_reactor_core", "rtg_unit", "titanium_drill", "entanglement_kit",
             "dysfunctional_nuclear_reactor", "crucible", "firebox", "heating_oven", "small_missile_assembly", "small_warhead", "medium_warhead", "large_warhead", "small_incendiary_warhead",
-            "medium_incendiary_warhead", "radioactive_barrel", "large_incendiary_warhead", "small_cluster_warhead", "medium_cluster_warhead",
+            "medium_incendiary_warhead", "steam_pump", "bedrock_ore_processor", "radioactive_barrel", "large_incendiary_warhead", "small_cluster_warhead", "medium_cluster_warhead",
             "large_cluster_warhead", "small_bunker_buster_warhead", "medium_bunker_buster_warhead", "large_bunker_buster_warhead",
             "nuclear_warhead", "soldering_station", "thermonuclear_warhead", "tectonic_warhead", "stealth_missile", "explosive_pellets", "lead_pellets",
             "magnetron", "redcoil_capacitor", "box_of_lithium_dust", "box_of_beryllium_dust", "box_of_carbon_dust", "box_of_copper_dust",
             "box_of_plutonium_dust", "thermoelectric_element", "angry_metal", "meteorite_block", "cmb_steel_tile", "reinforced_cmb_bricks",
             "silo_hatch_frame", "silo_hatch_opener", "centrifuge", "gas_centrifuge", "diesel_generator", "rt_generator", "energy_storage_block",
-            "spark_energy_storage_block", "shredder", "oil_derrick", "electric_arc_furnace", "pumpjack", "flare_stock", "coker_unit", "oil_refinery", "electric_press",
+            "spark_energy_storage_block", "steel_furnace", "shredder", "oil_derrick", "electric_arc_furnace", "pumpjack", "flare_stock", "coker_unit", "oil_refinery", "electric_press",
             "chemical_plant", "ore_acidizer", "tank", "catalytic_cracking_tower", "silex", "heavy_magnetic_storage_tank", "mining_laser", "turbofan", "combined_cycle_gas_turbine",
             "teleporter", "schrabidium_transmutation_device", "big_ass_tank", "superconducting_magnet", "central_magnet_piece", "magnet_motor_piece",
             "plasma_heater_component", "watz_reaction_chamber", "watz_reactor_supercooler", "watz_reactor_stability_element", "naval_mine",
             "the_gadget", "ivy_mike", "tsar_bomba", "the_prototype", "the_blue_rinse", "rbmk_structural_column", "custom_nuke", "levitation_bomb", "endothermic_bomb",
             "exothermic_bomb", "flame_frag_grenade", "shrapnel_grenade", "cluster_bomb", "signal_flare", "lightning_bomb", "impulse_grenade",
-            "plasma_grenade", "tau_grenade", "schrabidium_grenade", "boiler", "nuka_grenade", "negative_energy_pair_annihilation_grenade"
+            "plasma_grenade", "tau_grenade", "schrabidium_grenade", "boiler", "industrial_boiler", "zirnox_nuclear_reactor", "nuka_grenade", "negative_energy_pair_annihilation_grenade"
     };
 
     private static final String[] CHEMISTRY_TEMPLATE_NAMES = {
@@ -77,6 +119,18 @@ public class ModItems {
             "gold_198", "lead_209", "decayed_mercury", "decayed_neptunium", "decayed_lead", "decayed_zirconium", "decayed_nickel", "tritium_deuterium_cake"
     };
 
+    private static final String[] FOUNDRY_SCRAP_NAMES = {
+            "stone", "carbon", "iron", "gold", "redstone", "obsidian", "hematite", "wrought_iron", "pig_iron", "meteoric_iron",
+            "malachite", "uranium", "uranium_233", "uranium_235", "uranium_238", "thorium_232", "plutonium", "reactor_grade_plutonium",
+            "plutonium_238", "plutonium_239", "plutonium_240", "plutonium_241", "reactor_grade_americium", "americium_241", "americium_242",
+            "neptunium_237", "polonium_210", "technetium_99", "radium_226", "actinium_227", "cobalt_60", "gold_198", "lead_209",
+            "schrabidium", "solinium", "ferric_schrabidate", "schraranium", "ghiorsium_336", "titanium", "copper", "tungsten", "aluminum",
+            "lead", "bismuth", "arsenic", "tantalum", "neodymium", "niobium", "beryllium", "cobalt", "boron", "borax", "lanthanium", "zirconium",
+            "sodium", "strontium", "calcium", "lithium", "cadmium", "silicon", "asbestos", "osmiridium", "steel", "minecraft_grade_copper",
+            "advanced_alloy", "high_speed_steel", "desh", "starmetal", "ferrouranium", "technetium_steel", "cadmium_steel", "bismuth_bronze",
+            "arsenic_bronze", "bscco", "magnetized_tungsten", "combine_steel", "dineutronium", "flux", "slag", "poisonous_mud", "gunmetal",
+            "weapon_steel", "saturnite"
+    };
 
     private static final String[] BEDROCK_ORES = {
             "iron", "copper", "borax", "asbestos", "niobium", "titanium", "tungsten", "gold", "thorium", "chlorocalcite",
@@ -102,6 +156,12 @@ public class ModItems {
             "seared_chlorocalcite", "seared_flourite", "seared_hematite", "seared_malachite", "seared_neodymium", "enriched_iron", "enriched_copper",
             "enriched_borax", "enriched_asbestos", "enriched_niobium", "enriched_titanium", "enriched_tungsten", "enriched_gold", "enriched_thorium",
             "enriched_chlorocalcite", "enriched_flourite", "enriched_hematite", "enriched_malachite", "enriched_neodymium"
+    };
+
+    private static final String[] CRYSTAL_NAMES = {
+            "iron", "gold", "lapis", "diamond", "uranium", "thorium", "plutonium", "titanium", "sulfur", "niter", "copper",
+            "tungsten", "aluminum", "fluorite", "beryllium", "lead", "schraranium", "shrabidium", "phosphorus", "lithium", "cobalt",
+            "starmetal", "cinnabar", "trixite", "osmiridium"
     };
 
     private static final String[] FLUID_TANKS = {
@@ -224,6 +284,7 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, HBMNTM.MOD_ID);
 
     public static final Map<String, RegistryObject<Item>> FLUID_IDENTIFIERS = new HashMap<>();
+    public static final Map<String, RegistryObject<Item>> FOUNDRY_SCRAPS = new HashMap<>();
     public static final Map<String, RegistryObject<Item>> ASSEMBLY_TEMPLATES = new HashMap<>();
     public static final Map<String, RegistryObject<Item>> CHEMISTRY_TEMPLATES = new HashMap<>();
     public static final Map<String, RegistryObject<Item>> CRUCIBLE_TEMPLATES = new HashMap<>();
@@ -231,6 +292,7 @@ public class ModItems {
     public static final Map<String, RegistryObject<Item>> FLUID_TANK_NAMES = new HashMap<>();
     public static final Map<String, RegistryObject<Item>> RTG_PELLETS = new HashMap<>();
     public static final Map<String, RegistryObject<Item>> CANISTERS = new HashMap<>();
+    public static final Map<String, RegistryObject<Item>> CRYSTALS = new HashMap<>();
     public static final Map<String, RegistryObject<Item>> PACKAGED_FLUIDS = new HashMap<>();
     public static final Map<String, RegistryObject<Item>> HAZARDOUS_MATERIAL_TANKS = new HashMap<>();
     public static final Map<String, RegistryObject<Item>> FLUID_BARRELS = new HashMap<>();
@@ -242,6 +304,20 @@ public class ModItems {
         for (String name : FLUID_NAMES) {
             FLUID_IDENTIFIERS.put(name, ITEMS.register(name + "_fluid_identifier",
                     () -> new FluidIdentifierItem(new Item.Properties().durability(200), name)));
+        }
+    }
+
+    static {
+        for (String name : CRYSTAL_NAMES) {
+            CRYSTALS.put(name, ITEMS.register(name + "_crystals",
+                    () -> new Item(new Item.Properties())));
+        }
+    }
+
+    static {
+        for (String name : FOUNDRY_SCRAP_NAMES) {
+            FOUNDRY_SCRAPS.put(name, ITEMS.register(name + "_foundry_scraps",
+                    () -> new FoundryScrapItem(new Item.Properties(), name)));
         }
     }
 
@@ -547,6 +623,8 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> STEEL_SPHERE = ITEMS.register("steel_sphere",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> TITANIUM_PLATE = ITEMS.register("titanium_plate",
+            () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> FLAT_STEEL_CASING = ITEMS.register("flat_steel_casing",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> STEEL_PEDESTAL = ITEMS.register("steel_pedestal",
@@ -736,6 +814,8 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> PIPE_FOUNDRY_MOLD = ITEMS.register("pipe_foundry_mold",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> WELDED_STEEL_PLATE = registerNuclear("welded_steel_plate",
+            () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> CORRUPTED_BROADCASTER = ITEMS.register("corrupted_broadcaster",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SUIT_BATTERY = ITEMS.register("suit_battery",
@@ -774,13 +854,99 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> TANTALIUM_CAPACITOR = ITEMS.register("tantalium_capacitor",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> PIPETTE = registerNuclear("pipette",
+            () -> new PipetteItem(new Item.Properties()));
+    public static final RegistryObject<Item> BORON_PIPETTE = registerNuclear("boron_pipette",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> LABORATORY_GRADE_PIPETTE = registerNuclear("laboratory_grade_pipette",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SIPHON = registerNuclear("siphon",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BATTERY = registerNuclear("battery",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> REDSTONE_POWER_CELL = registerNuclear("redstone_power_cell",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SIXFOLD_REDSTONE_POWER_CELL = registerNuclear("sixfold_redstone_power_cell",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> FOLD_REDSTONE_POWER_CELL = registerNuclear("24_fold_redstone_power_cell",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> ADVANCED_BATTERY = registerNuclear("advanced_battery",
+            () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> CONTROL_UNIT_CASING = ITEMS.register("control_unit_casing",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SPEED_UPGRADE = ITEMS.register("speed_upgrade",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> EFFECTIVENESS_UPGRADE = registerNuclear("effectiveness_upgrade",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> POWER_SAVING_UPGRADE = registerNuclear("power_saving_upgrade",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> FORTUNE_UPGRADE = registerNuclear("fortune_upgrade",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> AFTERBURNER_UPGRADE = registerNuclear("afterburner_upgrade",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> OVERDRIVE_UPGRADE = registerNuclear("overdrive_upgrade",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> EMITTER_RADIUS_UPGRADE = registerNuclear("emitter_radius_upgrade",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> EMITTER_HEALTH_UPGRADE = registerNuclear("emitter_health_upgrade",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SMELTER_UPGRADE = registerNuclear("smelter_upgrade",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SHREDDER_UPGRADE = registerNuclear("shredder_upgrade",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> CENTRIFUGE_UPGRADE = registerNuclear("centrifuge_upgrade",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> CRYSTALLIZER_UPGRADE = registerNuclear("crystallizer_upgrade",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SCRAP_DESTROYER_UPGRADE = registerNuclear("scrap_destroyer_upgrade",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SCREAMING_SCIENTIST_UPGRADE = registerNuclear("screaming_scientist_upgrade",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> GAS_CENTRIFUGE_OVERCLOCKING_UPGRADE = registerNuclear("gas_centrifuge_overclocking_upgrade",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RADIATION_EMITTER_UPGRADE = registerNuclear("radiation_emitter_upgrade",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> STACK_EJECTION_UPGRADE = registerNuclear("stack_ejection_upgrade",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> EJECTION_SPEED_UPGRADE = registerNuclear("ejection_speed_upgrade",
+            () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> CATHODE_RAY_TUBE = ITEMS.register("cathode_ray_tube",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ATOMIC_CLOCK = ITEMS.register("automatic_clock",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> PLUTONIUM_CORE = ITEMS.register("plutonium_core",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BOMB_FIRING_UNIT = ITEMS.register("bomb_firing_unit",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> WIRING = ITEMS.register("wiring",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> NEUTRON_SHIELDING = ITEMS.register("neutron_shielding",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SUBCRITICAL_TARGET = ITEMS.register("subcritical_target",
+            () -> new Uranium233Item(new Item.Properties(), "2.0"));
+    public static final RegistryObject<Item> U235_PROJECTILE = ITEMS.register("u235_projectile",
+            () -> new Uranium233Item(new Item.Properties(), "1.0"));
+    public static final RegistryObject<Item> PROPELLANT = ITEMS.register("propellant",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BOMB_IGNITER = ITEMS.register("bomb_igniter",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> LARGE_PLUTONIUM_CORE = ITEMS.register("large_plutonium_core",
+            () -> new Uranium233Item(new Item.Properties(), "5.0"));
+    public static final RegistryObject<Item> URANIUM_COATED_DEUTERIUM_TANK = ITEMS.register("uranium_coated_deuterium_tank",
+            () -> new Uranium233Item(new Item.Properties(), "0.25"));
+    public static final RegistryObject<Item> DEUTERIUM_TANK = ITEMS.register("deuterium_tank",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> DEUTERIUM_COOLING_UNIT = ITEMS.register("deuterium_cooling_unit",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> TSAR_BOMBA_CORE = ITEMS.register("tsar_bomba_core",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> PULSE_IGNITER = ITEMS.register("pulse_igniter",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SCHRABIDIUM_PROPELLANT = ITEMS.register("schrabidium_propellant",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> FLEIJA_URANIUM_CHARGE = ITEMS.register("fleija_uranium_charge",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SOL_PULSE_IGNITER = ITEMS.register("sol_pulse_igniter",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> VERSATILE_INTEGRATED_CIRCUIT = ITEMS.register("versatile_integrated_circuit",
             () -> new Item(new Item.Properties()));
@@ -796,10 +962,118 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> STRANGE_QUARK_CAPSULE = ITEMS.register("strange_quark_capsule",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> HIGH_EXPLOSIVE_LENSES = ITEMS.register("high_explosive_lenses",
+            () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> LEAD_ION_CAPSULE = ITEMS.register("lead_ion_capsule",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> MUON_CAPSULE = ITEMS.register("muon_capsule",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SOL_COMPRESSION_CHARGE = registerNuclear("sol_compression_charge",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SEMI_STABLE_SOLINIUM_CORE = registerNuclear("semi_stable_solinium_core",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> LARGE_EXPLOSIVE_CHARGE = registerNuclear("large_explosive_charge",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BALEFIRE_SHARD = registerNuclear("balefire_shard",
+            () -> new Uranium233Item(new Item.Properties(), "300000.0"));
+    public static final RegistryObject<Item> BALEFIRE_EGG = registerNuclear("balefire_egg",
+            () -> new Uranium233Item(new Item.Properties(), "300000.0"));
+    public static final RegistryObject<Item> CUSTOM_NUKE_EXPLOSIVE_CHARGE = registerNuclear("custom_nuke_explosive_charge",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> CUSTOM_NUKE_NUCLEAR_ROD = registerNuclear("custom_nuke_nuclear_rod",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> CUSTOM_NUKE_HYDROGEN_ROD = registerNuclear("custom_nuke_hydrogen_rod",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> CUSTOM_NUKE_ANTIMATTER_ROD = registerNuclear("custom_nuke_antimatter_rod",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> CUSTOM_NUKE_DIRTY_ROD = registerNuclear("custom_nuke_dirty_rod",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> CUSTOM_NUKE_SCHRABIDIUM_ROD = registerNuclear("custom_nuke_schrabidium_rod",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> CUSTOM_NUKE_DROP_UPGRADE = registerNuclear("custom_nuke_drop_upgrade",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> IGNITER = registerNuclear("igniter",
+            () -> new IgniterItem(new Item.Properties()));
+    public static final RegistryObject<Item> MAGNETRON = registerNuclear("magnetron",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> REMOTE_DETONATOR = registerNuclear("remote_detonator",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> MULTI_DETONATOR = registerNuclear("multi_detonator",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> THE_GADGET_KIT = registerNuclear("the_gadget_kit",
+            () -> new KitItem(new Item.Properties().stacksTo(1), () -> List.of(
+                    new ItemStack(ModBlocks.THE_GADGET.get().asItem()),
+                    new ItemStack(ModItems.HIGH_EXPLOSIVE_LENSES.get(), 4),
+                    new ItemStack(ModItems.WIRING.get()),
+                    new ItemStack(ModItems.LARGE_PLUTONIUM_CORE.get())
+            )));
+    public static final RegistryObject<Item> LITTLE_BOY_KIT = registerNuclear("little_boy_kit",
+            () -> new KitItem(new Item.Properties().stacksTo(1), () -> List.of(
+                    new ItemStack(ModBlocks.LITTLE_BOY.get().asItem()),
+                    new ItemStack(ModItems.NEUTRON_SHIELDING.get()),
+                    new ItemStack(ModItems.SUBCRITICAL_TARGET.get()),
+                    new ItemStack(ModItems.U235_PROJECTILE.get()),
+                    new ItemStack(ModItems.PROPELLANT.get()),
+                    new ItemStack(ModItems.BOMB_IGNITER.get())
+            )));
+    public static final RegistryObject<Item> FAT_MAN_KIT = registerNuclear("fat_man_kit",
+            () -> new KitItem(new Item.Properties().stacksTo(1), () -> List.of(
+                    new ItemStack(ModBlocks.FAT_MAN.get().asItem()),
+                    new ItemStack(ModItems.HIGH_EXPLOSIVE_LENSES.get(), 4),
+                    new ItemStack(ModItems.BOMB_FIRING_UNIT.get()),
+                    new ItemStack(ModItems.PLUTONIUM_CORE.get())
+            )));
+    public static final RegistryObject<Item> IVY_MIKE_KIT = registerNuclear("ivy_mike_kit",
+            () -> new KitItem(new Item.Properties().stacksTo(1), () -> List.of(
+                    new ItemStack(ModBlocks.IVY_MIKE.get().asItem()),
+                    new ItemStack(ModItems.HIGH_EXPLOSIVE_LENSES.get(), 4),
+                    new ItemStack(ModItems.PLUTONIUM_CORE.get()),
+                    new ItemStack(ModItems.URANIUM_COATED_DEUTERIUM_TANK.get()),
+                    new ItemStack(ModItems.DEUTERIUM_TANK.get()),
+                    new ItemStack(ModItems.DEUTERIUM_COOLING_UNIT.get())
+            )));
+    public static final RegistryObject<Item> TSAR_BOMBA_KIT = registerNuclear("tsar_bomba_kit",
+            () -> new KitItem(new Item.Properties().stacksTo(1), () -> List.of(
+                    new ItemStack(ModBlocks.TSAR_BOMBA.get().asItem()),
+                    new ItemStack(ModItems.HIGH_EXPLOSIVE_LENSES.get(), 4),
+                    new ItemStack(ModItems.PLUTONIUM_CORE.get()),
+                    new ItemStack(ModItems.TSAR_BOMBA_CORE.get())
+            )));
+    public static final RegistryObject<Item> PROTOTYPE_KIT = registerNuclear("prototype_kit",
+            () -> new KitItem(new Item.Properties().stacksTo(1), () -> List.of(
+                    new ItemStack(ModBlocks.THE_PROTOTYPE.get().asItem()),
+                    new ItemStack(ModItems.IGNITER.get()),
+                    new ItemStack(ModItems.SCHRABIDIUM_TRISULFIDE_CELL.get(), 4),
+                    new ItemStack(ModItems.URANIUM_ROD.get(), 10)
+            )));
+    public static final RegistryObject<Item> FLEIJA_KIT = registerNuclear("fleija_kit",
+            () -> new KitItem(new Item.Properties().stacksTo(1), () -> List.of(
+                    new ItemStack(ModBlocks.FLEIJA.get().asItem()),
+                    new ItemStack(ModItems.PULSE_IGNITER.get(), 2),
+                    new ItemStack(ModItems.SCHRABIDIUM_PROPELLANT.get(), 3),
+                    new ItemStack(ModItems.FLEIJA_URANIUM_CHARGE.get(), 6)
+            )));
+    public static final RegistryObject<Item> SOLINIUM_KIT = registerNuclear("solinium_kit",
+            () -> new KitItem(new Item.Properties().stacksTo(1), () -> List.of(
+                    new ItemStack(ModBlocks.THE_GADGET.get().asItem()),
+                    new ItemStack(ModItems.HIGH_EXPLOSIVE_LENSES.get(), 4),
+                    new ItemStack(ModItems.WIRING.get()),
+                    new ItemStack(ModItems.LARGE_PLUTONIUM_CORE.get())
+            )));
+    public static final RegistryObject<Item> MULTI_PURPOSE_BOMB_KIT = registerNuclear("multi_purpose_bomb_kit",
+            () -> new KitItem(new Item.Properties().stacksTo(1), () -> List.of(
+                    new ItemStack(ModBlocks.THE_GADGET.get().asItem()),
+                    new ItemStack(ModItems.HIGH_EXPLOSIVE_LENSES.get(), 4),
+                    new ItemStack(ModItems.WIRING.get()),
+                    new ItemStack(ModItems.LARGE_PLUTONIUM_CORE.get())
+            )));
+    public static final RegistryObject<Item> CUSTOM_NUKE_KIT = registerNuclear("custom_nuke_kit",
+            () -> new KitItem(new Item.Properties().stacksTo(1), () -> List.of(
+                    new ItemStack(ModBlocks.THE_GADGET.get().asItem()),
+                    new ItemStack(ModItems.HIGH_EXPLOSIVE_LENSES.get(), 4),
+                    new ItemStack(ModItems.WIRING.get()),
+                    new ItemStack(ModItems.LARGE_PLUTONIUM_CORE.get())
+            )));
     public static final RegistryObject<Item> THE_DIGAMMA_PARTICLE = ITEMS.register("the_digamma_particle",
             () -> new TheDigammaParticleItem(new Item.Properties()));
     public static final RegistryObject<Item> GUIDE_BOOK = ITEMS.register("guide_book",
@@ -814,8 +1088,23 @@ public class ModItems {
             () -> new FuelItem(new Item.Properties(), 400));
     public static final RegistryObject<Item> INFERNAL_COAL = ITEMS.register("infernal_coal",
             () -> new FuelItem(new Item.Properties(), 400));
+    public static final RegistryObject<Item> RAW_BEDROCK_ORE = registerNuclear("raw_bedrock_ore",
+            () -> new RawBedrockOreItem(new Item.Properties()));
+    public static final RegistryObject<Item> URANIUM_QUAD_ROD = registerNuclear("uranium_quad_rod",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> LEAD_QUAD_ROD = registerNuclear("lead_quad_rod",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> NEPTUNIUM_237_QUAD_ROD = registerNuclear("neptunium_237_quad_rod",
+            () -> new Item(new Item.Properties()));
+
+    private static RegistryObject<Item> registerNuclear(String name, Supplier<Item> item) {
+        RegistryObject<Item> obj = ITEMS.register(name, item);
+        NUCLEAR_COMPONENTS.put(name, obj);
+        return obj;
+    }
 
     public static void register(IEventBus eventBus) {
+        registerAllOres();
         ITEMS.register(eventBus);
     }
 }

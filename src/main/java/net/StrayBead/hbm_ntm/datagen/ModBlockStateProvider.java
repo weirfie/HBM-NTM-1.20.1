@@ -16,6 +16,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
+        for (RegistryObject<Block> blockObj : ModBlocks.GENERAL_SIMPLE_BLOCK.values()) {
+            simpleBlockWithItem(blockObj.get(), cubeAll(blockObj.get()));
+        }
         blockWithItem(ModBlocks.BLOCK_OF_GRAPHITE);
         blockWithItem(ModBlocks.BLOCK_ON);
         blockWithItem(ModBlocks.BLOCK_OFF);
@@ -24,8 +27,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.SIM_CARD_SIGNAL_BROADCASTING_DEVICE);
         blockWithItem(ModBlocks.STEAM_CONDENSER);
         blockWithItem(ModBlocks.TITANIUM_ORE);
+        blockWithItem(ModBlocks.CONVEYOR_SPLITTER);
         blockWithItem(ModBlocks.RARE_EARTH_ORE);
         blockWithItem(ModBlocks.LIGNITE_ORE);
+        blockWithItem(ModBlocks.METEOR_COPPER_ORE);
         blockWithItem(ModBlocks.STEEL_BLOCK);
         blockWithItem(ModBlocks.OIL_RESERVOIR);
         blockWithItem(ModBlocks.SULFUR_ORE);
@@ -144,6 +149,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.URANIUM_SAND);
         blockWithItem(ModBlocks.POLONIUM_SAND);
         blockWithItem(ModBlocks.BORON_GLASS);
+        blockWithItem(ModBlocks.FLAME_WAR_IN_A_BOX);
         blockWithItem(ModBlocks.LEAD_GLASS);
         blockWithItem(ModBlocks.URANIUM_GLASS);
         blockWithItem(ModBlocks.TRINITY_GLASS);
@@ -152,10 +158,25 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.POLARIZED_GLASS);
         blockWithItem(ModBlocks.SILO_HATCH_FRAME);
         blockWithItem(ModBlocks.SILO_HATCH_OPENER);
+        blockWithItem(ModBlocks.EXPLOSIVE_CHARGE);
         fixedColumnBlock(ModBlocks.IRON_CRATE);
         fixedColumnBlock(ModBlocks.STEEL_CRATE);
         fixedColumnBlock(ModBlocks.DESH_CRATE);
         fixedColumnBlock(ModBlocks.TUNGSTEN_CRATE);
+        fixedColumnBlock(ModBlocks.FIREWORK_BATTERY);
+        fixedColumnBlock(ModBlocks.DYNAMITE);
+        fixedColumnBlock(ModBlocks.ACTUAL_TNT);
+        fixedColumnBlock(ModBlocks.SEMTEX);
+        fixedColumnBlock(ModBlocks.C_4);
+        fixedColumnBlock(ModBlocks.FISSURE_BOMB);
+        fixedColumnBlock(ModBlocks.LEVITATION_BOMB);
+        fixedColumnBlock(ModBlocks.ENDOTHERMIC_BOMB);
+        fixedColumnBlock(ModBlocks.EXOTHERMIC_BOMB);
+        fixedColumnBlock(ModBlocks.NUCLEAR_CHARGE);
+        fixedColumnBlock(ModBlocks.MINING_CHARGE);
+        fixedColumnBlock(ModBlocks.LIGHTSTONE_CHISELED_BRICKS);
+        fixedColumnBlock(ModBlocks.CHISELED_LIGHTSTONE);
+        fixedColumnBlock(ModBlocks.EMP_DEVICE);
         blockWithItem(ModBlocks.TEMPLATE_CRATE);
         blockWithItem(ModBlocks.SAFE);
         fixedColumnBlock(ModBlocks.MASS_STORAGE_UNIT);
@@ -167,8 +188,12 @@ public class ModBlockStateProvider extends BlockStateProvider {
         stairsBlock(((StairBlock) ModBlocks.CONCRETE_STAIRS.get()), blockTexture(Blocks.LIGHT_GRAY_CONCRETE));
         stairsBlock(((StairBlock) ModBlocks.CRACKED_CONCRETE_BRICK_STAIRS.get()), blockTexture(ModBlocks.CRACKED_CONCRETE_BRICKS.get()));
         stairsBlock(((StairBlock) ModBlocks.CONCRETE_BRICK_STAIRS.get()), blockTexture(ModBlocks.CONCRETE_BRICKS.get()));
+        stairsBlock(((StairBlock) ModBlocks.LIGHTSTONE_TILE_STAIRS.get()), blockTexture(ModBlocks.LIGHTSTONE_TILE.get()));
+        stairsBlock(((StairBlock) ModBlocks.LIGHTSTONE_BRICK_STAIRS.get()), blockTexture(ModBlocks.LIGHTSTONE_BRICKS.get()));
 
         slabBlock(((SlabBlock) ModBlocks.CONCRETE_SLAB.get()), blockTexture(Blocks.LIGHT_GRAY_CONCRETE), blockTexture(Blocks.LIGHT_GRAY_CONCRETE));
+        slabBlock(((SlabBlock) ModBlocks.LIGHTSTONE_TILE_SLAB.get()), blockTexture(ModBlocks.LIGHTSTONE_TILE.get()), blockTexture(ModBlocks.LIGHTSTONE_TILE.get()));
+        slabBlock(((SlabBlock) ModBlocks.LIGHTSTONE_BRICK_SLAB.get()), blockTexture(ModBlocks.LIGHTSTONE_BRICKS.get()), blockTexture(ModBlocks.LIGHTSTONE_BRICKS.get()));
         slabBlock(((SlabBlock) ModBlocks.CONCRETE_BRICK_SLAB.get()),
                 blockTexture(ModBlocks.CONCRETE_BRICKS.get()),
                 blockTexture(ModBlocks.CONCRETE_BRICKS.get()));

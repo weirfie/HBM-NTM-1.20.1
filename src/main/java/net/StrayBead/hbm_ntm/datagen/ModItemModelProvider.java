@@ -29,9 +29,28 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.FLAT_STAMP);
         simpleItem(ModItems.NITRATED_URANIUM_BEDROCK_ORE);
         simpleItem(ModItems.THERMOELECTRIC_ELEMENT);
+        simpleItem(ModItems.TITANIUM_PLATE);
         simpleItem(ModItems.STEEL_SHREDDER_BLADES);
         simpleItem(ModItems.OIL_RESERVOIR_DETECTOR);
         simpleItem(ModItems.CORRUPTED_BROADCASTER);
+        simpleItem(ModItems.BOMB_FIRING_UNIT);
+        simpleItem(ModItems.HIGH_EXPLOSIVE_LENSES);
+        simpleItem(ModItems.PLUTONIUM_CORE);
+        simpleItem(ModItems.WIRING);
+        simpleItem(ModItems.NEUTRON_SHIELDING);
+        simpleItem(ModItems.SUBCRITICAL_TARGET);
+        simpleItem(ModItems.U235_PROJECTILE);
+        simpleItem(ModItems.PROPELLANT);
+        simpleItem(ModItems.BOMB_IGNITER);
+        simpleItem(ModItems.LARGE_PLUTONIUM_CORE);
+        simpleItem(ModItems.URANIUM_COATED_DEUTERIUM_TANK);
+        simpleItem(ModItems.DEUTERIUM_TANK);
+        simpleItem(ModItems.DEUTERIUM_COOLING_UNIT);
+        simpleItem(ModItems.TSAR_BOMBA_CORE);
+        simpleItem(ModItems.PULSE_IGNITER);
+        simpleItem(ModItems.SCHRABIDIUM_PROPELLANT);
+        simpleItem(ModItems.FLEIJA_URANIUM_CHARGE);
+        simpleItem(ModItems.SOL_PULSE_IGNITER);
         simpleItem(ModItems.SUIT_BATTERY);
         simpleItem(ModItems.TRANSITION_SEAL);
         simpleItem(ModItems.REDSTONE_INGOT);
@@ -203,6 +222,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.BILLET_FOUNDRY_MOLD);
         simpleItem(ModItems.INGOT_FOUNDRY_MOLD);
         simpleItem(ModItems.PLATE_FOUNDRY_MOLD);
+        simpleItem(ModItems.MAGNETRON);
         simpleItem(ModItems.WIRE_FOUNDRY_MOLD);
         simpleItem(ModItems.CAST_PLATE_FOUNDRY_MOLD);
         simpleItem(ModItems.DENSE_WIRE_FOUNDRY_MOLD);
@@ -260,11 +280,40 @@ public class ModItemModelProvider extends ItemModelProvider {
         evenSimplerBlockItem(ModBlocks.CONCRETE_SLAB);
         evenSimplerBlockItem(ModBlocks.CONCRETE_BRICK_SLAB);
         evenSimplerBlockItem(ModBlocks.BROKEN_CONCRETE_BRICK_SLAB);
+        evenSimplerBlockItem(ModBlocks.LIGHTSTONE_TILE_SLAB);
+        evenSimplerBlockItem(ModBlocks.LIGHTSTONE_BRICK_SLAB);
+        evenSimplerBlockItem(ModBlocks.LIGHTSTONE_BRICK_STAIRS);
+        evenSimplerBlockItem(ModBlocks.LIGHTSTONE_TILE_STAIRS);
+
+        for (RegistryObject<Item> item : ModItems.NUCLEAR_COMPONENTS.values()) {
+            String name = item.getId().getPath();
+
+            if (!name.startsWith("light_metal")) {
+                String textureName = name.replaceAll("^(heavy_metal|rare_earth|actinide|non_metal|crystalline)", "light_metal");
+
+                withExistingParent(name, new ResourceLocation("item/generated"))
+                        .texture("layer0", new ResourceLocation("hbm_ntm", "item/" + textureName));
+            } else {
+                simpleItem(item);
+            }
+        }
 
         for (RegistryObject<Item> item : ModItems.FLUID_IDENTIFIERS.values()) {
             withExistingParent(item.getId().getPath(), new ResourceLocation("item/generated"))
                     .texture("layer0", new ResourceLocation(HBMNTM.MOD_ID, "item/fluid_identifier_base"))
                     .texture("layer1", new ResourceLocation(HBMNTM.MOD_ID, "item/fluid_identifier_center"));
+        }
+
+        for (RegistryObject<Item> item : ModItems.CRYSTALS.values()) {
+            withExistingParent(item.getId().getPath(), new ResourceLocation("item/generated"))
+                    .texture("layer0", new ResourceLocation(HBMNTM.MOD_ID, "item/crystals_base"))
+                    .texture("layer1", new ResourceLocation(HBMNTM.MOD_ID, "item/crystals_center"));
+        }
+
+        for (RegistryObject<Item> item : ModItems.FOUNDRY_SCRAPS.values()) {
+            withExistingParent(item.getId().getPath(), new ResourceLocation("item/generated"))
+                    .texture("layer0", new ResourceLocation(HBMNTM.MOD_ID, "item/foundry_scrap_base"))
+                    .texture("layer1", new ResourceLocation(HBMNTM.MOD_ID, "item/foundry_scrap_center"));
         }
 
         for (RegistryObject<Item> item : ModItems.BEDROCK_ORE_FRAGMENTS.values()) {

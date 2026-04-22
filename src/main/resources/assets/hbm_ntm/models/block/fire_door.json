@@ -4,7 +4,7 @@
   "flip_v": true,
   "textures": {
     "particle": "hbm_ntm:block/fire_door",
-    "m_4a69fef8-8eb7-43d4-661a-073172dfc2ab": "hbm_ntm:block/fire_door",
+    "m_0d0842aa-6924-a613-11bf-101a5f4fbd8b": "hbm_ntm:block/fire_door",
     "Material": "hbm_ntm:block/fire_door",
     "none": "hbm_ntm:block/fire_door"
   }

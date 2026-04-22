@@ -144,7 +144,7 @@ public class TheGadgetBlock extends Block {
         if (world instanceof ServerLevel level) {
             spawnFireballParticles(pos.getX(), pos.getY() + 30, pos.getZ(), 24, 24, 24, 7000, 1000 + random.nextInt(400));
             spawnBaseParticles(pos.getX(), pos.getY() + 3, pos.getZ(), 50, 2, 50, 4000, level);
-            spawnCustomParticles(pos.getX(), pos.getY() - 180, pos.getZ(), 12, 80, 12, 3000);
+            spawnCustomParticles(pos.getX(), pos.getY() - 180, pos.getZ(), 12, 80, 12, 3000, false);
         }
 
         ShockwaveRenderer.addShockwave(new Vec3(pos.getX(), pos.getY(), pos.getZ()), 600f, 800);
@@ -337,7 +337,7 @@ public class TheGadgetBlock extends Block {
         }
     }
 
-    public static void spawnCustomParticles(double x, double y, double z, double dx, double dy, double dz, int count) {
+    public static void spawnCustomParticles(double x, double y, double z, double dx, double dy, double dz, int count, boolean convectionBehave) {
         RandomSource random = RandomSource.create();
         for (int i = 0; i < count; i++) {
             double offsetX = random.nextGaussian() * dx;
@@ -345,26 +345,27 @@ public class TheGadgetBlock extends Block {
             double offsetZ = random.nextGaussian() * dz;
 
             float baseR = 255f / 255f;
-            float baseG = 150f / 255f;
-            float baseB = 40f / 255f;
+            float baseG = 247f / 255f;
+            float baseB = 94f / 255f;
 
-            float brightness = 0.8f + (random.nextFloat() * 0.3f);
+            float brightness = 0.8f + (random.nextFloat() * 0.8f);
 
             float r = Math.min(1.0f, baseR * brightness);
             float g = Math.min(1.0f, baseG * brightness);
             float b = Math.min(1.0f, baseB * brightness);
 
-            int maxAge = 1000 + random.nextInt(400);
+            int maxAge = 2000 + random.nextInt(400);
 
             ParticleManager.addParticle(
                     (float) (x + offsetX),
                     (float) (y + offsetY),
                     (float) (z + offsetZ),
-                    15.0f,
+                    8f,
                     r, g, b,
                     1.0f,
                     0.0f, 0.2f, 0.0f,
-                    maxAge, 0.005f
+                    maxAge, 0.005f, false, false, convectionBehave, false,
+                    20f
             );
         }
     }
@@ -526,7 +527,8 @@ public class TheGadgetBlock extends Block {
                     r, g, b,
                     1f,
                     vx, vy, vz,
-                    age, 0.0f, false, false, false, true
+                    age, 0.0f, false, false, false, true,
+                    false
             );
         }
     }
