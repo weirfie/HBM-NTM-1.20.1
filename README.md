@@ -1,8 +1,6 @@
-To capture the sheer scale and technical "grind" of the original 1.7.10 experience while framing it for a modern 1.20.1 audience, you need a README that sounds as heavy and industrial as the steel blocks you're modeling.
+Recent Additions: Zirnox, RBMK, PWR, Large Mining Drill, Geiger Counter, Steel Deco Block, The Prototype, The Blue Rinse, oil refinery, catalytic cracking tower, catalytic reformer, iron crate, steel crate, auxiliary cooling tower, Moderated RBMK fuel channel, paintable coated universal fluid duct, powders, shredder recipes, JEI integration for soldering station, SILEX, FEL, Gas Centrifuge, Conveyor belts, foundry molds, crucible, compressor, vacuum refinery, turbofans.
 
-Here is a wordier, "cooler," and more lore-heavy version of your project description.
-
- HBM’s Nuclear Tech: The Great Port 
+HBM’s Nuclear Tech: The Great Port 
 Re-Engineering the Apocalypse for the 1.20.1 Era
 In the golden age of Minecraft 1.7.10, there was a mod that didn't just add items—it added consequence. A mod where progress was measured in strange joules and the cost of failure was a radioactive wasteland.
 
@@ -32,7 +30,7 @@ The "brains" behind the brawn. Includes all Assembly, Chemistry, and Crucible Te
 Ⅳ. NTM Kinetic Components & Isotopes
 The moving parts. Everything from Steel Piston Sets and High-Speed Drillbits to the volatile RTG Pellets and Particle Capsules. This is where the machine comes to life.
 
-Recent Additions: Zirnox, RBMK, PWR, Large Mining Drill, Geiger Counter, Steel Deco Block, The Prototype, The Blue Rinse, oil refinery, catalytic cracking tower
+
 
 ⚠️ WARNING
 This project honors the "hardcore" philosophy of the original mod. We aren't just porting textures; we are porting the complexity. Expect steep power requirements, dangerous radiation levels, and the constant threat of total facility meltdown.
