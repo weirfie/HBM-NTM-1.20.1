@@ -36,7 +36,8 @@ public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, HBMNTM.MOD_ID);
 
-    public static final Map<String, RegistryObject<Block>> GENERAL_SIMPLE_BLOCK = new LinkedHashMap<>();
+    public static final Map<String, RegistryObject<? extends Block>> GENERAL_SIMPLE_BLOCK = new LinkedHashMap<>();
+    public static final Map<String, RegistryObject<? extends Block>> GENERAL_MODEL_BLOCK = new LinkedHashMap<>();
 
     private static RegistryObject<Block> registerSimpleBlock(String name, Supplier<Block> block) {
         RegistryObject<Block> toReturn = BLOCKS.register(name, block);
@@ -148,7 +149,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> STEEL_BLOCK = registerBlock("steel_block",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.REDSTONE_BLOCK)));
     public static final RegistryObject<Block> BLOCK_OF_RADIUM_226 = registerSimpleBlock("block_of_radium_226",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+            () -> new BlockOfRadium(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
     public static final RegistryObject<Block> BLOCK_OF_ACTINIUM = registerSimpleBlock("block_of_actinium",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
     public static final RegistryObject<Block> ASBESTOS_ROOF = registerSimpleBlock("asbestos_roof",
@@ -289,6 +290,18 @@ public class ModBlocks {
             () -> new GenericLiquidBlock(ModFluids.SULFURIC_ACID, MapColor.SNOW));
     public static final RegistryObject<Block> CHLORINE_GAS_LIQUID = BLOCKS.register("chlorine_gas_liquid",
             () -> new GenericLiquidBlock(ModFluids.CHLORINE_GAS, MapColor.SNOW));
+    public static final RegistryObject<Block> DEUTERIUM = BLOCKS.register("deuterium",
+            () -> new GenericLiquidBlock(ModFluids.DEUTERIUM, MapColor.SNOW));
+    public static final RegistryObject<Block> LIQUID_OXYGEN = BLOCKS.register("liquid_oxygen",
+            () -> new GenericLiquidBlock(ModFluids.LIQUID_OXYGEN, MapColor.SNOW));
+    public static final RegistryObject<Block> SYNGAS = BLOCKS.register("syngas",
+            () -> new GenericLiquidBlock(ModFluids.SYNGAS, MapColor.SNOW));
+    public static final RegistryObject<Block> DESULFURIZED_CRUDE_OIL = BLOCKS.register("desulfurized_crude_oil",
+            () -> new GenericLiquidBlock(ModFluids.DESULFURIZED_CRUDE_OIL, MapColor.SNOW));
+    public static final RegistryObject<Block> DEUTERATED_HYDROCARBON = BLOCKS.register("deuterated_hydrocarbon",
+            () -> new GenericLiquidBlock(ModFluids.DEUTERATED_HYDROCARBON, MapColor.SNOW));
+    public static final RegistryObject<Block> FRACKING_SOLUTION = BLOCKS.register("fracking_solution",
+            () -> new GenericLiquidBlock(ModFluids.FRACKING_SOLUTION, MapColor.SNOW));
 
     public static final RegistryObject<Block> REINFORCED_GLASS = registerBlock("reinforcedglass",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.GLASS).noOcclusion().strength(1f, 10f)));
@@ -531,6 +544,8 @@ public class ModBlocks {
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.BRICKS)));
     public static final RegistryObject<Block> LIGHTSTONE_BRICKS = registerSimpleBlock("lightstone_bricks",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.BRICKS)));
+    public static final RegistryObject<Block> RAW_LIGHTSTONE = registerSimpleBlock("raw_lightstone",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.BRICKS)));
     public static final RegistryObject<Block> LIGHTSTONE_CHISELED_BRICKS = registerBlock("lightstone_chiseled_bricks",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.BRICKS)));
     public static final RegistryObject<Block> CHISELED_LIGHTSTONE = registerBlock("chiseled_lightstone",
@@ -722,7 +737,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> C_4 = registerBlock("c_4",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.TNT)));
     public static final RegistryObject<Block> FISSURE_BOMB = registerBlock("fissure_bomb",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.TNT)));
+            () -> new FissureBomb(BlockBehaviour.Properties.copy(Blocks.TNT)));
     public static final RegistryObject<Block> FLAME_WAR_IN_A_BOX = registerBlock("flame_war_in_a_box",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
     public static final RegistryObject<Block> ASSEMBLY_FACTORY = registerBlock("assembly_factory",
@@ -734,11 +749,11 @@ public class ModBlocks {
     public static final RegistryObject<Block> STEEL_FURNACE = registerBlock("steel_furnace",
             () -> new IronFurnaceBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
     public static final RegistryObject<Block> LEVITATION_BOMB = registerBlock("levitation_bomb",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+            () -> new LevitationBomb(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
     public static final RegistryObject<Block> ENDOTHERMIC_BOMB = registerBlock("endothermic_bomb",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+            () -> new EndothermicBomb(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
     public static final RegistryObject<Block> EXOTHERMIC_BOMB = registerBlock("exothermic_bomb",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+            () -> new ExothermicBomb(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
     public static final RegistryObject<Block> EMP_DEVICE = registerBlock("emp_device",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
     public static final RegistryObject<Block> EXPLOSIVE_CHARGE = registerBlock("explosive_charge",
@@ -746,7 +761,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> NUCLEAR_CHARGE = registerBlock("nuclear_charge",
             () -> new NuclearChargeBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
     public static final RegistryObject<Block> MINING_CHARGE = registerBlock("mining_charge",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+            () -> new MiningChargeBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
     public static final RegistryObject<Block> AUTOMATIC_CRAFTING_TABLE = registerBlock("automatic_crafting_table",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
     public static final RegistryObject<Block> BURNER_PRESS_PREHEATER = registerBlock("burner_press_preheater",
@@ -827,6 +842,40 @@ public class ModBlocks {
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().dynamicShape()));
     public static final RegistryObject<Block> SOYUZ_LAUNCH_PLATFORM = registerBlock("soyuz_launch_platform",
             () -> new SoyuzLaunchPlatform(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().dynamicShape()));
+    public static final RegistryObject<Block> BARBED_WIRE = registerBlock("barbed_wire",
+            () -> new BarbedWireBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().dynamicShape().noCollission()));
+    public static final RegistryObject<Block> FLAMING_BARBED_WIRE = registerBlock("flaming_barbed_wire",
+            () -> new FlamingBarbedWireBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().dynamicShape().noCollission()));
+    public static final RegistryObject<Block> POISONED_BARBED_WIRE = registerBlock("poisoned_barbed_wire",
+            () -> new PoisonedBarbedWireBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().dynamicShape().noCollission()));
+    public static final RegistryObject<Block> CAUSTIC_BARBED_WIRE = registerBlock("caustic_barbed_wire",
+            () -> new BarbedWireBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().dynamicShape().noCollission()));
+    public static final RegistryObject<Block> WITHERED_BARBED_WIRE = registerBlock("withered_barbed_wire",
+            () -> new WitheredBarbedWireBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().dynamicShape().noCollission()));
+    public static final RegistryObject<Block> RADIOACTIVE_BARBED_WIRE = registerBlock("radioactive_barbed_wire",
+            () -> new RadioactiveBarbedWireBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().dynamicShape().noCollission()));
+    public static final RegistryObject<Block> STEEL_PIPE = registerBlock("steel_deco_pipe",
+            () -> new DecoPipeBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().dynamicShape()));
+    public static final RegistryObject<Block> INDUSTRIAL_SMOKESTACK = registerBlock("industrial_smokestack",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().dynamicShape()));
+    public static final RegistryObject<Block> ELECTRIC_GROUNDWATER_PUMP = registerBlock("electric_groundwater_pump",
+            () -> new ElectricGroundwaterPumpBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().dynamicShape()));
+    public static final RegistryObject<Block> RADIOLYSIS_CHAMBER = registerBlock("radiolysis_chamber",
+            () -> new RadiolysisChamberBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().dynamicShape()));
+    public static final RegistryObject<Block> PAINTABLE_RED_COPPER_CABLE = registerSimpleBlock("paintable_red_copper_cable",
+            () -> new PaintableRedCopperCableBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> FLOW_GAUGE_PIPE = registerBlock("flow_gauge_pipe",
+            () -> new FlowGaugePipeBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> LIMESTONE = registerSimpleBlock("limestone",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> SULFUROUS_STONE = registerSimpleBlock("sulfurous_stone",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> CHRYSOTILE = registerSimpleBlock("chrysotile",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> BAUXITE = registerSimpleBlock("bauxite",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> CONCRETE = registerSimpleBlock("concrete",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.GRAY_CONCRETE).explosionResistance(84)));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
@@ -871,6 +920,9 @@ public class ModBlocks {
             tooltip.add(Component.literal("As it turns out, 'diamond gravel' was ").withStyle(ChatFormatting.GRAY));
             tooltip.add(Component.literal("never really a thing, rendering what might ").withStyle(ChatFormatting.GRAY));
             tooltip.add(Component.literal("have been a joke as totally nonsensical.").withStyle(ChatFormatting.GRAY));
+        }
+        if (name.contains("steel_pipe")) {
+            tooltip.add(Component.literal("Purely decorative").withStyle(ChatFormatting.GRAY));
         }
     }
 

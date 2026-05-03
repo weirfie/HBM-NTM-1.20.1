@@ -1,0 +1,10 @@
+{
+  "type": "hbm_ntm:centrifuge",
+  "ingredient": { "item": "hbm_ntm:cleaned_uranium_bedrock_ore" },
+  "results": [
+    { "item": "hbm_ntm:separated_uranium_bedrock_ore", "count": 1 },
+    { "item": "hbm_ntm:separated_uranium_bedrock_ore", "count": 1 },
+    { "item": "hbm_ntm:separated_uranium_bedrock_ore", "count": 1 },
+    { "item": "hbm_ntm:separated_uranium_bedrock_ore", "count": 1 }
+  ]
+}

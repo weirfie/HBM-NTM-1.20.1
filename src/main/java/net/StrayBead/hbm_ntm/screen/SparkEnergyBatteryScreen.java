@@ -133,7 +133,7 @@ public class SparkEnergyBatteryScreen  extends AbstractContainerScreen<SparkEner
             public void insertText(String text) {
                 super.insertText(text);
                 if (getValue().isEmpty())
-                    setSuggestion(Component.translatable("gui.hbm_ntm.spark_energy_battery_gui.energy").getString());
+                    setSuggestion(Component.literal("Energy").getString());
                 else
                     setSuggestion(null);
             }
@@ -142,17 +142,17 @@ public class SparkEnergyBatteryScreen  extends AbstractContainerScreen<SparkEner
             public void moveCursorTo(int pos) {
                 super.moveCursorTo(pos);
                 if (getValue().isEmpty())
-                    setSuggestion(Component.translatable("gui.hbm_ntm.spark_energy_battery_gui.energy").getString());
+                    setSuggestion(Component.literal("Energy").getString());
                 else
                     setSuggestion(null);
             }
         };
-        energy.setSuggestion(Component.translatable("gui.hbm_ntm.spark_energy_battery_gui.energy").getString());
+        energy.setSuggestion(Component.literal("Energy").getString());
         energy.setMaxLength(32767);
         guistate.put("text:energy", energy);
         this.addWidget(this.energy);
         imagebutton_insertbattery = new ImageButton(this.leftPos + 130, this.topPos + 41, 16, 16, 0, 0, 16,
-                INPUT_BATTERY_TEX, 16, 32, e -> {
+                INPUT_BATTERY_TEX, 16, 16, e -> {
             ModMessages.sendToServer(new ToggleOutputPacket(new BlockPos(this.x, this.y, this.z)));
         }) {
             @Override
@@ -168,7 +168,7 @@ public class SparkEnergyBatteryScreen  extends AbstractContainerScreen<SparkEner
         guistate.put("button:imagebutton_insertbattery", imagebutton_insertbattery);
 
         imagebutton_output = new ImageButton(this.leftPos + 130, this.topPos + 78, 16, 16, 0, 0, 16,
-                new ResourceLocation("hbm_ntm:textures/screens/output.png"), 16, 32, e -> {
+                new ResourceLocation("hbm_ntm:textures/screens/output.png"), 16, 16, e -> {
         });
         this.addRenderableWidget(imagebutton_output);
         guistate.put("button:imagebutton_output", imagebutton_output);

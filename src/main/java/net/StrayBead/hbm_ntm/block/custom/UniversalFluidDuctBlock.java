@@ -48,7 +48,6 @@ import java.util.List;
 
 public class UniversalFluidDuctBlock extends BaseEntityBlock {
     public static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 16, 16);
-    public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.AXIS;
     public static final BooleanProperty NORTH = BlockStateProperties.NORTH;
     public static final BooleanProperty SOUTH = BlockStateProperties.SOUTH;
     public static final BooleanProperty EAST = BlockStateProperties.EAST;
@@ -72,23 +71,33 @@ public class UniversalFluidDuctBlock extends BaseEntityBlock {
     }
 
     public boolean canConnectTo(BlockGetter world, BlockPos pos, Direction direction) {
+        // A pipe connects if it's touching another pipe with the same filter OR a machine
+        return isPipe(world, pos, direction) || isMachine(world, pos, direction);
+    }
+
+    public boolean isPipe(BlockGetter world, BlockPos pos, Direction direction) {
         BlockPos neighborPos = pos.relative(direction);
-        BlockState state = world.getBlockState(neighborPos);
+        BlockState neighborState = world.getBlockState(neighborPos);
 
-        if (state.getBlock() instanceof UniversalFluidDuctBlock) return true;
+        if (neighborState.getBlock() instanceof UniversalFluidDuctBlock) {
+            BlockEntity currentBE = world.getBlockEntity(pos);
+            BlockEntity neighborBE = world.getBlockEntity(neighborPos);
 
-        if (state.getBlock() instanceof GenericBoundingBoxBlock) {
-            BlockEntity be = world.getBlockEntity(neighborPos);
-            if (be instanceof GenericBoundingBoxBE) {
-                return be.getCapability(ForgeCapabilities.FLUID_HANDLER, direction.getOpposite()).isPresent();
+            if (currentBE instanceof FluidBlockEntity cBE && neighborBE instanceof FluidBlockEntity nBE) {
+                return cBE.getFluidFilter().equals(nBE.getFluidFilter());
             }
-        }
-
-        BlockEntity entity = world.getBlockEntity(neighborPos);
-        if (entity != null) {
-            return entity.getCapability(ForgeCapabilities.FLUID_HANDLER, direction.getOpposite()).isPresent();
+            return true;
         }
         return false;
+    }
+
+    public boolean isMachine(BlockGetter world, BlockPos pos, Direction direction) {
+        BlockPos neighborPos = pos.relative(direction);
+        BlockEntity neighborBE = world.getBlockEntity(neighborPos);
+
+        if (neighborBE == null || neighborBE instanceof FluidBlockEntity) return false;
+
+        return neighborBE.getCapability(ForgeCapabilities.FLUID_HANDLER, direction.getOpposite()).isPresent();
     }
 
     @Override
@@ -140,22 +149,43 @@ public class UniversalFluidDuctBlock extends BaseEntityBlock {
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        if (hand != InteractionHand.MAIN_HAND) return InteractionResult.PASS;
+
         ItemStack stack = player.getItemInHand(hand);
+
+        if (player.isCrouching()) {
+            BlockPos abovePos = pos.above();
+            BlockState aboveState = level.getBlockState(abovePos);
+
+            if (aboveState.getBlock() instanceof SteelGrateBlock) {
+                if (!level.isClientSide) {
+                    boolean isAttached = aboveState.getValue(SteelGrateBlock.ATTACHED);
+                    level.setBlock(abovePos, aboveState.setValue(SteelGrateBlock.ATTACHED, !isAttached), 3);
+
+                    level.playSound(null, abovePos, SoundEvents.IRON_TRAPDOOR_OPEN, SoundSource.BLOCKS, 1.0f, 1.0f);
+                }
+                return InteractionResult.sidedSuccess(level.isClientSide);
+            }
+
+            if (stack.getItem() instanceof FluidIdentifierItem identifier) {
+                if (!level.isClientSide) {
+                    String fluidName = identifier.getFluidName();
+                    int color = FluidColorRegistry.getColor(fluidName);
+                    propagateColor(level, pos, color, fluidName, new java.util.HashSet<>());
+                    player.displayClientMessage(Component.literal("Line set to: " + fluidName), true);
+                }
+                return InteractionResult.sidedSuccess(level.isClientSide);
+            }
+        }
 
         if (stack.getItem() instanceof FluidIdentifierItem identifier) {
             if (!level.isClientSide) {
                 String fluidName = identifier.getFluidName();
                 int color = FluidColorRegistry.getColor(fluidName);
-
-                if (player.isCrouching()) {
-                    propagateColor(level, pos, color, fluidName, new java.util.HashSet<>());
-                    player.displayClientMessage(Component.literal("Line set to: " + fluidName), true);
-                } else {
-                    BlockEntity be = level.getBlockEntity(pos);
-                    if (be instanceof FluidBlockEntity fluidBE) {
-                        fluidBE.setFilterAndFluid(color, fluidName);
-                        player.displayClientMessage(Component.literal("Duct set to: " + fluidName), true);
-                    }
+                BlockEntity be = level.getBlockEntity(pos);
+                if (be instanceof FluidBlockEntity fluidBE) {
+                    fluidBE.setFilterAndFluid(color, fluidName);
+                    player.displayClientMessage(Component.literal("Duct set to: " + fluidName), true);
                 }
             }
             return InteractionResult.sidedSuccess(level.isClientSide);
@@ -185,19 +215,25 @@ public class UniversalFluidDuctBlock extends BaseEntityBlock {
 
     @Override
     public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
-        return state.setValue(PipeBlock.PROPERTY_BY_DIRECTION.get(direction), canConnectTo(level, pos, direction));
+        BooleanProperty prop = switch (direction) {
+            case NORTH -> NORTH;
+            case SOUTH -> SOUTH;
+            case EAST -> EAST;
+            case WEST -> WEST;
+            case UP -> UP;
+            case DOWN -> DOWN;
+        };
+        return state.setValue(prop, canConnectTo(level, pos, direction));
     }
 
     @Override
     public BlockState rotate(BlockState state, Rotation rot) {
-        if (rot == Rotation.CLOCKWISE_90 || rot == Rotation.COUNTERCLOCKWISE_90) {
-            if (state.getValue(AXIS) == Direction.Axis.X) {
-                return state.setValue(AXIS, Direction.Axis.Z);
-            } else if (state.getValue(AXIS) == Direction.Axis.Z) {
-                return state.setValue(AXIS, Direction.Axis.X);
-            }
-        }
-        return state;
+        return switch (rot) {
+            case CLOCKWISE_180 -> state.setValue(NORTH, state.getValue(SOUTH)).setValue(EAST, state.getValue(WEST)).setValue(SOUTH, state.getValue(NORTH)).setValue(WEST, state.getValue(EAST));
+            case COUNTERCLOCKWISE_90 -> state.setValue(NORTH, state.getValue(EAST)).setValue(EAST, state.getValue(SOUTH)).setValue(SOUTH, state.getValue(WEST)).setValue(WEST, state.getValue(NORTH));
+            case CLOCKWISE_90 -> state.setValue(NORTH, state.getValue(WEST)).setValue(EAST, state.getValue(NORTH)).setValue(SOUTH, state.getValue(EAST)).setValue(WEST, state.getValue(SOUTH));
+            default -> state;
+        };
     }
 
     @Override
@@ -216,7 +252,7 @@ public class UniversalFluidDuctBlock extends BaseEntityBlock {
 
             world.playSound(null, pos, ModSounds.DUCT_PLACE.get(), SoundSource.BLOCKS, 1.0f, randomPitch);
         }
-        world.scheduleTick(pos, this, 2);
+        world.scheduleTick(pos, this, 1);
     }
 
     @Override
@@ -226,7 +262,7 @@ public class UniversalFluidDuctBlock extends BaseEntityBlock {
         int y = pos.getY();
         int z = pos.getZ();
         WaterDuctUpdateTickProcedure.execute(world, x, y, z);
-        world.scheduleTick(pos, this, 2);
+        world.scheduleTick(pos, this, 1);
     }
 
     @Override

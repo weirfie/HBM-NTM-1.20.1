@@ -1,0 +1,10 @@
+{
+  "type": "hbm_ntm:centrifuge",
+  "ingredient": { "item": "minecraft:coal_ore" },
+  "results": [
+    { "item": "hbm_ntm:coal_powder", "count": 2 },
+    { "item": "hbm_ntm:coal_powder", "count": 2 },
+    { "item": "hbm_ntm:coal_powder", "count": 2 },
+    { "item": "minecraft:gravel", "count": 1 }
+  ]
+}

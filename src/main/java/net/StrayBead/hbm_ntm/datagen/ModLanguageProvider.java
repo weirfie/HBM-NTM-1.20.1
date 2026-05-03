@@ -42,11 +42,13 @@ public class ModLanguageProvider extends LanguageProvider {
             safeAdd(entry.getValue().get(), "Foundry Scraps");
         }
 
-        for (Map.Entry<String, RegistryObject<Block>> entry : ModBlocks.GENERAL_SIMPLE_BLOCK.entrySet()) {
+        for (Map.Entry<String, RegistryObject<? extends Block>> entry : ModBlocks.GENERAL_SIMPLE_BLOCK.entrySet()) {
             String rawName = entry.getKey();
+
             String prettyName = Arrays.stream(rawName.split("_"))
                     .map(word -> word.substring(0, 1).toUpperCase() + word.substring(1))
                     .collect(Collectors.joining(" "));
+
             add(entry.getValue().get(), prettyName);
         }
 
@@ -437,6 +439,7 @@ public class ModLanguageProvider extends LanguageProvider {
         safeAdd(ModBlocks.LARGE_ELECTRICITY_PYLON.get(), "Large Electricity Pylon");
         safeAdd(ModBlocks.DEUTERIUM_EXTRACTION_TOWER.get(), "Deuterium Extraction Tower");
         safeAdd(ModBlocks.CRUCIBLE.get(), "Crucible");
+        safeAdd(ModBlocks.RADIOLYSIS_CHAMBER.get(), "Radioisotope Thermoelectric Generator and Radiolysis Chamber");
         safeAdd(ModBlocks.OIL_RESERVOIR.get(), "Oil Reservoir");
         safeAdd(ModBlocks.BUNKER_DOOR.get(), "Bunker Door");
         safeAdd(ModBlocks.SULFUR_ORE.get(), "Sulfur Ore");
@@ -462,11 +465,13 @@ public class ModLanguageProvider extends LanguageProvider {
         safeAdd(ModBlocks.OIL_REFINERY.get(), "Oil Refinery");
         safeAdd(ModBlocks.OIL_DERRICK.get(), "Oil Derrick");
         safeAdd(ModBlocks.TURBOFAN.get(), "Turbofan");
+        safeAdd(ModBlocks.INDUSTRIAL_SMOKESTACK.get(), "Industrial Smokestack");
         safeAdd(ModBlocks.RED_COPPER_BLOCK.get(), "Block of Red Copper");
         safeAdd(ModBlocks.POWER_SWITCH.get(), "Power Switch");
         safeAdd(ModBlocks.CHEMICAL_FACTORY.get(), "Chemical Factory");
         safeAdd(ModBlocks.MALACHITE.get(), "Malachite");
         safeAdd(ModBlocks.HEMATITE.get(), "Hematite");
+        safeAdd(ModBlocks.ELECTRIC_GROUNDWATER_PUMP.get(), "Electric Groundwater Pump");
         safeAdd(ModBlocks.FRACTIONATING_TOWER_SEPARATOR.get(), "Fractionating Tower Separator");
         safeAdd(ModBlocks.ASSEMBLY_MACHINE.get(), "Assembly Machine");
         safeAdd(ModBlocks.STEEL_GRATE.get(), "Steel Grate");
@@ -499,6 +504,7 @@ public class ModLanguageProvider extends LanguageProvider {
         safeAdd(ModBlocks.GRAPHITE.get(), "Empty Graphite");
         safeAdd(ModBlocks.TSAR_BOMBA.get(), "Tsar Bomba");
         safeAdd(ModBlocks.LEAD_ANVIL.get(), "Lead Anvil");
+        safeAdd(ModBlocks.STEEL_PIPE.get(), "Steel Pipe");
         safeAdd(ModBlocks.BLAST_FURNACE.get(), "Blast Furnace");
         safeAdd(ModBlocks.DRILLED_GRAPHITE.get(), "Drilled Graphite");
         safeAdd(ModBlocks.FUEL_ROD.get(), "RBMK Fuel Rod Neutron Source");
@@ -515,11 +521,18 @@ public class ModLanguageProvider extends LanguageProvider {
         safeAdd(ModBlocks.DENSE_STEAM_PIPE.get(), "Dense Steam Pipe");
         safeAdd(ModBlocks.STEAM_PIPE.get(), "Steam Pipe");
         safeAdd(ModBlocks.SOLAR_PANEL.get(), "Solar Panel");
+        safeAdd(ModBlocks.BARBED_WIRE.get(), "Barbed Wire");
+        safeAdd(ModBlocks.FLAMING_BARBED_WIRE.get(), "Flaming Barbed Wire");
+        safeAdd(ModBlocks.POISONED_BARBED_WIRE.get(), "Poisoned Barbed Wire");
+        safeAdd(ModBlocks.CAUSTIC_BARBED_WIRE.get(), "Caustic Barbed Wire");
+        safeAdd(ModBlocks.WITHERED_BARBED_WIRE.get(), "Withered Barbed Wire");
+        safeAdd(ModBlocks.RADIOACTIVE_BARBED_WIRE.get(), "Radioactive Barbed Wire");
         safeAdd(ModBlocks.CONCRETE_BRICKS.get(), "Concrete Bricks");
         safeAdd(ModBlocks.WATER_DUCT.get(), "Water Duct");
         safeAdd(ModBlocks.STEAM_SEPARATOR.get(), "Steam Separator");
         safeAdd(ModBlocks.CONTROL_SYSTEM.get(), "RBMK Control System");
         safeAdd(ModBlocks.DEAD_GRASS.get(), "Dead Grass");
+        safeAdd(ModBlocks.FLOW_GAUGE_PIPE.get(), "Flow Gauge Pipe");
         safeAdd(ModBlocks.WOOD_BRICKS.get(), "Wooden Bricks");
         safeAdd(ModBlocks.IRON_FURNACE.get(), "Iron Furnace");
         safeAdd(ModBlocks.STEEL_FURNACE.get(), "Steel Furnace");
@@ -741,6 +754,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add("fluid_type.hbm_ntm.vitroil", "Vitroil");
         add("fluid_type.hbm_ntm.carbon_dioxide", "Carbon Dioxide");
         add("fluid_type.hbm_ntm.hot_crude_oil", "Hot Crude Oil");
+        add("fluid_type.hbm_ntm.fracking_solution", "Fracking Solution");
         add("fluid_type.hbm_ntm.heavy_oil", "Heavy Oil");
         add("fluid_type.hbm_ntm.naphtha", "Naphtha");
         add("fluid_type.hbm_ntm.light_oil", "Light Oil");
@@ -761,6 +775,11 @@ public class ModLanguageProvider extends LanguageProvider {
         add("fluid_type.hbm_ntm.molten_aluminum", "Molten Aluminum");
         add("fluid_type.hbm_ntm.molten_steel", "Molten Steel");
         add("fluid_type.hbm_ntm.coker_oil", "Coker Oil");
+        add("fluid_type.hbm_ntm.deuterium", "Deuterium");
+        add("fluid_type.hbm_ntm.liquid_oxygen", "Liquid Oxygen");
+        add("fluid_type.hbm_ntm.syngas", "Syngas");
+        add("fluid_type.hbm_ntm.desulfurized_crude_oil", "Desulfurized Crude Oil");
+        add("fluid_type.hbm_ntm.deuterated_hydrocarbon", "Deuterated Hydrocarbon");
 
         // ADVANCEMENTS
         add("advancements.coal_and_iron.title", "Coal and Iron");

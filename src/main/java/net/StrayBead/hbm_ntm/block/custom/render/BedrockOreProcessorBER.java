@@ -33,7 +33,7 @@ public class BedrockOreProcessorBER implements BlockEntityRenderer<BedrockOrePro
 
         pose.pushPose();
 
-        pose.translate(4.6, 0.5, 0.5);
+        pose.translate(-3.5, 0.5, 0.5);
 
         float rotationY = state.getValue(BedrockOreProcessorBlock.FACING).toYRot();
         pose.mulPose(Axis.YP.rotationDegrees(-rotationY));

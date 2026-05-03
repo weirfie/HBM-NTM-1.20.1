@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "axis=x": { "model": "hbm_ntm:block/flow_gauge_pipe", "x": 90, "y": 90 },
+    "axis=y": { "model": "hbm_ntm:block/flow_gauge_pipe" },
+    "axis=z": { "model": "hbm_ntm:block/flow_gauge_pipe", "x": 90 }
+  }
+}

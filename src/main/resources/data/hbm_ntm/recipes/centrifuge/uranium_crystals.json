@@ -1,0 +1,10 @@
+{
+  "type": "hbm_ntm:centrifuge",
+  "ingredient": { "item": "hbm_ntm:uranium_crystals" },
+  "results": [
+    { "item": "hbm_ntm:uranium_powder", "count": 2 },
+    { "item": "hbm_ntm:uranium_powder", "count": 2 },
+    { "item": "hbm_ntm:radium_nugget", "count": 2 },
+    { "item": "hbm_ntm:tiny_pile_of_lithium_powder", "count": 1 }
+  ]
+}

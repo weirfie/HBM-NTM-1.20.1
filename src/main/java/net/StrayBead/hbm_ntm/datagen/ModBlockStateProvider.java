@@ -2,12 +2,20 @@ package net.StrayBead.hbm_ntm.datagen;
 
 import net.StrayBead.hbm_ntm.HBMNTM;
 import net.StrayBead.hbm_ntm.block.ModBlocks;
+import net.StrayBead.hbm_ntm.block.custom.TankBlock;
+import net.StrayBead.hbm_ntm.block.custom.TankTextureType;
+import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
+import net.minecraftforge.client.model.generators.BlockModelBuilder;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
+import net.minecraftforge.client.model.generators.loaders.ObjModelBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.Locale;
 
 public class ModBlockStateProvider extends BlockStateProvider {
     public ModBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
@@ -16,7 +24,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        for (RegistryObject<Block> blockObj : ModBlocks.GENERAL_SIMPLE_BLOCK.values()) {
+        for (RegistryObject<? extends Block> blockObj : ModBlocks.GENERAL_SIMPLE_BLOCK.values()) {
             simpleBlockWithItem(blockObj.get(), cubeAll(blockObj.get()));
         }
         blockWithItem(ModBlocks.BLOCK_OF_GRAPHITE);

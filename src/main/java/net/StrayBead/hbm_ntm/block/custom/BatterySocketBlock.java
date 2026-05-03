@@ -1,12 +1,15 @@
 package net.StrayBead.hbm_ntm.block.custom;
 
+import net.StrayBead.hbm_ntm.block.ModBlocks;
 import net.StrayBead.hbm_ntm.block.custom.entity.BatterySocketBlockEntity;
+import net.StrayBead.hbm_ntm.block.custom.entity.GenericBoundingBoxBE;
 import net.StrayBead.hbm_ntm.block.custom.entity.ModBlockEntites;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
@@ -27,6 +30,41 @@ public class BatterySocketBlock extends BaseEntityBlock {
     public BatterySocketBlock(Properties p_49795_) {
         super(p_49795_);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
+    }
+
+    private BlockPos rotateOffset(int x, int y, int z, Direction facing) {
+        return switch (facing) {
+            case NORTH -> new BlockPos(x, y, z);
+            case SOUTH -> new BlockPos(-x, y, -z);
+            case WEST  -> new BlockPos(z, y, -x);
+            case EAST  -> new BlockPos(-z, y, x);
+            default -> new BlockPos(x, y, z);
+        };
+    }
+
+    @Override
+    public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity entity, net.minecraft.world.item.ItemStack stack) {
+        super.setPlacedBy(level, pos, state, entity, stack);
+        Direction facing = state.getValue(FACING);
+
+        for (int x = 0; x <= 1; x++) {
+            for (int y = 0; y < 2; y++) {
+                for (int z = 0; z <= 1; z++) {
+
+                    BlockPos offset = rotateOffset(x, y, z, facing);
+                    BlockPos target = pos.offset(offset);
+
+                    if (target.equals(pos)) continue;
+
+                    level.setBlock(target, ModBlocks.GENERIC_BOUNDING_BOX.get().defaultBlockState(), 3);
+
+                    BlockEntity be = level.getBlockEntity(target);
+                    if (be instanceof GenericBoundingBoxBE boundingBE) {
+                        boundingBE.setCorePos(pos);
+                    }
+                }
+            }
+        }
     }
 
     @Override

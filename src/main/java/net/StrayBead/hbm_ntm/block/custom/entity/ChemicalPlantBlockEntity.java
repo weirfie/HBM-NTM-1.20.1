@@ -6,6 +6,8 @@ import net.StrayBead.hbm_ntm.item.custom.FluidTankItem;
 import net.StrayBead.hbm_ntm.network.ModMessages;
 import net.StrayBead.hbm_ntm.network.packet.EnergySyncS2CPacket;
 import net.StrayBead.hbm_ntm.network.packet.FluidSyncS2CPacket;
+import net.StrayBead.hbm_ntm.recipe.ChemicalPlantRecipe;
+import net.StrayBead.hbm_ntm.recipe.ModRecipes;
 import net.StrayBead.hbm_ntm.screen.ChemicalPlantMenu;
 import net.StrayBead.hbm_ntm.screen.OilRefineryMenu;
 import net.StrayBead.hbm_ntm.util.ModEnergyStorage;
@@ -26,6 +28,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -105,45 +108,42 @@ public class ChemicalPlantBlockEntity extends BlockEntity implements MenuProvide
     public FluidTank getOutputTank2() { return this.outputTank2; }
     public FluidTank getOutputTank3() { return this.outputTank3; }
 
-    // --- RECIPE SYSTEM ---
-    public record ChemicalRecipe(
-            List<FluidStack> inputFluids,
-            List<ItemStack> inputItems,
-            List<FluidStack> outputFluids,
-            List<ItemStack> outputItems,
-            int processTime,
-            int energyPerTick
-    ) {}
-
-    private static final List<ChemicalRecipe> RECIPES = List.of(
-            new ChemicalRecipe(
-                    List.of(new FluidStack(ModFluids.PETROLEUM_GAS.get(), 20)),
-                    List.of(new ItemStack(ModItems.COAL_POWDER.get()), new ItemStack(ModItems.FLUORITE.get())),
-                    List.of(),
-                    List.of(new ItemStack(ModItems.POLYMER_BAR.get())),
-                    100, 20),
-
-            new ChemicalRecipe(
-                    List.of(new FluidStack(ModFluids.UNSATURATED_HYDROCARBONS.get(), 100)),
-                    List.of(new ItemStack(ModItems.SULFUR.get())),
-                    List.of(),
-                    List.of(new ItemStack(ModItems.RUBBER_BAR.get())),
-                    50, 20),
-
-            new ChemicalRecipe(
-                    List.of(new FluidStack(Fluids.WATER, 100)),
-                    List.of(new ItemStack(ModItems.SULFUR.get())),
-                    List.of(),
-                    List.of(new ItemStack(ModItems.RUBBER_BAR.get())),
-                    50, 20),
-
-            new ChemicalRecipe(
-                    List.of(new FluidStack(Fluids.WATER, 100)),
-                    List.of(new ItemStack(Items.SAND), new ItemStack(Items.GRAVEL)),
-                    List.of(),
-                    List.of(new ItemStack(Blocks.LIGHT_GRAY_CONCRETE, 12)),
-                    50, 20)
-    );
+//    private static final List<ChemicalRecipe> RECIPES = List.of(
+//            new ChemicalRecipe(
+//                    List.of(new FluidStack(ModFluids.PETROLEUM_GAS.get(), 20)),
+//                    List.of(new ItemStack(ModItems.COAL_POWDER.get()), new ItemStack(ModItems.FLUORITE.get())),
+//                    List.of(),
+//                    List.of(new ItemStack(ModItems.POLYMER_BAR.get())),
+//                    100, 20),
+//
+//            new ChemicalRecipe(
+//                    List.of(new FluidStack(ModFluids.UNSATURATED_HYDROCARBONS.get(), 100)),
+//                    List.of(new ItemStack(ModItems.SULFUR.get())),
+//                    List.of(),
+//                    List.of(new ItemStack(ModItems.RUBBER_BAR.get())),
+//                    50, 20),
+//
+//            new ChemicalRecipe(
+//                    List.of(new FluidStack(Fluids.WATER, 100)),
+//                    List.of(new ItemStack(ModItems.SULFUR.get())),
+//                    List.of(),
+//                    List.of(new ItemStack(ModItems.RUBBER_BAR.get())),
+//                    50, 20),
+//
+//            new ChemicalRecipe(
+//                    List.of(new FluidStack(Fluids.WATER, 100)),
+//                    List.of(new ItemStack(Items.SAND), new ItemStack(Items.GRAVEL)),
+//                    List.of(),
+//                    List.of(new ItemStack(Blocks.LIGHT_GRAY_CONCRETE, 12)),
+//                    50, 20),
+//
+//            new ChemicalRecipe(
+//                    List.of(new FluidStack(ModFluids.DEUTERIUM.get(), 100), new FluidStack(ModFluids.REFORMATE_GAS.get(), 100), new FluidStack(ModFluids.SYNGAS.get(), 100)),
+//                    List.of(),
+//                    List.of(new FluidStack(ModFluids.DEUTERATED_HYDROCARBON.get(), 100)),
+//                    List.of(),
+//                    50, 20)
+//    );
 
     // --- CAPS & DATA ---
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
@@ -180,19 +180,30 @@ public class ChemicalPlantBlockEntity extends BlockEntity implements MenuProvide
         };
     }
 
-    // --- TICK LOGIC ---
     public static void tick(Level level, BlockPos pos, BlockState state, ChemicalPlantBlockEntity pEntity) {
         if (level.isClientSide()) return;
 
         handleFluidItemInput(pEntity);
         pEntity.pushFluidToNeighbors();
 
-        ChemicalRecipe currentRecipe = getMatchingRecipe(pEntity);
+        ChemicalPlantRecipe currentRecipe = getMatchingRecipe(pEntity);
+        System.out.println("FLUID_TANK amount: " + pEntity.FLUID_TANK.getFluidAmount() + "FLUID_TANK type: " + pEntity.FLUID_TANK.getFluid().getFluid());
+        System.out.println("Input 1 amount: " + pEntity.inputTank1.getFluidAmount() + "Input tank 1 type: " + pEntity.inputTank1.getFluid().getFluid());
+        System.out.println("Input 2 amount: " + pEntity.inputTank2.getFluidAmount() + "Input tank 2 type: " + pEntity.inputTank2.getFluid().getFluid());
+        System.out.println("Input 3 amount: " + pEntity.inputTank3.getFluidAmount() + "Input tank 3 type: " + pEntity.inputTank3.getFluid().getFluid());
 
-        if (currentRecipe != null && pEntity.ENERGY_STORAGE.getEnergyStored() >= currentRecipe.energyPerTick()) {
-            pEntity.maxProgress = currentRecipe.processTime();
+        System.out.println("Energy inside block: " + pEntity.getEnergyStorage());
+        System.out.printf("current recipe: " + currentRecipe);
+        if (currentRecipe == null) {
+            System.out.println("is processing: false");
+        } else {
+            System.out.println("is processing: true");
+        }
+
+        if (currentRecipe != null && pEntity.ENERGY_STORAGE.getEnergyStored() >= currentRecipe.getEnergyPerTick()) {
+            pEntity.maxProgress = currentRecipe.getProcessTime();
             pEntity.progress++;
-            pEntity.ENERGY_STORAGE.extractEnergy(currentRecipe.energyPerTick(), false);
+            pEntity.ENERGY_STORAGE.extractEnergy(currentRecipe.getEnergyPerTick(), false);
 
             if (level.getGameTime() % 2 == 0) {
                 spawnWorkingParticles(level, pos, state);
@@ -207,22 +218,51 @@ public class ChemicalPlantBlockEntity extends BlockEntity implements MenuProvide
         }
     }
 
-    private static ChemicalRecipe getMatchingRecipe(ChemicalPlantBlockEntity pEntity) {
-        FluidTank[] inputTanks = { pEntity.FLUID_TANK, pEntity.inputTank2, pEntity.inputTank3 };
+    private static ChemicalPlantRecipe getMatchingRecipe(ChemicalPlantBlockEntity pEntity) {
+        Level level = pEntity.level;
+        if (level == null) return null;
 
-        for (ChemicalRecipe recipe : RECIPES) {
-            boolean fluidsMatch = true;
-            for (FluidStack reqFluid : recipe.inputFluids()) {
-                if (!hasFluidInAnyTank(inputTanks, reqFluid)) {
-                    fluidsMatch = false;
-                    break;
+        var recipes = level.getRecipeManager().getAllRecipesFor(ModRecipes.CHEMICAL_PLANT_TYPE.get());
+
+        // ALL input tanks available to the machine
+        FluidTank[] inTanks = { pEntity.inputTank1, pEntity.FLUID_TANK, pEntity.inputTank2, pEntity.inputTank3 };
+
+        for (ChemicalPlantRecipe recipe : recipes) {
+            List<FluidStack> neededFluids = recipe.getFluidIngredients();
+            boolean allIngredientsFound = true;
+
+            // TRACK amounts so we don't use the same fluid for two different requirements
+            int[] virtualAmounts = new int[inTanks.length];
+            for(int i = 0; i < inTanks.length; i++) {
+                virtualAmounts[i] = inTanks[i].getFluidAmount();
+            }
+
+            for (FluidStack req : neededFluids) {
+                boolean currentReqSatisfied = false;
+
+                for (int i = 0; i < inTanks.length; i++) {
+                    FluidStack tankFluid = inTanks[i].getFluid();
+
+                    // Compare by Registry Name to avoid strict object mismatch
+                    ResourceLocation tankName = ForgeRegistries.FLUIDS.getKey(tankFluid.getFluid());
+                    ResourceLocation reqName = ForgeRegistries.FLUIDS.getKey(req.getFluid());
+
+                    if (tankName != null && tankName.equals(reqName) && virtualAmounts[i] >= req.getAmount()) {
+                        virtualAmounts[i] -= req.getAmount(); // Reserve this amount
+                        currentReqSatisfied = true;
+                        break; // Move to the next needed fluid ingredient
+                    }
+                }
+
+                if (!currentReqSatisfied) {
+                    allIngredientsFound = false;
+                    break; // This recipe cannot work, stop checking its ingredients
                 }
             }
-            if (!fluidsMatch) continue;
 
-            if (!hasItemsInSlots(pEntity, recipe.inputItems())) continue;
-
-            if (canFitOutputs(pEntity, recipe)) return recipe;
+            if (allIngredientsFound && hasItemsInSlots(pEntity, recipe.getItemIngredients()) && canFitOutputs(pEntity, recipe)) {
+                return recipe;
+            }
         }
         return null;
     }
@@ -234,38 +274,42 @@ public class ChemicalPlantBlockEntity extends BlockEntity implements MenuProvide
         return false;
     }
 
-    private static boolean hasItemsInSlots(ChemicalPlantBlockEntity pEntity, List<ItemStack> requirements) {
+    private static boolean hasItemsInSlots(ChemicalPlantBlockEntity pEntity, List<Ingredient> requirements) {
         if (requirements.isEmpty()) return true;
 
         ItemStack slot6 = pEntity.itemHandler.getStackInSlot(6);
         ItemStack slot7 = pEntity.itemHandler.getStackInSlot(7);
 
         if (requirements.size() == 1) {
-            return itemMatches(slot6, requirements.get(0)) || itemMatches(slot7, requirements.get(0));
-        } else if (requirements.size() == 2) {
-            boolean order1 = itemMatches(slot6, requirements.get(0)) && itemMatches(slot7, requirements.get(1));
-            boolean order2 = itemMatches(slot6, requirements.get(1)) && itemMatches(slot7, requirements.get(0));
-            return order1 || order2;
+            return requirements.get(0).test(slot6) || requirements.get(0).test(slot7);
         }
+
+        if (requirements.size() == 2) {
+            Ingredient ing1 = requirements.get(0);
+            Ingredient ing2 = requirements.get(1);
+
+            boolean matchNormal = ing1.test(slot6) && ing2.test(slot7);
+            boolean matchSwapped = ing1.test(slot7) && ing2.test(slot6);
+
+            return matchNormal || matchSwapped;
+        }
+
         return false;
     }
 
-    private static boolean itemMatches(ItemStack slotStack, ItemStack recipeStack) {
-        return slotStack.is(recipeStack.getItem()) && slotStack.getCount() >= recipeStack.getCount();
-    }
+    private static boolean canFitOutputs(ChemicalPlantBlockEntity pEntity, ChemicalPlantRecipe recipe) {
+        ItemStack recipeOutput = recipe.getResultItem(pEntity.level.registryAccess());
 
-    private static boolean canFitOutputs(ChemicalPlantBlockEntity pEntity, ChemicalRecipe recipe) {
-        // Check Item Output (Slot 15)
-        ItemStack outputSlot = pEntity.itemHandler.getStackInSlot(15);
-        for (ItemStack out : recipe.outputItems()) {
-            if (!outputSlot.isEmpty() && (!ItemStack.isSameItem(outputSlot, out) || (outputSlot.getCount() + out.getCount() > outputSlot.getMaxStackSize()))) {
+        if (!recipeOutput.is(Items.AIR)) {
+            ItemStack outputSlot = pEntity.itemHandler.getStackInSlot(15);
+            if (!outputSlot.isEmpty() && (!ItemStack.isSameItem(outputSlot, recipeOutput) ||
+                    (outputSlot.getCount() + recipeOutput.getCount() > outputSlot.getMaxStackSize()))) {
                 return false;
             }
         }
 
-        // Check Fluid Outputs
         FluidTank[] outTanks = { pEntity.outputTank1, pEntity.outputTank2, pEntity.outputTank3 };
-        for (FluidStack outFluid : recipe.outputFluids()) {
+        for (FluidStack outFluid : recipe.getFluidOutputs()) {
             boolean canFit = false;
             for (FluidTank tank : outTanks) {
                 if (tank.fill(outFluid, IFluidHandler.FluidAction.SIMULATE) == outFluid.getAmount()) {
@@ -278,41 +322,51 @@ public class ChemicalPlantBlockEntity extends BlockEntity implements MenuProvide
         return true;
     }
 
-    private static void executeCraft(ChemicalPlantBlockEntity pEntity, ChemicalRecipe recipe) {
-        FluidTank[] inTanks = { pEntity.FLUID_TANK, pEntity.inputTank2, pEntity.inputTank3 };
+    private static void executeCraft(ChemicalPlantBlockEntity pEntity, ChemicalPlantRecipe recipe) {
+        FluidTank[] inTanks = { pEntity.inputTank1, pEntity.FLUID_TANK, pEntity.inputTank2, pEntity.inputTank3 };
         FluidTank[] outTanks = { pEntity.outputTank1, pEntity.outputTank2, pEntity.outputTank3 };
 
-        // Consume Fluids
-        for (FluidStack req : recipe.inputFluids()) {
+        // 1. DRAIN INPUT FLUIDS (Flexible matching)
+        for (FluidStack req : recipe.getFluidIngredients()) {
+            ResourceLocation reqName = ForgeRegistries.FLUIDS.getKey(req.getFluid());
             for (FluidTank tank : inTanks) {
-                if (tank.getFluid().isFluidEqual(req)) {
+                ResourceLocation tankName = ForgeRegistries.FLUIDS.getKey(tank.getFluid().getFluid());
+                if (tankName != null && tankName.equals(reqName)) {
                     tank.drain(req.getAmount(), IFluidHandler.FluidAction.EXECUTE);
                     break;
                 }
             }
         }
 
-        // Consume Items
-        for (ItemStack req : recipe.inputItems()) {
-            if (itemMatches(pEntity.itemHandler.getStackInSlot(6), req)) {
-                pEntity.itemHandler.getStackInSlot(6).shrink(req.getCount());
-            } else {
-                pEntity.itemHandler.getStackInSlot(7).shrink(req.getCount());
+        // 2. SHRINK INPUT ITEMS
+        for (Ingredient ing : recipe.getItemIngredients()) {
+            if (ing.test(pEntity.itemHandler.getStackInSlot(6))) {
+                pEntity.itemHandler.getStackInSlot(6).shrink(1);
+            } else if (ing.test(pEntity.itemHandler.getStackInSlot(7))) {
+                pEntity.itemHandler.getStackInSlot(7).shrink(1);
             }
         }
 
-        // Produce Fluids
-        for (FluidStack out : recipe.outputFluids()) {
+        // 3. FILL OUTPUT FLUIDS
+        for (FluidStack out : recipe.getFluidOutputs()) {
             for (FluidTank tank : outTanks) {
-                if (tank.fill(out, IFluidHandler.FluidAction.SIMULATE) == out.getAmount()) {
-                    tank.fill(out, IFluidHandler.FluidAction.EXECUTE);
-                    break;
+                // Check if tank is empty or matches the output fluid by name
+                ResourceLocation tankFluidName = ForgeRegistries.FLUIDS.getKey(tank.getFluid().getFluid());
+                ResourceLocation outFluidName = ForgeRegistries.FLUIDS.getKey(out.getFluid());
+
+                if (tank.getFluid().isEmpty() || (tankFluidName != null && tankFluidName.equals(outFluidName))) {
+                    if (tank.fill(out, IFluidHandler.FluidAction.SIMULATE) == out.getAmount()) {
+                        tank.fill(out, IFluidHandler.FluidAction.EXECUTE);
+                        break;
+                    }
                 }
             }
         }
 
-        for (ItemStack out : recipe.outputItems()) {
-            pEntity.itemHandler.insertItem(15, out.copy(), false);
+        // 4. INSERT OUTPUT ITEMS
+        ItemStack result = recipe.getResultItem(pEntity.level.registryAccess());
+        if (!result.isEmpty() && !result.is(Items.AIR)) {
+            pEntity.itemHandler.insertItem(15, result.copy(), false);
         }
 
         pEntity.setChanged();
@@ -451,11 +505,22 @@ public class ChemicalPlantBlockEntity extends BlockEntity implements MenuProvide
         @Override public FluidStack getFluidInTank(int tank) { return tanks[tank].getFluid(); }
         @Override public int getTankCapacity(int tank) { return tanks[tank].getCapacity(); }
         @Override public boolean isFluidValid(int tank, FluidStack stack) { return tanks[tank].isFluidValid(stack); }
-        @Override public int fill(FluidStack resource, FluidAction action) {
-            for (int i = 0; i < 3; i++) { // Only allow filling input tanks (0, 1, 2)
-                int filled = tanks[i].fill(resource, action);
-                if (filled > 0) return filled;
+        @Override
+        public int fill(FluidStack resource, FluidAction action) {
+            if (resource.isEmpty()) return 0;
+
+            for (int i = 0; i < 3; i++) {
+                if (!tanks[i].getFluid().isEmpty() && tanks[i].getFluid().isFluidEqual(resource)) {
+                    return tanks[i].fill(resource, action);
+                }
             }
+
+            for (int i = 0; i < 3; i++) {
+                if (tanks[i].getFluid().isEmpty()) {
+                    return tanks[i].fill(resource, action);
+                }
+            }
+
             return 0;
         }
         @Override public FluidStack drain(FluidStack resource, FluidAction action) {

@@ -1,0 +1,12 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/tank_light_oil.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/tanks/tank_light_oil",
+    "m_76400c16-e52d-bb56-cdb9-c8ce809e0bc1": "hbm_ntm:block/tank_outter",
+    "m_b06d5dd8-4206-a6b1-2e01-b6d8c13637a2": "hbm_ntm:block/tanks/tank_light_oil",
+    "Material": "hbm_ntm:block/tanks/tank_light_oil",
+    "none": "hbm_ntm:block/tanks/tank_light_oil"
+  }
+}

@@ -1,10 +1,8 @@
 {
   "variants": {
-    "half=bottom": {
-      "model": "hbm_ntm:block/steel_grate"
-    },
-    "half=top": {
-      "model": "hbm_ntm:block/steel_grate_top"
-    }
+    "attached=true,half=bottom": { "model": "hbm_ntm:block/steel_grate_below" },
+    "attached=true,half=top": { "model": "hbm_ntm:block/steel_grate_below" },
+    "attached=false,half=bottom": { "model": "hbm_ntm:block/steel_grate" },
+    "attached=false,half=top": { "model": "hbm_ntm:block/steel_grate_top" }
   }
 }

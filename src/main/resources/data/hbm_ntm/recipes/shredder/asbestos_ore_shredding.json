@@ -1,0 +1,10 @@
+{
+  "type": "hbm_ntm:shredding",
+  "ingredient": {
+    "item": "hbm_ntm:asbestos_ore"
+  },
+  "output": {
+    "item": "hbm_ntm:asbestos_powder",
+    "count": 2
+  }
+}

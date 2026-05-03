@@ -68,4 +68,16 @@ public class ModFluidTypes {
             new GenericFluidType(FluidType.Properties.create().density(-100).viscosity(100).canSwim(false), "sulfuric_acid", 0));
     public static final RegistryObject<FluidType> CHLORINE_GAS = REGISTRY.register("chlorine_gas_liquid", () ->
             new GenericFluidType(FluidType.Properties.create().density(-100).viscosity(100).canSwim(false), "chlorine_gas_liquid", 0));
+    public static final RegistryObject<FluidType> LIQUID_OXYGEN = REGISTRY.register("liquid_oxygen", () ->
+            new GenericFluidType(FluidType.Properties.create().density(-100).viscosity(100).canSwim(false), "liquid_oxygen", 0));
+    public static final RegistryObject<FluidType> DEUTERIUM = REGISTRY.register("deuterium", () ->
+            new GenericFluidType(FluidType.Properties.create().density(-100).viscosity(100).canSwim(false), "deuterium", 0));
+    public static final RegistryObject<FluidType> SYNGAS = REGISTRY.register("syngas", () ->
+            new GenericFluidType(FluidType.Properties.create().density(-100).viscosity(100).canSwim(false), "syngas", 0));
+    public static final RegistryObject<FluidType> DESULFURIZED_CRUDE_OIL = REGISTRY.register("desulfurized_crude_oil", () ->
+            new GenericFluidType(FluidType.Properties.create().density(-100).viscosity(100).canSwim(false), "desulfurized_crude_oil", 0));
+    public static final RegistryObject<FluidType> DEUTERATED_HYDROCARBON = REGISTRY.register("deuterated_hydrocarbon", () ->
+            new GenericFluidType(FluidType.Properties.create().density(-100).viscosity(100).canSwim(false), "deuterated_hydrocarbon", 0));
+    public static final RegistryObject<FluidType> FRACKING_SOLUTION = REGISTRY.register("fracking_solution", () ->
+            new GenericFluidType(FluidType.Properties.create().density(-100).viscosity(100).canSwim(false), "fracking_solution", 0));
 }

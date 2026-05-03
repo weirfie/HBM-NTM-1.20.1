@@ -29,6 +29,7 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> HEMATITE_PLACED_KEY = registerKey("hematite_placed_key");
     public static final ResourceKey<PlacedFeature> OIL_RESERVOIR_PLACED_KEY = registerKey("oil_reservoir_placed_key");
     public static final ResourceKey<PlacedFeature> LIGNITE_ORE_PLACED_KEY = registerKey("lignite_ore_placed_key");
+    public static final ResourceKey<PlacedFeature> LIMESTONE_ORE_PLACED_KEY = registerKey("limestone_ore_placed_key");
     public static final ResourceKey<PlacedFeature> ALUMINUM_ORE_PLACED_KEY = registerKey("aluminum_ore_placed_key");
 
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
@@ -61,6 +62,10 @@ public class ModPlacedFeatures {
         register(context, OIL_RESERVOIR_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_OIL_RESERVOIR_KEY),
                 ModOrePlacement.commonOrePlacement(1,
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-50), VerticalAnchor.absolute(10))));
+
+        register(context, LIMESTONE_ORE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_LIMESTONE_ORE_KEY),
+                ModOrePlacement.commonOrePlacement(5,
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-50), VerticalAnchor.absolute(20))));
 
         register(context, TITANIUM_ORE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_TITANIUM_ORE_KEY),
                 ModOrePlacement.commonOrePlacement(5,

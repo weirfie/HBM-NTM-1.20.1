@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/electric_groundwater_pump.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/electric_groundwater_pump",
+    "m_9874cb97-7f14-cede-24c4-80b3f898482d": "hbm_ntm:block/electric_groundwater_pump",
+    "Material": "hbm_ntm:block/electric_groundwater_pump",
+    "none": "hbm_ntm:block/electric_groundwater_pump"
+  }
+}

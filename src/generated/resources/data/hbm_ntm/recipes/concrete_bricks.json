@@ -6,7 +6,7 @@
       "item": "minecraft:clay"
     },
     "C": {
-      "item": "minecraft:light_gray_concrete"
+      "item": "hbm_ntm:concrete"
     }
   },
   "pattern": [

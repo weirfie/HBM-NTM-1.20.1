@@ -41,11 +41,10 @@ import java.util.stream.IntStream;
 public class PaintableCoatedUniversalFluidDuctBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
     private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(9, ItemStack.EMPTY);
     private int filterColor = 0xFFFFFF;
-    private String allowedFluid = "";
     public static final ModelProperty<BlockState> PAINT_PROPERTY = new ModelProperty<>();
     private BlockState paintState = Blocks.AIR.defaultBlockState();
     public static final List<Block> ALLOWED_PAINT_BLOCKS = List.of(
-            Blocks.STONE, Blocks.OAK_PLANKS, Blocks.IRON_BLOCK, Blocks.BRICKS, ModBlocks.CONCRETE_BRICKS.get(), ModBlocks.DUCRETE.get(), ModBlocks.REINFORCED_DUCRETE.get(), ModBlocks.REINFORCED_STONE.get(),
+            Blocks.STONE, Blocks.OAK_PLANKS, Blocks.IRON_BLOCK, Blocks.BRICKS, ModBlocks.CONCRETE_BRICKS.get(), ModBlocks.DUCRETE.get(), ModBlocks.CONCRETE_TILE.get(), ModBlocks.REINFORCED_DUCRETE.get(), ModBlocks.REINFORCED_STONE.get(),
             Blocks.BLACK_CONCRETE, Blocks.CYAN_CONCRETE, Blocks.BLUE_CONCRETE, Blocks.GRAY_CONCRETE, Blocks.BROWN_CONCRETE, Blocks.GREEN_CONCRETE, Blocks.LIGHT_BLUE_CONCRETE, Blocks.LIGHT_GRAY_CONCRETE, Blocks.LIME_CONCRETE,
             Blocks.YELLOW_CONCRETE, Blocks.ORANGE_CONCRETE, Blocks.PINK_CONCRETE, Blocks.PURPLE_CONCRETE, Blocks.MAGENTA_CONCRETE, Blocks.RED_CONCRETE, Blocks.WHITE_CONCRETE
     );
@@ -99,21 +98,6 @@ public class PaintableCoatedUniversalFluidDuctBlockEntity extends RandomizableCo
                 .build();
     }
 
-    public String getAllowedFluid() {
-        return this.allowedFluid;
-    }
-
-    public void setAllowedFluid(String fluidName) {
-        this.allowedFluid = fluidName;
-        this.setChanged();
-    }
-
-    public void setFilterAndFluid(int color, String fluidName) {
-        this.setFilterColor(color);
-        setChanged();
-        this.allowedFluid = fluidName;
-    }
-
     public int getFilterColor() {
         return this.filterColor;
     }
@@ -138,7 +122,6 @@ public class PaintableCoatedUniversalFluidDuctBlockEntity extends RandomizableCo
                     compound.getCompound("paintState")
             );
         }
-        this.allowedFluid = compound.getString("allowedFluid");
     }
 
     @Override
@@ -149,7 +132,6 @@ public class PaintableCoatedUniversalFluidDuctBlockEntity extends RandomizableCo
         }
         compound.put("paintState", NbtUtils.writeBlockState(this.paintState));
         compound.put("fluidTank", fluidTank.writeToNBT(new CompoundTag()));
-        compound.putString("allowedFluid", this.allowedFluid);
         compound.putInt("filterColor", this.filterColor);
     }
 
@@ -228,16 +210,6 @@ public class PaintableCoatedUniversalFluidDuctBlockEntity extends RandomizableCo
         return true;
     }
     public final FluidTank fluidTank = new FluidTank(10000) {
-        @Override
-        public boolean isFluidValid(FluidStack stack) {
-            if (allowedFluid == null || allowedFluid.isEmpty()) return true;
-
-            String incomingFullName = net.minecraftforge.registries.ForgeRegistries.FLUIDS.getKey(stack.getFluid()).toString();
-
-            String incomingPath = net.minecraftforge.registries.ForgeRegistries.FLUIDS.getKey(stack.getFluid()).getPath();
-
-            return incomingFullName.equals(allowedFluid) || incomingPath.equals(allowedFluid);
-        }
 
         @Override
         public int fill(FluidStack resource, FluidAction action) {
@@ -280,7 +252,7 @@ public class PaintableCoatedUniversalFluidDuctBlockEntity extends RandomizableCo
     }
 
     private void distributeFluid() {
-        int transferSpeed = 1000;
+        int maxTransfer = 1000;
 
         for (Direction direction : Direction.values()) {
             if (fluidTank.getFluidAmount() <= 0) break;
@@ -290,18 +262,23 @@ public class PaintableCoatedUniversalFluidDuctBlockEntity extends RandomizableCo
 
             if (neighborBE != null) {
                 neighborBE.getCapability(ForgeCapabilities.FLUID_HANDLER, direction.getOpposite()).ifPresent(handler -> {
-                    if (neighborBE instanceof PaintableCoatedUniversalFluidDuctBlockEntity neighborDuct) {
-                        if (!neighborDuct.getAllowedFluid().equals(this.getAllowedFluid())) {
-                            return;
+
+                    int myAmount = fluidTank.getFluidAmount();
+                    int neighborAmount = handler.getFluidInTank(0).getAmount();
+
+                    if (myAmount > neighborAmount) {
+                        int difference = myAmount - neighborAmount;
+                        int toMove = Math.min(difference / 2, maxTransfer);
+
+                        if (toMove > 0) {
+                            FluidStack moveStack = new FluidStack(fluidTank.getFluid(), toMove);
+
+                            int accepted = handler.fill(moveStack, IFluidHandler.FluidAction.EXECUTE);
+
+                            if (accepted > 0) {
+                                fluidTank.drain(accepted, IFluidHandler.FluidAction.EXECUTE);
+                            }
                         }
-                    }
-
-                    FluidStack toDrain = new FluidStack(fluidTank.getFluid(),
-                            Math.min(fluidTank.getFluidAmount(), transferSpeed));
-
-                    int filled = handler.fill(toDrain, IFluidHandler.FluidAction.EXECUTE);
-                    if (filled > 0) {
-                        fluidTank.drain(filled, IFluidHandler.FluidAction.EXECUTE);
                     }
                 });
             }

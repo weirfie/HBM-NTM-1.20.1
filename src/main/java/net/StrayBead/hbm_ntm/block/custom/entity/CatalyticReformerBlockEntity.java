@@ -272,6 +272,24 @@ public class CatalyticReformerBlockEntity extends BlockEntity implements MenuPro
 
                 ModMessages.sendToClients(new FluidSyncS2CPacket(pEntity.FLUID_TANK.getFluid(), pos));
                 pEntity.syncBlock();
+            } else if (pEntity.FLUID_TANK.getFluidAmount() > 50 && pEntity.FLUID_TANK.getFluid().getFluid() == ModFluids.SOUR_GAS.get()) {
+                pEntity.ENERGY_STORAGE.extractEnergy(20, false);
+                pEntity.FLUID_TANK.drain(50, IFluidHandler.FluidAction.EXECUTE);
+                pEntity.OUTPUT_TANK_1.fill(new FluidStack(ModFluids.SULFURIC_ACID.get(), 20), IFluidHandler.FluidAction.EXECUTE);
+                pEntity.OUTPUT_TANK_2.fill(new FluidStack(ModFluids.PETROLEUM_GAS.get(), 15), IFluidHandler.FluidAction.EXECUTE);
+                pEntity.OUTPUT_TANK_3.fill(new FluidStack(ModFluids.LIQUID_HYDROGEN.get(), 10), IFluidHandler.FluidAction.EXECUTE);
+
+                ModMessages.sendToClients(new FluidSyncS2CPacket(pEntity.FLUID_TANK.getFluid(), pos));
+                pEntity.syncBlock();
+            } else if (pEntity.FLUID_TANK.getFluidAmount() > 50 && pEntity.FLUID_TANK.getFluid().getFluid() == ModFluids.HEATING_OIL.get()) {
+                pEntity.ENERGY_STORAGE.extractEnergy(20, false);
+                pEntity.FLUID_TANK.drain(50, IFluidHandler.FluidAction.EXECUTE);
+                pEntity.OUTPUT_TANK_1.fill(new FluidStack(ModFluids.NAPHTHA.get(), 20), IFluidHandler.FluidAction.EXECUTE);
+                pEntity.OUTPUT_TANK_2.fill(new FluidStack(ModFluids.PETROLEUM_GAS.get(), 15), IFluidHandler.FluidAction.EXECUTE);
+                pEntity.OUTPUT_TANK_3.fill(new FluidStack(ModFluids.LIQUID_HYDROGEN.get(), 10), IFluidHandler.FluidAction.EXECUTE);
+
+                ModMessages.sendToClients(new FluidSyncS2CPacket(pEntity.FLUID_TANK.getFluid(), pos));
+                pEntity.syncBlock();
             }
         }
     }

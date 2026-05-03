@@ -1,0 +1,13 @@
+{
+  "type": "hbm_ntm:chemical_plant",
+  "fluid_inputs": [
+    { "fluid": "hbm_ntm:deuterium", "amount": 100 },
+    { "fluid": "hbm_ntm:reformate_gas", "amount": 100 },
+    { "fluid": "hbm_ntm:syngas", "amount": 100 }
+  ],
+  "ingredients": [],
+  "output": { "item": "minecraft:air" },
+  "fluid_outputs": [ { "fluid": "hbm_ntm:deuterated_hydrocarbon", "amount": 100 } ],
+  "time": 50,
+  "energy": 20
+}

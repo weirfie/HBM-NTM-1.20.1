@@ -90,7 +90,7 @@ public class BigAssTankGuiScreen extends AbstractContainerScreen<BigAssTankGuiMe
     protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
         int x = (width - imageWidth) / 2;
         int y = (height - imageHeight) / 2;
-        guiGraphics.drawString(this.font, Component.translatable("gui.hbm_ntm.big_ass_tank_gui.label_bigass_tank_9000"), 47, 4, -13421773, false);
+        guiGraphics.drawString(this.font, Component.literal("Big-Ass Tank 9000"), 47, 4, -13421773, false);
         renderFluidAreaTooltips(guiGraphics, mouseX, mouseY, x, y);
     }
 

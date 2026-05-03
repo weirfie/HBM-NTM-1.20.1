@@ -24,7 +24,11 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
     protected void addTags(HolderLookup.Provider provider) {
         var pickaxeTag = this.tag(BlockTags.MINEABLE_WITH_PICKAXE);
 
-        for (RegistryObject<Block> blockObj : ModBlocks.GENERAL_SIMPLE_BLOCK.values()) {
+        for (RegistryObject<? extends Block> blockObj : ModBlocks.GENERAL_SIMPLE_BLOCK.values()) {
+            pickaxeTag.add(blockObj.get());
+        }
+
+        for (RegistryObject<? extends Block> blockObj : ModBlocks.GENERAL_MODEL_BLOCK.values()) {
             pickaxeTag.add(blockObj.get());
         }
 
@@ -51,17 +55,28 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                 .add(ModBlocks.THORIUM_ORE.get(),
                         ModBlocks.BERYLLIUM_ORE.get(),
                         ModBlocks.PLAYER_DECONTAMINATOR.get(),
+                        ModBlocks.INDUSTRIAL_SMOKESTACK.get(),
+                        ModBlocks.ELECTRIC_GROUNDWATER_PUMP.get(),
                         ModBlocks.LEAD_ANVIL.get(),
+                        ModBlocks.RADIOLYSIS_CHAMBER.get(),
                         ModBlocks.FIREWORK_BATTERY.get(),
                         ModBlocks.DYNAMITE.get(),
                         ModBlocks.ACTUAL_TNT.get(),
                         ModBlocks.SEMTEX.get(),
                         ModBlocks.C_4.get(),
+                        ModBlocks.FLOW_GAUGE_PIPE.get(),
+                        ModBlocks.STEEL_PIPE.get(),
                         ModBlocks.BEDROCK_ORE_PROCESSOR.get(),
                         ModBlocks.PYROLYSIS_OVEN.get(),
                         ModBlocks.FISSURE_BOMB.get(),
                         ModBlocks.FLAME_WAR_IN_A_BOX.get(),
                         ModBlocks.LEVITATION_BOMB.get(),
+                        ModBlocks.BARBED_WIRE.get(),
+                        ModBlocks.FLAMING_BARBED_WIRE.get(),
+                        ModBlocks.POISONED_BARBED_WIRE.get(),
+                        ModBlocks.CAUSTIC_BARBED_WIRE.get(),
+                        ModBlocks.WITHERED_BARBED_WIRE.get(),
+                        ModBlocks.RADIOACTIVE_BARBED_WIRE.get(),
                         ModBlocks.ENDOTHERMIC_BOMB.get(),
                         ModBlocks.COKER_UNIT.get(),
                         ModBlocks.EXOTHERMIC_BOMB.get(),

@@ -1,0 +1,10 @@
+{
+  "type": "hbm_ntm:shredding",
+  "ingredient": {
+    "item": "hbm_ntm:steel_deco_block"
+  },
+  "output": {
+    "item": "hbm_ntm:steel_powder",
+    "count": 1
+  }
+}

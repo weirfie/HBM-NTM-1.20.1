@@ -1,0 +1,15 @@
+{
+  "type": "hbm_ntm:assembly_machine",
+  "template": {
+    "item": "hbm_ntm:assembly_template_little_boy"
+  },
+  "ingredients": [
+    { "item": "hbm_ntm:steel_shell", "count": 2 },
+    { "item": "hbm_ntm:small_steel_grid_fins", "count": 1 },
+    { "item": "hbm_ntm:control_unit", "count": 2 },
+    { "item": "minecraft:lapis_lazuli", "count": 4 }
+  ],
+  "output": {
+    "item": "hbm_ntm:little_boy"
+  }
+}

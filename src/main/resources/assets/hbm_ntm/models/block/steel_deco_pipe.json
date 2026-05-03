@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/steel_deco_pipe.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/steel_deco_pipe",
+    "m_ae432dd0-0053-d146-1049-4c65e5b5316e": "hbm_ntm:block/pipe_top",
+    "m_ccf3d82b-e491-9db8-deff-5bfb7bd5d19b": "hbm_ntm:block/pipe_side",
+    "none": "hbm_ntm:block/steel_deco_pipe"
+  }
+}

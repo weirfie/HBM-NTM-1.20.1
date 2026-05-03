@@ -1,0 +1,10 @@
+{
+  "type": "hbm_ntm:arc_furnace",
+  "ingredient": {
+    "item": "hbm_ntm:quartz_sand"
+  },
+  "output": {
+    "item": "hbm_ntm:quartz_glass",
+    "count": 1
+  }
+}

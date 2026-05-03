@@ -20,7 +20,7 @@ public class CopperCableBlockUpdateTickProcedure {
         int maxTransferPerSide = 200;
 
         BlockEntity sourceEnt = world.getBlockEntity(sourcePos);
-        if (!(sourceEnt instanceof CopperCableBlockEntity cableEnt)) return;
+        if (!(sourceEnt instanceof CopperCableBlockEntity cableEnt) && !(sourceEnt instanceof PaintableCopperCableBlockEntity e)) return;
 
         sourceEnt.getCapability(ForgeCapabilities.ENERGY, null).ifPresent(sourceCap -> {
             AtomicBoolean changed = new AtomicBoolean(false);

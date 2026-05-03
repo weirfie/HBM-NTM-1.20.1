@@ -15,10 +15,20 @@
     "sounds": [
       "hbm_ntm:duct_place"
     ]
+  },"nuke_explosion": {
+    "subtitles": "sounds.hbm_ntm.nuke_explosion",
+    "sounds": [
+      "hbm_ntm:nuke_explosion"
+    ]
   },"rbmk_explosion": {
     "subtitles": "sounds.hbm_ntm.rbmk_explosion",
     "sounds": [
       "hbm_ntm:rbmk_explosion"
+    ]
+  },"vomit": {
+    "subtitles": "sounds.hbm_ntm.vomit",
+    "sounds": [
+      "hbm_ntm:vomit"
     ]
   },"sim_card_activation": {
     "subtitles": "sounds.hbm_ntm.sim_card_activation",

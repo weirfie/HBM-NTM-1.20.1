@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "hbm_ntm:block/radiolysis_chamber" },
+    "facing=east":  { "model": "hbm_ntm:block/radiolysis_chamber", "y": 90 },
+    "facing=south": { "model": "hbm_ntm:block/radiolysis_chamber", "y": 180 },
+    "facing=west":  { "model": "hbm_ntm:block/radiolysis_chamber", "y": 270 }
+  }
+}

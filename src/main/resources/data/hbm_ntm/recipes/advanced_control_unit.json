@@ -1,0 +1,15 @@
+{
+  "type": "hbm_ntm:soldering",
+  "ingredients": [
+    { "item": { "item": "hbm_ntm:atomic_clock" }, "count": 1 },
+    { "item": { "item": "hbm_ntm:tantalum_capacitor" }, "count": 48 },
+    { "item": { "item": "hbm_ntm:lead_wire" }, "count": 24 },
+    { "item": { "item": "hbm_ntm:speed_upgrade" }, "count": 1 },
+    { "item": { "item": "hbm_ntm:versatile_integrated_circuit" }, "count": 16 },
+    { "item": { "item": "hbm_ntm:control_unit_casing" }, "count": 1 }
+  ],
+  "result": {
+    "item": "hbm_ntm:advanced_control_unit",
+    "count": 1
+  }
+}

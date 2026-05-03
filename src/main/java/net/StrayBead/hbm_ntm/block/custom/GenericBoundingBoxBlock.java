@@ -98,6 +98,14 @@ public class GenericBoundingBoxBlock extends BaseEntityBlock {
             BlockState coreState = level.getBlockState(core);
             return coreState.use(level, player, hand, new BlockHitResult(hit.getLocation(), hit.getDirection(), core, hit.isInside()));
         }
+        BlockEntity be = level.getBlockEntity(pos);
+        if (be instanceof GenericBoundingBoxBE boundingBE) {
+            BlockPos corePos = boundingBE.getCorePos();
+            if (corePos != null && !corePos.equals(BlockPos.ZERO)) {
+                BlockState coreState = level.getBlockState(corePos);
+                return coreState.use(level, player, hand, hit.withPosition(corePos));
+            }
+        }
         return InteractionResult.PASS;
     }
 

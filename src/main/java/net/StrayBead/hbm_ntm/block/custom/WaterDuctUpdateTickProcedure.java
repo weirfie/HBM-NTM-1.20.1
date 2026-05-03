@@ -28,6 +28,7 @@ public class WaterDuctUpdateTickProcedure {
                         for (int i = 0; i < sourceCap.getTanks(); i++) {
                             FluidStack sourceStack = sourceCap.getFluidInTank(i);
                             if (sourceStack.isEmpty()) continue;
+
                             if (targetEnt instanceof BoilerBlockEntity boilerBlockEntity) {
                                 String ductFilter = getDuctFilter(sourceEnt);
 
@@ -58,6 +59,21 @@ public class WaterDuctUpdateTickProcedure {
                                 continue;
                             } else if (targetEnt instanceof WaterTankBlockEntity waterTankBlockEntity) {
                                 if (waterTankBlockEntity.IS_OUTPUTTING) {
+                                    continue;
+                                }
+                                String ductFilter = getDuctFilter(sourceEnt);
+
+                                int boilerPushAmount = 2000;
+                                FluidStack moveStack = new FluidStack(sourceStack.getFluid(), boilerPushAmount);
+
+                                int accepted = targetCap.fill(moveStack, IFluidHandler.FluidAction.SIMULATE);
+                                if (accepted > 0) {
+                                    FluidStack drained = sourceCap.drain(new FluidStack(sourceStack.getFluid(), accepted), IFluidHandler.FluidAction.EXECUTE);
+                                    targetCap.fill(drained, IFluidHandler.FluidAction.EXECUTE);
+                                }
+                                continue;
+                            } else if (targetEnt instanceof TankBlockEntity tankBlockEntity) {
+                                if (tankBlockEntity.IS_OUTPUTTING) {
                                     continue;
                                 }
                                 String ductFilter = getDuctFilter(sourceEnt);
@@ -131,6 +147,61 @@ public class WaterDuctUpdateTickProcedure {
                                     }
                                 }
                                 continue;
+                            } else if (targetEnt instanceof HydrotreaterBlockEntity hydrotreater) {
+                                String ductFilter = getDuctFilter(sourceEnt);
+
+                                if (sourceStack.getFluid().getFluidType().toString().contains("liquid_hydrogen") || ductFilter.equals("liquid_hydrogen")) {
+                                    int steamTankIndex = 1;
+                                    int pushAmount = 1000;
+
+                                    int space = targetCap.getTankCapacity(steamTankIndex) - targetCap.getFluidInTank(steamTankIndex).getAmount();
+                                    int amountToMove = Math.min(Math.min(sourceStack.getAmount(), pushAmount), space);
+
+                                    if (amountToMove > 0) {
+                                        FluidStack drained = sourceCap.drain(new FluidStack(sourceStack.getFluid(), amountToMove), IFluidHandler.FluidAction.EXECUTE);
+                                        targetCap.fill(drained, IFluidHandler.FluidAction.EXECUTE);
+                                    }
+                                } else {
+                                    int oilPushAmount = 2000;
+                                    FluidStack moveStack = new FluidStack(sourceStack.getFluid(), oilPushAmount);
+                                    int accepted = targetCap.fill(moveStack, IFluidHandler.FluidAction.SIMULATE);
+                                    if (accepted > 0) {
+                                        FluidStack drained = sourceCap.drain(new FluidStack(sourceStack.getFluid(), accepted), IFluidHandler.FluidAction.EXECUTE);
+                                        targetCap.fill(drained, IFluidHandler.FluidAction.EXECUTE);
+                                    }
+                                }
+                                continue;
+                            }
+                            else if (targetEnt instanceof ChemicalPlantBlockEntity chemicalPlant) {
+                                int chemPushAmount = 2000;
+
+                                int[] inputTankIndices = {0, 1, 2};
+                                boolean pushed = false;
+
+                                for (int tankIdx : inputTankIndices) {
+                                    FluidStack tankStack = targetCap.getFluidInTank(tankIdx);
+
+                                    if (tankStack.isEmpty() || tankStack.isFluidEqual(sourceStack)) {
+
+                                        int capacity = targetCap.getTankCapacity(tankIdx);
+                                        int space = capacity - tankStack.getAmount();
+
+                                        int amountToMove = Math.min(Math.min(sourceStack.getAmount(), chemPushAmount), space);
+
+                                        if (amountToMove > 0) {
+                                            if (targetCap.isFluidValid(tankIdx, sourceStack)) {
+
+                                                FluidStack drained = sourceCap.drain(new FluidStack(sourceStack.getFluid(), amountToMove), IFluidHandler.FluidAction.EXECUTE);
+                                                if (!drained.isEmpty()) {
+                                                    targetCap.fill(drained, IFluidHandler.FluidAction.EXECUTE);
+                                                    pushed = true;
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                if (pushed) continue;
                             }
 
                             for (int j = 0; j < targetCap.getTanks(); j++) {
@@ -174,9 +245,6 @@ public class WaterDuctUpdateTickProcedure {
 
     private static String getDuctFilter(BlockEntity entity) {
         if (entity instanceof FluidBlockEntity duct) {
-            return duct.getAllowedFluid();
-        }
-        if (entity instanceof PaintableCoatedUniversalFluidDuctBlockEntity duct) {
             return duct.getAllowedFluid();
         }
         return "";

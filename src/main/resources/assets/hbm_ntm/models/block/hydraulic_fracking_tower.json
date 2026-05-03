@@ -4,7 +4,7 @@
   "flip_v": true,
   "textures": {
     "particle": "hbm_ntm:block/hydraulic_fracking_tower",
-    "m_26bea7f6-b98d-e62b-ebc0-ed3fdbbd1d58": "hbm_ntm:block/hydraulic_fracking_tower",
+    "m_c96d935a-fb86-6474-355b-c0940c628cc7": "hbm_ntm:block/hydraulic_fracking_tower",
     "Material": "hbm_ntm:block/hydraulic_fracking_tower",
     "none": "hbm_ntm:block/hydraulic_fracking_tower"
   },

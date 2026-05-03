@@ -17,6 +17,7 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
@@ -88,7 +89,7 @@ public class GenericBoundingBoxBE extends BlockEntity {
     }
 
     private void pushCoreFluidToNeighbors(BlockEntity core) {
-        int pushAmount = 100;
+        int pushAmount = 200;
 
         for (Direction dir : Direction.values()) {
             BlockPos neighborPos = worldPosition.relative(dir);
@@ -363,6 +364,70 @@ public class GenericBoundingBoxBE extends BlockEntity {
                                 continue;
                             }
 
+                            int amountToPush = Math.min(stack.getAmount(), pushAmount * 2);
+                            FluidStack toPush = new FluidStack(stack.getFluid(), amountToPush);
+
+                            int accepted = neighborHandler.fill(toPush, IFluidHandler.FluidAction.EXECUTE);
+                            if (accepted > 0) {
+                                tank.drain(accepted, IFluidHandler.FluidAction.EXECUTE);
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                else if (core instanceof PyrolysisOvenBlockEntity pyrolysisOven) {
+                    FluidTank[] outputTanks = {
+                            pyrolysisOven.getOutputTank1()
+                    };
+
+                    for (FluidTank tank : outputTanks) {
+                        FluidStack stack = tank.getFluid();
+                        if (stack.isEmpty()) continue;
+
+                        if (neighborBE instanceof FluidBlockEntity duct) {
+                            String filter = duct.getAllowedFluid();
+
+                            if (filter.isEmpty()) continue;
+
+                            String currentFluidName = net.minecraftforge.registries.ForgeRegistries.FLUIDS.getKey(stack.getFluid()).getPath();
+
+                            if (!filter.equals(currentFluidName)) {
+                                continue;
+                            }
+
+                            int amountToPush = Math.min(stack.getAmount(), pushAmount);
+                            FluidStack toPush = new FluidStack(stack.getFluid(), amountToPush);
+
+                            int accepted = neighborHandler.fill(toPush, IFluidHandler.FluidAction.EXECUTE);
+                            if (accepted > 0) {
+                                tank.drain(accepted, IFluidHandler.FluidAction.EXECUTE);
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                else if (core instanceof ElectricGroundwaterPumpBlockEntity electricGroundwaterPump) {
+                    FluidTank[] outputTanks = {
+                            electricGroundwaterPump.getFluidTank()
+                    };
+
+                    for (FluidTank tank : outputTanks) {
+                        FluidStack stack = tank.getFluid();
+                        if (stack.isEmpty()) continue;
+
+                        if (neighborBE instanceof FluidBlockEntity duct) {
+                            String filter = duct.getAllowedFluid();
+
+                            if (filter.isEmpty()) continue;
+
+                            String currentFluidName = net.minecraftforge.registries.ForgeRegistries.FLUIDS.getKey(stack.getFluid()).getPath();
+
+                            if (!filter.equals(currentFluidName)) {
+                                continue;
+                            }
+
                             int amountToPush = Math.min(stack.getAmount(), pushAmount);
                             FluidStack toPush = new FluidStack(stack.getFluid(), amountToPush);
 
@@ -396,6 +461,45 @@ public class GenericBoundingBoxBE extends BlockEntity {
 
                             if (accepted > 0) {
                                 tank.drain(accepted, IFluidHandler.FluidAction.EXECUTE);
+                            }
+                        }
+                    }
+                }
+
+                else if (core instanceof BatterySocketBlockEntity batterySocket) {
+                    if (batterySocket.isOutputting()) {
+                        IEnergyStorage storage = batterySocket.getEnergyStorage();
+
+                        neighborBE.getCapability(ForgeCapabilities.ENERGY, dir.getOpposite()).ifPresent(neighborEnergy -> {
+                            if (neighborEnergy.canReceive()) {
+                                int toPush = storage.extractEnergy(1000, true);
+                                int accepted = neighborEnergy.receiveEnergy(toPush, false);
+                                storage.extractEnergy(accepted, false);
+                            }
+                        });
+                    }
+                }
+                else if (core instanceof TankBlockEntity tank) {
+                    if (tank.isOutputting()) {
+                        FluidTank tankTank = tank.getFluidTank();
+                        FluidStack stack = tankTank.getFluid();
+
+                        if (!stack.isEmpty()) {
+                            if (neighborBE instanceof FluidBlockEntity duct) {
+                                String filter = duct.getAllowedFluid();
+                                if (!filter.isEmpty()) {
+                                    String currentFluidName = net.minecraftforge.registries.ForgeRegistries.FLUIDS.getKey(stack.getFluid()).getPath();
+                                    if (!filter.equals(currentFluidName)) {
+                                        return;
+                                    }
+                                }
+                            }
+
+                            FluidStack toPush = new FluidStack(stack.getFluid(), Math.min(stack.getAmount(), pushAmount));
+                            int accepted = neighborHandler.fill(toPush, IFluidHandler.FluidAction.EXECUTE);
+
+                            if (accepted > 0) {
+                                tankTank.drain(accepted, IFluidHandler.FluidAction.EXECUTE);
                             }
                         }
                     }
@@ -438,6 +542,66 @@ public class GenericBoundingBoxBE extends BlockEntity {
                             vacuum.getTank1(),
                             vacuum.getTank2(),
                             vacuum.getTank3(),
+                    };
+
+                    for (FluidTank tank : outputTanks) {
+                        FluidStack stack = tank.getFluid();
+                        if (stack.isEmpty()) continue;
+
+                        if (neighborBE instanceof FluidBlockEntity duct) {
+                            String filter = duct.getAllowedFluid();
+                            if (filter.isEmpty()) continue;
+
+                            String currentFluidName = net.minecraftforge.registries.ForgeRegistries.FLUIDS.getKey(stack.getFluid()).getPath();
+                            if (!filter.equals(currentFluidName)) {
+                                continue;
+                            }
+                        }
+
+                        FluidStack toPush = new FluidStack(stack.getFluid(), Math.min(stack.getAmount(), pushAmount));
+                        int accepted = neighborHandler.fill(toPush, IFluidHandler.FluidAction.EXECUTE);
+
+                        if (accepted > 0) {
+                            tank.drain(accepted, IFluidHandler.FluidAction.EXECUTE);
+                            break;
+                        }
+                    }
+                }
+
+                else if (core instanceof HydrotreaterBlockEntity vacuum) {
+                    FluidTank[] outputTanks = {
+                            vacuum.getTank1(),
+                            vacuum.getTank2(),
+                    };
+
+                    for (FluidTank tank : outputTanks) {
+                        FluidStack stack = tank.getFluid();
+                        if (stack.isEmpty()) continue;
+
+                        if (neighborBE instanceof FluidBlockEntity duct) {
+                            String filter = duct.getAllowedFluid();
+                            if (filter.isEmpty()) continue;
+
+                            String currentFluidName = net.minecraftforge.registries.ForgeRegistries.FLUIDS.getKey(stack.getFluid()).getPath();
+                            if (!filter.equals(currentFluidName)) {
+                                continue;
+                            }
+                        }
+
+                        FluidStack toPush = new FluidStack(stack.getFluid(), Math.min(stack.getAmount(), pushAmount));
+                        int accepted = neighborHandler.fill(toPush, IFluidHandler.FluidAction.EXECUTE);
+
+                        if (accepted > 0) {
+                            tank.drain(accepted, IFluidHandler.FluidAction.EXECUTE);
+                            break;
+                        }
+                    }
+                }
+
+                else if (core instanceof RadiolysisChamberBlockEntity radiolysisChamber) {
+                    FluidTank[] outputTanks = {
+                            radiolysisChamber.getTank1(),
+                            radiolysisChamber.getTank2(),
                     };
 
                     for (FluidTank tank : outputTanks) {

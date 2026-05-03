@@ -32,6 +32,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     private static final List<ItemLike> ALUMINUM_ORE_SMELTABLES = List.of(ModBlocks.ALUMINUM_ORE.get());
     private static final List<ItemLike> DIAMOND_POWDER_SMELTABLES = List.of(ModItems.POWDERS.get("diamond").get());
     private static final List<ItemLike> FLINT_SMELTABLES = List.of(Items.FLINT);
+    private static final List<ItemLike> BORON_SAND_SMELTABLES = List.of(ModBlocks.BORON_SAND.get());
+    private static final List<ItemLike> LEAD_SAND_SMELTABLES = List.of(ModBlocks.LEAD_SAND.get());
+    private static final List<ItemLike> URANIUM_SAND_SMELTABLES = List.of(ModBlocks.URANIUM_SAND.get());
+    private static final List<ItemLike> POLONIUM_SAND_SMELTABLES = List.of(ModBlocks.POLONIUM_SAND.get());
+    private static final List<ItemLike> ASH_SMELTABLES = List.of(ModBlocks.ASH.get());
+    private static final List<ItemLike> THORIUM_ORE_SMELTABLES = List.of(ModBlocks.THORIUM_ORE.get());
     private static final List<ItemLike> GOLD_POWDER_SMELTABLES = List.of(ModItems.POWDERS.get("gold").get());
     private static final List<ItemLike> LAPIS_POWDER_SMELTABLES = List.of(ModItems.POWDERS.get("lapis_lazuli").get());
     private static final List<ItemLike> EMERALD_POWDER_SMELTABLES = List.of(ModItems.POWDERS.get("emerald").get());
@@ -74,10 +80,16 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         oreSmelting(pWriter, TITANIUM_SMELTABLES, RecipeCategory.MISC, ModItems.TITANIUM_INGOT.get(), 0.25f, 100, "titanium");
         oreBlasting(pWriter, TITANIUM_SMELTABLES, RecipeCategory.MISC, ModItems.TITANIUM_INGOT.get(), 0.25f, 100, "titanium");
         oreSmelting(pWriter, RED_COPPER_SMELTABLES, RecipeCategory.MISC, ModItems.REDCOPPER.get(), 0.25f, 100, "red_copper");
+        oreSmelting(pWriter, BORON_SAND_SMELTABLES, RecipeCategory.MISC, ModBlocks.BORON_GLASS.get(), 0.25f, 100, "boron_glass");
+        oreSmelting(pWriter, LEAD_SAND_SMELTABLES, RecipeCategory.MISC, ModBlocks.LEAD_GLASS.get(), 0.25f, 100, "lead_glass");
+        oreSmelting(pWriter, URANIUM_SAND_SMELTABLES, RecipeCategory.MISC, ModBlocks.URANIUM_GLASS.get(), 0.25f, 100, "uranium_glass");
+        oreSmelting(pWriter, ASH_SMELTABLES, RecipeCategory.MISC, ModBlocks.ASH_GLASS.get(), 0.25f, 100, "ash_glass");
+        oreSmelting(pWriter, POLONIUM_SAND_SMELTABLES, RecipeCategory.MISC, ModBlocks.POLONIUM_GLASS.get(), 0.25f, 100, "polonium_glass");
         oreSmelting(pWriter, RED_COOPER_SMELTABLES, RecipeCategory.MISC, ModItems.INDUSTRIAL_GRADE_COPPER.get(), 0.25f, 100, "copper");
         oreBlasting(pWriter, FLINT_SMELTABLES, RecipeCategory.MISC, ModItems.SILICON_NUGGET.get(), 0.25f, 400, "silicon_nugget");
         oreSmelting(pWriter, TUNGSTEN_ORE_SMELTABLES, RecipeCategory.MISC, ModItems.TUNGSTEN_INGOT.get(), 0.25f, 100, "tungsten");
         oreSmelting(pWriter, LEAD_ORE_SMELTABLES, RecipeCategory.MISC, ModItems.LEAD_INGOT.get(), 0.25f, 100, "lead");
+        oreSmelting(pWriter, THORIUM_ORE_SMELTABLES, RecipeCategory.MISC, ModItems.THORIUM_INGOT.get(), 0.25f, 100, "thorium");
         oreSmelting(pWriter, FIRECLAY_SMELTABLES, RecipeCategory.MISC, ModItems.FIREBRICK.get(), 0.25f, 100, "fireclay");
         oreBlasting(pWriter, FIRECLAY_SMELTABLES, RecipeCategory.MISC, ModItems.FIREBRICK.get(), 0.25f, 40, "fireclay");
         oreSmelting(pWriter, SCHRABIDIUM_ORE_SMELTABLES, RecipeCategory.MISC, ModItems.SCHRABIDIUM_INGOT.get(), 0.25f, 150, "schrabidium_ingot");
@@ -609,6 +621,74 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(ModItems.STEEL_PIPE.get()), has(ModItems.STEEL_PIPE.get()))
                 .save(pWriter);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.BORON_SAND.get(), 8)
+                .pattern("SSS")
+                .pattern("SSS")
+                .pattern("SSB")
+                .define('S', Blocks.SAND)
+                .define('B', ModItems.POWDERS.get("boron").get())
+                .unlockedBy(getHasName(ModItems.POWDERS.get("boron").get()), has(ModItems.POWDERS.get("boron").get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.LEAD_SAND.get(), 8)
+                .pattern("SSS")
+                .pattern("SSS")
+                .pattern("SSB")
+                .define('S', Blocks.SAND)
+                .define('B', ModItems.POWDERS.get("lead").get())
+                .unlockedBy(getHasName(ModItems.POWDERS.get("lead").get()), has(ModItems.POWDERS.get("lead").get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.URANIUM_SAND.get(), 8)
+                .pattern("SSS")
+                .pattern("SSS")
+                .pattern("SSB")
+                .define('S', Blocks.SAND)
+                .define('B', ModItems.POWDERS.get("uranium").get())
+                .unlockedBy(getHasName(ModItems.POWDERS.get("uranium").get()), has(ModItems.POWDERS.get("uranium").get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.POLONIUM_SAND.get(), 8)
+                .pattern("SSS")
+                .pattern("SSS")
+                .pattern("SSB")
+                .define('S', Blocks.SAND)
+                .define('B', ModItems.POWDERS.get("polonium_210").get())
+                .unlockedBy(getHasName(ModItems.POWDERS.get("polonium_210").get()), has(ModItems.POWDERS.get("polonium_210").get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.NUCLEAR_SIREN.get())
+                .pattern("SRS")
+                .pattern("RVR")
+                .pattern("SIS")
+                .define('R', ModItems.RUBBER_BAR.get())
+                .define('V', ModItems.VACUUM_TUBE.get())
+                .define('S', ModItems.STEEL_PLATE.get())
+                .define('I', Items.REDSTONE)
+                .unlockedBy(getHasName(ModItems.RUBBER_BAR.get()), has(ModItems.RUBBER_BAR.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.BURNER_PRESS_PREHEATER.get())
+                .pattern("SSS")
+                .pattern("RVR")
+                .pattern("TRT")
+                .define('R', Blocks.STONE)
+                .define('T', ModItems.TUNGSTEN_INGOT.get())
+                .define('S', ModItems.COPPER_PLATE.get())
+                .define('V', Items.LAVA_BUCKET)
+                .unlockedBy(getHasName(ModItems.TUNGSTEN_INGOT.get()), has(ModItems.TUNGSTEN_INGOT.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.PAINTABLE_RED_COPPER_CABLE.get(), 16)
+                .pattern("SWS")
+                .pattern("WVW")
+                .pattern("SWS")
+                .define('W', ModItems.MINECRAFT_GRADE_COPPER_WIRE.get())
+                .define('S', ModItems.STEEL_PLATE.get())
+                .define('V', ModItems.MINECRAFT_GRADE_COPPER.get())
+                .unlockedBy(getHasName(ModItems.MINECRAFT_GRADE_COPPER.get()), has(ModItems.MINECRAFT_GRADE_COPPER.get()))
+                .save(pWriter);
+
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.NUGGET_FOUNDRY_MOLD.get())
                 .pattern("IB ")
                 .pattern("   ")
@@ -781,6 +861,18 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(Items.IRON_NUGGET), has(Items.IRON_NUGGET))
                 .save(pWriter);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BISMUTH_LASER_CRYSTAL.get())
+                .pattern("IUI")
+                .pattern("NCN")
+                .pattern("ITI")
+                .define('I', ModBlocks.QUARTZ_GLASS.get())
+                .define('U', ModItems.URANIUM_INGOT.get())
+                .define('T', ModItems.THORIUM_INGOT.get())
+                .define('C', ModItems.RARE_EARTH_CRYSTALS.get())
+                .define('N', ModItems.BISMUTH_INGOT.get())
+                .unlockedBy(getHasName(Items.IRON_NUGGET), has(Items.IRON_NUGGET))
+                .save(pWriter);
+
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.GRAPHITE_MODERATOR.get())
                 .pattern(" G ")
                 .pattern("GPG")
@@ -790,6 +882,77 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(ModBlocks.STRUCTURAL_COLUMN.get()), has(ModBlocks.STRUCTURAL_COLUMN.get()))
                 .save(pWriter);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.STEEL_GRATE.get(), 4)
+                .pattern("GG ")
+                .pattern("GG ")
+                .pattern("   ")
+                .define('G', ModItems.STEEL_BEAM.get())
+                .unlockedBy(getHasName(ModItems.STEEL_BEAM.get()), has(ModItems.STEEL_BEAM.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.FRACTIONATING_TOWER.get())
+                .pattern("P  ")
+                .pattern("G  ")
+                .pattern("P  ")
+                .define('G', ModBlocks.STEEL_GRATE.get())
+                .define('P', ModItems.WELDED_STEEL_PLATE.get())
+                .unlockedBy(getHasName(ModBlocks.STEEL_GRATE.get()), has(ModBlocks.STEEL_GRATE.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.FRACTIONATING_TOWER_SEPARATOR.get())
+                .pattern("PGP")
+                .pattern("   ")
+                .pattern("   ")
+                .define('G', ModItems.STEEL_SHELL.get())
+                .define('P', Blocks.IRON_BARS)
+                .unlockedBy(getHasName(ModItems.STEEL_SHELL.get()), has(ModItems.STEEL_SHELL.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.STEEL_SHELL.get())
+                .pattern("PPP")
+                .pattern(" P ")
+                .pattern("   ")
+                .define('P', ModItems.STEEL_PLATE.get())
+                .unlockedBy(getHasName(ModItems.STEEL_PLATE.get()), has(ModItems.STEEL_PLATE.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GRAPHITE_ELECTRODE.get())
+                .pattern("C  ")
+                .pattern("P  ")
+                .pattern("C  ")
+                .define('P', ModItems.STEEL_BOLT.get())
+                .define('C', ModItems.PETROLEUM_COKE.get())
+                .unlockedBy(getHasName(ModItems.STEEL_BOLT.get()), has(ModItems.STEEL_BOLT.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SMALL_STEEL_GRID_FINS.get())
+                .pattern(" PP")
+                .pattern("PSS")
+                .pattern(" PP")
+                .define('P', ModItems.STEEL_PLATE.get())
+                .define('S', ModItems.STEEL.get())
+                .unlockedBy(getHasName(ModItems.STEEL_PLATE.get()), has(ModItems.STEEL_PLATE.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.VERSATILE_INTEGRATED_CIRCUIT.get())
+                .pattern("CCC")
+                .pattern("PBP")
+                .pattern("WWW")
+                .define('W', ModItems.COPPER_WIRE.get())
+                .define('B', ModItems.SILICON_NUGGET.get())
+                .define('P', ModItems.PRINTED_SILICON_WAFER.get())
+                .define('C', ModItems.INSULATOR.get())
+                .unlockedBy(getHasName(ModItems.SILICON_NUGGET.get()), has(ModItems.SILICON_NUGGET.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PETROLEUM_COKE.get(), 9)
+                .pattern("C  ")
+                .pattern("   ")
+                .pattern("   ")
+                .define('C', ModBlocks.BLOCK_OF_PETROLEUM_COKE.get())
+                .unlockedBy(getHasName(ModBlocks.BLOCK_OF_PETROLEUM_COKE.get()), has(ModBlocks.BLOCK_OF_PETROLEUM_COKE.get()))
+                .save(pWriter);
+
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.FUEL_ROD.get())
                 .pattern("G  ")
                 .pattern("F  ")
@@ -797,6 +960,23 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('G', ModItems.STEEL_SHELL.get())
                 .define('F', ModBlocks.STRUCTURAL_COLUMN.get())
                 .unlockedBy(getHasName(ModItems.STEEL_SHELL.get()), has(ModItems.STEEL_SHELL.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.CHAINLINK_FENCE.get(), 6)
+                .pattern("GFG")
+                .pattern("GFG")
+                .pattern("   ")
+                .define('G', Blocks.IRON_BARS)
+                .define('F', Items.IRON_INGOT)
+                .unlockedBy(getHasName(Blocks.IRON_BARS), has(Blocks.IRON_BARS))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.CHAINLINK_FENCE_POST.get())
+                .pattern("G  ")
+                .pattern("   ")
+                .pattern("   ")
+                .define('G', ModBlocks.CHAINLINK_FENCE.get())
+                .unlockedBy(getHasName(ModBlocks.CHAINLINK_FENCE.get()), has(ModBlocks.CHAINLINK_FENCE.get()))
                 .save(pWriter);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.NUKE_DETONATOR.get())
@@ -858,7 +1038,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern(" C ")
                 .pattern("CBC")
                 .pattern(" C ")
-                .define('C', Blocks.LIGHT_GRAY_CONCRETE)
+                .define('C', ModBlocks.CONCRETE.get())
                 .define('B', Items.CLAY)
                 .unlockedBy(getHasName(Items.CLAY), has(Items.CLAY))
                 .save(pWriter);
@@ -903,6 +1083,16 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("L L")
                 .pattern("LIL")
                 .define('L', ItemTags.STONE_BRICKS)
+                .define('I', ModBlocks.CONVEYOR_BELT.get())
+                .unlockedBy(getHasName(ModBlocks.CONVEYOR_BELT.get()), has(ModBlocks.CONVEYOR_BELT.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.CONVEYOR_EJECTOR.get())
+                .pattern("LLL")
+                .pattern("LPL")
+                .pattern("LIL")
+                .define('L', ItemTags.STONE_BRICKS)
+                .define('P', Blocks.PISTON)
                 .define('I', ModBlocks.CONVEYOR_BELT.get())
                 .unlockedBy(getHasName(ModBlocks.CONVEYOR_BELT.get()), has(ModBlocks.CONVEYOR_BELT.get()))
                 .save(pWriter);
@@ -1050,6 +1240,64 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(ModItems.STEEL.get()), has(ModItems.STEEL.get()))
                 .save(pWriter, new ResourceLocation(HBMNTM.MOD_ID, "fireclay_from_steel"));
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.LIGHTSTONE_TILE.get(), 4)
+                .pattern("CC ")
+                .pattern("CC ")
+                .pattern("   ")
+                .define('C', ModBlocks.RAW_LIGHTSTONE.get())
+                .unlockedBy(getHasName(ModBlocks.RAW_LIGHTSTONE.get()), has(ModBlocks.RAW_LIGHTSTONE.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.LIGHTSTONE_BRICKS.get(), 4)
+                .pattern("CC ")
+                .pattern("CC ")
+                .pattern("   ")
+                .define('C', ModBlocks.LIGHTSTONE_TILE.get())
+                .unlockedBy(getHasName(ModBlocks.LIGHTSTONE_TILE.get()), has(ModBlocks.LIGHTSTONE_TILE.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.LIGHTSTONE_BRICK_STAIRS.get(), 4)
+                .pattern("C  ")
+                .pattern("CC ")
+                .pattern("CCC")
+                .define('C', ModBlocks.LIGHTSTONE_BRICKS.get())
+                .unlockedBy(getHasName(ModBlocks.LIGHTSTONE_BRICKS.get()), has(ModBlocks.LIGHTSTONE_BRICKS.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.LIGHTSTONE_BRICK_SLAB.get(), 6)
+                .pattern("CCC")
+                .pattern("   ")
+                .pattern("   ")
+                .define('C', ModBlocks.LIGHTSTONE_BRICKS.get())
+                .unlockedBy(getHasName(ModBlocks.LIGHTSTONE_BRICKS.get()), has(ModBlocks.LIGHTSTONE_BRICKS.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.LIGHTSTONE_CHISELED_BRICKS.get())
+                .pattern("C  ")
+                .pattern("   ")
+                .pattern("   ")
+                .define('C', ModBlocks.LIGHTSTONE_BRICKS.get())
+                .unlockedBy(getHasName(ModBlocks.LIGHTSTONE_BRICKS.get()), has(ModBlocks.LIGHTSTONE_BRICKS.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.CHISELED_LIGHTSTONE.get())
+                .pattern("C  ")
+                .pattern("   ")
+                .pattern("   ")
+                .define('C', ModBlocks.RAW_LIGHTSTONE.get())
+                .unlockedBy(getHasName(ModBlocks.RAW_LIGHTSTONE.get()), has(ModBlocks.RAW_LIGHTSTONE.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.FIRECLAY.get(), 4)
+                .pattern("CC ")
+                .pattern("LP ")
+                .pattern("   ")
+                .define('C', Items.CLAY_BALL)
+                .define('L', ModBlocks.LIMESTONE.get())
+                .define('P', Blocks.SAND)
+                .unlockedBy(getHasName(ModBlocks.LIMESTONE.get()), has(ModBlocks.LIMESTONE.get()))
+                .save(pWriter, new ResourceLocation(HBMNTM.MOD_ID, "fireclay_from_limestone"));
+
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.FIRECLAY.get(), 4)
                 .pattern("CC ")
                 .pattern("CP ")
@@ -1067,6 +1315,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('R', ModItems.TUNGSTEN_WIRE.get())
                 .define('B', ModItems.INSULATOR.get())
                 .unlockedBy(getHasName(ModItems.TUNGSTEN_WIRE.get()), has(ModItems.TUNGSTEN_WIRE.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.RAW_LIGHTSTONE.get())
+                .pattern("SS ")
+                .pattern("SR ")
+                .pattern("   ")
+                .define('S', Blocks.STONE)
+                .define('R', ModItems.POWDERS.get("limestone").get())
+                .unlockedBy(getHasName(ModItems.POWDERS.get("limestone").get()), has(ModItems.POWDERS.get("limestone").get()))
                 .save(pWriter);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.WIRE_STAMP.get())

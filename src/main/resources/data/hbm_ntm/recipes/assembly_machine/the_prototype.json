@@ -1,0 +1,15 @@
+{
+  "type": "hbm_ntm:assembly_machine",
+  "template": {
+    "item": "hbm_ntm:assembly_template_the_prototype"
+  },
+  "ingredients": [
+    { "item": "hbm_ntm:dysfunctional_nuclear_reactor", "count": 1 },
+    { "item": "hbm_ntm:steel_shell", "count": 2 },
+    { "item": "hbm_ntm:euphemium_ingot", "count": 3 },
+    { "item": "minecraft:advanced_control_unit", "count": 8 }
+  ],
+  "output": {
+    "item": "hbm_ntm:the_prototype"
+  }
+}

@@ -281,23 +281,44 @@ public class PyrolysisOvenBlockEntity extends BlockEntity implements MenuProvide
         }
 
         if (hasEnoughEnergy(pEntity)) {
+            int progressIncrement = 1;
+            if (pEntity.itemHandler.getStackInSlot(3).is(ModItems.SPEED_UPGRADE.get())) {
+                progressIncrement += 1;
+            }
+
+            if (pEntity.itemHandler.getStackInSlot(4).is(ModItems.SPEED_UPGRADE.get())) {
+                progressIncrement += 1;
+            }
             if (pEntity.itemHandler.getStackInSlot(1).getItem() == ModItems.NUCLEAR_COMPONENTS.get("light_metal_bedrock_ore").get()) {
-                pEntity.progress++;
+                pEntity.progress += progressIncrement;
                 if (pEntity.progress >= pEntity.maxProgress) {
-                    pEntity.itemHandler.insertItem(2, new ItemStack(ModItems.NUCLEAR_COMPONENTS.get("light_metal_bedrock_ore_roasted").get()), false);
+                    pEntity.ENERGY_STORAGE.extractEnergy(50, false);
+                    pEntity.itemHandler.insertItem(2, new ItemStack(ModItems.NUCLEAR_COMPONENTS.get("light_metal_bedrock_ore_roasted.json").get()), false);
                     pEntity.itemHandler.getStackInSlot(1).shrink(1);
                     pEntity.OUTPUT_TANK.fill(new FluidStack(ModFluids.VITROIL.get(), 50), IFluidHandler.FluidAction.EXECUTE);
                     pEntity.progress = 0;
                     pEntity.syncBlock();
                 }
             } else if (pEntity.itemHandler.getStackInSlot(1).getItem() == ModItems.NUCLEAR_COMPONENTS.get("light_metal_bedrock_ore_primary_faction").get()) {
-                pEntity.progress++;
+                pEntity.progress += progressIncrement;
                 if (pEntity.progress >= pEntity.maxProgress) {
+                    pEntity.ENERGY_STORAGE.extractEnergy(50, false);
                     pEntity.itemHandler.insertItem(2, new ItemStack(ModItems.NUCLEAR_COMPONENTS.get("light_metal_bedrock_ore_roasted_primary_faction").get()), false);
                     pEntity.itemHandler.getStackInSlot(1).shrink(1);
                     pEntity.OUTPUT_TANK.fill(new FluidStack(ModFluids.VITROIL.get(), 50), IFluidHandler.FluidAction.EXECUTE);
                     pEntity.progress = 0;
                     pEntity.syncBlock();
+                }
+            } else if (pEntity.itemHandler.getStackInSlot(1).getItem() == ModItems.COAL_POWDER.get()) {
+                if (pEntity.FLUID_TANK.getFluidAmount() > 20 && pEntity.FLUID_TANK.getFluid().getFluid() == ModFluids.STEAM.get()) {
+                    pEntity.progress += progressIncrement;
+                    if (pEntity.progress >= pEntity.maxProgress) {
+                        pEntity.ENERGY_STORAGE.extractEnergy(50, false);
+                        pEntity.FLUID_TANK.drain(20, IFluidHandler.FluidAction.EXECUTE);
+                        pEntity.OUTPUT_TANK.fill(new FluidStack(ModFluids.SYNGAS.get(), 50), IFluidHandler.FluidAction.EXECUTE);
+                        pEntity.progress = 0;
+                        pEntity.syncBlock();
+                    }
                 }
             } else {
                 if (pEntity.progress != 0) {

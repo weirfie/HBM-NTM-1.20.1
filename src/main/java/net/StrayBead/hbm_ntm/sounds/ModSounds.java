@@ -22,6 +22,8 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> FREE_BIRD = registerSoundEvents("free_bird");
     public static final RegistryObject<SoundEvent> DOOR_CREAK_OPEN = registerSoundEvents("door_creak_open");
     public static final RegistryObject<SoundEvent> SIM_CARD_ACTIVATION = registerSoundEvents("sim_card_activation");
+    public static final RegistryObject<SoundEvent> VOMIT = registerSoundEvents("vomit");
+    public static final RegistryObject<SoundEvent> EXPLOSION_NUKE = registerSoundEvents("nuke_explosion");
     public static final RegistryObject<SoundEvent> CONTROL_SYSTEM_ALARM = registerSoundEvents("control_system_alarm");
 
     private static RegistryObject<SoundEvent> registerSoundEvents(String name) {

@@ -26,6 +26,36 @@ public class ModRecipes {
                 }
             });
 
+    public static final RegistryObject<RecipeSerializer<ChemicalPlantRecipe>> CHEMICAL_PLANT_SERIALIZER =
+            SERIALIZERS.register("chemical_plant", () -> ChemicalPlantRecipe.Serializer.INSTANCE);
+
+    public static final RegistryObject<RecipeType<ChemicalPlantRecipe>> CHEMICAL_PLANT_TYPE =
+            TYPES.register("chemical_plant", () -> new RecipeType<ChemicalPlantRecipe>() {
+                @Override public String toString() { return HBMNTM.MOD_ID + ":chemical_plant"; }
+            });
+
+    public static final RegistryObject<RecipeSerializer<ArcFurnaceRecipe>> ARC_FURNACE_SERIALIZER =
+            SERIALIZERS.register("arc_furnace", () -> ArcFurnaceRecipe.Serializer.INSTANCE);
+
+    public static final RegistryObject<RecipeType<ArcFurnaceRecipe>> ARC_FURNACE_TYPE =
+            TYPES.register("arc_furnace", () -> new RecipeType<ArcFurnaceRecipe>() {
+                @Override
+                public String toString() {
+                    return HBMNTM.MOD_ID + ":arc_furnace";
+                }
+            });
+
+    public static final RegistryObject<RecipeSerializer<ShredderRecipe>> SHREDDER_SERIALIZER =
+            SERIALIZERS.register("shredding", () -> ShredderRecipe.Serializer.INSTANCE);
+
+    public static final RegistryObject<RecipeType<ShredderRecipe>> SHREDDER_TYPE =
+            TYPES.register("shredding", () -> new RecipeType<ShredderRecipe>() {
+                @Override
+                public String toString() {
+                    return HBMNTM.MOD_ID + ":shredding";
+                }
+            });
+
     public static final RegistryObject<RecipeSerializer<BurnerPressRecipe>> BURNER_PRESS_SERIALIZER =
             SERIALIZERS.register("burner_press", () -> BurnerPressRecipe.Serializer.INSTANCE);
 
@@ -61,6 +91,8 @@ public class ModRecipes {
 
     public static final RegistryObject<RecipeSerializer<SolderingStationRecipe>> SOLDERING_STATION_SERIALIZER =
             SERIALIZERS.register("soldering", () -> SolderingStationRecipe.Serializer.INSTANCE);
+    public static final RegistryObject<RecipeSerializer<CentrifugeRecipe>> CENTRIFUGE_SERIALIZER =
+            SERIALIZERS.register("centrifuge", () -> CentrifugeRecipe.Serializer.INSTANCE);
 
     public static final RegistryObject<RecipeType<SolderingStationRecipe>> SOLDERING_STATION_TYPE =
             TYPES.register("soldering", () -> new RecipeType<SolderingStationRecipe>() {
@@ -79,6 +111,12 @@ public class ModRecipes {
                 public String toString() {
                     return HBMNTM.MOD_ID + ":welding";
                 }
+            });
+
+    public static final RegistryObject<RecipeType<CentrifugeRecipe>> CENTRIFUGE_TYPE =
+            TYPES.register("centrifuge", () -> new RecipeType<CentrifugeRecipe>() {
+                @Override
+                public String toString() { return HBMNTM.MOD_ID + ":centrifuge"; }
             });
 
     public static final RegistryObject<RecipeSerializer<AssemblyRecipe>> ASSEMBLY_SERIALIZER =

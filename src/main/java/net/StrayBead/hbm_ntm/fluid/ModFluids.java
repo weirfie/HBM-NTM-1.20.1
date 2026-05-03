@@ -78,6 +78,12 @@ public class ModFluids {
     public static final RegistryObject<FlowingFluid> VITROIL = register("vitroil", ModFluidTypes.VITROIL, () -> (LiquidBlock) ModBlocks.VITROIL.get());
     public static final RegistryObject<FlowingFluid> SULFURIC_ACID = register("sulfuric_acid", ModFluidTypes.SULFURIC_ACID, () -> (LiquidBlock) ModBlocks.SULFURIC_ACID.get());
     public static final RegistryObject<FlowingFluid> CHLORINE_GAS = register("chlorine_gas_liquid", ModFluidTypes.CHLORINE_GAS, () -> (LiquidBlock) ModBlocks.CHLORINE_GAS_LIQUID.get());
+    public static final RegistryObject<FlowingFluid> DEUTERIUM = register("deuterium", ModFluidTypes.DEUTERIUM, () -> (LiquidBlock) ModBlocks.DEUTERIUM.get());
+    public static final RegistryObject<FlowingFluid> LIQUID_OXYGEN = register("liquid_oxygen", ModFluidTypes.LIQUID_OXYGEN, () -> (LiquidBlock) ModBlocks.LIQUID_OXYGEN.get());
+    public static final RegistryObject<FlowingFluid> SYNGAS = register("syngas", ModFluidTypes.SYNGAS, () -> (LiquidBlock) ModBlocks.SYNGAS.get());
+    public static final RegistryObject<FlowingFluid> DESULFURIZED_CRUDE_OIL = register("desulfurized_crude_oil", ModFluidTypes.DESULFURIZED_CRUDE_OIL, () -> (LiquidBlock) ModBlocks.DESULFURIZED_CRUDE_OIL.get());
+    public static final RegistryObject<FlowingFluid> DEUTERATED_HYDROCARBON = register("deuterated_hydrocarbon", ModFluidTypes.DEUTERATED_HYDROCARBON, () -> (LiquidBlock) ModBlocks.DEUTERATED_HYDROCARBON.get());
+    public static final RegistryObject<FlowingFluid> FRACKING_SOLUTION = register("fracking_solution", ModFluidTypes.FRACKING_SOLUTION, () -> (LiquidBlock) ModBlocks.FRACKING_SOLUTION.get());
 
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class FluidsClientSideHandler {

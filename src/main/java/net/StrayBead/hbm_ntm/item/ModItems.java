@@ -61,7 +61,7 @@ public class ModItems {
             "liquid_hydrogen", "liquid_sodium", "mercury", "naphtha", "diesel", "kerosene", "petroil", "heavy_oil",
             "poisonous_mud", "cracked_oil", "desulfurized_cracked_oil", "coal_oil", "coker_oil", "hot_crude_oil", "desulfurized_hot_crude_oil",
             "vacuum_heavy_oil", "desulfurized_naphtha", "cracked_naphtha", "coker_naphtha", "reformate", "light_oil", "desulfurized_light_oil",
-            "cracked_light_oil", "vacuum_light_oil", "bitumen", "industrial_oil", "heating_oil", "heavy_heating_oil", "reclaimed_industrial_oil",
+            "cracked_light_oil", "desulfurized_crude_oil", "alumina", "vacuum_light_oil", "bitumen", "industrial_oil", "heating_oil", "heavy_heating_oil", "reclaimed_industrial_oil",
             "natural_gas", "petroleum_gas", "sour_gas", "vitroil", "ore_slop", "lpg", "syngas", "oxyhydrogen", "aromatic_hydrocarbons", "reformate_gas",
             "high_cetane_diesel", "cracked_diesel", "high_cetane_cracked_diesel", "jet_fuel", "gasoline", "leaded_gasoline",
             "coal_gasoline", "leaded_coal_gasoline", "coal_tar_creosote", "wood_oil", "biogas", "ethanol", "fish_oil", "sunflower_seed_oil",
@@ -77,7 +77,7 @@ public class ModItems {
     public static final String[] ASSEMBLY_TEMPLATE_NAMES = {
             "iron_plate", "gold_plate", "titanium_plate", "industrial_combustion_generator", "aluminum_plate", "steel_plate", "lead_plate", "copper_plate", "advanced_alloy_plate",
             "schrabidium_plate", "cmb_steel_plate", "saturnite_plate", "mixed_plate", "hazmat_cloth", "fire_proximity_cloth",
-            "activated_carbon_filter", "centrifuge_element", "breeding_reactor_core", "rtg_unit", "titanium_drill", "entanglement_kit",
+            "activated_carbon_filter", "little_boy", "vacuum_refinery", "centrifuge_element", "breeding_reactor_core", "rtg_unit", "titanium_drill", "entanglement_kit",
             "dysfunctional_nuclear_reactor", "crucible", "firebox", "heating_oven", "small_missile_assembly", "small_warhead", "medium_warhead", "large_warhead", "small_incendiary_warhead",
             "medium_incendiary_warhead", "steam_pump", "bedrock_ore_processor", "radioactive_barrel", "large_incendiary_warhead", "small_cluster_warhead", "medium_cluster_warhead",
             "large_cluster_warhead", "small_bunker_buster_warhead", "medium_bunker_buster_warhead", "large_bunker_buster_warhead",
@@ -345,7 +345,7 @@ public class ModItems {
     static {
         for (String name : RTG_PELLET_NAMES) {
             RTG_PELLETS.put(name, ITEMS.register(name + "_rtg_pellet",
-                    () -> new Item(new Item.Properties().durability(200))));
+                    () -> new RTGPelletItem(new Item.Properties().durability(200))));
         }
     }
 
@@ -447,6 +447,8 @@ public class ModItems {
     public static final RegistryObject<Item> SILICON_WAFER = ITEMS.register("silicon_wafer",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SILICON_NUGGET = ITEMS.register("silicon_nugget",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RADIUM_NUGGET = registerNuclear("radium_nugget",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SILICON_BOULE = ITEMS.register("silicon_boule",
             () -> new Item(new Item.Properties()));
@@ -1095,6 +1097,40 @@ public class ModItems {
     public static final RegistryObject<Item> LEAD_QUAD_ROD = registerNuclear("lead_quad_rod",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> NEPTUNIUM_237_QUAD_ROD = registerNuclear("neptunium_237_quad_rod",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> DESH_LASER_CRYSTAL = registerNuclear("co2_desh_laser_crystal",
+            () -> new DeshLaserCrystalItem(new Item.Properties()));
+    public static final RegistryObject<Item> BISMUTH_LASER_CRYSTAL = registerNuclear("bismuth_laser_crystal",
+            () -> new BismuthLaserCrystalItem(new Item.Properties()));
+    public static final RegistryObject<Item> CMB_SCHRABIDATE_ANTIMATTER_LASER_CRYSTAL = registerNuclear("cmb_schrabidate_antmatter_laser_crystal",
+            () -> new CMBLaserCrystalItem(new Item.Properties()));
+    public static final RegistryObject<Item> SPARK_LASER_CRYSTAL = registerNuclear("spark_laser_crystal",
+            () -> new SparkLaserCrystalItem(new Item.Properties()));
+    public static final RegistryObject<Item> DIGAMMA_LASER_CRYSTAL = registerNuclear("digamma_laser_crystal",
+            () -> new DigammaLaserCrystalItem(new Item.Properties()));
+    public static final RegistryObject<Item> GRAPHITE_ELECTRODE = registerNuclear("graphite_electrode",
+            () -> new Item(new Item.Properties().durability(150)));
+    public static final RegistryObject<Item> LANTHANIUM_ELECTRODE = registerNuclear("lanthanium_electrode",
+            () -> new Item(new Item.Properties().durability(150)));
+    public static final RegistryObject<Item> DESH_ELECTRODE = registerNuclear("desh_electrode",
+            () -> new Item(new Item.Properties().durability(150)));
+    public static final RegistryObject<Item> SATURNITE_ELECTRODE = registerNuclear("saturnite_electrode",
+            () -> new Item(new Item.Properties().durability(150)));
+    public static final RegistryObject<Item> MOLTEN_GRAPHITE_ELECTRODE = registerNuclear("molten_graphite_electrode",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> MOLTEN_LANTHANIUM_ELECTRODE = registerNuclear("molten_lanthanium_electrode",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> MOLTEN_DESH_ELECTRODE = registerNuclear("molten_desh_electrode",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> MOLTEN_SATURNATE_ELECTRODE = registerNuclear("molten_saturnate_electrode",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> CEMENT = registerNuclear("cement",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SMALL_STEEL_GRID_FINS = registerNuclear("small_steel_grid_fins",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> ADVANCED_CONTROL_UNIT = registerNuclear("advanced_control_unit",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> DYSFUNCTIONAL_NUCLEAR_REACTOR = registerNuclear("dysfunctional_nuclear_reactor",
             () -> new Item(new Item.Properties()));
 
     private static RegistryObject<Item> registerNuclear(String name, Supplier<Item> item) {

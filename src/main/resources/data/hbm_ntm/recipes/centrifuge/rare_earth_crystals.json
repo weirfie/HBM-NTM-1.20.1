@@ -1,0 +1,10 @@
+{
+  "type": "hbm_ntm:centrifuge",
+  "ingredient": { "item": "hbm_ntm:rare_earth_crystals" },
+  "results": [
+    { "item": "hbm_ntm:desh_blend", "count": 1 },
+    { "item": "hbm_ntm:desh_blend", "count": 1 },
+    { "item": "hbm_ntm:zirconium_cube", "count": 1 },
+    { "item": "hbm_ntm:zirconium_cube", "count": 1 }
+  ]
+}

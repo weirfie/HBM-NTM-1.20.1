@@ -1,8 +1,1273 @@
 {
   "variants": {
-    "facing=north": { "model": "hbm_ntm:block/tank" },
-    "facing=east":  { "model": "hbm_ntm:block/tank", "y": 90 },
-    "facing=south": { "model": "hbm_ntm:block/tank", "y": 180 },
-    "facing=west":  { "model": "hbm_ntm:block/tank", "y": 270 }
+    "facing=north,texture=none": {
+      "model": "hbm_ntm:block/none_tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:block/tank_none"
+      }
+    },
+    "facing=east,texture=none": {
+      "model": "hbm_ntm:block/none_tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:block/tank_none"
+      }
+    },
+    "facing=south,texture=none": {
+      "model": "hbm_ntm:block/none_tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:block/tank_none"
+      }
+    },
+    "facing=west,texture=none": {
+      "model": "hbm_ntm:block/none_tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:block/tank_none"
+      }
+    },
+    "facing=north,texture=alumina": {
+      "model": "hbm_ntm:block/alumina_tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_alumina"
+      }
+    },
+    "facing=east,texture=alumina": {
+      "model": "hbm_ntm:block/alumina_tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_alumina"
+      }
+    },
+    "facing=south,texture=alumina": {
+      "model": "hbm_ntm:block/alumina_tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_alumina"
+      }
+    },
+    "facing=west,texture=alumina": {
+      "model": "hbm_ntm:block/alumina_tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_alumina"
+      }
+    },
+    "facing=north,texture=aromatics": {
+      "model": "hbm_ntm:block/aromatics_tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_AROMATICS"
+      }
+    },
+    "facing=east,texture=aromatics": {
+      "model": "hbm_ntm:block/aromatics_tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_AROMATICS"
+      }
+    },
+    "facing=south,texture=aromatics": {
+      "model": "hbm_ntm:block/aromatics_tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_AROMATICS"
+      }
+    },
+    "facing=west,texture=aromatics": {
+      "model": "hbm_ntm:block/aromatics_tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_AROMATICS"
+      }
+    },
+    "facing=north,texture=balefire": {
+      "model": "hbm_ntm:block/balefire_tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_BALEFIRE"
+      }
+    },
+    "facing=east,texture=balefire": {
+      "model": "hbm_ntm:block/balefire_tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_BALEFIRE"
+      }
+    },
+    "facing=south,texture=balefire": {
+      "model": "hbm_ntm:block/balefire_tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_BALEFIRE"
+      }
+    },
+    "facing=west,texture=balefire": {
+      "model": "hbm_ntm:block/balefire_tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_BALEFIRE"
+      }
+    },
+    "facing=north,texture=bauxite_solution": {
+      "model": "hbm_ntm:block/bauxite_tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_BAUXITE_SOLUTION"
+      }
+    },
+    "facing=east,texture=bauxite_solution": {
+      "model": "hbm_ntm:block/bauxite_tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_BAUXITE_SOLUTION"
+      }
+    },
+    "facing=south,texture=bauxite_solution": {
+      "model": "hbm_ntm:block/bauxite_tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_BAUXITE_SOLUTION"
+      }
+    },
+    "facing=west,texture=bauxite_solution": {
+      "model": "hbm_ntm:block/bauxite_tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_BAUXITE_SOLUTION"
+      }
+    },
+    "facing=north,texture=biofuel": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_BIOFUEL"
+      }
+    },
+    "facing=east,texture=biofuel": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_BIOFUEL"
+      }
+    },
+    "facing=south,texture=biofuel": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_BIOFUEL"
+      }
+    },
+    "facing=west,texture=biofuel": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_BIOFUEL"
+      }
+    },
+    "facing=north,texture=biogas": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_BIOGAS"
+      }
+    },
+    "facing=east,texture=biogas": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_BIOGAS"
+      }
+    },
+    "facing=south,texture=biogas": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_BIOGAS"
+      }
+    },
+    "facing=west,texture=biogas": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_BIOGAS"
+      }
+    },
+    "facing=north,texture=bitumen": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_BITUMEN"
+      }
+    },
+    "facing=east,texture=bitumen": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_BITUMEN"
+      }
+    },
+    "facing=south,texture=bitumen": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_BITUMEN"
+      }
+    },
+    "facing=west,texture=bitumen": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_BITUMEN"
+      }
+    },
+    "facing=north,texture=blood": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_BLOOD"
+      }
+    },
+    "facing=east,texture=blood": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_BLOOD"
+      }
+    },
+    "facing=south,texture=blood": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_BLOOD"
+      }
+    },
+    "facing=west,texture=blood": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_BLOOD"
+      }
+    },
+    "facing=north,texture=blood_hot": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_BLOOD_HOT"
+      }
+    },
+    "facing=east,texture=blood_hot": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_BLOOD_HOT"
+      }
+    },
+    "facing=south,texture=blood_hot": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_BLOOD_HOT"
+      }
+    },
+    "facing=west,texture=blood_hot": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_BLOOD_HOT"
+      }
+    },
+    "facing=north,texture=carbon_dioxide": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_CARBON_DIOXIDE"
+      }
+    },
+    "facing=east,texture=carbon_dioxide": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_CARBON_DIOXIDE"
+      }
+    },
+    "facing=south,texture=carbon_dioxide": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_CARBON_DIOXIDE"
+      }
+    },
+    "facing=west,texture=carbon_dioxide": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_CARBON_DIOXIDE"
+      }
+    },
+    "facing=north,texture=chlorine": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_CHLORINE"
+      }
+    },
+    "facing=east,texture=chlorine": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_CHLORINE"
+      }
+    },
+    "facing=south,texture=chlorine": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_CHLORINE"
+      }
+    },
+    "facing=west,texture=chlorine": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_CHLORINE"
+      }
+    },
+    "facing=north,texture=cholesterol": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_CHOLESTEROL"
+      }
+    },
+    "facing=east,texture=cholesterol": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_CHOLESTEROL"
+      }
+    },
+    "facing=south,texture=cholesterol": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_CHOLESTEROL"
+      }
+    },
+    "facing=west,texture=cholesterol": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_CHOLESTEROL"
+      }
+    },
+    "facing=north,texture=coalcreosote": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_COALCREOSOTE"
+      }
+    },
+    "facing=east,texture=coalcreosote": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_COALCREOSOTE"
+      }
+    },
+    "facing=south,texture=coalcreosote": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_COALCREOSOTE"
+      }
+    },
+    "facing=west,texture=coalcreosote": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_COALCREOSOTE"
+      }
+    },
+    "facing=north,texture=coalgas": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_COALGAS"
+      }
+    },
+    "facing=east,texture=coalgas": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_COALGAS"
+      }
+    },
+    "facing=south,texture=coalgas": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_COALGAS"
+      }
+    },
+    "facing=west,texture=coalgas": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_COALGAS"
+      }
+    },
+    "facing=north,texture=coalgas_leaded": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_COALGAS_LEADED"
+      }
+    },
+    "facing=east,texture=coalgas_leaded": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_COALGAS_LEADED"
+      }
+    },
+    "facing=south,texture=coalgas_leaded": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_COALGAS_LEADED"
+      }
+    },
+    "facing=west,texture=coalgas_leaded": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_COALGAS_LEADED"
+      }
+    },
+    "facing=north,texture=coaloil": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_COALOIL"
+      }
+    },
+    "facing=east,texture=coaloil": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_COALOIL"
+      }
+    },
+    "facing=south,texture=coaloil": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_COALOIL"
+      }
+    },
+    "facing=west,texture=coaloil": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_COALOIL"
+      }
+    },
+    "facing=north,texture=colloid": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_COLLOID"
+      }
+    },
+    "facing=east,texture=colloid": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_COLLOID"
+      }
+    },
+    "facing=south,texture=colloid": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_COLLOID"
+      }
+    },
+    "facing=west,texture=colloid": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_COLLOID"
+      }
+    },
+    "facing=north,texture=concrete": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_CONCRETE"
+      }
+    },
+    "facing=east,texture=concrete": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_CONCRETE"
+      }
+    },
+    "facing=south,texture=concrete": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_CONCRETE"
+      }
+    },
+    "facing=west,texture=concrete": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_CONCRETE"
+      }
+    },
+    "facing=north,texture=coolant": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_COOLANT"
+      }
+    },
+    "facing=east,texture=coolant": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_COOLANT"
+      }
+    },
+    "facing=south,texture=coolant": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_COOLANT"
+      }
+    },
+    "facing=west,texture=coolant": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_COOLANT"
+      }
+    },
+    "facing=north,texture=coolant_hot": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_COOLANT_HOT"
+      }
+    },
+    "facing=east,texture=coolant_hot": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_COOLANT_HOT"
+      }
+    },
+    "facing=south,texture=coolant_hot": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_COOLANT_HOT"
+      }
+    },
+    "facing=west,texture=coolant_hot": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_COOLANT_HOT"
+      }
+    },
+    "facing=north,texture=crackoil": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_CRACKOIL"
+      }
+    },
+    "facing=east,texture=crackoil": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_CRACKOIL"
+      }
+    },
+    "facing=south,texture=crackoil": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_CRACKOIL"
+      }
+    },
+    "facing=west,texture=crackoil": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_CRACKOIL"
+      }
+    },
+    "facing=north,texture=crackoil_ds": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_CRACKOIL_DS"
+      }
+    },
+    "facing=east,texture=crackoil_ds": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_CRACKOIL_DS"
+      }
+    },
+    "facing=south,texture=crackoil_ds": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_CRACKOIL_DS"
+      }
+    },
+    "facing=west,texture=crackoil_ds": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_CRACKOIL_DS"
+      }
+    },
+    "facing=north,texture=cryogel": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_CRYOGEL"
+      }
+    },
+    "facing=east,texture=cryogel": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_CRYOGEL"
+      }
+    },
+    "facing=south,texture=cryogel": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_CRYOGEL"
+      }
+    },
+    "facing=west,texture=cryogel": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_CRYOGEL"
+      }
+    },
+    "facing=north,texture=danger": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_DANGER"
+      }
+    },
+    "facing=east,texture=danger": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_DANGER"
+      }
+    },
+    "facing=south,texture=danger": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_DANGER"
+      }
+    },
+    "facing=west,texture=danger": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_DANGER"
+      }
+    },
+    "facing=north,texture=deuterium": {
+      "model": "hbm_ntm:block/deuterium_tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_DEUTERIUM"
+      }
+    },
+    "facing=east,texture=deuterium": {
+      "model": "hbm_ntm:block/deuterium_tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_DEUTERIUM"
+      }
+    },
+    "facing=south,texture=deuterium": {
+      "model": "hbm_ntm:block/deuterium_tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_DEUTERIUM"
+      }
+    },
+    "facing=west,texture=deuterium": {
+      "model": "hbm_ntm:block/deuterium_tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_DEUTERIUM"
+      }
+    },
+    "facing=north,texture=reformate_gas": {
+      "model": "hbm_ntm:block/reformate_gas_tank"
+    },
+    "facing=east,texture=reformate_gas": {
+      "model": "hbm_ntm:block/reformate_gas_tank",
+      "y": 90
+    },
+    "facing=south,texture=reformate_gas": {
+      "model": "hbm_ntm:block/reformate_gas_tank",
+      "y": 180
+    },
+    "facing=west,texture=reformate_gas": {
+      "model": "hbm_ntm:block/reformate_gas_tank",
+      "y": 270
+    },
+    "facing=north,texture=syngas": {
+      "model": "hbm_ntm:block/syngas_tank"
+    },
+    "facing=east,texture=syngas": {
+      "model": "hbm_ntm:block/syngas_tank",
+      "y": 90
+    },
+    "facing=south,texture=syngas": {
+      "model": "hbm_ntm:block/syngas_tank",
+      "y": 180
+    },
+    "facing=west,texture=syngas": {
+      "model": "hbm_ntm:block/syngas_tank",
+      "y": 270
+    },
+    "facing=north,texture=liquid_oxygen": {
+      "model": "hbm_ntm:block/liquid_oxygen_tank"
+    },
+    "facing=east,texture=liquid_oxygen": {
+      "model": "hbm_ntm:block/liquid_oxygen_tank",
+      "y": 90
+    },
+    "facing=south,texture=liquid_oxygen": {
+      "model": "hbm_ntm:block/liquid_oxygen_tank",
+      "y": 180
+    },
+    "facing=west,texture=liquid_oxygen": {
+      "model": "hbm_ntm:block/liquid_oxygen_tank",
+      "y": 270
+    },
+    "facing=north,texture=water": {
+      "model": "hbm_ntm:block/tank_water"
+    },
+    "facing=east,texture=water": {
+      "model": "hbm_ntm:block/tank_water",
+      "y": 90
+    },
+    "facing=south,texture=water": {
+      "model": "hbm_ntm:block/tank_water",
+      "y": 180
+    },
+    "facing=west,texture=water": {
+      "model": "hbm_ntm:block/tank_water",
+      "y": 270
+    },
+    "facing=north,texture=heavy_oil": {
+      "model": "hbm_ntm:block/tank_heavy_oil"
+    },
+    "facing=east,texture=heavy_oil": {
+      "model": "hbm_ntm:block/tank_heavy_oil",
+      "y": 90
+    },
+    "facing=south,texture=heavy_oil": {
+      "model": "hbm_ntm:block/tank_heavy_oil",
+      "y": 180
+    },
+    "facing=west,texture=heavy_oil": {
+      "model": "hbm_ntm:block/tank_heavy_oil",
+      "y": 270
+    },
+    "facing=north,texture=light_oil": {
+      "model": "hbm_ntm:block/tank_light_oil"
+    },
+    "facing=east,texture=light_oil": {
+      "model": "hbm_ntm:block/tank_light_oil",
+      "y": 90
+    },
+    "facing=south,texture=light_oil": {
+      "model": "hbm_ntm:block/tank_light_oil",
+      "y": 180
+    },
+    "facing=west,texture=light_oil": {
+      "model": "hbm_ntm:block/tank_light_oil",
+      "y": 270
+    },
+    "facing=north,texture=sulfuric_acid": {
+      "model": "hbm_ntm:block/tank_sulfuric_acid"
+    },
+    "facing=east,texture=sulfuric_acid": {
+      "model": "hbm_ntm:block/tank_sulfuric_acid",
+      "y": 90
+    },
+    "facing=south,texture=sulfuric_acid": {
+      "model": "hbm_ntm:block/tank_sulfuric_acid",
+      "y": 180
+    },
+    "facing=west,texture=sulfuric_acid": {
+      "model": "hbm_ntm:block/tank_sulfuric_acid",
+      "y": 270
+    },
+    "facing=north,texture=liquid_hydrogen": {
+      "model": "hbm_ntm:block/tank_liquid_hydrogen"
+    },
+    "facing=east,texture=liquid_hydrogen": {
+      "model": "hbm_ntm:block/tank_liquid_hydrogen",
+      "y": 90
+    },
+    "facing=south,texture=liquid_hydrogen": {
+      "model": "hbm_ntm:block/tank_liquid_hydrogen",
+      "y": 180
+    },
+    "facing=west,texture=liquid_hydrogen": {
+      "model": "hbm_ntm:block/tank_liquid_hydrogen",
+      "y": 270
+    },
+    "facing=north,texture=crude_oil": {
+      "model": "hbm_ntm:block/tank_crude_oil"
+    },
+    "facing=east,texture=crude_oil": {
+      "model": "hbm_ntm:block/tank_crude_oil",
+      "y": 90
+    },
+    "facing=south,texture=crude_oil": {
+      "model": "hbm_ntm:block/tank_crude_oil",
+      "y": 180
+    },
+    "facing=west,texture=crude_oil": {
+      "model": "hbm_ntm:block/tank_crude_oil",
+      "y": 270
+    },
+    "facing=north,texture=dhc": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_DHC"
+      }
+    },
+    "facing=east,texture=dhc": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_DHC"
+      }
+    },
+    "facing=south,texture=dhc": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_DHC"
+      }
+    },
+    "facing=west,texture=dhc": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_DHC"
+      }
+    },
+    "facing=north,texture=diesel": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_DIESEL"
+      }
+    },
+    "facing=east,texture=diesel": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_DIESEL"
+      }
+    },
+    "facing=south,texture=diesel": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_DIESEL"
+      }
+    },
+    "facing=west,texture=diesel": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_DIESEL"
+      }
+    },
+    "facing=north,texture=diesel_crack": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_DIESEL_CRACK"
+      }
+    },
+    "facing=east,texture=diesel_crack": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_DIESEL_CRACK"
+      }
+    },
+    "facing=south,texture=diesel_crack": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_DIESEL_CRACK"
+      }
+    },
+    "facing=west,texture=diesel_crack": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_DIESEL_CRACK"
+      }
+    },
+    "facing=north,texture=diesel_crack_reform": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_DIESEL_CRACK_REFORM"
+      }
+    },
+    "facing=east,texture=diesel_crack_reform": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_DIESEL_CRACK_REFORM"
+      }
+    },
+    "facing=south,texture=diesel_crack_reform": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_DIESEL_CRACK_REFORM"
+      }
+    },
+    "facing=west,texture=diesel_crack_reform": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_DIESEL_CRACK_REFORM"
+      }
+    },
+    "facing=north,texture=enderjuice": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_ENDERJUICE"
+      }
+    },
+    "facing=east,texture=enderjuice": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_ENDERJUICE"
+      }
+    },
+    "facing=south,texture=enderjuice": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_ENDERJUICE"
+      }
+    },
+    "facing=west,texture=enderjuice": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_ENDERJUICE"
+      }
+    },
+    "facing=north,texture=ethanol": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_ETHANOL"
+      }
+    },
+    "facing=east,texture=ethanol": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_ETHANOL"
+      }
+    },
+    "facing=south,texture=ethanol": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_ETHANOL"
+      }
+    },
+    "facing=west,texture=ethanol": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_ETHANOL"
+      }
+    },
+    "facing=north,texture=gasoline": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_GASOLINE"
+      }
+    },
+    "facing=east,texture=gasoline": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_GASOLINE"
+      }
+    },
+    "facing=south,texture=gasoline": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_GASOLINE"
+      }
+    },
+    "facing=west,texture=gasoline": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_GASOLINE"
+      }
+    },
+    "facing=north,texture=heatingoil": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_HEATINGOIL"
+      }
+    },
+    "facing=east,texture=heatingoil": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_HEATINGOIL"
+      }
+    },
+    "facing=south,texture=heatingoil": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_HEATINGOIL"
+      }
+    },
+    "facing=west,texture=heatingoil": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_HEATINGOIL"
+      }
+    },
+    "facing=north,texture=heatingoil_vacuum": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_HEATINGOIL_VACUUM"
+      }
+    },
+    "facing=east,texture=heatingoil_vacuum": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_HEATINGOIL_VACUUM"
+      }
+    },
+    "facing=south,texture=heatingoil_vacuum": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_HEATINGOIL_VACUUM"
+      }
+    },
+    "facing=west,texture=heatingoil_vacuum": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_HEATINGOIL_VACUUM"
+      }
+    },
+    "facing=north,texture=heavyoil": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_HEAVYOIL"
+      }
+    },
+    "facing=east,texture=heavyoil": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_HEAVYOIL"
+      }
+    },
+    "facing=south,texture=heavyoil": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_HEAVYOIL"
+      }
+    },
+    "facing=west,texture=heavyoil": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_HEAVYOIL"
+      }
+    },
+    "facing=north,texture=heavywater_hot": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_HEAVYWATER_HOT"
+      }
+    },
+    "facing=east,texture=heavywater_hot": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_HEAVYWATER_HOT"
+      }
+    },
+    "facing=south,texture=heavywater_hot": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_HEAVYWATER_HOT"
+      }
+    },
+    "facing=west,texture=heavywater_hot": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_HEAVYWATER_HOT"
+      }
+    },
+    "facing=north,texture=hotoil": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_HOTOIL"
+      }
+    },
+    "facing=east,texture=hotoil": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_HOTOIL"
+      }
+    },
+    "facing=south,texture=hotoil": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_HOTOIL"
+      }
+    },
+    "facing=west,texture=hotoil": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_HOTOIL"
+      }
+    },
+    "facing=north,texture=kerosene": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_KEROSENE"
+      }
+    },
+    "facing=east,texture=kerosene": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_KEROSENE"
+      }
+    },
+    "facing=south,texture=kerosene": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_KEROSENE"
+      }
+    },
+    "facing=west,texture=kerosene": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_KEROSENE"
+      }
+    },
+    "facing=north,texture=lava": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_LAVA"
+      }
+    },
+    "facing=east,texture=lava": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_LAVA"
+      }
+    },
+    "facing=south,texture=lava": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_LAVA"
+      }
+    },
+    "facing=west,texture=lava": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_LAVA"
+      }
+    },
+    "facing=north,texture=lightoil": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_LIGHTOIL"
+      }
+    },
+    "facing=east,texture=lightoil": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_LIGHTOIL"
+      }
+    },
+    "facing=south,texture=lightoil": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_LIGHTOIL"
+      }
+    },
+    "facing=west,texture=lightoil": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_LIGHTOIL"
+      }
+    },
+    "facing=north,texture=naphtha": {
+      "model": "hbm_ntm:block/tank",
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_NAPHTHA"
+      }
+    },
+    "facing=east,texture=naphtha": {
+      "model": "hbm_ntm:block/tank",
+      "y": 90,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_NAPHTHA"
+      }
+    },
+    "facing=south,texture=naphtha": {
+      "model": "hbm_ntm:block/tank",
+      "y": 180,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_NAPHTHA"
+      }
+    },
+    "facing=west,texture=naphtha": {
+      "model": "hbm_ntm:block/tank",
+      "y": 270,
+      "textures": {
+        "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:tanks/tank_NAPHTHA"
+      }
+    }
   }
 }

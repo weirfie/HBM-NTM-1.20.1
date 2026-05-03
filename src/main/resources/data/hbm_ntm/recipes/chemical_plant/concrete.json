@@ -1,0 +1,8 @@
+{
+  "type": "hbm_ntm:chemical_plant",
+  "fluid_inputs": [ { "fluid": "minecraft:water", "amount": 100 } ],
+  "ingredients": [ { "item": "minecraft:sand" }, { "item": "minecraft:gravel" } ],
+  "output": { "item": "hbm_ntm:concrete", "count": 12 },
+  "time": 50,
+  "energy": 20
+}

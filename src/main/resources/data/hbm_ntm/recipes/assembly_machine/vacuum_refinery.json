@@ -1,0 +1,18 @@
+{
+  "type": "hbm_ntm:assembly_machine",
+  "template": {
+    "item": "hbm_ntm:assembly_template_vacuum_refinery"
+  },
+  "ingredients": [
+    { "item": "hbm_ntm:cast_steel_plate", "count": 16 },
+    { "item": "hbm_ntm:copper_plate", "count": 16 },
+    { "item": "hbm_ntm:technetium_steel_ingot", "count": 4 },
+    { "item": "hbm_ntm:steel_sphere", "count": 1 },
+    { "item": "hbm_ntm:steel_pipe", "count": 12 },
+    { "item": "hbm_ntm:motor", "count": 3 },
+    { "item": "hbm_ntm:versatile_integrated_circuit", "count": 4 }
+  ],
+  "output": {
+    "item": "hbm_ntm:vacuum_refinery"
+  }
+}

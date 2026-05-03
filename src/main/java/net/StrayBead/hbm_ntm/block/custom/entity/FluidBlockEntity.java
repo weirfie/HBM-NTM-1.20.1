@@ -64,6 +64,10 @@ public class FluidBlockEntity extends RandomizableContainerBlockEntity implement
         this.setChanged();
     }
 
+    public String getFluidFilter() {
+        return this.allowedFluid == null ? "" : this.allowedFluid;
+    }
+
     public void setFilterAndFluid(int color, String fluidName) {
         this.setFilterColor(color);
         this.allowedFluid = fluidName;

@@ -15,9 +15,11 @@ import net.StrayBead.hbm_ntm.recipe.ModRecipes;
 import net.StrayBead.hbm_ntm.screen.BoilerScreen;
 import net.StrayBead.hbm_ntm.screen.NTMModMenus;
 import net.StrayBead.hbm_ntm.sounds.ModSounds;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -132,6 +134,16 @@ public class HBMNTM
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             MenuScreens.register(NTMModMenus.BOILER_MENU.get(), BoilerScreen::new);
+            verifyModelExists("hbm_ntm", "block/steel_deco_pipe.json");
+        }
+    }
+
+    public static void verifyModelExists(String modId, String modelPath) {
+        ResourceManager manager = Minecraft.getInstance().getResourceManager();
+        ResourceLocation location = new ResourceLocation(modId, "models/" + modelPath);
+
+        if (manager.getResource(location).isEmpty()) {
+            throw new RuntimeException("CRITICAL: Missing model file at: " + location.toString());
         }
     }
 }

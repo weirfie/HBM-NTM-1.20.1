@@ -22,6 +22,9 @@ public class NTMModScreens {
             MenuScreens.register(NTMModMenus.LEAD_ANVIL_MENU.get(), LeadAnvilScreen::new);
             MenuScreens.register(NTMModMenus.CRUCIBLE_MENU.get(), CrucibleScreen::new);
             MenuScreens.register(NTMModMenus.LITTLE_BOY_MENU.get(), LittleBoyScreen::new);
+            MenuScreens.register(NTMModMenus.TANK_GUI.get(), TankGuiScreen::new);
+            MenuScreens.register(NTMModMenus.HYDRAULIC_FRACKING_TOWER.get(), HydraulicFrackingTowerScreen::new);
+            MenuScreens.register(NTMModMenus.HYDROTREATER_MENU.get(), HydrotreaterScreen::new);
             MenuScreens.register(NTMModMenus.PYROLYSIS_OVEN_ENTITY.get(), PyrolysisOvenScreen::new);
             MenuScreens.register(NTMModMenus.BEDROCK_ORE_PROCESSOR_MENU.get(), BedrockOreProcessorScreen::new);
             MenuScreens.register(NTMModMenus.ARC_WELDER_MENU.get(), ArcWelderScreen::new);
@@ -36,13 +39,16 @@ public class NTMModScreens {
             MenuScreens.register(NTMModMenus.SOLDERING_STATION_MENU.get(), SolderingStationScreen::new);
             MenuScreens.register(NTMModMenus.SPARK_ENERGY_BATTERY_GUI.get(), SparkEnergyBatteryScreen::new);
             MenuScreens.register(NTMModMenus.SILEX_GUI.get(), SilexGuiScreen::new);
+            MenuScreens.register(NTMModMenus.ELECTRIC_ARC_FURNACE_MENU.get(), ElectricArcFurnaceScreen::new);
             MenuScreens.register(NTMModMenus.BIG_ASS_TANK_GUI.get(), BigAssTankGuiScreen::new);
             MenuScreens.register(NTMModMenus.PWR_CONTROLLER_GUI.get(), PWRControllerGuiScreen::new);
             MenuScreens.register(NTMModMenus.ZIRNOX_NUCLEAR_REACTOR_GUI.get(), ZirnoxReactorGuiScreen::new);
             MenuScreens.register(NTMModMenus.BATTERY_SOCKET_MENU.get(), BatterySocketScreen::new);
             MenuScreens.register(NTMModMenus.COMPRESSOR_MENU.get(), CompressorScreen::new);
             MenuScreens.register(NTMModMenus.OIL_DERRICK_MENU.get(), OilDerrickScreen::new);
+            MenuScreens.register(NTMModMenus.FEL_MENU.get(), FelScreen::new);
             MenuScreens.register(NTMModMenus.OIL_REFINERY_MENU.get(), OilRefineryScreen::new);
+            MenuScreens.register(NTMModMenus.RADIOLYSIS_CHAMBER_MENU.get(), RadiolysisChamberScreen::new);
             MenuScreens.register(NTMModMenus.ASSEMBLY_MACHINE_MENU.get(), AssemblyMachineScreen::new);
             MenuScreens.register(NTMModMenus.DESIGNATOR_GUI.get(), DesignatorGuiScreen::new);
             MenuScreens.register(NTMModMenus.CATALYTIC_REFORMER_MENU.get(), CatalyticReformerScreen::new);

@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/radiolysis_chamber.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/radiolysis_chamber",
+    "m_bcbcd4d0-b228-b142-1606-4b7a75b05383": "hbm_ntm:block/radiolysis_chamber",
+    "Material": "hbm_ntm:block/radiolysis_chamber",
+    "none": "hbm_ntm:block/radiolysis_chamber"
+  }
+}

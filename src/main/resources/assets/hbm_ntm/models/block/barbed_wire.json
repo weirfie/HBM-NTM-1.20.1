@@ -1,0 +1,12 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/barbed_wire.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/barbed_wire",
+    "m_172f2111-352e-d713-712b-27ece0a6fa84": "hbm_ntm:block/barbed_wire",
+    "Material": "hbm_ntm:block/barbed_wire",
+    "none": "hbm_ntm:block/barbed_wire"
+  },
+  "render_type": "cutout"
+}

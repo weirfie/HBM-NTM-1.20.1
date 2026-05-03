@@ -30,6 +30,7 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_HEMATITE_KEY = registerKey("hematite");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_ALUMINUM_ORE_KEY = registerKey("aluminum_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_LIGNITE_ORE_KEY = registerKey("lignite_ore");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_LIMESTONE_ORE_KEY = registerKey("limestone_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_OIL_RESERVOIR_KEY = registerKey("oil_reservoir");
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
@@ -39,6 +40,10 @@ public class ModConfiguredFeatures {
         List<OreConfiguration.TargetBlockState> uraniumTarget = List.of(
                 OreConfiguration.target(stoneReplaceable, ModBlocks.URANIUM_ORE.get().defaultBlockState()),
                 OreConfiguration.target(deepslateReplaceables, ModBlocks.URANIUM_ORE.get().defaultBlockState()));
+
+        List<OreConfiguration.TargetBlockState> limestoneTarget = List.of(
+                OreConfiguration.target(stoneReplaceable, ModBlocks.LIMESTONE.get().defaultBlockState()),
+                OreConfiguration.target(deepslateReplaceables, ModBlocks.LIMESTONE.get().defaultBlockState()));
 
         List<OreConfiguration.TargetBlockState> oilTarget = List.of(
                 OreConfiguration.target(stoneReplaceable, ModBlocks.OIL_RESERVOIR.get().defaultBlockState()),
@@ -101,6 +106,7 @@ public class ModConfiguredFeatures {
         register(context, OVERWORLD_HEMATITE_KEY, Feature.ORE, new OreConfiguration(hematiteTarget, 25));
         register(context, OVERWORLD_LIGNITE_ORE_KEY, Feature.ORE, new OreConfiguration(ligniteTarget, 24));
         register(context, OVERWORLD_ALUMINUM_ORE_KEY, Feature.ORE, new OreConfiguration(aluminumTarget, 9));
+        register(context, OVERWORLD_LIMESTONE_ORE_KEY, Feature.ORE, new OreConfiguration(limestoneTarget, 8));
         register(context, OVERWORLD_RARE_EARTH_ORE_KEY, Feature.ORE, new OreConfiguration(rareEarthTarget, 8));
         register(context, OVERWORLD_OIL_RESERVOIR_KEY, Feature.ORE, new OreConfiguration(oilTarget, 4));
     }

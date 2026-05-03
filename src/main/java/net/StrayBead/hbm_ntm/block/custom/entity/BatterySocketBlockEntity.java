@@ -33,6 +33,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class BatterySocketBlockEntity extends BlockEntity implements MenuProvider {
+    public boolean IS_OUTPUTTING = false;
     private final ItemStackHandler itemHandler = new ItemStackHandler(1) {
         @Override
         protected void onContentsChanged(int slot) {
@@ -51,19 +52,30 @@ public class BatterySocketBlockEntity extends BlockEntity implements MenuProvide
         super(ModBlockEntites.BATTERY_SOCKET.get(), pos, state);
         this.data = new ContainerData() {
             @Override
-            public int get(int i) {
-                return 0;
+            public int get(int index) {
+                return switch (index) {
+                    case 0 -> ENERGY_STORAGE.getEnergyStored();
+                    case 1 -> ENERGY_STORAGE.getMaxEnergyStored();
+                    case 2 -> IS_OUTPUTTING ? 1 : 0;
+                    default -> 0;
+                };
             }
 
             @Override
-            public void set(int i, int i1) {
+            public void set(int index, int value) {
+                switch (index) {
+                    case 0 -> ENERGY_STORAGE.setEnergy(value);
+                    case 2 -> IS_OUTPUTTING = value != 0;
+                }
             }
 
             @Override
-            public int getCount() {
-                return 0;
-            }
+            public int getCount() { return 3; }
         };
+    }
+
+    public boolean isOutputting() {
+        return this.IS_OUTPUTTING;
     }
 
     private final ModEnergyStorage ENERGY_STORAGE = new ModEnergyStorage(200000, 50000) {
@@ -119,6 +131,7 @@ public class BatterySocketBlockEntity extends BlockEntity implements MenuProvide
     protected void saveAdditional(CompoundTag nbt) {
         nbt.put("inventory", itemHandler.serializeNBT());
         nbt.putInt("battery_socket.energy", ENERGY_STORAGE.getEnergyStored());
+        nbt.putBoolean("is_outputting", IS_OUTPUTTING);
 
         super.saveAdditional(nbt);
     }
@@ -128,6 +141,7 @@ public class BatterySocketBlockEntity extends BlockEntity implements MenuProvide
         super.load(nbt);
         itemHandler.deserializeNBT(nbt.getCompound("inventory"));
         ENERGY_STORAGE.setEnergy(nbt.getInt("battery_socket.energy"));
+        IS_OUTPUTTING = nbt.getBoolean("is_outputting");
     }
 
     public void drops() {
@@ -142,6 +156,23 @@ public class BatterySocketBlockEntity extends BlockEntity implements MenuProvide
     public static void tick(Level level, BlockPos pos, BlockState state, BatterySocketBlockEntity pEntity) {
         if (level.isClientSide()) {
             return;
+        }
+
+        for (Direction dir : Direction.values()) {
+            BlockPos neighborPos = pos.relative(dir);
+            BlockEntity neighborBE = level.getBlockEntity(neighborPos);
+
+            if (neighborBE instanceof CopperCableBlockEntity cable) {
+                if (pEntity.IS_OUTPUTTING) {
+                    int toSend = pEntity.ENERGY_STORAGE.extractEnergy(200, true);
+                    int accepted = cable.energyStorage.receiveEnergy(toSend, false);
+                    pEntity.ENERGY_STORAGE.extractEnergy(accepted, false);
+                } else {
+                    int toPull = cable.energyStorage.extractEnergy(200, true);
+                    int accepted = pEntity.ENERGY_STORAGE.receiveEnergy(toPull, false);
+                    cable.energyStorage.extractEnergy(accepted, false);
+                }
+            }
         }
 
         if (hasBatteryInFirstSlot(pEntity)) {

@@ -26,6 +26,7 @@ public class ModBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_HEMATITE = registerKey("add_hematite");
     public static final ResourceKey<BiomeModifier> ADD_ALUMINUM_ORE = registerKey("add_aluminum_ore");
     public static final ResourceKey<BiomeModifier> ADD_LIGNITE_ORE = registerKey("add_lignite_ore");
+    public static final ResourceKey<BiomeModifier> ADD_LIMESTONE_ORE = registerKey("add_limestone_ore");
     public static final ResourceKey<BiomeModifier> ADD_OIL_RESERVOIR = registerKey("add_oil_reservoir");
 
 
@@ -51,6 +52,11 @@ public class ModBiomeModifiers {
         context.register(ADD_LIGNITE_ORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.LIGNITE_ORE_PLACED_KEY)),
+                GenerationStep.Decoration.UNDERGROUND_ORES));
+
+        context.register(ADD_LIMESTONE_ORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.LIMESTONE_ORE_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES));
 
         context.register(ADD_OIL_RESERVOIR, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(

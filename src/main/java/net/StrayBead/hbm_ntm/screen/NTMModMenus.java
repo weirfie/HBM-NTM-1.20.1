@@ -35,6 +35,7 @@ public class NTMModMenus {
     public static final RegistryObject<MenuType<SolderingStationMenu>> SOLDERING_STATION_MENU = registerMenuType(SolderingStationMenu::new, "soldering_station_menu");
     public static final RegistryObject<MenuType<LeadAnvilMenu>> LEAD_ANVIL_MENU = registerMenuType(LeadAnvilMenu::new, "lead_anvil_menu");
     public static final RegistryObject<MenuType<FatManMenu>> FAT_MAN_MENU = registerMenuType(FatManMenu::new, "fat_man_menu");
+    public static final RegistryObject<MenuType<HydraulicFrackingTowerMenu>> HYDRAULIC_FRACKING_TOWER = registerMenuType(HydraulicFrackingTowerMenu::new, "hydraulic_fracking_tower");
     public static final RegistryObject<MenuType<PyrolysisOvenMenu>> PYROLYSIS_OVEN_ENTITY = registerMenuType(PyrolysisOvenMenu::new, "pyrolysis_oven");
     public static final RegistryObject<MenuType<SiloLaunchPadMenu>> SILO_LAUNCH_PAD_MENU = registerMenuType(SiloLaunchPadMenu::new, "silo_launch_pad_menu");
     public static final RegistryObject<MenuType<WoodBurningGeneratorMenu>> WOOD_BURNING_GENERATOR_MENU = registerMenuType(WoodBurningGeneratorMenu::new, "wood_burning_generator_menu");
@@ -45,6 +46,11 @@ public class NTMModMenus {
     public static final RegistryObject<MenuType<ElectrolysisMachineMenu>> ELECTROLYSIS_MACHINE_MENU = registerMenuType(ElectrolysisMachineMenu::new, "electrolysis_machine_menu");
     public static final RegistryObject<MenuType<CokerUnitMenu>> COKER_UNIT_MENU = registerMenuType(CokerUnitMenu::new, "coker_unit_menu");
     public static final RegistryObject<MenuType<IronCrateMenu>> IRON_CRATE_MENU = registerMenuType(IronCrateMenu::new, "iron_crate_menu");
+    public static final RegistryObject<MenuType<TankGuiMenu>> TANK_GUI = registerMenuType(TankGuiMenu::new, "tank_menu");
+    public static final RegistryObject<MenuType<FelMenu>> FEL_MENU = registerMenuType(FelMenu::new, "fel_menu");
+    public static final RegistryObject<MenuType<ElectricArcFurnaceMenu>> ELECTRIC_ARC_FURNACE_MENU = registerMenuType(ElectricArcFurnaceMenu::new, "electric_arc_furnace_menu");
+    public static final RegistryObject<MenuType<RadiolysisChamberMenu>> RADIOLYSIS_CHAMBER_MENU = registerMenuType(RadiolysisChamberMenu::new, "radiolysis_chamber_menu");
+    public static final RegistryObject<MenuType<HydrotreaterMenu>> HYDROTREATER_MENU = registerMenuType(HydrotreaterMenu::new, "hydrotreater_menu");
     public static final RegistryObject<MenuType<BedrockOreProcessorMenu>> BEDROCK_ORE_PROCESSOR_MENU = registerMenuType(BedrockOreProcessorMenu::new, "bedrock_ore_processor_menu");
     public static final RegistryObject<MenuType<SteelBarrelGuiMenu>> STEEL_BARREL_GUI = registerMenuType(SteelBarrelGuiMenu::new, "steel_barrel_menu");
     public static final RegistryObject<MenuType<MeltdownBlastFurnaceMenu>> BLAST_FURNACE_MENU = registerMenuType(MeltdownBlastFurnaceMenu::new, "blast_furnace_menu");

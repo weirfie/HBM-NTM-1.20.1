@@ -1,0 +1,11 @@
+{
+  "loader": "forge:obj",
+  "model": "hbm_ntm:models/block/industrial_smokestack.obj",
+  "flip_v": true,
+  "textures": {
+    "particle": "hbm_ntm:block/industrial_smokestack",
+    "m_d5e252ff-763d-8f32-28a1-4733fd8e3a7f": "hbm_ntm:block/industrial_smokestack",
+    "Material": "hbm_ntm:block/industrial_smokestack",
+    "none": "hbm_ntm:block/industrial_smokestack"
+  }
+}

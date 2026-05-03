@@ -1,11 +1,12 @@
 {
   "loader": "forge:obj",
-  "model": "hbm_ntm:models/block/tank.obj",
+  "model": "hbm_ntm:models/block/none_tank.obj",
   "flip_v": true,
   "textures": {
-    "particle": "hbm_ntm:block/tank",
-    "m_ea8456ee-13e7-e105-8066-36ff4ecbfb61": "hbm_ntm:block/tank",
-    "Material": "hbm_ntm:block/tank",
-    "none": "hbm_ntm:block/tank"
+    "particle": "hbm_ntm:block/tank_none",
+    "m_76400c16-e52d-bb56-cdb9-c8ce809e0bc1": "hbm_ntm:block/tank_outter",
+    "m_3ad90a8a-8752-0d1f-2a10-4a7a31a215a2": "hbm_ntm:block/tank_none",
+    "Material": "hbm_ntm:block/tank_none",
+    "none": "hbm_ntm:block/tank_none"
   }
 }

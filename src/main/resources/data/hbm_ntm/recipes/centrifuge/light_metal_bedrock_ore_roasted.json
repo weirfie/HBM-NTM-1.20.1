@@ -1,0 +1,8 @@
+{
+  "type": "hbm_ntm:centrifuge",
+  "ingredient": { "item": "hbm_ntm:light_metal_bedrock_ore_roasted" },
+  "results": [
+    { "item": "hbm_ntm:light_metal_bedrock_ore_primary_faction", "count": 1 },
+    { "item": "minecraft:gravel", "count": 1 }
+  ]
+}

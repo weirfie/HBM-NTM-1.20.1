@@ -1,0 +1,10 @@
+{
+  "type": "hbm_ntm:shredding",
+  "ingredient": {
+    "item": "minecraft:anvil"
+  },
+  "output": {
+    "item": "hbm_ntm:iron_powder",
+    "count": 31
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "type": "hbm_ntm:chemical_plant",
+  "fluid_inputs": [ { "fluid": "hbm_ntm:petroleum_gas", "amount": 20 } ],
+  "ingredients": [ { "item": "hbm_ntm:coal_powder" }, { "item": "hbm_ntm:fluorite" } ],
+  "output": { "item": "hbm_ntm:polymer_bar" },
+  "time": 100,
+  "energy": 20
+}

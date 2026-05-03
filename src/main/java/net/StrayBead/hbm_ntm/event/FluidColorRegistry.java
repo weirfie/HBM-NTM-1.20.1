@@ -12,6 +12,7 @@ public class FluidColorRegistry {
         FLUID_COLORS.put("crude_oil", 0x0A0A0A);
         FLUID_COLORS.put("hot_crude_oil", 0x1A0A00);
         FLUID_COLORS.put("desulfurized_hot_crude_oil", 0x241400);
+        FLUID_COLORS.put("desulfurized_crude_oil", 0x241400);
         FLUID_COLORS.put("vacuum_heavy_oil", 0x241400);
         FLUID_COLORS.put("vacuum_light_oil", 0x3D3D3D);
         FLUID_COLORS.put("industrial_oil", 0x241400);
@@ -25,10 +26,12 @@ public class FluidColorRegistry {
         FLUID_COLORS.put("bitumen", 0x050505);
         FLUID_COLORS.put("jet_fuel", 0x64B5F6);
         FLUID_COLORS.put("water", 0x0000FF);
+        FLUID_COLORS.put("reformate", 0x804D8C);
         FLUID_COLORS.put("unsaturated_hydrocarbons", 0x708090);
         FLUID_COLORS.put("petroleum_gas", 0xB0C4DE);
         FLUID_COLORS.put("reformate_gas", 0x58537D);
         FLUID_COLORS.put("vitroil", 0x575037);
+        FLUID_COLORS.put("alumina", 0x9DC8CC);
 
         // --- NUCLEAR & RADIOACTIVE ---
         FLUID_COLORS.put("liquid_nuclear_waste", 0x4DFF00);

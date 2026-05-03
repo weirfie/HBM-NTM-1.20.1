@@ -4,6 +4,7 @@ import io.netty.buffer.Unpooled;
 import net.StrayBead.hbm_ntm.item.ModItems;
 import net.StrayBead.hbm_ntm.network.ModMessages;
 import net.StrayBead.hbm_ntm.network.packet.EnergySyncS2CPacket;
+import net.StrayBead.hbm_ntm.recipe.CentrifugeRecipe;
 import net.StrayBead.hbm_ntm.screen.CentrifugeGuiMenu;
 import net.StrayBead.hbm_ntm.util.ModEnergyStorage;
 import net.minecraft.core.BlockPos;
@@ -14,6 +15,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -103,86 +105,48 @@ public class CentrifugeBlockEntity extends RandomizableContainerBlockEntity impl
 
     public static void tick(Level level, BlockPos pos, BlockState state, CentrifugeBlockEntity entity) {
         if (level.isClientSide) return;
-        if (entity.ENERGY_STORAGE.getEnergyStored() > 100) {
-            entity.ENERGY_STORAGE.extractEnergy(100, false);
-            ItemStack inputStack = entity.stacks.get(3);
 
-            boolean hasRecipe = inputStack.is(ModItems.URANIUM_BEDROCK_ORE.get()) ||
-                    inputStack.is(ModItems.CLEANED_URANIUM_BEDROCK_ORE.get()) ||
-                    inputStack.is(ModItems.PURIFIED_URANIUM_BEDROCK_ORE.get()) ||
-                    inputStack.is(ModItems.REDSTONE_CRYSTALS.get()) ||
-                    inputStack.is(ModItems.RARE_EARTH_CRYSTALS.get()) ||
-                    inputStack.is(ModItems.NUCLEAR_COMPONENTS.get("light_metal_bedrock_ore_roasted").get()) ||
-                    inputStack.is(Items.COAL_ORE);
+        if (entity.ENERGY_STORAGE.getEnergyStored() >= 100) {
+            SimpleContainer inventory = new SimpleContainer(1);
+            inventory.setItem(0, entity.stacks.get(3));
 
-            if (hasRecipe && canOutput(entity)) {
+            var match = level.getRecipeManager()
+                    .getRecipeFor(CentrifugeRecipe.Type.INSTANCE, inventory, level);
+
+            if (match.isPresent() && canInsertOutputs(entity, match.get().getOutputs())) {
+                entity.ENERGY_STORAGE.extractEnergy(100, false);
                 entity.progress++;
 
                 if (entity.progress >= entity.MAX_PROGRESS) {
-                    craftItem(inputStack, entity);
+                    craftItem(entity, match.get());
                     entity.progress = 0;
                     entity.setChanged();
                 }
             } else {
                 entity.progress = 0;
             }
+        } else {
+            entity.progress = 0;
         }
     }
 
-    private static void craftItem(ItemStack input, CentrifugeBlockEntity entity) {
-        ItemStack result;
-        if (input.is(ModItems.URANIUM_BEDROCK_ORE.get())) {
-            result = new ItemStack(ModItems.CENTRIFUGED_URANIUM_BEDROCK_ORE.get());
-            input.shrink(1);
-            entity.stacks.set(4, result.copy());
-            entity.stacks.set(5, result.copy());
-            entity.stacks.set(6, result.copy());
-            entity.stacks.set(7, result.copy());
-        } else if (input.is(ModItems.CLEANED_URANIUM_BEDROCK_ORE.get())) {
-            result = new ItemStack(ModItems.SEPARATED_URANIUM_BEDROCK_ORE.get());
-            input.shrink(1);
-            entity.stacks.set(4, result.copy());
-            entity.stacks.set(5, result.copy());
-            entity.stacks.set(6, result.copy());
-            entity.stacks.set(7, result.copy());
-        } else if (input.is(ModItems.NUCLEAR_COMPONENTS.get("light_metal_bedrock_ore_roasted").get())) {
-            result = new ItemStack(ModItems.NUCLEAR_COMPONENTS.get("light_metal_bedrock_ore_primary_faction").get());
-            input.shrink(1);
-            entity.stacks.set(4, result.copy());
-            entity.stacks.set(5, new ItemStack(Blocks.GRAVEL.asItem()));
-        } else if (input.is(ModItems.REDSTONE_CRYSTALS.get())) {
-            ItemStack redstone_crystals_result = new ItemStack(Items.REDSTONE, 3);
-            input.shrink(1);
-            entity.stacks.set(4, redstone_crystals_result.copy());
-            entity.stacks.set(5, redstone_crystals_result.copy());
-            entity.stacks.set(6, redstone_crystals_result.copy());
-            entity.stacks.set(7, new ItemStack(ModItems.DROP_OF_MERCURY.get(), 3));
-        } else if (input.is(Items.COAL_ORE)) {
-            ItemStack redstone_crystals_result = new ItemStack(ModItems.COAL_POWDER.get(), 2);
-            input.shrink(1);
-            entity.stacks.set(4, redstone_crystals_result.copy());
-            entity.stacks.set(5, redstone_crystals_result.copy());
-            entity.stacks.set(6, redstone_crystals_result.copy());
-            entity.stacks.set(7, new ItemStack(Items.GRAVEL, 1));
-        } else if (input.is(ModItems.RARE_EARTH_CRYSTALS.get())) {
-            ItemStack redstone_crystals_result = new ItemStack(ModItems.DESH_BLEND.get(), 1);
-            input.shrink(1);
-            entity.stacks.set(4, redstone_crystals_result.copy());
-            entity.stacks.set(5, redstone_crystals_result.copy());
-            entity.stacks.set(6, new ItemStack(ModItems.ZIRCONIUM_CUBE.get(), 1));
-            entity.stacks.set(7, new ItemStack(ModItems.ZIRCONIUM_CUBE.get(), 1));
-        } else {
-            result = new ItemStack(ModItems.NITRATED_URANIUM_BEDROCK_ORE.get());
-            input.shrink(1);
-            entity.stacks.set(4, result.copy());
-            entity.stacks.set(5, result.copy());
-            entity.stacks.set(6, result.copy());
-            entity.stacks.set(7, result.copy());
+    private static void craftItem(CentrifugeBlockEntity entity, CentrifugeRecipe recipe) {
+        entity.stacks.get(3).shrink(1);
+        NonNullList<ItemStack> outputs = recipe.getOutputs();
+
+        for (int i = 0; i < outputs.size() && i < 4; i++) {
+            entity.stacks.set(4 + i, outputs.get(i).copy());
         }
+    }
+
+    private static boolean canInsertOutputs(CentrifugeBlockEntity entity, NonNullList<ItemStack> outputs) {
+        return entity.stacks.get(4).isEmpty() &&
+                entity.stacks.get(5).isEmpty() &&
+                entity.stacks.get(6).isEmpty() &&
+                entity.stacks.get(7).isEmpty();
     }
 
     private static boolean canOutput(CentrifugeBlockEntity entity) {
-        // Simple check: Output slots (4-7) must be empty to process
         return entity.stacks.get(4).isEmpty() &&
                 entity.stacks.get(5).isEmpty() &&
                 entity.stacks.get(6).isEmpty() &&

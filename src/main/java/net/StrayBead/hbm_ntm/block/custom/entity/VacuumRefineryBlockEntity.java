@@ -69,19 +69,6 @@ public class VacuumRefineryBlockEntity extends BlockEntity implements MenuProvid
                 ModMessages.sendToClients(new FluidSyncS2CPacket(this.fluid, worldPosition));
             }
         }
-
-        @Override
-        public boolean isFluidValid(FluidStack stack) {
-            if (stack.hasTag() && stack.getTag().contains("Pressure")) {
-                return stack.getTag().getInt("Pressure") == 2;
-            }
-
-            if (stack.getFluid().getFluidType() instanceof GenericFluidType genericFluid) {
-                return genericFluid.getDefaultPressure() == 2;
-            }
-
-            return false;
-        }
     };
 
     private final FluidTank OUTPUT_TANK_1 = createOutputTank(40000, 1);
@@ -294,6 +281,16 @@ public class VacuumRefineryBlockEntity extends BlockEntity implements MenuProvid
                 pEntity.OUTPUT_TANK_2.fill(new FluidStack(ModFluids.REFORMATE_GAS.get(), 15), IFluidHandler.FluidAction.EXECUTE);
                 pEntity.OUTPUT_TANK_3.fill(new FluidStack(ModFluids.VACUUM_LIGHT_OIL.get(), 10), IFluidHandler.FluidAction.EXECUTE);
                 pEntity.OUTPUT_TANK_4.fill(new FluidStack(ModFluids.SOUR_GAS.get(), 5), IFluidHandler.FluidAction.EXECUTE);
+
+                ModMessages.sendToClients(new FluidSyncS2CPacket(pEntity.FLUID_TANK.getFluid(), pos));
+                pEntity.syncBlock();
+            } else if (pEntity.FLUID_TANK.getFluidAmount() > 50 && pEntity.FLUID_TANK.getFluid().getFluid() == ModFluids.DESULFURIZED_CRUDE_OIL.get()) {
+                pEntity.ENERGY_STORAGE.extractEnergy(20, false);
+                pEntity.FLUID_TANK.drain(50, IFluidHandler.FluidAction.EXECUTE);
+                pEntity.OUTPUT_TANK_1.fill(new FluidStack(ModFluids.VACUUM_HEAVY_OIL.get(), 20), IFluidHandler.FluidAction.EXECUTE);
+                pEntity.OUTPUT_TANK_2.fill(new FluidStack(ModFluids.REFORMATE.get(), 15), IFluidHandler.FluidAction.EXECUTE);
+                pEntity.OUTPUT_TANK_3.fill(new FluidStack(ModFluids.VACUUM_LIGHT_OIL.get(), 10), IFluidHandler.FluidAction.EXECUTE);
+                pEntity.OUTPUT_TANK_4.fill(new FluidStack(ModFluids.REFORMATE_GAS.get(), 5), IFluidHandler.FluidAction.EXECUTE);
 
                 ModMessages.sendToClients(new FluidSyncS2CPacket(pEntity.FLUID_TANK.getFluid(), pos));
                 pEntity.syncBlock();

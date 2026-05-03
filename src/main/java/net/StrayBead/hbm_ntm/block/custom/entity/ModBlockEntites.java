@@ -2,6 +2,7 @@ package net.StrayBead.hbm_ntm.block.custom.entity;
 
 import net.StrayBead.hbm_ntm.HBMNTM;
 import net.StrayBead.hbm_ntm.block.ModBlocks;
+import net.StrayBead.hbm_ntm.block.custom.RadiolysisChamberBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -28,10 +29,42 @@ public class ModBlockEntites {
             BLOCK_ENTITIES.register("blast_furnace_entity", () ->
                     BlockEntityType.Builder.of(MeltdownBlastFurnaceBlockEntity::new,
                             ModBlocks.BLAST_FURNACE.get()).build(null));
+    public static final RegistryObject<BlockEntityType<FlowGaugePipeBlockEntity>> FLOW_GAUGE_PIPE_ENTITY =
+            BLOCK_ENTITIES.register("flow_gauge_pipe_entity", () ->
+                    BlockEntityType.Builder.of(FlowGaugePipeBlockEntity::new,
+                            ModBlocks.FLOW_GAUGE_PIPE.get()).build(null));
+    public static final RegistryObject<BlockEntityType<RadiolysisChamberBlockEntity>> RADIOLYSIS_CHAMBER =
+            BLOCK_ENTITIES.register("radiolysis_chamber_entity", () ->
+                    BlockEntityType.Builder.of(RadiolysisChamberBlockEntity::new,
+                            ModBlocks.RADIOLYSIS_CHAMBER.get()).build(null));
+    public static final RegistryObject<BlockEntityType<ElectricArcFurnaceBlockEntity>> ELECTRIC_ARC_FURNACE =
+            BLOCK_ENTITIES.register("electric_arc_furnace_entity", () ->
+                    BlockEntityType.Builder.of(ElectricArcFurnaceBlockEntity::new,
+                            ModBlocks.ELECTRIC_ARC_FURNACE.get()).build(null));
+    public static final RegistryObject<BlockEntityType<FelBlockEntity>> FEL =
+            BLOCK_ENTITIES.register("fel_entity", () ->
+                    BlockEntityType.Builder.of(FelBlockEntity::new,
+                            ModBlocks.FEL.get()).build(null));
+    public static final RegistryObject<BlockEntityType<HydrotreaterBlockEntity>> HYDROTREATER =
+            BLOCK_ENTITIES.register("hydrotreater_entity", () ->
+                    BlockEntityType.Builder.of(HydrotreaterBlockEntity::new,
+                            ModBlocks.HYDROTREATER.get()).build(null));
+    public static final RegistryObject<BlockEntityType<PaintableCopperCableBlockEntity>> PAINTABLE_COPPER_CABLE_ENTITY =
+            BLOCK_ENTITIES.register("paintable_copper_cable_enitty", () ->
+                    BlockEntityType.Builder.of(PaintableCopperCableBlockEntity::new,
+                            ModBlocks.PAINTABLE_RED_COPPER_CABLE.get()).build(null));
+    public static final RegistryObject<BlockEntityType<ElectricGroundwaterPumpBlockEntity>> ELECTRIC_GROUNDWATER_PUMP =
+            BLOCK_ENTITIES.register("electric_groundwater_pump_entity", () ->
+                    BlockEntityType.Builder.of(ElectricGroundwaterPumpBlockEntity::new,
+                            ModBlocks.ELECTRIC_GROUNDWATER_PUMP.get()).build(null));
     public static final RegistryObject<BlockEntityType<ThePrototypeBlockEntity>> THE_PROTOTYPE =
             BLOCK_ENTITIES.register("the_prototype_entity", () ->
                     BlockEntityType.Builder.of(ThePrototypeBlockEntity::new,
                             ModBlocks.THE_PROTOTYPE.get()).build(null));
+    public static final RegistryObject<BlockEntityType<TankBlockEntity>> TANK =
+            BLOCK_ENTITIES.register("tank", () ->
+                    BlockEntityType.Builder.of(TankBlockEntity::new,
+                            ModBlocks.TANK.get()).build(null));
     public static final RegistryObject<BlockEntityType<PyrolysisOvenBlockEntity>> PYROLYSIS_OVEN_ENTITY =
             BLOCK_ENTITIES.register("pyrolysis_oven_entity", () ->
                     BlockEntityType.Builder.of(PyrolysisOvenBlockEntity::new,
@@ -159,7 +192,7 @@ public class ModBlockEntites {
     public static final RegistryObject<BlockEntityType<HydraulicFrackingTowerBlockEntity>> HYDRAULIC_FRACKING_TOWER_ENTITY =
             BLOCK_ENTITIES.register("hydraulic_fracking_tower_entity", () ->
                     BlockEntityType.Builder.of(HydraulicFrackingTowerBlockEntity::new,
-                            ModBlocks.FUEL_ROD.get()).build(null));
+                            ModBlocks.HYDRAULIC_FRACKING_TOWER.get()).build(null));
     public static final RegistryObject<BlockEntityType<CopperCableBlockEntity>> COPPER_CABLE_ENTITY =
             BLOCK_ENTITIES.register("copper_cable_entity", () ->
                     BlockEntityType.Builder.of(CopperCableBlockEntity::new,

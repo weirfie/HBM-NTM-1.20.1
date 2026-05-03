@@ -33,6 +33,16 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.GRAPHITE.get());
         this.dropSelf(ModBlocks.FIREWORK_BATTERY.get());
         this.dropSelf(ModBlocks.DYNAMITE.get());
+        this.dropSelf(ModBlocks.INDUSTRIAL_SMOKESTACK.get());
+        this.dropSelf(ModBlocks.ELECTRIC_GROUNDWATER_PUMP.get());
+        this.dropSelf(ModBlocks.FLOW_GAUGE_PIPE.get());
+        this.dropSelf(ModBlocks.BARBED_WIRE.get());
+        this.dropSelf(ModBlocks.RADIOLYSIS_CHAMBER.get());
+        this.dropSelf(ModBlocks.FLAMING_BARBED_WIRE.get());
+        this.dropSelf(ModBlocks.POISONED_BARBED_WIRE.get());
+        this.dropSelf(ModBlocks.CAUSTIC_BARBED_WIRE.get());
+        this.dropSelf(ModBlocks.WITHERED_BARBED_WIRE.get());
+        this.dropSelf(ModBlocks.RADIOACTIVE_BARBED_WIRE.get());
         this.dropSelf(ModBlocks.ACTUAL_TNT.get());
         this.dropSelf(ModBlocks.BEDROCK_ORE_PROCESSOR.get());
         this.dropSelf(ModBlocks.ANTI_PERSONELL_MINE.get());
@@ -298,6 +308,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.AUTOMATIC_CRAFTING_TABLE.get());
         this.dropSelf(ModBlocks.BURNER_PRESS_PREHEATER.get());
         this.dropSelf(ModBlocks.LIGHTSTONE_BRICK_STAIRS.get());
+        this.dropSelf(ModBlocks.STEEL_PIPE.get());
         this.dropSelf(ModBlocks.LIGHTSTONE_TILE_STAIRS.get());
         this.dropSelf(ModBlocks.CHISELED_LIGHTSTONE.get());
         this.dropSelf(ModBlocks.LIGHTSTONE_CHISELED_BRICKS.get());
@@ -332,7 +343,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.add(ModBlocks.COPPER_ORE_CLUSTER.get(),
                 block -> createOreDrop(block, ModItems.CRYSTALS.get("copper").get()));
 
-        for (RegistryObject<Block> blockObj : ModBlocks.GENERAL_SIMPLE_BLOCK.values()) {
+        for (RegistryObject<? extends Block> blockObj : ModBlocks.GENERAL_SIMPLE_BLOCK.values()) {
             Block block = blockObj.get();
             if (block == ModBlocks.IRON_ORE_CLUSTER.get() ||
                     block == ModBlocks.TITANIUM_ORE_CLUSTER.get() ||

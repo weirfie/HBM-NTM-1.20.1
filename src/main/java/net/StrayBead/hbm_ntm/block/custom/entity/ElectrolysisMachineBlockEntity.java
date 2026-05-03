@@ -283,6 +283,11 @@ public class ElectrolysisMachineBlockEntity extends BlockEntity implements MenuP
                     pEntity.FLUID_TANK.drain(50, IFluidHandler.FluidAction.EXECUTE);
                     pEntity.OUTPUT_TANK.fill(new FluidStack(ModFluids.LIQUID_HYDROGEN.get(), 25), IFluidHandler.FluidAction.EXECUTE);
                     pEntity.OUTPUT_TANK_2.fill(new FluidStack(ModFluids.PETROLEUM_GAS.get(), 25), IFluidHandler.FluidAction.EXECUTE);
+                } else if (pEntity.FLUID_TANK.getFluid().getFluid() == ModFluids.HEAVY_WATER.get()) {
+                    pEntity.ENERGY_STORAGE.extractEnergy(200, false);
+                    pEntity.FLUID_TANK.drain(50, IFluidHandler.FluidAction.EXECUTE);
+                    pEntity.OUTPUT_TANK.fill(new FluidStack(ModFluids.DEUTERIUM.get(), 25), IFluidHandler.FluidAction.EXECUTE);
+                    pEntity.OUTPUT_TANK_2.fill(new FluidStack(ModFluids.LIQUID_OXYGEN.get(), 25), IFluidHandler.FluidAction.EXECUTE);
                 } else if (pEntity.FLUID_TANK.getFluid().getFluid() == ModFluids.VITROIL.get()) {
                     pEntity.ENERGY_STORAGE.extractEnergy(200, false);
                     pEntity.FLUID_TANK.drain(50, IFluidHandler.FluidAction.EXECUTE);

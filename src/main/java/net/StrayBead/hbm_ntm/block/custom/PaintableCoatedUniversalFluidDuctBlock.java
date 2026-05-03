@@ -62,7 +62,6 @@ public class PaintableCoatedUniversalFluidDuctBlock extends BaseEntityBlock {
         int x = pos.getX();
         int y = pos.getY();
         int z = pos.getZ();
-        WaterDuctUpdateTickProcedure.execute(world, x, y, z);
         world.scheduleTick(pos, this, 2);
     }
 
@@ -103,7 +102,6 @@ public class PaintableCoatedUniversalFluidDuctBlock extends BaseEntityBlock {
                 } else {
                     BlockEntity be = level.getBlockEntity(pos);
                     if (be instanceof PaintableCoatedUniversalFluidDuctBlockEntity fluidBE) {
-                        fluidBE.setFilterAndFluid(color, fluidName);
                         player.displayClientMessage(Component.literal("Duct set to: " + fluidName), true);
                     }
                 }
@@ -118,7 +116,6 @@ public class PaintableCoatedUniversalFluidDuctBlock extends BaseEntityBlock {
             if (be instanceof PaintableCoatedUniversalFluidDuctBlockEntity ductBE) {
                 if (!level.isClientSide) {
                     ductBE.paintWith(stack);
-                    player.displayClientMessage(Component.literal("Duct painted!"), true);
                 }
                 return InteractionResult.sidedSuccess(level.isClientSide);
             }
@@ -133,7 +130,6 @@ public class PaintableCoatedUniversalFluidDuctBlock extends BaseEntityBlock {
 
         BlockEntity be = level.getBlockEntity(pos);
         if (be instanceof PaintableCoatedUniversalFluidDuctBlockEntity fluidBE) {
-            fluidBE.setFilterAndFluid(color, fluidName);
 
             for (Direction direction : Direction.values()) {
                 BlockPos neighborPos = pos.relative(direction);

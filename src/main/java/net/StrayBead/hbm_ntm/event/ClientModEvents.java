@@ -42,6 +42,10 @@ public class ClientModEvents {
                 BedrockOreProcessorBER::new);
         event.registerBlockEntityRenderer(ModBlockEntites.TIME_BOMB.get(),
                 TimeBombRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntites.ELECTRIC_GROUNDWATER_PUMP.get(),
+                ElectricGroundwaterPumpBER::new);
+        event.registerBlockEntityRenderer(ModBlockEntites.PAINTABLE_COPPER_CABLE_ENTITY.get(),
+                PaintableCableRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntites.COATED_FLUID_DUCT.get(), DuctRenderer::new);
         event.registerEntityRenderer(ModEntities.FLYING_TERRAIN.get(), FlyingTerrainRenderer::new);
     }
@@ -50,6 +54,7 @@ public class ClientModEvents {
     public static void onRegisterAdditional(ModelEvent.RegisterAdditional event) {
         event.register(new net.minecraft.resources.ResourceLocation("hbm_ntm", "block/silo_hatch_door"));
         event.register(new net.minecraft.resources.ResourceLocation("hbm_ntm", "block/bedrock_ore_processor_top"));
+        event.register(new net.minecraft.resources.ResourceLocation("hbm_ntm", "block/electric_groundwater_pump_top"));
     }
 
     @SubscribeEvent

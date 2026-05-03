@@ -1,0 +1,6 @@
+# Made in Blockbench 5.1.3
+newmtl m_ae432dd0-0053-d146-1049-4c65e5b5316e
+map_Kd hbm_ntm:block/pipe_top
+newmtl m_ccf3d82b-e491-9db8-deff-5bfb7bd5d19b
+map_Kd hbm_ntm:block/pipe_side
+newmtl none

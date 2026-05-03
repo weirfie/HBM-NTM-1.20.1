@@ -1,8 +1,12 @@
 package net.StrayBead.hbm_ntm.potion.custom;
 
 import net.StrayBead.hbm_ntm.HBMNTM;
+import net.StrayBead.hbm_ntm.sounds.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -76,6 +80,10 @@ public class RadiationPoisoningMobEffect extends MobEffect {
         if (!entity.level().isClientSide() && !entity.isRemoved() && !(entity instanceof Zombie)) {
             if (entity instanceof Player player && player.isCreative()) {
                 return;
+            }
+
+            if (Mth.nextInt(RandomSource.create(), 1, 200) < 2) {
+                entity.level().playSound(null, entity.blockPosition(), ModSounds.VOMIT.get(), SoundSource.NEUTRAL, 2f, 1f);
             }
 
             if (amplifier >= 20) {

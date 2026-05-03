@@ -1,0 +1,10 @@
+{
+  "type": "hbm_ntm:centrifuge",
+  "ingredient": { "item": "hbm_ntm:redstone_crystals" },
+  "results": [
+    { "item": "minecraft:redstone", "count": 3 },
+    { "item": "minecraft:redstone", "count": 3 },
+    { "item": "minecraft:redstone", "count": 3 },
+    { "item": "hbm_ntm:drop_of_mercury", "count": 3 }
+  ]
+}

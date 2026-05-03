@@ -12,6 +12,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -74,23 +75,17 @@ public class ShredderBlockEntity extends RandomizableContainerBlockEntity implem
         ItemStack inputStack = entity.stacks.get(0);
 
         if (entity.stacks.get(27).getItem() == ModItems.STEEL_SHREDDER_BLADES.get()) {
-            ItemStack result = ItemStack.EMPTY;
+            if (inputStack.isEmpty()) return;
 
-            if (inputStack.getItem() == ModItems.NITRATED_URANIUM_BEDROCK_ORE.get()) {
-                result = new ItemStack(ModItems.URANIUM_DUST.get(), 1);
-            } else if (inputStack.getItem() == Blocks.ANVIL.asItem()) {
-                result = new ItemStack(ModItems.IRON_POWDER.get(), 31);
-            } else if (inputStack.getItem() == ModItems.STEEL_PLATE.get()) {
-                result = new ItemStack(ModItems.POWDERS.get("steel").get(), 1);
-            } else if (inputStack.getItem() == ModItems.URANIUM_INGOT.get()) {
-                result = new ItemStack(ModItems.URANIUM_DUST.get(), 1);
-            } else if (inputStack.getItem() == ModBlocks.STEEL_DECO_BLOCK.get().asItem()) {
-                result = new ItemStack(ModItems.POWDERS.get("steel").get(), 1);
-            } else if (inputStack.getItem() == ModBlocks.LIGNITE_ORE.get().asItem()) {
-                result = new ItemStack(ModItems.POWDERS.get("lignite").get(), 1);
-            }
+            SimpleContainer inventory = new SimpleContainer(1);
+            inventory.setItem(0, inputStack);
 
-            if (!result.isEmpty()) {
+            java.util.Optional<net.StrayBead.hbm_ntm.recipe.ShredderRecipe> match = level.getRecipeManager()
+                    .getRecipeFor(net.StrayBead.hbm_ntm.recipe.ModRecipes.SHREDDER_TYPE.get(), inventory, level);
+
+            if (match.isPresent()) {
+                ItemStack result = match.get().getResultItem(level.registryAccess()).copy();
+
                 if (insertResult(entity, result)) {
                     inputStack.shrink(1);
                     entity.setChanged();

@@ -70,11 +70,22 @@ public class FluidSyncS2CPacket {
                         menu.getBlockEntity().getBlockPos().equals(pos)) {
                     menu.setFluid(this.fluidStack);
                 }
+            } else if(Minecraft.getInstance().level.getBlockEntity(pos) instanceof TankBlockEntity blockEntity) {
+                blockEntity.setFluid(this.fluidStack);
+
+                if(Minecraft.getInstance().player.containerMenu instanceof TankGuiMenu menu &&
+                        menu.getBlockEntity().getBlockPos().equals(pos)) {
+                    menu.setFluid(this.fluidStack);
+                }
             } else if(Minecraft.getInstance().level.getBlockEntity(pos) instanceof ShallowFoundryBasinBlockEntity blockEntity) {
                 blockEntity.setFluid(this.fluidStack);
             } else if(Minecraft.getInstance().level.getBlockEntity(pos) instanceof CrucibleBlockEntity blockEntity) {
                 blockEntity.setFluid(this.fluidStack);
+            } else if(Minecraft.getInstance().level.getBlockEntity(pos) instanceof ElectricArcFurnaceBlockEntity blockEntity) {
+                blockEntity.setFluid(this.fluidStack);
             } else if(Minecraft.getInstance().level.getBlockEntity(pos) instanceof FlareStackBlockEntity blockEntity) {
+                blockEntity.setFluid(this.fluidStack);
+            } else if(Minecraft.getInstance().level.getBlockEntity(pos) instanceof ElectricArcFurnaceBlockEntity blockEntity) {
                 blockEntity.setFluid(this.fluidStack);
             } else if(Minecraft.getInstance().level.getBlockEntity(pos) instanceof ZirnoxNuclearReactorBlockEntity blockEntity) {
                 blockEntity.setFluid(this.fluidStack);
@@ -87,6 +98,13 @@ public class FluidSyncS2CPacket {
                 blockEntity.setFluid(this.fluidStack);
 
                 if(Minecraft.getInstance().player.containerMenu instanceof OilDerrickMenu menu &&
+                        menu.getBlockEntity().getBlockPos().equals(pos)) {
+                    menu.setFluid(this.fluidStack);
+                }
+            } else if(Minecraft.getInstance().level.getBlockEntity(pos) instanceof HydraulicFrackingTowerBlockEntity blockEntity) {
+                blockEntity.setFluid(this.fluidStack);
+
+                if(Minecraft.getInstance().player.containerMenu instanceof HydraulicFrackingTowerMenu menu &&
                         menu.getBlockEntity().getBlockPos().equals(pos)) {
                     menu.setFluid(this.fluidStack);
                 }
@@ -163,6 +181,19 @@ public class FluidSyncS2CPacket {
                     case 1 -> refinery.setTank1(this.fluidStack);
                     case 2 -> refinery.setTank2(this.fluidStack);
                     case 3 -> refinery.setTank3(this.fluidStack);
+                }
+            } else if(Minecraft.getInstance().level.getBlockEntity(pos) instanceof RadiolysisChamberBlockEntity radiolysisChamber) {
+                switch (tankID) {
+                    case 0 -> radiolysisChamber.setFluid(this.fluidStack);
+                    case 1 -> radiolysisChamber.setTank1(this.fluidStack);
+                    case 2 -> radiolysisChamber.setTank2(this.fluidStack);
+                }
+            } else if(Minecraft.getInstance().level.getBlockEntity(pos) instanceof HydrotreaterBlockEntity hydrotreater) {
+                switch (tankID) {
+                    case 0 -> hydrotreater.setFluid(this.fluidStack);
+                    case 1 -> hydrotreater.setInputFluid(this.fluidStack);
+                    case 2 -> hydrotreater.setTank1(this.fluidStack);
+                    case 3 -> hydrotreater.setTank2(this.fluidStack);
                 }
             } else if(Minecraft.getInstance().level.getBlockEntity(pos) instanceof DeuteriumExtractionTowerBlockEntity deuteriumExtractionTower) {
                 switch (tankID) {

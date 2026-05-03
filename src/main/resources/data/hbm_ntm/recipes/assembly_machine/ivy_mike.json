@@ -1,0 +1,15 @@
+{
+  "type": "hbm_ntm:assembly_machine",
+  "template": {
+    "item": "hbm_ntm:assembly_template_ivy_mike"
+  },
+  "ingredients": [
+    { "item": "hbm_ntm:steel_sphere", "count": 1 },
+    { "item": "hbm_ntm:steel_shell", "count": 4 },
+    { "item": "hbm_ntm:advanced_control_unit", "count": 8 },
+    { "item": "hbm_ntm:titanium_powder", "count": 16 }
+  ],
+  "output": {
+    "item": "hbm_ntm:ivy_mike"
+  }
+}
